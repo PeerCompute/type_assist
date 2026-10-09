@@ -11,6 +11,8 @@ qt_add_executable(type_assist
     mainwindow.cpp
     mainwindow.h
     mainwindow.ui
+    filemanager.cpp
+    filemanager.h
 )
 
 target_link_libraries(type_assist
