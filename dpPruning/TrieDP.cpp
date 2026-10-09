@@ -8,11 +8,7 @@
 using namespace std;
 
 #define ALPHABET_SIZE 26
-<<<<<<< HEAD
-#define MAX_DISTANCE 2
-=======
 #define START_DISTANCE 2
->>>>>>> 72c7709 (Update TrieDP candidate generation)
 
 struct TrieNode {
     TrieNode* children[ALPHABET_SIZE];
@@ -30,10 +26,7 @@ struct TrieNode {
 class Trie {
 private:
     TrieNode* root;
-<<<<<<< HEAD
-=======
     long long nodeCount;
->>>>>>> 72c7709 (Update TrieDP candidate generation)
 
     void searchRecursive(
         TrieNode* node,
@@ -45,14 +38,8 @@ private:
     ) {
         for (int i = 0; i < ALPHABET_SIZE; i++) {
 
-<<<<<<< HEAD
-            if (node->children[i] == nullptr) {
-                continue;
-            }
-=======
             if (node->children[i] == nullptr)
                 continue;
->>>>>>> 72c7709 (Update TrieDP candidate generation)
 
             char currentChar = 'a' + i;
 
@@ -63,37 +50,11 @@ private:
             for (int j = 1; j <= target.size(); j++) {
 
                 int insertion = currentRow[j - 1] + 1;
-<<<<<<< HEAD
-=======
 
->>>>>>> 72c7709 (Update TrieDP candidate generation)
                 int deletion = previousRow[j] + 1;
 
                 int substitution;
 
-<<<<<<< HEAD
-                if (target[j - 1] == currentChar) {
-                    substitution = previousRow[j - 1];
-                } else {
-                    substitution = previousRow[j - 1] + 1;
-                }
-
-                currentRow[j] = min({
-                    insertion,
-                    deletion,
-                    substitution
-                });
-            }
-
-            int minimumDistance = *min_element(
-                currentRow.begin(),
-                currentRow.end()
-            );
-
-            if (minimumDistance > maxDistance) {
-                continue;
-            }
-=======
                 if (target[j - 1] == currentChar)
                     substitution = previousRow[j - 1];
                 else
@@ -108,7 +69,6 @@ private:
 
             if (minimumDistance > maxDistance)
                 continue;
->>>>>>> 72c7709 (Update TrieDP candidate generation)
 
             currentWord.push_back(currentChar);
 
@@ -135,10 +95,7 @@ public:
 
     Trie() {
         root = new TrieNode();
-<<<<<<< HEAD
-=======
         nodeCount = 1;
->>>>>>> 72c7709 (Update TrieDP candidate generation)
     }
 
     void insert(const string& word) {
@@ -147,25 +104,15 @@ public:
 
         for (char c : word) {
 
-<<<<<<< HEAD
-            if (c < 'a' || c > 'z') {
-                continue;
-            }
-=======
             if (c < 'a' || c > 'z')
                 continue;
->>>>>>> 72c7709 (Update TrieDP candidate generation)
 
             int index = c - 'a';
 
             if (current->children[index] == nullptr) {
-<<<<<<< HEAD
-                current->children[index] = new TrieNode();
-=======
 
                 current->children[index] = new TrieNode();
                 nodeCount++;
->>>>>>> 72c7709 (Update TrieDP candidate generation)
             }
 
             current = current->children[index];
@@ -178,22 +125,12 @@ public:
         const string& target,
         int maxDistance
     ) {
-<<<<<<< HEAD
-
-=======
->>>>>>> 72c7709 (Update TrieDP candidate generation)
         vector<string> candidates;
 
         vector<int> initialRow(target.size() + 1);
 
-<<<<<<< HEAD
-        for (int i = 0; i <= target.size(); i++) {
-            initialRow[i] = i;
-        }
-=======
         for (int i = 0; i <= target.size(); i++)
             initialRow[i] = i;
->>>>>>> 72c7709 (Update TrieDP candidate generation)
 
         string currentWord = "";
 
@@ -208,8 +145,6 @@ public:
 
         return candidates;
     }
-<<<<<<< HEAD
-=======
 
     long long getNodeCount() {
         return nodeCount;
@@ -218,7 +153,6 @@ public:
     long long getTrieMemory() {
         return nodeCount * sizeof(TrieNode);
     }
->>>>>>> 72c7709 (Update TrieDP candidate generation)
 };
 
 int main() {
@@ -234,15 +168,6 @@ int main() {
 
     string word;
 
-<<<<<<< HEAD
-    auto start = chrono::high_resolution_clock::now();
-
-    while (getline(file, word)) {
-
-        if (!word.empty()) {
-            trie.insert(word);
-        }
-=======
     // Trie building time
     auto buildStart = chrono::high_resolution_clock::now();
 
@@ -250,39 +175,10 @@ int main() {
 
         if (!word.empty())
             trie.insert(word);
->>>>>>> 72c7709 (Update TrieDP candidate generation)
     }
 
     file.close();
 
-<<<<<<< HEAD
-    auto end = chrono::high_resolution_clock::now();
-
-    auto buildTime =
-        chrono::duration_cast<chrono::milliseconds>(
-            end - start
-        ).count();
-
-    cout << "Time taken to build the Trie: "
-         << buildTime << " ms" << endl;
-
-    cout << "Trie built successfully." << endl;
-
-    string input;
-
-    cout << "Enter an incorrect word: ";
-    cin >> input;
-
-    vector<string> candidates =
-        trie.findCandidates(input, MAX_DISTANCE);
-
-    cout << "Suggestions:" << endl;
-
-    for (const string& candidate : candidates) {
-        cout << candidate << endl;
-    }
-
-=======
     auto buildEnd = chrono::high_resolution_clock::now();
 
     auto buildTime =
@@ -402,6 +298,5 @@ int main() {
     for (const string& candidate : candidates)
         cout << candidate << endl;
 
->>>>>>> 72c7709 (Update TrieDP candidate generation)
     return 0;
 }
