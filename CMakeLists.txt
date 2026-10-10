@@ -11,14 +11,12 @@ qt_add_executable(type_assist
     mainwindow.cpp
     mainwindow.h
     mainwindow.ui
-<<<<<<< HEAD
     texthighlighter.cpp
     texthighlighter.h
     ispellchecker.h
-=======
     filemanager.cpp
     filemanager.h
->>>>>>> 5fa9a59fe134625e64349c8a64d7be1d8f766a4a
+    iAutomcompleteEngine.h
 )
 
 target_link_libraries(type_assist
