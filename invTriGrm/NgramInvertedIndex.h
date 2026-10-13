@@ -13,31 +13,34 @@
 using namespace std;
 
 void getNgrams(const string& word, vector<string>& ngrams){
-    for(uint16_t i = 0; i <= word.length() - N; i++){
+    for(uint32_t i = 0; i <= word.length() - N; i++){
         string ngram = word.substr(i, N);
         ngrams.push_back(ngram);
     }
 }
 
-void generateNgrams(unordered_map<string, vector<uint16_t>>& index, const vector<string>& words){
-    for(uint16_t i = 0; i < words.size(); i++){
+void generateNgrams(unordered_map<string, vector<uint32_t>>& index, const vector<string>& words){
+    for(uint32_t i = 0; i < words.size(); i++){
         string word = words[i];
-        for(uint16_t j = 0; j <= word.length() - N; j++){
+
+        word = "**" + word + "**";
+
+        for(uint32_t j = 0; j <= word.length() - N; j++){
             string ngram = word.substr(j, N);
             if(index.find(ngram) != index.end()){
                 index[ngram].push_back(i);
             } else {
-                index[ngram] = vector<uint16_t>{i};
+                index[ngram] = vector<uint32_t>{i};
             }
         }
     }
 }
 
-void buildNgramInvertedIndex(unordered_map<string, vector<uint16_t>>* index, vector<string>& words){
+void buildNgramInvertedIndex(unordered_map<string, vector<uint32_t>>* index, vector<string>& words){
     auto start = std::chrono::high_resolution_clock::now();
 
     //read from a dictionary file
-    ifstream dictFile("medical.txt");
+    ifstream dictFile("../dictionary-100k.txt");
 
     //sequence to follow
     //extract each word from the dictionary file
@@ -47,7 +50,7 @@ void buildNgramInvertedIndex(unordered_map<string, vector<uint16_t>>* index, vec
     for(string word; dictFile >> word;){
         words.push_back(word);
     }
-    
+/*
     for(int i = 0; i < 160; i++){  
         index->clear();
 
@@ -55,8 +58,8 @@ void buildNgramInvertedIndex(unordered_map<string, vector<uint16_t>>* index, vec
         dictFile.seekg(0); // go back to beginning
 
         generateNgrams(*index, words);
-    }
-    //generateNgrams(index, words);
+    }*/
+    generateNgrams(*index, words);
     dictFile.close();
 
     // ofstream outFile("medicalNgram.txt");
