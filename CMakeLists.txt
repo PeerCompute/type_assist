@@ -16,6 +16,8 @@ qt_add_executable(type_assist
     ispellchecker.h
     filemanager.cpp
     filemanager.h
+    suggestionpopup.h
+    suggestionpopup.cpp
     iAutomcompleteEngine.h
 )
 
