@@ -18,13 +18,20 @@ qt_add_executable(type_assist
     filemanager.h
     suggestionpopup.h
     suggestionpopup.cpp
-    iAutomcompleteEngine.h
+    textedit.h
+    textedit.cpp
+    iAutocompleteEngine.h
 )
 
 target_link_libraries(type_assist
     PRIVATE
         Qt::Core
         Qt::Widgets
+)
+
+target_include_directories(type_assist
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
 install(TARGETS type_assist
