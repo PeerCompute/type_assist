@@ -10,6 +10,8 @@
 #include <QCloseEvent>
 #include <QKeySequence>
 #include <QAction>
+#include <QStatusBar>
+#include "textedit.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
@@ -42,6 +44,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->editor, &QTextEdit::textChanged,
             this, &MainWindow::updateWindowTitle);
+
+    connect(ui->editor, &TextEdit::statusMessage,
+            this, [this](const QString &msg) {
+                statusBar()->showMessage(msg, 3000);
+            });
 
     updateWindowTitle();
 }
