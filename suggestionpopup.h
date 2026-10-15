@@ -6,8 +6,8 @@
 #include <QPoint>
 
 class QListWidget;
-class QPushButton;
 class QKeyEvent;
+class QEnterEvent;
 
 class SuggestionPopup : public QWidget {
     Q_OBJECT
@@ -22,19 +22,25 @@ public:
                          PopupMode mode);
     void hidePopup();
 
-    // TextEdit forwards key presses here; returns true if the popup used the key
     bool handleKey(QKeyEvent* event);
+    PopupMode mode() const { return m_mode; }
+    bool isMouseOver() const;
 
 signals:
     void suggestionChosen(const QString& word);
-    void addToDictionaryClicked();
+    void mouseEntered();
+    void mouseLeft();
+
+protected:
+    void enterEvent(QEnterEvent* event) override;
+    void leaveEvent(QEvent* event) override;
 
 private:
     void moveSelection(int step);
 
-    QListWidget* m_list;
-    QPushButton* m_addToDictButton;
+    QWidget* m_container = nullptr;
+    QListWidget* m_list = nullptr;
     PopupMode m_mode = PopupMode::Autocomplete;
 };
 
-#endif
+#endif // SUGGESTIONPOPUP_H

@@ -4,6 +4,7 @@
 #include <QSyntaxHighlighter>
 #include <QTextCharFormat>
 #include <QHash>
+#include <QSet>
 #include <QStringList>
 #include "ispellchecker.h"
 
@@ -14,21 +15,25 @@ public:
     explicit TextHighlighter(QTextDocument* document, ISpellChecker* checker);
 
     QStringList getSuggestionsFor(const QString& word) const;
+    bool isMisspelled(const QString& word) const;
     void addWordToDictionary(const QString& word);
-    void removeCachedEntry(const QString& word);
     void setCursorPosition(int blockNumber, int positionInBlock);
 
 protected:
     void highlightBlock(const QString& text) override;
 
 private:
-    ISpellChecker* m_spellChecker;
-    QHash<QString, QStringList> m_suggestionCache;
+    void refreshBlock(int blockNumber);
+
+    ISpellChecker* m_spellChecker = nullptr;
+
+    mutable QHash<QString, QStringList> m_suggestionCache; // misspelled word -> corrections
+    mutable QSet<QString> m_validWords;                    // words already confirmed correct
+
     QTextCharFormat m_misspelledFormat;
+
     int m_cursorBlockNumber = -1;
     int m_cursorPositionInBlock = -1;
-
-    static const int k = 5;   // number of corrections requested per word
 };
 
-#endif
+#endif // TEXTHIGHLIGHTER_H

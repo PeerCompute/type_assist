@@ -1,67 +1,155 @@
 #include "suggestionpopup.h"
 #include <QListWidget>
-#include <QPushButton>
 #include <QVBoxLayout>
 #include <QKeyEvent>
+#include <QEnterEvent>
+#include <QGuiApplication>
+#include <QScreen>
+#include <QCursor>
+#include <QGraphicsDropShadowEffect>
 
 SuggestionPopup::SuggestionPopup(QWidget* parent)
-    : QWidget(parent, Qt::ToolTip)
+    : QWidget(parent, Qt::Tool | Qt::FramelessWindowHint)
 {
     setFocusPolicy(Qt::NoFocus);
     setAttribute(Qt::WA_ShowWithoutActivating);
+    setAttribute(Qt::WA_TranslucentBackground);
 
-    m_list = new QListWidget(this);
+    m_container = new QWidget(this);
+    m_container->setObjectName("popupContainer");
+    m_container->setStyleSheet(
+        "#popupContainer {"
+        "  background-color: #ffffff;"
+        "  border: 1px solid #cbd5e1;"
+        "  border-radius: 6px;"
+        "}"
+        "QListWidget {"
+        "  border: none;"
+        "  background: transparent;"
+        "  font-family: 'Segoe UI', -apple-system, sans-serif;"
+        "  font-size: 13px;"
+        "  outline: none;"
+        "  padding: 0px;"
+        "}"
+        "QListWidget::item {"
+        "  height: 28px;"
+        "  padding: 0px 8px;"
+        "  margin: 1px 0px;"
+        "  border-radius: 4px;"
+        "  color: #1e293b;"
+        "}"
+        "QListWidget::item:hover:!selected {"
+        "  background-color: #f1f5f9;"
+        "  color: #0f172a;"
+        "}"
+        "QListWidget::item:selected {"
+        "  background-color: #0078d4;"
+        "  color: #ffffff;"
+        "  font-weight: 500;"
+        "}"
+        "QListWidget::item:selected:hover {"
+        "  background-color: #0078d4;"
+        "  color: #ffffff;"
+        "}"
+    );
+
+    auto* shadow = new QGraphicsDropShadowEffect(this);
+    shadow->setBlurRadius(14);
+    shadow->setColor(QColor(0, 0, 0, 40));
+    shadow->setOffset(0, 3);
+    m_container->setGraphicsEffect(shadow);
+
+    m_list = new QListWidget(m_container);
     m_list->setFocusPolicy(Qt::NoFocus);
-    // the list never has focus, so make the selected row clearly visible
-    m_list->setStyleSheet(
-        "QListWidget::item:selected { background: #3d8bfd; color: white; }");
+    m_list->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    m_list->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    m_addToDictButton = new QPushButton("+ Add to Dictionary", this);
-    m_addToDictButton->setFocusPolicy(Qt::NoFocus);
-    m_addToDictButton->hide();
+    auto* innerLayout = new QVBoxLayout(m_container);
+    innerLayout->setContentsMargins(4, 4, 4, 4);
+    innerLayout->setSpacing(0);
+    innerLayout->addWidget(m_list);
 
-    auto* layout = new QVBoxLayout(this);
-    layout->setContentsMargins(2, 2, 2, 2);
-    layout->setSpacing(2);
-    layout->addWidget(m_list);
-    layout->addWidget(m_addToDictButton);
+    auto* outerLayout = new QVBoxLayout(this);
+    outerLayout->setContentsMargins(8, 8, 8, 8); // Shadow margin
+    outerLayout->addWidget(m_container);
 
-    connect(m_list, &QListWidget::itemClicked, this,
-            [this](QListWidgetItem* item) {
-                emit suggestionChosen(item->text());
-                hidePopup();
-            });
+    connect(m_list, &QListWidget::itemClicked, this, [this](QListWidgetItem* item) {
+        if (item) {
+            emit suggestionChosen(item->text());
+            hidePopup();
+        }
+    });
+}
 
-    connect(m_addToDictButton, &QPushButton::clicked, this,
-            [this]() {
-                emit addToDictionaryClicked();
-                hidePopup();
-            });
+void SuggestionPopup::enterEvent(QEnterEvent* event)
+{
+    QWidget::enterEvent(event);
+    emit mouseEntered();
+}
+
+void SuggestionPopup::leaveEvent(QEvent* event)
+{
+    QWidget::leaveEvent(event);
+    emit mouseLeft();
+}
+
+bool SuggestionPopup::isMouseOver() const
+{
+    return isVisible() && geometry().contains(QCursor::pos());
 }
 
 void SuggestionPopup::showSuggestions(const QStringList& suggestions,
                                       const QPoint& globalPos,
                                       PopupMode mode)
 {
-    if (suggestions.isEmpty()) {
+    QStringList displayList = suggestions;
+    if (displayList.size() > 3)
+        displayList = displayList.mid(0, 3);
+
+    if (displayList.isEmpty()) {
         hidePopup();
         return;
     }
 
     m_mode = mode;
     m_list->clear();
-    m_list->addItems(suggestions);
-    m_list->setCurrentRow(-1);   // nothing selected until the user presses Down
+    m_list->addItems(displayList);
 
-    m_addToDictButton->setVisible(mode == PopupMode::SpellCheck);
+    // Default to the first suggestion so Down arrow immediately highlights the next item
+    m_list->setCurrentRow(0, QItemSelectionModel::ClearAndSelect);
 
-    int rows = qMin(static_cast<int>(suggestions.size()), 6);
-    m_list->setFixedHeight(m_list->sizeHintForRow(0) * rows + 4);
-    setFixedWidth(180);
-    adjustSize();
+    const int count = displayList.size();
+    const int itemHeight = 30;
+    const int listHeight = itemHeight * count;
+    m_list->setFixedHeight(listHeight);
 
-    move(globalPos);
+    const int containerHeight = listHeight + 8; // 4px top + 4px bottom padding
+    m_container->setFixedHeight(containerHeight);
+
+    const int totalHeight = containerHeight + 16; // 8px top + 8px bottom shadow margin
+    const int totalWidth = 150 + 16;
+    setFixedSize(totalWidth, totalHeight);
+
+    // Screen bounds clamping
+    QPoint pos = globalPos;
+    QScreen* screen = QGuiApplication::screenAt(globalPos);
+    if (!screen)
+        screen = QGuiApplication::primaryScreen();
+
+    if (screen) {
+        QRect screenGeo = screen->availableGeometry();
+        if (pos.x() + width() > screenGeo.right())
+            pos.setX(screenGeo.right() - width());
+        if (pos.x() < screenGeo.left())
+            pos.setX(screenGeo.left());
+
+        if (pos.y() + height() > screenGeo.bottom())
+            pos.setY(pos.y() - height() - 24);
+    }
+
+    move(pos);
     show();
+    raise();
 }
 
 void SuggestionPopup::hidePopup()
@@ -76,18 +164,18 @@ void SuggestionPopup::moveSelection(int step)
         return;
 
     int row = m_list->currentRow();
-    if (row < 0)
-        row = (step > 0) ? 0 : count - 1;      // first Down -> top, first Up -> bottom
-    else
-        row = (row + step + count) % count;    // wrap around
+    if (row < 0) {
+        row = (step > 0) ? 0 : count - 1;
+    } else {
+        row = (row + step + count) % count;
+    }
 
-    m_list->setCurrentRow(row);
+    m_list->setCurrentRow(row, QItemSelectionModel::ClearAndSelect);
 }
 
 bool SuggestionPopup::handleKey(QKeyEvent* event)
 {
-    // keyboard selection is for autocomplete only; the hover popup is mouse-driven
-    if (!isVisible() || m_mode != PopupMode::Autocomplete)
+    if (!isVisible())
         return false;
 
     switch (event->key()) {
@@ -100,12 +188,13 @@ bool SuggestionPopup::handleKey(QKeyEvent* event)
     case Qt::Key_Return:
     case Qt::Key_Enter:
     case Qt::Key_Tab:
-        if (m_list->currentRow() >= 0) {       // only if the user picked a row
+        if (m_list->currentRow() >= 0) {
             emit suggestionChosen(m_list->currentItem()->text());
-            hidePopup();
-            return true;
+        } else if (m_list->count() > 0) {
+            emit suggestionChosen(m_list->item(0)->text());
         }
-        return false;                          // nothing selected: Enter works normally
+        hidePopup();
+        return true;
     case Qt::Key_Escape:
         hidePopup();
         return true;

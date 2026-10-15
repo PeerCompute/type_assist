@@ -1,63 +1,137 @@
 #include "texthighlighter.h"
 #include <QTextDocument>
-#include <QTextCursor>
+#include <QTextBlock>
 
 TextHighlighter::TextHighlighter(QTextDocument* document, ISpellChecker* checker)
     : QSyntaxHighlighter(document), m_spellChecker(checker)
 {
     m_misspelledFormat.setUnderlineStyle(QTextCharFormat::WaveUnderline);
-    m_misspelledFormat.setUnderlineColor(Qt::red);
+    m_misspelledFormat.setUnderlineColor(QColor(239, 68, 68)); // Clean vivid red
 }
 
-void TextHighlighter::highlightBlock(const QString& text) {
+void TextHighlighter::highlightBlock(const QString& text)
+{
+    if (!m_spellChecker)
+        return;
+
     int cursorPos = -1;
-    if (currentBlock().blockNumber() == m_cursorBlockNumber) {
+    if (currentBlock().blockNumber() == m_cursorBlockNumber)
         cursorPos = m_cursorPositionInBlock;
-    }
 
     int start = 0;
-    int length = text.length();
+    const int length = text.length();
 
     for (int i = 0; i <= length; ++i) {
-        bool atEnd = (i == length);
-        bool isLetter = !atEnd && text[i].isLetter();
+        bool isWordChar = false;
+        if (i < length) {
+            QChar ch = text[i];
+            if (ch.isLetter()) {
+                isWordChar = true;
+            } else if (ch == '\'' && i > start && i + 1 < length && text[i + 1].isLetter()) {
+                isWordChar = true;
+            }
+        }
 
-        if (!isLetter) {
-            if (i > start) {
-                QString word = text.mid(start, i - start);
-                bool cursorInsideWord = (cursorPos >= start && cursorPos <= i);
+        if (isWordChar)
+            continue;
 
-                if (!cursorInsideWord) {
-                    CheckResult result = m_spellChecker->checkWord(word.toStdString(), k);
-                    if (!result.isCorrect) {
-                        setFormat(start, i - start, m_misspelledFormat);
-                        QStringList suggestions;
-                        for (const auto& s : result.corrections)
-                            suggestions << QString::fromStdString(s);
-                        m_suggestionCache[word] = suggestions;
-                    }
+        const int wordLen = i - start;
+        if (wordLen >= 2) {
+            const QString word = text.mid(start, wordLen);
+            if (m_suggestionCache.contains(word)) {
+                setFormat(start, wordLen, m_misspelledFormat);
+            } else if (m_validWords.contains(word)) {
+                // Correct word, do nothing
+            } else {
+                const CheckResult result = m_spellChecker->checkWord(word.toStdString(), 5);
+                if (result.isCorrect) {
+                    m_validWords.insert(word);
+                } else {
+                    QStringList suggestions;
+                    for (const auto& s : result.corrections)
+                        suggestions << QString::fromStdString(s);
+                    m_suggestionCache.insert(word, suggestions);
+                    setFormat(start, wordLen, m_misspelledFormat);
                 }
             }
-            start = i + 1;
         }
+        start = i + 1;
     }
 }
 
-QStringList TextHighlighter::getSuggestionsFor(const QString& word) const {
-    return m_suggestionCache.value(word);
+bool TextHighlighter::isMisspelled(const QString& word) const
+{
+    if (word.length() < 2)
+        return false;
+    if (m_suggestionCache.contains(word) || m_suggestionCache.contains(word.toLower()))
+        return true;
+    if (m_validWords.contains(word) || m_validWords.contains(word.toLower()))
+        return false;
+    if (m_spellChecker) {
+        const CheckResult result = m_spellChecker->checkWord(word.toStdString(), 5);
+        if (result.isCorrect) {
+            m_validWords.insert(word);
+            return false;
+        } else {
+            QStringList suggestions;
+            for (const auto& s : result.corrections)
+                suggestions << QString::fromStdString(s);
+            m_suggestionCache.insert(word, suggestions);
+            return true;
+        }
+    }
+    return false;
 }
 
-void TextHighlighter::addWordToDictionary(const QString& word) {
-    m_spellChecker->addToDictionary(word.toStdString());
+QStringList TextHighlighter::getSuggestionsFor(const QString& word) const
+{
+    if (m_suggestionCache.contains(word))
+        return m_suggestionCache.value(word);
+    if (m_suggestionCache.contains(word.toLower()))
+        return m_suggestionCache.value(word.toLower());
+    if (m_spellChecker) {
+        const CheckResult result = m_spellChecker->checkWord(word.toStdString(), 5);
+        if (!result.isCorrect) {
+            QStringList suggestions;
+            for (const auto& s : result.corrections)
+                suggestions << QString::fromStdString(s);
+            m_suggestionCache.insert(word, suggestions);
+            return suggestions;
+        }
+    }
+    return {};
+}
+
+void TextHighlighter::addWordToDictionary(const QString& word)
+{
+    if (m_spellChecker)
+        m_spellChecker->addToDictionary(word.toStdString());
+
     m_suggestionCache.remove(word);
+    m_suggestionCache.remove(word.toLower());
+    m_validWords.insert(word);
+    m_validWords.insert(word.toLower());
+
     rehighlight();
 }
 
-void TextHighlighter::removeCachedEntry(const QString& word) {
-    m_suggestionCache.remove(word);
-}
-
-void TextHighlighter::setCursorPosition(int blockNumber, int positionInBlock) {
+void TextHighlighter::setCursorPosition(int blockNumber, int positionInBlock)
+{
+    int prevBlock = m_cursorBlockNumber;
     m_cursorBlockNumber = blockNumber;
     m_cursorPositionInBlock = positionInBlock;
+
+    if (prevBlock >= 0 && prevBlock != blockNumber) {
+        refreshBlock(prevBlock);
+    }
+    refreshBlock(blockNumber);
+}
+
+void TextHighlighter::refreshBlock(int blockNumber)
+{
+    if (blockNumber < 0 || !document())
+        return;
+    const QTextBlock block = document()->findBlockByNumber(blockNumber);
+    if (block.isValid())
+        rehighlightBlock(block);
 }
