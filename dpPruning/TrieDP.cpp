@@ -157,10 +157,10 @@ int main() {
 
     Trie trie;
 
-    ifstream file("dictionary.txt");
+    ifstream file("BNC_COCA.txt");
 
     if (!file) {
-        cout << "Could not open dictionary.txt" << endl;
+        cout << "Could not open .txt" << endl;
         return 1;
     }
 
