@@ -3,11 +3,11 @@ using namespace std;
 #include "NgramInvertedIndex.h"
 #include <algorithm>
 
-vector<string> getSuggestions(const string& incorrectWord, const unordered_map<string, vector<uint16_t>>& index, const vector<string>& words) {
+vector<string> getSuggestions(const string& incorrectWord, const unordered_map<string, vector<uint32_t>>& index, const vector<string>& words) {
 
     vector<string> ngrams;
     vector<string> suggestions;
-    unordered_map<uint16_t, int> candFreq;
+    unordered_map<uint32_t, int> candFreq;
 
     getNgrams(incorrectWord, ngrams);
 
@@ -21,7 +21,7 @@ vector<string> getSuggestions(const string& incorrectWord, const unordered_map<s
         }
     }
 
-    vector<pair<uint16_t, int>> sortedCandidates(
+    vector<pair<uint32_t, int>> sortedCandidates(
         candFreq.begin(), candFreq.end()
     );
 
@@ -38,7 +38,7 @@ vector<string> getSuggestions(const string& incorrectWord, const unordered_map<s
 }
 
 int main(){
-    unordered_map<string, vector<uint16_t>> index;
+    unordered_map<string, vector<uint32_t>> index;
     vector<string> words;
     buildNgramInvertedIndex(&index, words);
     cout << "Index built successfully.\n";
@@ -46,6 +46,8 @@ int main(){
     cout << "Enter an incorrect word: ";
     string incorrectWord;
     cin >> incorrectWord;
+    incorrectWord = "**" + incorrectWord + "**";
+
     vector<string> suggestions = getSuggestions(incorrectWord, index, words);
 
     cout << "Suggestions:\n";
