@@ -53,6 +53,18 @@ TextEdit::TextEdit(QWidget *parent)
             m_closeTimer->start(350);
     });
 
+    // SpellCheck popup actions
+    connect(m_popup, &SuggestionPopup::addToDictionaryRequested, this, [this]() {
+        if (!m_misspelledWord.isEmpty())
+            insertWord(m_misspelledWord);
+    });
+    connect(m_popup, &SuggestionPopup::ignoreRequested, this, [this]() {
+        if (m_highlighter && !m_misspelledWord.isEmpty())
+            m_highlighter->ignoreWord(m_misspelledWord);
+        m_closeTimer->stop();
+        m_popup->hidePopup();
+    });
+
     connect(this, &QTextEdit::cursorPositionChanged, this, [this]() {
         if (m_highlighter)
             m_highlighter->setCursorPosition(textCursor().blockNumber(), textCursor().positionInBlock());
@@ -230,37 +242,8 @@ void TextEdit::onCloseTimeout()
 
 void TextEdit::contextMenuEvent(QContextMenuEvent *e)
 {
-    QTextCursor c;
-    QString w = wordAt(e->pos(), &c);
+    // Spell suggestions are shown in the hover popup — right-click shows standard menu only
     QMenu *menu = createStandardContextMenu();
-
-    if (!w.isEmpty() && m_highlighter && m_highlighter->isMisspelled(w)) {
-        QAction *anchor = menu->actions().isEmpty() ? nullptr : menu->actions().first();
-        const QStringList sugs = m_highlighter->getSuggestionsFor(w);
-
-        for (const QString &sug : sugs) {
-            QAction *act = new QAction(sug, menu);
-            QFont f = act->font(); f.setBold(true); act->setFont(f);
-            connect(act, &QAction::triggered, this, [c, sug]() mutable { c.insertText(sug); });
-            menu->insertAction(anchor, act);
-        }
-        if (sugs.isEmpty()) {
-            QAction *noSug = new QAction("No spelling suggestions", menu);
-            noSug->setEnabled(false);
-            menu->insertAction(anchor, noSug);
-        }
-
-        QAction *addAct = new QAction("+ Add to Dictionary", menu);
-        connect(addAct, &QAction::triggered, this, [this, w]() { insertWord(w); });
-        menu->insertAction(anchor, addAct);
-
-        QAction *ignoreAct = new QAction("Ignore", menu);
-        connect(ignoreAct, &QAction::triggered, this, [this, w]() { if (m_highlighter) m_highlighter->addWordToDictionary(w); });
-        menu->insertAction(anchor, ignoreAct);
-
-        menu->insertSeparator(anchor);
-    }
-
     menu->exec(e->globalPos());
     delete menu;
 }

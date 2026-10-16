@@ -115,6 +115,17 @@ void TextHighlighter::addWordToDictionary(const QString& word)
     rehighlight();
 }
 
+void TextHighlighter::ignoreWord(const QString& word)
+{
+    // Remove from bad-word cache so the underline disappears
+    m_suggestionCache.remove(word);
+    m_suggestionCache.remove(word.toLower());
+    // Mark as valid for this session only (not persisted to spell checker)
+    m_validWords.insert(word);
+    m_validWords.insert(word.toLower());
+    rehighlight();
+}
+
 void TextHighlighter::setCursorPosition(int blockNumber, int positionInBlock)
 {
     int prevBlock = m_cursorBlockNumber;

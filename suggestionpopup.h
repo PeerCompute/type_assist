@@ -28,6 +28,8 @@ public:
 
 signals:
     void suggestionChosen(const QString& word);
+    void addToDictionaryRequested();
+    void ignoreRequested();
     void mouseEntered();
     void mouseLeft();
 

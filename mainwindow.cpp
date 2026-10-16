@@ -20,8 +20,8 @@
 #include <QHBoxLayout>
 
 #include "textedit.h"
-#include "dummyautocompleteengine.h"
-#include "dummyspellchecker.h"
+// #include "dummyautocompleteengine.h"
+// #include "dummyspellchecker.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
@@ -29,10 +29,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    static DummyAutocompleteEngine ac;
-    static DummySpellChecker sp;
-    ui->editor->setAutocompleteEngine(&ac);
-    ui->editor->setSpellChecker(&sp);
+    // static DummyAutocompleteEngine ac;
+    // static DummySpellChecker sp;
+    // ui->editor->setAutocompleteEngine(&ac);
+    // ui->editor->setSpellChecker(&sp);
 
     setupStatusBar();
     setupMenusAndShortcuts();

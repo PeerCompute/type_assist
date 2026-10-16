@@ -16,7 +16,8 @@ public:
 
     QStringList getSuggestionsFor(const QString& word) const;
     bool isMisspelled(const QString& word) const;
-    void addWordToDictionary(const QString& word);
+    void addWordToDictionary(const QString& word);  // persists to dictionary
+    void ignoreWord(const QString& word);            // session-only, no persist
     void setCursorPosition(int blockNumber, int positionInBlock);
 
 protected:

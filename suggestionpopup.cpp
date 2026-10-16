@@ -74,10 +74,17 @@ SuggestionPopup::SuggestionPopup(QWidget* parent)
     outerLayout->addWidget(m_container);
 
     connect(m_list, &QListWidget::itemClicked, this, [this](QListWidgetItem* item) {
-        if (item) {
-            emit suggestionChosen(item->text());
-            hidePopup();
+        if (!item) return;
+        const QString role = item->data(Qt::UserRole).toString();
+        if (role == QStringLiteral("separator")) return;
+        if (role == QStringLiteral("add")) {
+            emit addToDictionaryRequested();
+        } else if (role == QStringLiteral("ignore")) {
+            emit ignoreRequested();
+        } else {
+            emit suggestionChosen(item->text().trimmed());
         }
+        hidePopup();
     });
 }
 
@@ -113,21 +120,49 @@ void SuggestionPopup::showSuggestions(const QStringList& suggestions,
 
     m_mode = mode;
     m_list->clear();
-    m_list->addItems(displayList);
 
-    // Default to the first suggestion so Down arrow immediately highlights the next item
+    // Add suggestion items, tagged with role
+    for (const QString& s : displayList) {
+        auto* item = new QListWidgetItem(s);
+        item->setData(Qt::UserRole, QStringLiteral("suggestion"));
+        m_list->addItem(item);
+    }
+
+    // SpellCheck mode: add separator, Ignore, and Add to Dictionary rows
+    if (mode == PopupMode::SpellCheck) {
+        auto* sep = new QListWidgetItem("\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500");
+        sep->setFlags(Qt::NoItemFlags);
+        sep->setForeground(QColor("#cbd5e1"));
+        sep->setSizeHint(QSize(0, 14));
+        sep->setData(Qt::UserRole, QStringLiteral("separator"));
+        m_list->addItem(sep);
+
+        auto* ignItem = new QListWidgetItem("  Ignore");
+        ignItem->setForeground(QColor("#64748b"));
+        ignItem->setData(Qt::UserRole, QStringLiteral("ignore"));
+        m_list->addItem(ignItem);
+
+        auto* addItem = new QListWidgetItem("  + Add to Dictionary");
+        addItem->setForeground(QColor("#0078d4"));
+        addItem->setData(Qt::UserRole, QStringLiteral("add"));
+        m_list->addItem(addItem);
+    }
+
+    // Pre-select first suggestion
     m_list->setCurrentRow(0, QItemSelectionModel::ClearAndSelect);
 
-    const int count = displayList.size();
-    const int itemHeight = 30;
-    const int listHeight = itemHeight * count;
+    const int sugCount = displayList.size();
+    const int itemH    = 30;
+    int listHeight     = itemH * sugCount;
+    if (mode == PopupMode::SpellCheck)
+        listHeight += 14 + itemH + itemH; // separator(14px) + Ignore(30px) + Add(30px)
     m_list->setFixedHeight(listHeight);
 
-    const int containerHeight = listHeight + 8; // 4px top + 4px bottom padding
+    const int containerHeight = listHeight + 8;
     m_container->setFixedHeight(containerHeight);
 
-    const int totalHeight = containerHeight + 16; // 8px top + 8px bottom shadow margin
-    const int totalWidth = 150 + 16;
+    const int totalHeight = containerHeight + 16;
+    const int totalWidth  = (mode == PopupMode::SpellCheck ? 190 : 150) + 16;
     setFixedSize(totalWidth, totalHeight);
 
     // Screen bounds clamping
@@ -170,6 +205,15 @@ void SuggestionPopup::moveSelection(int step)
         row = (row + step + count) % count;
     }
 
+    // Skip non-selectable separator items
+    for (int i = 0; i < count; ++i) {
+        QListWidgetItem* item = m_list->item(row);
+        if (!item || item->data(Qt::UserRole).toString() == QStringLiteral("separator"))
+            row = (row + step + count) % count;
+        else
+            break;
+    }
+
     m_list->setCurrentRow(row, QItemSelectionModel::ClearAndSelect);
 }
 
@@ -187,14 +231,22 @@ bool SuggestionPopup::handleKey(QKeyEvent* event)
         return true;
     case Qt::Key_Return:
     case Qt::Key_Enter:
-    case Qt::Key_Tab:
-        if (m_list->currentRow() >= 0) {
-            emit suggestionChosen(m_list->currentItem()->text());
-        } else if (m_list->count() > 0) {
-            emit suggestionChosen(m_list->item(0)->text());
+    case Qt::Key_Tab: {
+        QListWidgetItem* cur = (m_list->currentRow() >= 0)
+                                   ? m_list->currentItem()
+                                   : (m_list->count() > 0 ? m_list->item(0) : nullptr);
+        if (cur) {
+            const QString role = cur->data(Qt::UserRole).toString();
+            if (role == QStringLiteral("add"))
+                emit addToDictionaryRequested();
+            else if (role == QStringLiteral("ignore"))
+                emit ignoreRequested();
+            else if (role != QStringLiteral("separator"))
+                emit suggestionChosen(cur->text().trimmed());
         }
         hidePopup();
         return true;
+    }
     case Qt::Key_Escape:
         hidePopup();
         return true;
