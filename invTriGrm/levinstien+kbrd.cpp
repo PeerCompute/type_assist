@@ -107,8 +107,8 @@ float levenshtein(const string& s1, const string& s2) {
 float keyboardDist(const string& s1, const string& s2) {
     int l1 = s1.length();
     int l2 = s2.length();
-    if(l1-l2 > 2){
-        return 0.0f;
+    if(l1-l2 > 2 || l1-l2 < -2){
+        return 1.0f;
     }
     int minLen = (l1 < l2) ? l1 : l2;
     int maxLen = (l1 > l2) ? l1 : l2;
