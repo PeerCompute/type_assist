@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "filemanager.h"
+#include "AutocompleteEngineAdapter.h"
 
 #include <QFileDialog>
 #include <QMessageBox>
@@ -29,6 +30,16 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+static AutocompleteEngineAdapter ac;
+
+
+    if (ac.initialize("dictionary.txt", "frequencies.txt")) {
+        ui->editor->setAutocompleteEngine(&ac);
+        statusBar()->showMessage("Autocomplete engine loaded.", 3500);
+    } else {
+        statusBar()->showMessage(
+            "Failed to load autocomplete dictionary.", 5000);
+    }
     // static DummyAutocompleteEngine ac;
     // static DummySpellChecker sp;
     // ui->editor->setAutocompleteEngine(&ac);

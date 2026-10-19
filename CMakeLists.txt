@@ -1,3 +1,4 @@
+
 cmake_minimum_required(VERSION 3.19)
 project(btech_project LANGUAGES CXX)
 
@@ -7,6 +8,8 @@ qt_standard_project_setup()
 
 qt_add_executable(btech_project
     WIN32 MACOSX_BUNDLE
+
+    # GUI files
     main.cpp
     mainwindow.cpp
     mainwindow.h
@@ -23,6 +26,20 @@ qt_add_executable(btech_project
     iAutocompleteEngine.h
     dummyspellchecker.h
     dummyautocompleteengine.h
+
+    # Autocomplete adapter
+    AutocompleteEngineAdapter.cpp
+    AutocompleteEngineAdapter.h
+
+    # Your autocomplete worklet
+    Autocomplete.cpp
+    Autocomplete.h
+    trie.cpp
+    trie.h
+    frequencyMap.cpp
+    frequencyMap.h
+    wordTable.cpp
+    wordTable.h
 )
 
 target_link_libraries(btech_project
