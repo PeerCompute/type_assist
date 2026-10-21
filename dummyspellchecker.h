@@ -37,14 +37,14 @@ public:
         };
     }
 
-    CheckResult checkWord(const std::string& word, int) override {
+    CheckResult checkWord(const std::string& word, int k) override {
         std::string low = word;
         for (char& c : low)
             c = std::tolower(static_cast<unsigned char>(c));
 
         if (m_addedWords.find(low) != m_addedWords.end())
             return { true, {} };
-
+/*
         auto it = m_typos.find(low);
         if (it != m_typos.end()) {
             std::vector<std::string> sugs = it->second;
@@ -54,9 +54,11 @@ public:
                 }
             }
             return { false, sugs };
-        }
+        }*/
 
-        return { true, {} };
+        return getSuggestions(word, k);
+
+        //return { true, {} };
     }
 
     void addToDictionary(const std::string& word) override {

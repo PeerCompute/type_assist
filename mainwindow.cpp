@@ -22,12 +22,22 @@
 #include "textedit.h"
 // #include "dummyautocompleteengine.h"
 // #include "dummyspellchecker.h"
+#include "SpellChecker/SpellChecker.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
       ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    static SpellChecker sp;
+    if(sp.initialize("../dictionary.txt")) {
+        ui->editor->setSpellChecker(&sp);
+        statusBar()->showMessage("SpellChecker engine loaded.", 3500);
+    }
+    else {
+        statusBar()->showMessage("Failed to load dictionary.", 5000);
+    }
 
     // static DummyAutocompleteEngine ac;
     // static DummySpellChecker sp;

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.19)
 project(btech_project LANGUAGES CXX)
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets)
+find_package(Qt6 6.11.2 REQUIRED COMPONENTS Core Widgets)
 
 qt_standard_project_setup()
 
@@ -21,8 +21,12 @@ qt_add_executable(btech_project
     textedit.h
     textedit.cpp
     iAutocompleteEngine.h
-    dummyspellchecker.h
-    dummyautocompleteengine.h
+    #dummyspellchecker.h
+    #dummyautocompleteengine.h
+    SpellChecker/SpellChecker.h
+    SpellChecker/Suggestions.h
+    SpellChecker/NgramInvertedIndex.h
+    SpellChecker/levenshtein+kbrd.h
 )
 
 target_link_libraries(btech_project
