@@ -14,7 +14,7 @@ using namespace std;
 
 extern unordered_map<string, vector<uint32_t>> invIndex;
 
-void initNgram();
+//void initNgram();
 
 void getNgrams(const string& word, vector<string>& ngrams){
     string paddedWord = "**" + word + "**";

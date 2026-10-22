@@ -7,7 +7,7 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <cctype>
-//#include "NgramInvertedIndex.h"
+#include "NgramInvertedIndex.h"
 #include "Suggestions.h"
 #include <iostream>
 
@@ -35,7 +35,9 @@ public:
 
         cout<<"Just before getSuggestions"<<endl;
         std::vector<std::string> sug = getSuggestions(word, invIndex, words);
+
         return {false, sug};
+//        return {false, {"one", "two", "three"}};
 
         //return { true, {} };
     }
