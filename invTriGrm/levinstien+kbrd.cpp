@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <chrono>
 
 using namespace std;
 
@@ -218,6 +219,7 @@ vector<Node> recomendation(string& incorrectWord, vector<string>& list) {
         float normLev = (maxLen == 0) ? 0.0f : (levScore / static_cast<float>(maxLen));
         
         float totalScore = (Wlev * normLev) + (Wkbd * kbScore);
+        // float totalScore = Score; // Using only Levenshtein distance for scoring////////////////////////////////////////
 
         tracker.insert(totalScore, candidate);
     }
@@ -226,50 +228,68 @@ vector<Node> recomendation(string& incorrectWord, vector<string>& list) {
 }
 
 int main() {
-    string incWrd = "playng"; // Example incorrect word
-    vector<string> list = {
-    "cat", "car", "can", "cap", "cab", "cake", "call", "calm", "came", "camp", "card",
-    "care", "case", "cash", "cast", "cave", "cell", "cent", "chat", "chef", "cheek",
-    "cheer", "cheese", "cheque", "chess", "chest", "chief", "child", "chill", "china",
-    "choice", "choose", "church", "circle", "circuit", "citizen", "classic", "climate",
-    "clock", "closet", "coffee", "collar", "college", "colour", "comfort", "command",
-    "computer", "complete", "consider", "construction", "the", "and", "cat", "bat", 
-    "rat", "hat", "fat", "mat", "pat", "car", "can", "cut", "dog", "fog", "log", "run",
-    "sun", "fun", "red", "bed", "pen", "pin",
+    vector<string> list = {             //200 words
+        "cake", "calm", "came", "camp", "card","care", "case", "cash", "cave", "cell", "cent",
+        "chat", "chef", "cheek", "cheer", "cheese", "cheque", "chess", "chest", "chief", "child",
+        "chill", "china", "choice", "choose", "church", "circle", "circuit", "citizen", "classic",
+        "climate", "clock", "closet", "coffee", "collar", "college", "colour", "comfort", "command",
+        "computer", "complete", "consider", "construction", 
 
-    // Common 4-6 letter words
-    "book", "back", "bark", "dark", "park", "word", "work", "walk", "wall",
-    "ball", "call", "fall", "tall", "hand", "band", "land", "sand", "home",
-    "come", "some", "time", "line", "life", "live", "like", "look", "took",
-    "food", "good", "wood", "mood", "fast", "last", "past", "cast", "cost",
-    "post", "most", "host", "help", "held", "hold", "gold", "cold", "told",
+        "the", "and", "cat", "bat", "rat", "hat", "fat", "mat", 
+        "cut", "dog", "fog", "log", "run","sun", "fun", "red",
+        "car", "can", "cap", "cab", "bed", "pen", "pin", "pat",
 
-    // Medium-length words (common conversational vocabulary)
-    "friend", "family", "school", "street", "window", "yellow", "orange",
-    "purple", "market", "garden", "player", "action", "nation", "person",
-    "people", "system", "method", "vector", "string", "simple", "sample",
-    "middle", "bottle", "little", "settle", "handle", "candle", "bundle",
-    "butter", "better", "bitter", "letter", "winter", "summer", "spring",
+        // Common 4-6 letter words
+        "book", "back", "bark", "dark", "park", "word", "work", "walk", "wall",
+        "ball", "call", "fall", "tall", "hand", "band", "land", "sand", "home",
+        "come", "some", "time", "line", "life", "live", "like", "look", "took",
+        "food", "good", "wood", "mood", "fast", "last", "past", "cast", "cost",
+        "post", "most", "host", "help", "held", "hold", "gold", "cold", "told",
 
-    // Words with common suffixes and prefixes (-ing, -tion, -ment, pre-, dis-)
-    "testing", "running", "walking", "talking", "reading", "writing", "playing",
-    "feeling", "looking", "working", "holding", "helping", "opening", "closing",
-    "movement", "judgment", "payment", "shipment", "agreement", "treatment",
-    "station", "section", "mention", "fraction", "reaction", "position",
-    "condition", "relation", "solution", "decision", "provision", "revision",
+        // Medium-length words (common conversational vocabulary)
+        "friend", "family", "school", "street", "window", "yellow", "orange",
+        "purple", "market", "garden", "player", "action", "nation", "person",
+        "people", "system", "method", "vector", "string", "simple", "sample",
+        "middle", "bottle", "little", "settle", "handle", "candle", "bundle",
+        "butter", "better", "bitter", "letter", "winter", "summer", "spring",
 
-    // Longer academic & professional vocabulary
-    "important", "different", "difficult", "necessary", "president", "government",
-    "development", "environment", "information", "organization", "communication",
-    "transportation", "understanding", "programming", "performance", "algorithm",
-    "similarity", "coefficient", "candidate", "correction", "keyboard", "distance"};
+        // Words with common suffixes and prefixes (-ing, -tion, -ment, pre-, dis-)
+        "testing", "running", "walking", "talking", "reading", "writing", "playing",
+        "feeling", "looking", "working", "holding", "helping", "opening", "closing",
+        "movement", "judgment", "payment", "shipment", "agreement", "treatment",
+        "station", "section", "mention", "fraction", "reaction", "position",
+        "condition", "relation", "solution", "decision", "provision", "revision",
 
-    vector<Node> topk = recomendation(incWrd, list);
+        // Longer academic & professional vocabulary
+        "important", "different", "difficult", "necessary", "president", "government",
+        "development", "environment", "information", "organization", "communication",
+        "transportation", "understanding", "programming", "performance", "algorithm",
+        "similarity", "coefficient", "candidate", "correction", "keyboard", "distance"
+    };
 
-    cout << "Top " << topk.size() << " recommendations for \"" << incWrd << "\":\n";
-    for (size_t i = 0; i < topk.size(); ++i) {
-        cout << i + 1 << ". " << topk[i].word << " ( Score: " << topk[i].score << ")\n";
+    while(1){
+        string incWrd = ""; // Example incorrect word
+
+        cout << "\nEnter an incorrect word : ";
+        cin >> incWrd;
+
+        
+        auto start = std::chrono::high_resolution_clock::now();
+        vector<Node> topk = recomendation(incWrd, list);
+        auto end = std::chrono::high_resolution_clock::now();
+        
+        std::chrono::duration<double, std::milli> elapsed = end - start;
+        cout << "Elapsed time: " << elapsed.count() << " ms\n";
+        //cout << "Top " << topk.size() << " recommendations for \"" << incWrd << "\":\n";
+        for (size_t i = 0; i < topk.size(); ++i) {
+            cout << i + 1 << ". " << topk[i].word << " ( Score: " << topk[i].score << ")\n";
+        }
+
+            cout << levenshtein("kitten", "sitting") << endl; // Example usage
+    cout << keyboardDist("kitten", "sitting") << endl; // Example usage
+
     }
+
 
     return 0;
 }
