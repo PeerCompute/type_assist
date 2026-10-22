@@ -37,6 +37,13 @@ void TextHighlighter::highlightBlock(const QString& text)
 
         const int wordLen = i - start;
         if (wordLen >= 2) {
+            // If the cursor is currently inside or at the end of this word, the user is still typing it.
+            // Skip spellchecking so incomplete words are not underlined.
+            if (cursorPos >= start && cursorPos <= i) {
+                start = i + 1;
+                continue;
+            }
+
             const QString word = text.mid(start, wordLen);
             if (m_suggestionCache.contains(word)) {
                 setFormat(start, wordLen, m_misspelledFormat);

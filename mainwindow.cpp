@@ -23,6 +23,7 @@
 #include "textedit.h"
 // #include "dummyautocompleteengine.h"
 // #include "dummyspellchecker.h"
+#include "SpellChecker/SpellChecker.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
@@ -30,9 +31,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-static AutocompleteEngineAdapter ac;
-
-
+    // Autocomplete engine
+    static AutocompleteEngineAdapter ac;
     if (ac.initialize("dictionary.txt", "frequencies.txt")) {
         ui->editor->setAutocompleteEngine(&ac);
         statusBar()->showMessage("Autocomplete engine loaded.", 3500);
@@ -40,6 +40,16 @@ static AutocompleteEngineAdapter ac;
         statusBar()->showMessage(
             "Failed to load autocomplete dictionary.", 5000);
     }
+
+    // Spell checker
+    static SpellChecker sp;
+    if (sp.initialize("dictionary-100k.txt")) {
+        ui->editor->setSpellChecker(&sp);
+        statusBar()->showMessage("SpellChecker engine loaded.", 3500);
+    } else {
+        statusBar()->showMessage("Failed to load dictionary.", 5000);
+    }
+
     // static DummyAutocompleteEngine ac;
     // static DummySpellChecker sp;
     // ui->editor->setAutocompleteEngine(&ac);
