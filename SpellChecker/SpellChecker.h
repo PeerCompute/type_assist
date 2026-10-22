@@ -19,7 +19,8 @@ public:
         for (char& c : low)
             c = std::tolower(static_cast<unsigned char>(c));
 
-        if (m_addedWords.find(low) != m_addedWords.end())
+        auto it = std::find(m_addedWords.begin(), m_addedWords.end(), low);
+        if (it != m_addedWords.end())
             return { true, {} };
 /*
         auto it = m_typos.find(low);
@@ -46,20 +47,22 @@ public:
         std::string low = word;
         for (char& c : low)
             c = std::tolower(static_cast<unsigned char>(c));
-        m_addedWords.insert(low);
+        m_addedWords.push_back(low);
     }
 
     int initialize(std::string dictName) {
         if(buildNgramInvertedIndex(&invIndex, words, dictName)) {
             return 0;
         }
+        m_addedWords = words;
         return 1;
     }
 
     std::unordered_map<std::string, std::vector<std::uint32_t>> invIndex;
     std::vector<std::string> words;
     std::unordered_map<std::string, std::vector<std::string>> m_typos;
-    std::unordered_set<std::string> m_addedWords;
+//    std::unordered_set<std::string> m_addedWords;
+    std::vector<std::string> m_addedWords;
 };
 
 #endif
