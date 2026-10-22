@@ -43,7 +43,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Spell checker
     static SpellChecker sp;
-    if (sp.initialize("dictionary-100k.txt")) {
+    if (sp.initialize("dictionary.txt")) {
         ui->editor->setSpellChecker(&sp);
         statusBar()->showMessage("SpellChecker engine loaded.", 3500);
     } else {
