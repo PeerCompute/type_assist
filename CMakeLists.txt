@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.19)
-project(btech_project LANGUAGES CXX)
+project(type_assist LANGUAGES CXX)
 
 find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets)
 
 qt_standard_project_setup()
 
-qt_add_executable(btech_project
+qt_add_executable(type_assist
     WIN32 MACOSX_BUNDLE
     main.cpp
     mainwindow.cpp
@@ -25,25 +25,25 @@ qt_add_executable(btech_project
     dummyautocompleteengine.h
 )
 
-target_link_libraries(btech_project
+target_link_libraries(type_assist
     PRIVATE
         Qt::Core
         Qt::Widgets
 )
 
-target_include_directories(btech_project
+target_include_directories(type_assist
     PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-install(TARGETS btech_project
+install(TARGETS type_assist
     BUNDLE DESTINATION .
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
 
 qt_generate_deploy_app_script(
-    TARGET btech_project
+    TARGET type_assist
     OUTPUT_SCRIPT deploy_script
     NO_UNSUPPORTED_PLATFORM_ERROR
 )
