@@ -1,0 +1,6 @@
+build/
+.qtcreator/
+*.user
+*.swp
+*.out
+*.tags
