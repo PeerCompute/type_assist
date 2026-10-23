@@ -159,36 +159,75 @@ void TextEdit::wheelEvent(QWheelEvent *e)
     QTextEdit::wheelEvent(e);
 }
 
+
 void TextEdit::keyPressEvent(QKeyEvent *e)
 {
     if (e->modifiers() & Qt::ControlModifier) {
         const int k = e->key();
-        if (k == Qt::Key_Plus || k == Qt::Key_Equal || e->text() == "+" || e->text() == "=") {
-            zoomInStep(); e->accept(); return;
-        } else if (k == Qt::Key_Minus || k == Qt::Key_Underscore || e->text() == "-" || e->text() == "_") {
-            zoomOutStep(); e->accept(); return;
+
+        if (k == Qt::Key_Plus || k == Qt::Key_Equal ||
+            e->text() == "+" || e->text() == "=") {
+            zoomInStep();
+            e->accept();
+            return;
+        } else if (k == Qt::Key_Minus ||
+                   k == Qt::Key_Underscore ||
+                   e->text() == "-" || e->text() == "_") {
+            zoomOutStep();
+            e->accept();
+            return;
         } else if (k == Qt::Key_0) {
-            resetZoomStep(); e->accept(); return;
+            resetZoomStep();
+            e->accept();
+            return;
         }
     }
 
     if (m_popup->isVisible() && m_popup->handleKey(e))
         return;
 
+    // Record a word when Space, Enter, or punctuation ends it.
+    const QString typed = e->text();
+    const int key = e->key();
+
+    const bool wordEnding =
+        key == Qt::Key_Space ||
+        key == Qt::Key_Return ||
+        key == Qt::Key_Enter ||
+        (!typed.isEmpty() &&
+         !typed[0].isLetterOrNumber() &&
+         !typed[0].isSpace());
+
+    if (wordEnding && m_autoEngine) {
+        QString word = extractPrefix().toLower();
+
+        if (!word.isEmpty()) {
+            m_autoEngine->updateFrequency(word.toStdString());
+        }
+    }
+
     QTextEdit::keyPressEvent(e);
 
-    const int key = e->key();
-    if (key == Qt::Key_Shift || key == Qt::Key_Control || key == Qt::Key_Alt || key == Qt::Key_Meta || key == Qt::Key_CapsLock)
+    if (key == Qt::Key_Shift ||
+        key == Qt::Key_Control ||
+        key == Qt::Key_Alt ||
+        key == Qt::Key_Meta ||
+        key == Qt::Key_CapsLock) {
         return;
+    }
 
-    if (key == Qt::Key_Backspace || key == Qt::Key_Delete || (!e->text().isEmpty() && e->text()[0].isLetter())) {
+    if (key == Qt::Key_Backspace ||
+        key == Qt::Key_Delete ||
+        (!typed.isEmpty() && typed[0].isLetter())) {
         updateAutocomplete();
     } else {
         m_popup->hidePopup();
+
         if (m_autoEngine)
             m_autoEngine->resetToRoot();
     }
 }
+
 
 void TextEdit::mousePressEvent(QMouseEvent *e)
 {

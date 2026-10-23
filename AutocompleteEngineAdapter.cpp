@@ -3,6 +3,7 @@
 
 #include <cctype>
 #include <fstream>
+#include <iostream>
 
 bool AutocompleteEngineAdapter::initialize(
     const std::string& dictionaryFile,
@@ -57,12 +58,19 @@ AutocompleteEngineAdapter::getSuggestions()
     return engine.getTopKSuggestions(prefix);
 }
 
+
 void AutocompleteEngineAdapter::updateFrequency(
     const std::string& word)
 {
     engine.recordWord(word);
-    engine.saveFrequencies(frequencyFilePath);
+
+    if (!engine.saveFrequencies(frequencyFilePath)) {
+        // Report the failure instead of silently ignoring it.
+        std::cerr << "Failed to save frequencies to: "
+                  << frequencyFilePath << '\n';
+    }
 }
+
 
 void AutocompleteEngineAdapter::addWord(
     const std::string& word)
