@@ -37,18 +37,23 @@ void TextHighlighter::highlightBlock(const QString& text)
 
         const int wordLen = i - start;
         if (wordLen >= 2) {
-            // If the cursor is currently inside or at the end of this word, the user is still typing it.
-            // Skip spellchecking so incomplete words are not underlined.
-            if (cursorPos >= start && cursorPos <= i) {
+            // If the cursor is currently inside or at the end of this word, and no non-alphabetical
+            // character has been typed after it yet (i == length), the user is still actively typing it.
+            // Skip spellchecking so words are only underlined once a non-alphabetical character is typed.
+            if (cursorPos >= start && cursorPos <= i && i == length) {
                 start = i + 1;
                 continue;
             }
 
             const QString word = text.mid(start, wordLen);
-            if (m_suggestionCache.contains(word)) {
+            const QString lower = word.toLower();
+            const int blockNum = currentBlock().blockNumber();
+            const bool isIgnoredOnce = m_ignoredOncePositions.contains({blockNum, start});
+
+            if (isIgnoredOnce || m_validWords.contains(word) || m_validWords.contains(lower)) {
+                // Correct or ignored word, do nothing
+            } else if (m_suggestionCache.contains(word) || m_suggestionCache.contains(lower)) {
                 setFormat(start, wordLen, m_misspelledFormat);
-            } else if (m_validWords.contains(word)) {
-                // Correct word, do nothing
             } else {
                 const CheckResult result = m_spellChecker->checkWord(word.toStdString(), 5);
                 if (result.isCorrect) {
@@ -122,7 +127,13 @@ void TextHighlighter::addWordToDictionary(const QString& word)
     rehighlight();
 }
 
-void TextHighlighter::ignoreWord(const QString& word)
+void TextHighlighter::ignoreWordOnce(int blockNumber, int positionInBlock)
+{
+    m_ignoredOncePositions.insert({blockNumber, positionInBlock});
+    refreshBlock(blockNumber);
+}
+
+void TextHighlighter::ignoreWordAll(const QString& word)
 {
     // Remove from bad-word cache so the underline disappears
     m_suggestionCache.remove(word);
@@ -131,6 +142,16 @@ void TextHighlighter::ignoreWord(const QString& word)
     m_validWords.insert(word);
     m_validWords.insert(word.toLower());
     rehighlight();
+}
+
+void TextHighlighter::ignoreWord(const QString& word)
+{
+    ignoreWordAll(word);
+}
+
+bool TextHighlighter::isIgnoredOnce(int blockNumber, int positionInBlock) const
+{
+    return m_ignoredOncePositions.contains({blockNumber, positionInBlock});
 }
 
 void TextHighlighter::setCursorPosition(int blockNumber, int positionInBlock)

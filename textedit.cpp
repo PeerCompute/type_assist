@@ -58,9 +58,24 @@ TextEdit::TextEdit(QWidget *parent)
         if (!m_misspelledWord.isEmpty())
             insertWord(m_misspelledWord);
     });
+    connect(m_popup, &SuggestionPopup::ignoreOnceRequested, this, [this]() {
+        if (m_highlighter && !m_misspelledWord.isEmpty()) {
+            int block = m_misspelledCursor.block().blockNumber();
+            int start = m_misspelledCursor.selectionStart() - m_misspelledCursor.block().position();
+            m_highlighter->ignoreWordOnce(block, start);
+        }
+        m_closeTimer->stop();
+        m_popup->hidePopup();
+    });
+    connect(m_popup, &SuggestionPopup::ignoreAllRequested, this, [this]() {
+        if (m_highlighter && !m_misspelledWord.isEmpty())
+            m_highlighter->ignoreWordAll(m_misspelledWord);
+        m_closeTimer->stop();
+        m_popup->hidePopup();
+    });
     connect(m_popup, &SuggestionPopup::ignoreRequested, this, [this]() {
         if (m_highlighter && !m_misspelledWord.isEmpty())
-            m_highlighter->ignoreWord(m_misspelledWord);
+            m_highlighter->ignoreWordAll(m_misspelledWord);
         m_closeTimer->stop();
         m_popup->hidePopup();
     });
@@ -192,6 +207,14 @@ void TextEdit::keyPressEvent(QKeyEvent *e)
 
 void TextEdit::mousePressEvent(QMouseEvent *e)
 {
+    if (e->button() == Qt::RightButton) {
+        if (!showSpellCheckAt(e->pos()) && m_popup->isVisible()) {
+            m_closeTimer->stop();
+            m_popup->hidePopup();
+        }
+        return;
+    }
+
     QTextEdit::mousePressEvent(e);
     if (!showSpellCheckAt(e->pos()) && m_popup->isVisible()) {
         m_closeTimer->stop();
@@ -205,8 +228,11 @@ void TextEdit::mouseMoveEvent(QMouseEvent *e)
     if (m_popup->isVisible() && m_mode == SuggestionPopup::PopupMode::Autocomplete)
         return;
 
-    QString w = wordAt(e->pos());
-    if (!w.isEmpty() && m_highlighter && m_highlighter->isMisspelled(w)) {
+    QTextCursor hc;
+    QString w = wordAt(e->pos(), &hc);
+    int hBlock = hc.block().blockNumber();
+    int hStart = hc.selectionStart() - hc.block().position();
+    if (!w.isEmpty() && m_highlighter && !m_highlighter->isIgnoredOnce(hBlock, hStart) && m_highlighter->isMisspelled(w)) {
         m_closeTimer->stop();
         if (w != m_hoveredWord || !m_popup->isVisible()) {
             m_hoveredWord = w;
@@ -313,7 +339,15 @@ bool TextEdit::showSpellCheckAt(const QPoint &pos)
 {
     QTextCursor c;
     QString w = wordAt(pos, &c);
-    if (w.isEmpty() || !m_highlighter || !m_highlighter->isMisspelled(w))
+    if (w.isEmpty() || !m_highlighter)
+        return false;
+
+    int block = c.block().blockNumber();
+    int start = c.selectionStart() - c.block().position();
+    if (m_highlighter->isIgnoredOnce(block, start))
+        return false;
+
+    if (!m_highlighter->isMisspelled(w))
         return false;
 
     m_mode = SuggestionPopup::PopupMode::SpellCheck;

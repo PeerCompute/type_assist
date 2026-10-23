@@ -30,6 +30,8 @@ signals:
     void suggestionChosen(const QString& word);
     void addToDictionaryRequested();
     void ignoreRequested();
+    void ignoreOnceRequested();
+    void ignoreAllRequested();
     void mouseEntered();
     void mouseLeft();
 

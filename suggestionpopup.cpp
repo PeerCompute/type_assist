@@ -79,8 +79,10 @@ SuggestionPopup::SuggestionPopup(QWidget* parent)
         if (role == QStringLiteral("separator")) return;
         if (role == QStringLiteral("add")) {
             emit addToDictionaryRequested();
-        } else if (role == QStringLiteral("ignore")) {
-            emit ignoreRequested();
+        } else if (role == QStringLiteral("ignore_once")) {
+            emit ignoreOnceRequested();
+        } else if (role == QStringLiteral("ignore_all") || role == QStringLiteral("ignore")) {
+            emit ignoreAllRequested();
         } else {
             emit suggestionChosen(item->text().trimmed());
         }
@@ -128,7 +130,7 @@ void SuggestionPopup::showSuggestions(const QStringList& suggestions,
         m_list->addItem(item);
     }
 
-    // SpellCheck mode: add separator, Ignore, and Add to Dictionary rows
+    // SpellCheck mode: add separator, Ignore Once, Ignore All, and Add to Dictionary rows
     if (mode == PopupMode::SpellCheck) {
         auto* sep = new QListWidgetItem("\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500");
         sep->setFlags(Qt::NoItemFlags);
@@ -137,10 +139,15 @@ void SuggestionPopup::showSuggestions(const QStringList& suggestions,
         sep->setData(Qt::UserRole, QStringLiteral("separator"));
         m_list->addItem(sep);
 
-        auto* ignItem = new QListWidgetItem("  Ignore");
-        ignItem->setForeground(QColor("#64748b"));
-        ignItem->setData(Qt::UserRole, QStringLiteral("ignore"));
-        m_list->addItem(ignItem);
+        auto* ignOnceItem = new QListWidgetItem("  Ignore Once");
+        ignOnceItem->setForeground(QColor("#64748b"));
+        ignOnceItem->setData(Qt::UserRole, QStringLiteral("ignore_once"));
+        m_list->addItem(ignOnceItem);
+
+        auto* ignAllItem = new QListWidgetItem("  Ignore All");
+        ignAllItem->setForeground(QColor("#64748b"));
+        ignAllItem->setData(Qt::UserRole, QStringLiteral("ignore_all"));
+        m_list->addItem(ignAllItem);
 
         auto* addItem = new QListWidgetItem("  + Add to Dictionary");
         addItem->setForeground(QColor("#0078d4"));
@@ -155,7 +162,7 @@ void SuggestionPopup::showSuggestions(const QStringList& suggestions,
     const int itemH    = 30;
     int listHeight     = itemH * sugCount;
     if (mode == PopupMode::SpellCheck)
-        listHeight += 14 + itemH + itemH; // separator(14px) + Ignore(30px) + Add(30px)
+        listHeight += 14 + itemH + itemH + itemH; // separator(14px) + Ignore Once(30px) + Ignore All(30px) + Add(30px)
     m_list->setFixedHeight(listHeight);
 
     const int containerHeight = listHeight + 8;
@@ -239,8 +246,10 @@ bool SuggestionPopup::handleKey(QKeyEvent* event)
             const QString role = cur->data(Qt::UserRole).toString();
             if (role == QStringLiteral("add"))
                 emit addToDictionaryRequested();
-            else if (role == QStringLiteral("ignore"))
-                emit ignoreRequested();
+            else if (role == QStringLiteral("ignore_once"))
+                emit ignoreOnceRequested();
+            else if (role == QStringLiteral("ignore_all") || role == QStringLiteral("ignore"))
+                emit ignoreAllRequested();
             else if (role != QStringLiteral("separator"))
                 emit suggestionChosen(cur->text().trimmed());
         }
