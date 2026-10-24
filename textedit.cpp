@@ -5,9 +5,13 @@
 #include <QWheelEvent>
 #include <QContextMenuEvent>
 #include <QTextBlock>
+#include <QTextLayout>
 #include <QMenu>
 #include <QFont>
 #include <QCursor>
+#include <QScrollBar>
+#include <QFontMetrics>
+
 
 namespace {
 bool feedEngine(IAutocompleteEngine *engine, const QString &prefix)
@@ -40,6 +44,53 @@ TextEdit::TextEdit(QWidget *parent)
     setFont(f);
     document()->setDefaultFont(f);
     document()->setDocumentMargin(8);
+
+    // Disable visual word-wrap so horizontal scrollbar governs width,
+    // then set document width to exactly MAX_CHARS_PER_LINE char-widths.
+    setLineWrapMode(QTextEdit::NoWrap);
+    {
+        QFontMetrics fm(f);
+        // Use space width as reference; +2*margin for document margins
+        int maxPxWidth = fm.horizontalAdvance(' ') * MAX_CHARS_PER_LINE
+                         + static_cast<int>(document()->documentMargin()) * 2;
+        document()->setPageSize(QSizeF(maxPxWidth, -1));
+    }
+
+    // Dark scrollbar styling
+    setStyleSheet(
+        "QScrollBar:vertical {"
+        "  background: #1a1a1a;"
+        "  width: 10px;"
+        "  margin: 0px;"
+        "}"
+        "QScrollBar::handle:vertical {"
+        "  background: #4a4a4a;"
+        "  border-radius: 5px;"
+        "  min-height: 24px;"
+        "}"
+        "QScrollBar::handle:vertical:hover {"
+        "  background: #6a6a6a;"
+        "}"
+        "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {"
+        "  height: 0px;"
+        "}"
+        "QScrollBar:horizontal {"
+        "  background: #1a1a1a;"
+        "  height: 10px;"
+        "  margin: 0px;"
+        "}"
+        "QScrollBar::handle:horizontal {"
+        "  background: #4a4a4a;"
+        "  border-radius: 5px;"
+        "  min-width: 24px;"
+        "}"
+        "QScrollBar::handle:horizontal:hover {"
+        "  background: #6a6a6a;"
+        "}"
+        "QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {"
+        "  width: 0px;"
+        "}"
+    );
 
     m_hoverTimer->setSingleShot(true);
     m_closeTimer->setSingleShot(true);
@@ -190,9 +241,39 @@ void TextEdit::keyPressEvent(QKeyEvent *e)
     if (m_popup->isVisible() && m_popup->handleKey(e))
         return;
 
+    // ── Hard 1000-char-per-line limit ────────────────────────────────────────
+    // Check BEFORE letting QTextEdit insert the character so we can block it.
+    const int key = e->key();
+    const bool isPrintable = !e->text().isEmpty() && e->text()[0].isPrint();
+    const bool isTab       = (key == Qt::Key_Tab);
+
+    if (isPrintable || isTab) {
+        QTextCursor c = textCursor();
+        QString lineText = c.block().text();
+
+        // Calculate effective length of the current line with tab expansion
+        int effectiveLen = 0;
+        for (QChar ch : lineText) {
+            if (ch == '\t')
+                effectiveLen += TAB_SIZE - (effectiveLen % TAB_SIZE);
+            else
+                ++effectiveLen;
+        }
+
+        // How many columns will the incoming key consume?
+        int incoming = isTab ? (TAB_SIZE - (effectiveLen % TAB_SIZE)) : 1;
+
+        if (effectiveLen + incoming > MAX_CHARS_PER_LINE) {
+            // Line is full – silently swallow the key
+            e->accept();
+            emit statusMessage(QString("Line limit: max %1 chars per line reached.").arg(MAX_CHARS_PER_LINE));
+            return;
+        }
+    }
+    // ─────────────────────────────────────────────────────────────────────────
+
     QTextEdit::keyPressEvent(e);
 
-    const int key = e->key();
     if (key == Qt::Key_Shift || key == Qt::Key_Control || key == Qt::Key_Alt || key == Qt::Key_Meta || key == Qt::Key_CapsLock)
         return;
 
@@ -204,6 +285,7 @@ void TextEdit::keyPressEvent(QKeyEvent *e)
             m_autoEngine->resetToRoot();
     }
 }
+
 
 void TextEdit::mousePressEvent(QMouseEvent *e)
 {
@@ -358,9 +440,63 @@ bool TextEdit::showSpellCheckAt(const QPoint &pos)
     return true;
 }
 
-void TextEdit::updateCursorInfo()
+// ── Visual line/column via QTextLayout ───────────────────────────────────────
+// Walks every block before the current one, summing their visual (wrapped) line
+// counts, then adds the visual sub-line of the cursor inside its own block.
+// Column is tab-expanded: a \t advances to the next TAB_SIZE boundary.
+std::pair<int,int> TextEdit::getVisualLineAndCol() const
 {
     QTextCursor c = textCursor();
+    QTextBlock  curBlock = c.block();
+    int posInBlock = c.positionInBlock();
+
+    // Sum visual lines for all blocks before the current one
+    int visualLine = 1;
+    QTextBlock b = document()->begin();
+    while (b.isValid() && b != curBlock) {
+        // Ensure layout is up to date before querying
+        if (b.layout())
+            visualLine += b.layout()->lineCount();
+        else
+            ++visualLine; // fallback: treat as single line
+        b = b.next();
+    }
+
+    // Find which visual sub-line inside the current block the cursor sits on
+    int subLine = 0;
+    if (curBlock.isValid() && curBlock.layout() && curBlock.layout()->lineCount() > 0) {
+        QTextLine tl = curBlock.layout()->lineForTextPosition(posInBlock);
+        if (tl.isValid())
+            subLine = tl.lineNumber(); // 0-indexed
+    }
+    visualLine += subLine; // result is 1-based total visual line
+
+    // Compute tab-expanded column for the portion of the block before the cursor
+    QString lineText = curBlock.text().left(posInBlock);
+    int visualCol = 1;
+    // If cursor is on a sub-line (soft-wrapped), skip chars before that sub-line
+    if (subLine > 0 && curBlock.layout() && curBlock.layout()->lineCount() > subLine) {
+        QTextLine prevLine = curBlock.layout()->lineAt(subLine - 1);
+        if (prevLine.isValid()) {
+            // Characters up to textStart of current sub-line don't contribute
+            int subLineStart = curBlock.layout()->lineAt(subLine).textStart();
+            lineText = curBlock.text().mid(subLineStart, posInBlock - subLineStart);
+        }
+    }
+    for (QChar ch : lineText) {
+        if (ch == '\t')
+            visualCol += TAB_SIZE - ((visualCol - 1) % TAB_SIZE);
+        else
+            ++visualCol;
+    }
+
+    return {visualLine, visualCol};
+}
+
+void TextEdit::updateCursorInfo()
+{
+    auto [visualLine, visualCol] = getVisualLineAndCol();
+
     QString text = toPlainText();
     int words = 0;
     bool inWord = false;
@@ -371,5 +507,5 @@ void TextEdit::updateCursorInfo()
             inWord = false;
         }
     }
-    emit cursorInfoChanged(c.blockNumber() + 1, c.positionInBlock() + 1, words, text.length());
-}
+    emit cursorInfoChanged(visualLine, visualCol, words, text.length());
+}

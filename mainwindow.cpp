@@ -87,7 +87,7 @@ void MainWindow::setupStatusBar()
     statusBar()->setStyleSheet(
         "QStatusBar {"
         "  background: #f8fafc;"
-        "  border-top: 1px solid #e2e8f0;"
+        "  border-top: none;"
         "  font-family: 'Segoe UI', sans-serif;"
         "  font-size: 11px;"
         "  color: #475569;"

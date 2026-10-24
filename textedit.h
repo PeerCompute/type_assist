@@ -1,6 +1,11 @@
 #ifndef TEXTEDIT_H
 #define TEXTEDIT_H
 
+// Maximum characters allowed per logical line (hard limit)
+static constexpr int MAX_CHARS_PER_LINE = 1000;
+// Tab stop width in columns used for visual column counting
+static constexpr int TAB_SIZE = 4;
+
 #include <QTextEdit>
 #include <QStringList>
 #include <QTimer>
@@ -57,6 +62,9 @@ private:
     QString wordAt(const QPoint &pos, QTextCursor *cursorOut = nullptr) const;
     void updateAutocomplete();
     bool showSpellCheckAt(const QPoint &pos);
+    // Returns the visual (wrapped) line number and visual column (tab-expanded)
+    // for the current text cursor position.
+    std::pair<int,int> getVisualLineAndCol() const;
 
     IAutocompleteEngine *m_autoEngine = nullptr;
     ISpellChecker *m_spellChecker = nullptr;
