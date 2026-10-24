@@ -314,7 +314,14 @@ void TextEdit::mouseMoveEvent(QMouseEvent *e)
     QString w = wordAt(e->pos(), &hc);
     int hBlock = hc.block().blockNumber();
     int hStart = hc.selectionStart() - hc.block().position();
-    if (!w.isEmpty() && m_highlighter && !m_highlighter->isIgnoredOnce(hBlock, hStart) && m_highlighter->isMisspelled(w)) {
+    // Don't trigger spell-check popup on the word the cursor is currently inside (still being typed)
+    QTextCursor activeCursor = textCursor();
+    activeCursor.select(QTextCursor::WordUnderCursor);
+    const bool isWordBeingTyped = (hc.selectionStart() == activeCursor.selectionStart()
+                                   && hc.selectionEnd() == activeCursor.selectionEnd()
+                                   && !activeCursor.selectedText().isEmpty());
+
+    if (!w.isEmpty() && !isWordBeingTyped && m_highlighter && !m_highlighter->isIgnoredOnce(hBlock, hStart) && m_highlighter->isMisspelled(w)) {
         m_closeTimer->stop();
         if (w != m_hoveredWord || !m_popup->isVisible()) {
             m_hoveredWord = w;
@@ -427,6 +434,14 @@ bool TextEdit::showSpellCheckAt(const QPoint &pos)
     int block = c.block().blockNumber();
     int start = c.selectionStart() - c.block().position();
     if (m_highlighter->isIgnoredOnce(block, start))
+        return false;
+
+    // Don't show spell-check popup if the cursor is currently inside this word (still typing it)
+    QTextCursor activeCursor = textCursor();
+    activeCursor.select(QTextCursor::WordUnderCursor);
+    if (c.selectionStart() == activeCursor.selectionStart()
+        && c.selectionEnd() == activeCursor.selectionEnd()
+        && !activeCursor.selectedText().isEmpty())
         return false;
 
     if (!m_highlighter->isMisspelled(w))
