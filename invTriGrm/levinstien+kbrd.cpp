@@ -5,8 +5,8 @@
 
 using namespace std;
 
-#define K 5
-#define MAX_WORD_LEN 20
+#define K 3
+#define MAX_WORD_LEN 25
 #define Wkbd 0.5f
 #define Wlev 0.5f
 
@@ -228,44 +228,52 @@ vector<Node> recomendation(string& incorrectWord, vector<string>& list) {
 }
 
 int main() {
-    vector<string> list = {             //200 words
-        "cake", "calm", "came", "camp", "card","care", "case", "cash", "cave", "cell", "cent",
-        "chat", "chef", "cheek", "cheer", "cheese", "cheque", "chess", "chest", "chief", "child",
-        "chill", "china", "choice", "choose", "church", "circle", "circuit", "citizen", "classic",
-        "climate", "clock", "closet", "coffee", "collar", "college", "colour", "comfort", "command",
-        "computer", "complete", "consider", "construction", 
-
-        "the", "and", "cat", "bat", "rat", "hat", "fat", "mat", 
-        "cut", "dog", "fog", "log", "run","sun", "fun", "red",
-        "car", "can", "cap", "cab", "bed", "pen", "pin", "pat",
-
-        // Common 4-6 letter words
-        "book", "back", "bark", "dark", "park", "word", "work", "walk", "wall",
-        "ball", "call", "fall", "tall", "hand", "band", "land", "sand", "home",
-        "come", "some", "time", "line", "life", "live", "like", "look", "took",
-        "food", "good", "wood", "mood", "fast", "last", "past", "cast", "cost",
-        "post", "most", "host", "help", "held", "hold", "gold", "cold", "told",
-
-        // Medium-length words (common conversational vocabulary)
-        "friend", "family", "school", "street", "window", "yellow", "orange",
-        "purple", "market", "garden", "player", "action", "nation", "person",
-        "people", "system", "method", "vector", "string", "simple", "sample",
-        "middle", "bottle", "little", "settle", "handle", "candle", "bundle",
-        "butter", "better", "bitter", "letter", "winter", "summer", "spring",
-
-        // Words with common suffixes and prefixes (-ing, -tion, -ment, pre-, dis-)
-        "testing", "running", "walking", "talking", "reading", "writing", "playing",
-        "feeling", "looking", "working", "holding", "helping", "opening", "closing",
-        "movement", "judgment", "payment", "shipment", "agreement", "treatment",
-        "station", "section", "mention", "fraction", "reaction", "position",
-        "condition", "relation", "solution", "decision", "provision", "revision",
-
-        // Longer academic & professional vocabulary
-        "important", "different", "difficult", "necessary", "president", "government",
-        "development", "environment", "information", "organization", "communication",
-        "transportation", "understanding", "programming", "performance", "algorithm",
-        "similarity", "coefficient", "candidate", "correction", "keyboard", "distance"
-    };
+    vector<string> list = {
+    // Length 2 (10 words)
+    "as", "at", "by", "do", "go", "if", "in", "is", "it", "to",
+    // Length 3 (25 words)
+    "and", "app", "bit", "bug", "col", "cur", "doc", "end", "fit", "for",
+    "get", "git", "int", "key", "log", "map", "net", "new", "ptr", "raw",
+    "row", "run", "set", "try", "val",
+    // Length 4 (40 words)
+    "args", "base", "bind", "byte", "call", "case", "char", "code", "copy", "data",
+    "date", "draw", "drop", "edit", "else", "enum", "file", "find", "free", "hash",
+    "heap", "init", "item", "link", "list", "load", "loop", "main", "mock", "mode",
+    "null", "open", "path", "push", "root", "save", "size", "sort", "task", "tree",
+    // Length 5 (50 words)
+    "abort", "alert", "alias", "align", "alloc", "apply", "array", "async", "await", "block",
+    "board", "bound", "break", "build", "catch", "check", "class", "clean", "clear", "clone",
+    "close", "count", "debug", "delay", "dirty", "draft", "drive", "event", "exact", "false",
+    "fetch", "field", "float", "floor", "flush", "focus", "frame", "index", "input", "match",
+    "model", "mutex", "parse", "print", "query", "queue", "reset", "scope", "stack", "state",
+    // Length 6 (50 words)
+    "action", "active", "binary", "branch", "buffer", "bundle", "button", "canvas", "change", "client",
+    "config", "create", "cursor", "delete", "deploy", "derive", "direct", "domain", "engine", "entity",
+    "export", "filter", "finish", "format", "global", "handle", "header", "helper", "import", "insert",
+    "invoke", "layout", "listen", "memory", "method", "native", "object", "output", "packet", "parser",
+    "plugin", "prefix", "record", "render", "result", "return", "schema", "script", "search", "server",
+    // Length 7 (45 words)
+    "adapter", "advance", "archive", "boolean", "builder", "capture", "channel", "command", "compile", "connect",
+    "context", "control", "convert", "current", "default", "disable", "display", "dynamic", "element", "execute",
+    "factory", "feature", "generic", "handler", "include", "iterate", "keyword", "library", "license", "manager",
+    "message", "network", "package", "pointer", "process", "profile", "release", "request", "resolve", "runtime",
+    "service", "session", "storage", "tracker", "trigger",
+    // Length 8 (35 words)
+    "abstract", "allocate", "argument", "callback", "compiler", "database", "debugger", "delegate", "document", "download",
+    "endpoint", "evaluate", "executor", "function", "generate", "instance", "internal", "iterator", "metadata", "observer",
+    "operator", "optimize", "pipeline", "platform", "priority", "property", "protocol", "receiver", "register", "response",
+    "schedule", "selector", "sequence", "template", "terminal",
+    // Length 9 (25 words)
+    "algorithm", "animation", "anonymous", "assertion", "attribute", "benchmark", "component", "condition", "configure", "connector",
+    "container", "decorator", "duplicate", "exception", "execution", "generator", "immutable", "implement", "increment", "indicator",
+    "injection", "interface", "parameter", "reference", "structure",
+    // Length 10 (10 words)
+    "allocation", "breakpoint", "controller", "dependency", "encryption",
+    "middleware", "pagination", "repository", "stylesheet", "validation",
+    // Length 11+ (10 words)
+    "compilation", "concurrency", "environment", "inheritance", "integration",
+    "interaction", "performance", "placeholder", "transaction", "asynchronous"
+};
 
     while(1){
         string incWrd = ""; // Example incorrect word
@@ -275,21 +283,19 @@ int main() {
 
         
         auto start = std::chrono::high_resolution_clock::now();
+
         vector<Node> topk = recomendation(incWrd, list);
+
         auto end = std::chrono::high_resolution_clock::now();
         
         std::chrono::duration<double, std::milli> elapsed = end - start;
         cout << "Elapsed time: " << elapsed.count() << " ms\n";
-        //cout << "Top " << topk.size() << " recommendations for \"" << incWrd << "\":\n";
+
+        cout << "Top " << topk.size() << " recommendations for \"" << incWrd << "\":\n";
         for (size_t i = 0; i < topk.size(); ++i) {
             cout << i + 1 << ". " << topk[i].word << " ( Score: " << topk[i].score << ")\n";
         }
-
-            cout << levenshtein("kitten", "sitting") << endl; // Example usage
-    cout << keyboardDist("kitten", "sitting") << endl; // Example usage
-
     }
-
 
     return 0;
 }
