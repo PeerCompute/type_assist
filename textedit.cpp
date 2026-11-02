@@ -4,6 +4,9 @@
 #include <QMouseEvent>
 #include <QWheelEvent>
 #include <QContextMenuEvent>
+#include <QResizeEvent>
+#include <QFocusEvent>
+#include <QShowEvent>
 #include <QTextBlock>
 #include <QTextLayout>
 #include <QMenu>
@@ -97,6 +100,9 @@ TextEdit::TextEdit(QWidget *parent)
     connect(m_hoverTimer, &QTimer::timeout, this, &TextEdit::onHoverTimeout);
     connect(m_closeTimer, &QTimer::timeout, this, &TextEdit::onCloseTimeout);
 
+    connect(verticalScrollBar(), &QScrollBar::valueChanged, m_popup, &SuggestionPopup::hidePopup);
+    connect(horizontalScrollBar(), &QScrollBar::valueChanged, m_popup, &SuggestionPopup::hidePopup);
+
     connect(m_popup, &SuggestionPopup::suggestionChosen, this, &TextEdit::onSuggestionChosen);
     connect(m_popup, &SuggestionPopup::mouseEntered, m_closeTimer, &QTimer::stop);
     connect(m_popup, &SuggestionPopup::mouseLeft, this, [this]() {
@@ -187,14 +193,16 @@ bool TextEdit::saveDocument(const QString &path)
 
 void TextEdit::zoomInStep()
 {
-    zoomIn(1);
-    m_zoomDelta++;
-    emit zoomChanged(100 + m_zoomDelta * 10);
+    if (m_zoomDelta < MAX_ZOOM_DELTA) {
+        zoomIn(1);
+        m_zoomDelta++;
+        emit zoomChanged(100 + m_zoomDelta * 10);
+    }
 }
 
 void TextEdit::zoomOutStep()
 {
-    if (m_zoomDelta > -7) {
+    if (m_zoomDelta > MIN_ZOOM_DELTA) {
         zoomOut(1);
         m_zoomDelta--;
         emit zoomChanged(100 + m_zoomDelta * 10);
@@ -214,6 +222,7 @@ void TextEdit::resetZoomStep()
 
 void TextEdit::wheelEvent(QWheelEvent *e)
 {
+    m_popup->hidePopup();
     if (e->modifiers() & Qt::ControlModifier) {
         if (e->angleDelta().y() > 0)
             zoomInStep();
@@ -363,6 +372,38 @@ void TextEdit::contextMenuEvent(QContextMenuEvent *e)
     delete menu;
 }
 
+void TextEdit::resizeEvent(QResizeEvent *e)
+{
+    QTextEdit::resizeEvent(e);
+    if (m_popup)
+        m_popup->hidePopup();
+}
+
+void TextEdit::focusOutEvent(QFocusEvent *e)
+{
+    QTextEdit::focusOutEvent(e);
+    if (m_popup && !m_popup->isMouseOver())
+        m_popup->hidePopup();
+}
+
+void TextEdit::showEvent(QShowEvent *e)
+{
+    QTextEdit::showEvent(e);
+    if (window())
+        window()->installEventFilter(this);
+}
+
+bool TextEdit::eventFilter(QObject *obj, QEvent *e)
+{
+    if (obj == window()) {
+        if (e->type() == QEvent::Move || e->type() == QEvent::Resize || e->type() == QEvent::WindowStateChange) {
+            if (m_popup)
+                m_popup->hidePopup();
+        }
+    }
+    return QTextEdit::eventFilter(obj, e);
+}
+
 void TextEdit::onSuggestionChosen(const QString &w)
 {
     if (m_mode == SuggestionPopup::PopupMode::Autocomplete) {
@@ -419,9 +460,24 @@ void TextEdit::updateAutocomplete()
         return;
     }
 
+    // Hide if the cursor is outside the visible editor screen
+    QRect curRect = cursorRect();
+    if (!viewport()->rect().intersects(curRect)) {
+        m_popup->hidePopup();
+        return;
+    }
+
+    // Anchor to the start of the word prefix being typed
+    QTextCursor c = textCursor();
+    QTextCursor startCursor = c;
+    startCursor.movePosition(QTextCursor::Left, QTextCursor::MoveAnchor, m_prefix.length());
+    QRect prefixStartRect = cursorRect(startCursor);
+
+    QRect wordGlobal(viewport()->mapToGlobal(prefixStartRect.topLeft()), prefixStartRect.size());
+    QRect editorGlobal(viewport()->mapToGlobal(QPoint(0, 0)), viewport()->size());
+
     m_mode = SuggestionPopup::PopupMode::Autocomplete;
-    QPoint globalPos = viewport()->mapToGlobal(cursorRect().bottomLeft() + QPoint(0, 4));
-    m_popup->showSuggestions(list, globalPos, m_mode);
+    m_popup->showSuggestions(list, wordGlobal, m_mode, editorGlobal);
 }
 
 bool TextEdit::showSpellCheckAt(const QPoint &pos)
@@ -447,11 +503,21 @@ bool TextEdit::showSpellCheckAt(const QPoint &pos)
     if (!m_highlighter->isMisspelled(w))
         return false;
 
+    QTextCursor startCursor = c;
+    startCursor.setPosition(c.selectionStart());
+    QRect wordStartRect = cursorRect(startCursor);
+    if (!viewport()->rect().intersects(wordStartRect)) {
+        m_popup->hidePopup();
+        return false;
+    }
+
+    QRect wordGlobal(viewport()->mapToGlobal(wordStartRect.topLeft()), wordStartRect.size());
+    QRect editorGlobal(viewport()->mapToGlobal(QPoint(0, 0)), viewport()->size());
+
     m_mode = SuggestionPopup::PopupMode::SpellCheck;
     m_misspelledWord = w;
     m_misspelledCursor = c;
-    QPoint globalPos = viewport()->mapToGlobal(cursorRect(c).bottomLeft() + QPoint(0, 4));
-    m_popup->showSuggestions(m_highlighter->getSuggestionsFor(w), globalPos, m_mode);
+    m_popup->showSuggestions(m_highlighter->getSuggestionsFor(w), wordGlobal, m_mode, editorGlobal);
     return true;
 }
 
@@ -523,4 +589,4 @@ void TextEdit::updateCursorInfo()
         }
     }
     emit cursorInfoChanged(visualLine, visualCol, words, text.length());
-}
+}

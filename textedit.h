@@ -33,6 +33,8 @@ public:
     bool saveDocument(const QString &filePath);
 
     // Zoom Controls
+    static constexpr int MIN_ZOOM_DELTA = -7; // 30% (lower limit)
+    static constexpr int MAX_ZOOM_DELTA = 40; // 500% (upper limit)
     void zoomInStep();
     void zoomOutStep();
     void resetZoomStep();
@@ -50,6 +52,10 @@ protected:
     void mouseMoveEvent(QMouseEvent *e) override;
     void wheelEvent(QWheelEvent *e) override;
     void contextMenuEvent(QContextMenuEvent *e) override;
+    void resizeEvent(QResizeEvent *e) override;
+    void focusOutEvent(QFocusEvent *e) override;
+    void showEvent(QShowEvent *e) override;
+    bool eventFilter(QObject *obj, QEvent *e) override;
 
 private slots:
     void onSuggestionChosen(const QString &word);
