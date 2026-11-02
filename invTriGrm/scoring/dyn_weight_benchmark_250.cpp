@@ -22,7 +22,8 @@ constexpr float damper  = 0.035f;
 constexpr float boost   = 0.11f;
 constexpr float init    = 0.5f;
 
-const std::string outputFileName = "output6.txt";
+const std::string outputFileName = "output_250.txt";
+const std::string testcases = "test_cases_250.txt";
 
 struct XY {
     float x;
@@ -567,7 +568,7 @@ int main() {
         {250, "algoritm", "algorithm", "Structural & Scale", "omitted h"}
     };
 
-    ofstream testCasesFile("test_cases.txt");
+    ofstream testCasesFile(testcases);
     testCasesFile << "================================================================================\n";
     testCasesFile << "              SPELLCHECK BENCHMARK TEST SUITE (250 SAMPLES)\n";
     testCasesFile << "================================================================================\n";
