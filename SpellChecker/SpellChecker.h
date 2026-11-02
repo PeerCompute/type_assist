@@ -14,55 +14,44 @@
 
 class SpellChecker : public ISpellChecker {
 public:
-        CheckResult checkWord(const std::string& word, int k) override {
+    CheckResult checkWord(const std::string& word, int k) override {
         std::string low = word;
         for (char& c : low)
             c = std::tolower(static_cast<unsigned char>(c));
 
-        auto it = std::find(m_addedWords.begin(), m_addedWords.end(), low);
-        if (it != m_addedWords.end())
+        if (m_addedWords.count(low))
             return { true, {} };
-/*
-        auto it = m_typos.find(low);
-        if (it != m_typos.end()) {
-            std::vector<std::string> sugs = it->second;
-            if (!word.empty() && std::isupper(static_cast<unsigned char>(word[0]))) {
-                for (auto& s : sugs) {
-                    if (!s.empty()) s[0] = std::toupper(static_cast<unsigned char>(s[0]));
-                }
-            }
-            return { false, sugs };
-        }*/
 
-        cout<<"Just before getSuggestions"<<endl;
-        std::vector<std::string> sug = getSuggestions(word, invIndex, words);
+        std::vector<std::string> sug = getSuggestions(low, invIndex, words);
+
+        if (!word.empty() && std::isupper(static_cast<unsigned char>(word[0]))) {
+            for (auto& s : sug) {
+                if (!s.empty()) s[0] = std::toupper(static_cast<unsigned char>(s[0]));
+            }
+        }
 
         return {false, sug};
-//        return {false, {"one", "two", "three"}};
-
-        //return { true, {} };
     }
 
     void addToDictionary(const std::string& word) override {
         std::string low = word;
         for (char& c : low)
             c = std::tolower(static_cast<unsigned char>(c));
-        m_addedWords.push_back(low);
+        m_addedWords.insert(low);
     }
 
     int initialize(std::string dictName) {
-        if(buildNgramInvertedIndex(&invIndex, words, dictName)) {
+        if (buildNgramInvertedIndex(&invIndex, words, dictName)) {
             return 0;
         }
-        m_addedWords = words;
+        m_addedWords.insert(words.begin(), words.end());
         return 1;
     }
 
     std::unordered_map<std::string, std::vector<std::uint32_t>> invIndex;
     std::vector<std::string> words;
     std::unordered_map<std::string, std::vector<std::string>> m_typos;
-//    std::unordered_set<std::string> m_addedWords;
-    std::vector<std::string> m_addedWords;
+    std::unordered_set<std::string> m_addedWords;
 };
 
 #endif

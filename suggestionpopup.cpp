@@ -115,7 +115,7 @@ void SuggestionPopup::showSuggestions(const QStringList& suggestions,
     if (displayList.size() > 3)
         displayList = displayList.mid(0, 3);
 
-    if (displayList.isEmpty()) {
+    if (displayList.isEmpty() && mode == PopupMode::Autocomplete) {
         hidePopup();
         return;
     }
@@ -123,11 +123,18 @@ void SuggestionPopup::showSuggestions(const QStringList& suggestions,
     m_mode = mode;
     m_list->clear();
 
-    // Add suggestion items, tagged with role
-    for (const QString& s : displayList) {
-        auto* item = new QListWidgetItem(s);
-        item->setData(Qt::UserRole, QStringLiteral("suggestion"));
-        m_list->addItem(item);
+    if (displayList.isEmpty() && mode == PopupMode::SpellCheck) {
+        auto* noSugItem = new QListWidgetItem("  (No suggestions)");
+        noSugItem->setFlags(Qt::NoItemFlags);
+        noSugItem->setForeground(QColor("#94a3b8"));
+        m_list->addItem(noSugItem);
+    } else {
+        // Add suggestion items, tagged with role
+        for (const QString& s : displayList) {
+            auto* item = new QListWidgetItem(s);
+            item->setData(Qt::UserRole, QStringLiteral("suggestion"));
+            m_list->addItem(item);
+        }
     }
 
     // SpellCheck mode: add separator, Ignore Once, Ignore All, and Add to Dictionary rows
@@ -158,7 +165,7 @@ void SuggestionPopup::showSuggestions(const QStringList& suggestions,
     // Pre-select first suggestion
     m_list->setCurrentRow(0, QItemSelectionModel::ClearAndSelect);
 
-    const int sugCount = displayList.size();
+    const int sugCount = displayList.isEmpty() ? 1 : displayList.size();
     const int itemH    = 30;
     int listHeight     = itemH * sugCount;
     if (mode == PopupMode::SpellCheck)
