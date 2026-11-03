@@ -1,8 +1,6 @@
 #ifndef TEXTEDIT_H
 #define TEXTEDIT_H
 
-// Maximum characters allowed per logical line (hard limit)
-static constexpr int MAX_CHARS_PER_LINE = 1000;
 // Tab stop width in columns used for visual column counting
 static constexpr int TAB_SIZE = 4;
 

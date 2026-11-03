@@ -49,43 +49,50 @@ TextEdit::TextEdit(QWidget *parent)
     document()->setDefaultFont(f);
     document()->setDocumentMargin(8);
 
-    // Disable visual word-wrap so horizontal scrollbar governs width,
-    // then set document width to exactly MAX_CHARS_PER_LINE char-widths.
-    setLineWrapMode(QTextEdit::NoWrap);
+    // Responsive word-wrap: wrap at window width like Microsoft Notepad, no horizontal scrollbar
+    setLineWrapMode(QTextEdit::WidgetWidth);
+    setWordWrapMode(QTextOption::WrapAtWordBoundaryOrAnywhere);
+    setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    // Dark scrollbar styling
+    // Thin modern scrollbar styling (matching Windows Notepad)
     setStyleSheet(
         "QScrollBar:vertical {"
-        "  background: #1a1a1a;"
-        "  width: 10px;"
+        "  background: transparent;"
+        "  width: 5px;"
         "  margin: 0px;"
         "}"
         "QScrollBar::handle:vertical {"
-        "  background: #4a4a4a;"
-        "  border-radius: 5px;"
+        "  background: rgba(255, 255, 255, 0.25);"
+        "  border-radius: 2px;"
         "  min-height: 24px;"
         "}"
         "QScrollBar::handle:vertical:hover {"
-        "  background: #6a6a6a;"
+        "  background: rgba(255, 255, 255, 0.45);"
         "}"
         "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {"
         "  height: 0px;"
         "}"
+        "QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {"
+        "  background: transparent;"
+        "}"
         "QScrollBar:horizontal {"
-        "  background: #1a1a1a;"
-        "  height: 10px;"
+        "  background: transparent;"
+        "  height: 5px;"
         "  margin: 0px;"
         "}"
         "QScrollBar::handle:horizontal {"
-        "  background: #4a4a4a;"
-        "  border-radius: 5px;"
+        "  background: rgba(255, 255, 255, 0.25);"
+        "  border-radius: 2px;"
         "  min-width: 24px;"
         "}"
         "QScrollBar::handle:horizontal:hover {"
-        "  background: #6a6a6a;"
+        "  background: rgba(255, 255, 255, 0.45);"
         "}"
         "QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {"
         "  width: 0px;"
+        "}"
+        "QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {"
+        "  background: transparent;"
         "}"
     );
 
@@ -262,36 +269,8 @@ void TextEdit::keyPressEvent(QKeyEvent *e)
     if (m_popup->isVisible() && m_popup->handleKey(e))
         return;
 
-    // ── Hard 1000-char-per-line limit ────────────────────────────────────────
-    // Check BEFORE letting QTextEdit insert the character so we can block it.
     const int key = e->key();
-    const bool isPrintable = !e->text().isEmpty() && e->text()[0].isPrint();
-    const bool isTab       = (key == Qt::Key_Tab);
 
-    if (isPrintable || isTab) {
-        QTextCursor c = textCursor();
-        QString lineText = c.block().text();
-
-        // Calculate effective length of the current line with tab expansion
-        int effectiveLen = 0;
-        for (QChar ch : lineText) {
-            if (ch == '\t')
-                effectiveLen += TAB_SIZE - (effectiveLen % TAB_SIZE);
-            else
-                ++effectiveLen;
-        }
-
-        // How many columns will the incoming key consume?
-        int incoming = isTab ? (TAB_SIZE - (effectiveLen % TAB_SIZE)) : 1;
-
-        if (effectiveLen + incoming > MAX_CHARS_PER_LINE) {
-            // Line is full – silently swallow the key
-            e->accept();
-            emit statusMessage(QString("Line limit: max %1 chars per line reached.").arg(MAX_CHARS_PER_LINE));
-            return;
-        }
-    }
-    // ─────────────────────────────────────────────────────────────────────────
 
     QTextEdit::keyPressEvent(e);
 
