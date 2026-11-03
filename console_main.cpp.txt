@@ -1,0 +1,94 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <conio.h>
+#include <cctype>
+#include <cstdlib>
+
+#include "Autocomplete.h"
+
+using namespace std;
+
+int main()
+{
+    Autocomplete autocomplete;
+
+    cout << "Training N-gram Trie..." << endl;
+
+    if (!autocomplete.trainFromFile("corpus.txt"))
+    {
+        cout << "Could not load corpus.txt" << endl;
+        return 1;
+    }
+
+    cout << "Training completed!" << endl;
+
+    cout << "\nStart typing (ESC to exit):\n" << endl;
+
+    string input = "";
+
+    while (true)
+    {
+        char ch = _getch();
+
+        // ESC to exit.
+        if (ch == 27)
+            break;
+
+        // Backspace.
+        if (ch == 8)
+        {
+            if (!input.empty())
+                input.pop_back();
+        }
+
+        // Space or Enter completes a word.
+        else if (ch == ' ' || ch == '\r')
+        {
+            if (!input.empty() && input.back() != ' ')
+            {
+                input += ' ';
+
+                autocomplete.learnFromCompletedInput(input);
+            }
+        }
+
+        // Normal character.
+        else if (isprint(static_cast<unsigned char>(ch)))
+        {
+            input += ch;
+        }
+
+        system("cls");
+
+        cout << "====================================\n";
+        cout << "       N-GRAM AUTOCOMPLETE\n";
+        cout << "====================================\n\n";
+
+        cout << "Type: " << input << "\n\n";
+
+        vector<pair<string, int>> suggestions =
+            autocomplete.getSuggestions(input, 3);
+
+        cout << "Suggestions:\n\n";
+
+        if (suggestions.empty())
+        {
+            cout << "No suggestions found.\n";
+        }
+
+        for (int i = 0; i < static_cast<int>(suggestions.size()); i++)
+        {
+            cout << i + 1 << ". "
+                 << suggestions[i].first
+                 << "  (Frequency: "
+                 << suggestions[i].second
+                 << ")"
+                 << endl;
+        }
+
+        cout << "\n\nPress ESC to exit.";
+    }
+
+    return 0;
+}
