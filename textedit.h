@@ -66,6 +66,7 @@ private slots:
 private:
     QString extractPrefix() const;
     QString wordAt(const QPoint &pos, QTextCursor *cursorOut = nullptr) const;
+    bool findMisspelledAt(const QPoint &pos, QString &wordOut, QTextCursor &cursorOut) const;
     void updateAutocomplete();
     bool showSpellCheckAt(const QPoint &pos);
     // Returns the visual (wrapped) line number and visual column (tab-expanded)

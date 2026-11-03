@@ -4,6 +4,7 @@
 #include <QMouseEvent>
 #include <QWheelEvent>
 #include <QContextMenuEvent>
+#include <QAbstractTextDocumentLayout>
 #include <QResizeEvent>
 #include <QFocusEvent>
 #include <QShowEvent>
@@ -51,13 +52,6 @@ TextEdit::TextEdit(QWidget *parent)
     // Disable visual word-wrap so horizontal scrollbar governs width,
     // then set document width to exactly MAX_CHARS_PER_LINE char-widths.
     setLineWrapMode(QTextEdit::NoWrap);
-    {
-        QFontMetrics fm(f);
-        // Use space width as reference; +2*margin for document margins
-        int maxPxWidth = fm.horizontalAdvance(' ') * MAX_CHARS_PER_LINE
-                         + static_cast<int>(document()->documentMargin()) * 2;
-        document()->setPageSize(QSizeF(maxPxWidth, -1));
-    }
 
     // Dark scrollbar styling
     setStyleSheet(
@@ -139,7 +133,21 @@ TextEdit::TextEdit(QWidget *parent)
             m_highlighter->setCursorPosition(textCursor().blockNumber(), textCursor().positionInBlock());
         updateCursorInfo();
     });
-    connect(this, &QTextEdit::textChanged, this, &TextEdit::updateCursorInfo);
+    connect(this, &QTextEdit::textChanged, this, [this]() {
+        if (document() && document()->documentLayout())
+            document()->documentLayout()->documentSize();
+        updateCursorInfo();
+    });
+
+    auto dismissPopupOnScroll = [this]() {
+        if (m_popup && m_popup->isVisible()) {
+            m_hoverTimer->stop();
+            m_closeTimer->stop();
+            m_popup->hidePopup();
+        }
+    };
+    connect(verticalScrollBar(), &QScrollBar::valueChanged, this, dismissPopupOnScroll);
+    connect(horizontalScrollBar(), &QScrollBar::valueChanged, this, dismissPopupOnScroll);
 }
 
 void TextEdit::setSpellChecker(ISpellChecker *checker)
@@ -217,6 +225,12 @@ void TextEdit::resetZoomStep()
 
 void TextEdit::wheelEvent(QWheelEvent *e)
 {
+    if (m_popup && m_popup->isVisible()) {
+        m_hoverTimer->stop();
+        m_closeTimer->stop();
+        m_popup->hidePopup();
+    }
+
     if (e->modifiers() & Qt::ControlModifier) {
         if (e->angleDelta().y() > 0)
             zoomInStep();
@@ -301,7 +315,7 @@ void TextEdit::mousePressEvent(QMouseEvent *e)
     }
 
     QTextEdit::mousePressEvent(e);
-    if (!showSpellCheckAt(e->pos()) && m_popup->isVisible()) {
+    if (!showSpellCheckAt(e->pos()) && m_popup->isVisible() && m_mode == SuggestionPopup::PopupMode::SpellCheck) {
         m_closeTimer->stop();
         m_popup->hidePopup();
     }
@@ -313,23 +327,26 @@ void TextEdit::mouseMoveEvent(QMouseEvent *e)
     if (m_popup->isVisible() && m_mode == SuggestionPopup::PopupMode::Autocomplete)
         return;
 
+    QString w;
     QTextCursor hc;
-    QString w = wordAt(e->pos(), &hc);
-    int hBlock = hc.block().blockNumber();
-    int hStart = hc.selectionStart() - hc.block().position();
-    if (!w.isEmpty() && m_highlighter && !m_highlighter->isIgnoredOnce(hBlock, hStart) && m_highlighter->isMisspelled(w)) {
-        m_closeTimer->stop();
-        if (w != m_hoveredWord || !m_popup->isVisible()) {
-            m_hoveredWord = w;
-            m_hoverPos = e->pos();
-            m_hoverTimer->start(200);
+    if (findMisspelledAt(e->pos(), w, hc)) {
+        int hBlock = hc.block().blockNumber();
+        int hStart = hc.selectionStart() - hc.block().position();
+        if (m_highlighter && !m_highlighter->isIgnoredOnce(hBlock, hStart)) {
+            m_closeTimer->stop();
+            if (w != m_hoveredWord || !m_popup->isVisible()) {
+                m_hoveredWord = w;
+                m_hoverPos = e->pos();
+                m_hoverTimer->start(200);
+            }
+            return;
         }
-    } else {
-        m_hoverTimer->stop();
-        m_hoveredWord.clear();
-        if (m_popup->isVisible() && m_mode == SuggestionPopup::PopupMode::SpellCheck && !m_popup->isMouseOver() && !m_closeTimer->isActive()) {
-            m_closeTimer->start(400);
-        }
+    }
+
+    m_hoverTimer->stop();
+    m_hoveredWord.clear();
+    if (m_popup->isVisible() && m_mode == SuggestionPopup::PopupMode::SpellCheck && !m_popup->isMouseOver() && !m_closeTimer->isActive()) {
+        m_closeTimer->start(400);
     }
 }
 
@@ -345,7 +362,9 @@ void TextEdit::onCloseTimeout()
         return;
 
     QPoint localPos = viewport()->mapFromGlobal(QCursor::pos());
-    if (viewport()->rect().contains(localPos) && wordAt(localPos) == m_misspelledWord)
+    QString w;
+    QTextCursor c;
+    if (viewport()->rect().contains(localPos) && findMisspelledAt(localPos, w, c) && w == m_misspelledWord)
         return;
 
     m_popup->hidePopup();
@@ -420,6 +439,32 @@ QString TextEdit::wordAt(const QPoint &pos, QTextCursor *cursorOut) const
     return c.selectedText().trimmed();
 }
 
+bool TextEdit::findMisspelledAt(const QPoint &pos, QString &wordOut, QTextCursor &cursorOut) const
+{
+    if (!m_highlighter)
+        return false;
+
+    QTextCursor c = cursorForPosition(pos);
+    QTextBlock block = c.block();
+    if (!block.isValid() || !block.layout())
+        return false;
+
+    int posInBlock = c.position() - block.position();
+
+    for (const auto &range : block.layout()->formats()) {
+        if (range.format.underlineStyle() == QTextCharFormat::WaveUnderline) {
+            if (posInBlock >= range.start && posInBlock <= range.start + range.length) {
+                wordOut = block.text().mid(range.start, range.length);
+                cursorOut = QTextCursor(block);
+                cursorOut.setPosition(block.position() + range.start);
+                cursorOut.setPosition(block.position() + range.start + range.length, QTextCursor::KeepAnchor);
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 QString TextEdit::extractPrefix() const
 {
     QTextCursor c = textCursor();
@@ -454,9 +499,9 @@ void TextEdit::updateAutocomplete()
 
 bool TextEdit::showSpellCheckAt(const QPoint &pos)
 {
+    QString w;
     QTextCursor c;
-    QString w = wordAt(pos, &c);
-    if (w.isEmpty() || !m_highlighter)
+    if (!findMisspelledAt(pos, w, c) || !m_highlighter)
         return false;
 
     int block = c.block().blockNumber();
@@ -464,16 +509,11 @@ bool TextEdit::showSpellCheckAt(const QPoint &pos)
     if (m_highlighter->isIgnoredOnce(block, start))
         return false;
 
-
-
-    if (!m_highlighter->isMisspelled(w))
-        return false;
-
     m_mode = SuggestionPopup::PopupMode::SpellCheck;
     m_misspelledWord = w;
     m_misspelledCursor = c;
     QPoint globalPos = viewport()->mapToGlobal(cursorRect(c).bottomLeft() + QPoint(0, 4));
-    m_popup->showSuggestions(m_highlighter->getSuggestionsFor(w), globalPos, m_mode);
+    m_popup->showSuggestions(m_highlighter->getSuggestionsFor(w), globalPos, m_mode, w);
     return true;
 }
 

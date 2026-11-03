@@ -19,7 +19,8 @@ public:
 
     void showSuggestions(const QStringList& suggestions,
                          const QPoint& globalPos,
-                         PopupMode mode);
+                         PopupMode mode,
+                         const QString& targetWord = QString());
     void hidePopup();
 
     bool handleKey(QKeyEvent* event);

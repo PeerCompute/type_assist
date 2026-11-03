@@ -109,7 +109,8 @@ bool SuggestionPopup::isMouseOver() const
 
 void SuggestionPopup::showSuggestions(const QStringList& suggestions,
                                       const QPoint& globalPos,
-                                      PopupMode mode)
+                                      PopupMode mode,
+                                      const QString& targetWord)
 {
     QStringList displayList = suggestions;
     if (displayList.size() > 3)
@@ -124,7 +125,10 @@ void SuggestionPopup::showSuggestions(const QStringList& suggestions,
     m_list->clear();
 
     if (displayList.isEmpty() && mode == PopupMode::SpellCheck) {
-        auto* noSugItem = new QListWidgetItem("  (No suggestions)");
+        QString text = targetWord.isEmpty()
+                           ? QStringLiteral("  (No suggestions)")
+                           : QString("  No suggestions for \"%1\"").arg(targetWord.length() > 14 ? targetWord.left(12) + "..." : targetWord);
+        auto* noSugItem = new QListWidgetItem(text);
         noSugItem->setFlags(Qt::NoItemFlags);
         noSugItem->setForeground(QColor("#94a3b8"));
         m_list->addItem(noSugItem);
@@ -176,7 +180,14 @@ void SuggestionPopup::showSuggestions(const QStringList& suggestions,
     m_container->setFixedHeight(containerHeight);
 
     const int totalHeight = containerHeight + 16;
-    const int totalWidth  = (mode == PopupMode::SpellCheck ? 190 : 150) + 16;
+    int contentWidth = (mode == PopupMode::SpellCheck ? 200 : 150);
+    if (displayList.isEmpty() && !targetWord.isEmpty()) {
+        QFontMetrics fm(m_list->font());
+        int needed = fm.horizontalAdvance(targetWord) + 140;
+        if (needed > contentWidth)
+            contentWidth = qMin(needed, 320);
+    }
+    const int totalWidth  = contentWidth + 16;
     setFixedSize(totalWidth, totalHeight);
 
     // Screen bounds clamping
