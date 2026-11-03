@@ -1,0 +1,601 @@
+id,incorectWord,corectWord,category,scenario
+1,lawyetr,lawyer,1 letter insertion,inserted 't' at pos 5
+2,ilot,lot,1 letter insertion,inserted 'i' at pos 0
+3,ebreeze,breeze,1 letter insertion,inserted 'e' at pos 0
+4,heightp,height,1 letter insertion,inserted 'p' at pos 6
+5,giyft,gift,1 letter insertion,inserted 'y' at pos 2
+6,easilys,easily,1 letter insertion,inserted 's' at pos 6
+7,places,place,1 letter insertion,inserted 's' at pos 5
+8,commiettee,committee,1 letter insertion,inserted 'e' at pos 5
+9,rinig,ring,1 letter insertion,inserted 'i' at pos 3
+10,chasze,chase,1 letter insertion,inserted 'z' at pos 4
+11,rembel,rebel,1 letter insertion,inserted 'm' at pos 2
+12,naeed,need,1 letter insertion,inserted 'a' at pos 1
+13,syhift,shift,1 letter insertion,inserted 'y' at pos 1
+14,converts,convert,1 letter insertion,inserted 's' at pos 7
+15,kecy,key,1 letter insertion,inserted 'c' at pos 2
+16,ipmplementation,implementation,1 letter insertion,inserted 'p' at pos 1
+17,faqmous,famous,1 letter insertion,inserted 'q' at pos 2
+18,comfjort,comfort,1 letter insertion,inserted 'j' at pos 4
+19,phobne,phone,1 letter insertion,inserted 'b' at pos 3
+20,shoaw,show,1 letter insertion,inserted 'a' at pos 3
+21,wride,ride,1 letter insertion,inserted 'w' at pos 0
+22,sbegin,begin,1 letter insertion,inserted 's' at pos 0
+23,modeern,modern,1 letter insertion,inserted 'e' at pos 4
+24,nowl,owl,1 letter insertion,inserted 'n' at pos 0
+25,sootn,soon,1 letter insertion,inserted 't' at pos 3
+26,eengineering,engineering,1 letter insertion,inserted 'e' at pos 1
+27,utale,tale,1 letter insertion,inserted 'u' at pos 0
+28,reaady,ready,1 letter insertion,inserted 'a' at pos 3
+29,bsuyer,buyer,1 letter insertion,inserted 's' at pos 1
+30,vharious,various,1 letter insertion,inserted 'h' at pos 1
+31,aljong,along,1 letter insertion,inserted 'j' at pos 2
+32,yarrange,arrange,1 letter insertion,inserted 'y' at pos 0
+33,qsomeone,someone,1 letter insertion,inserted 'q' at pos 0
+34,unfortunatoely,unfortunately,1 letter insertion,inserted 'o' at pos 10
+35,mboving,moving,1 letter insertion,inserted 'b' at pos 1
+36,finaln,final,1 letter insertion,inserted 'n' at pos 5
+37,pursuizt,pursuit,1 letter insertion,inserted 'z' at pos 6
+38,expevrt,expert,1 letter insertion,inserted 'v' at pos 4
+39,arrouw,arrow,1 letter insertion,inserted 'u' at pos 4
+40,itevm,item,1 letter insertion,inserted 'v' at pos 3
+41,pyalm,palm,1 letter insertion,inserted 'y' at pos 1
+42,raicnbow,rainbow,1 letter insertion,inserted 'c' at pos 3
+43,matn,mat,1 letter insertion,inserted 'n' at pos 3
+44,asmide,aside,1 letter insertion,inserted 'm' at pos 2
+45,serbve,serve,1 letter insertion,inserted 'b' at pos 3
+46,guaryd,guard,1 letter insertion,inserted 'y' at pos 4
+47,fopld,fold,1 letter insertion,inserted 'p' at pos 2
+48,farf,far,1 letter insertion,inserted 'f' at pos 3
+49,mavrket,market,1 letter insertion,inserted 'v' at pos 2
+50,mescsage,message,1 letter insertion,inserted 'c' at pos 3
+51,hsome,some,1 letter insertion,inserted 'h' at pos 0
+52,sthrough,through,1 letter insertion,inserted 's' at pos 0
+53,skyt,sky,1 letter insertion,inserted 't' at pos 3
+54,replacoe,replace,1 letter insertion,inserted 'o' at pos 6
+55,peqrfect,perfect,1 letter insertion,inserted 'q' at pos 2
+56,pelt,pet,1 letter insertion,inserted 'l' at pos 2
+57,sacredf,sacred,1 letter insertion,inserted 'f' at pos 6
+58,famoucs,famous,1 letter insertion,inserted 'c' at pos 5
+59,jjunior,junior,1 letter insertion,inserted 'j' at pos 1
+60,ecash,cash,1 letter insertion,inserted 'e' at pos 0
+61,rom,room,1 letter deletion,deleted 'o' at pos 1
+62,crridor,corridor,1 letter deletion,deleted 'o' at pos 1
+63,setion,section,1 letter deletion,deleted 'c' at pos 2
+64,fel,feel,1 letter deletion,deleted 'e' at pos 1
+65,cmmittee,committee,1 letter deletion,deleted 'o' at pos 1
+66,chace,chance,1 letter deletion,deleted 'n' at pos 3
+67,brek,break,1 letter deletion,deleted 'a' at pos 3
+68,congratulatons,congratulations,1 letter deletion,deleted 'i' at pos 11
+69,eable,enable,1 letter deletion,deleted 'n' at pos 1
+70,threa,thread,1 letter deletion,deleted 'd' at pos 5
+71,mentio,mention,1 letter deletion,deleted 'n' at pos 6
+72,onvert,convert,1 letter deletion,deleted 'c' at pos 0
+73,ust,must,1 letter deletion,deleted 'm' at pos 0
+74,physic,physics,1 letter deletion,deleted 's' at pos 6
+75,edium,medium,1 letter deletion,deleted 'm' at pos 0
+76,ranch,branch,1 letter deletion,deleted 'b' at pos 0
+77,noe,none,1 letter deletion,deleted 'n' at pos 2
+78,ear,wear,1 letter deletion,deleted 'w' at pos 0
+79,paticipation,participation,1 letter deletion,deleted 'r' at pos 2
+80,priner,printer,1 letter deletion,deleted 't' at pos 4
+81,fot,foot,1 letter deletion,deleted 'o' at pos 2
+82,pai,pain,1 letter deletion,deleted 'n' at pos 3
+83,ruber,rubber,1 letter deletion,deleted 'b' at pos 2
+84,sophiticated,sophisticated,1 letter deletion,deleted 's' at pos 5
+85,shin,shine,1 letter deletion,deleted 'e' at pos 4
+86,roal,royal,1 letter deletion,deleted 'y' at pos 2
+87,grss,grass,1 letter deletion,deleted 'a' at pos 2
+88,gass,grass,1 letter deletion,deleted 'r' at pos 1
+89,wse,wise,1 letter deletion,deleted 'i' at pos 1
+90,exprience,experience,1 letter deletion,deleted 'e' at pos 3
+91,cauht,caught,1 letter deletion,deleted 'g' at pos 3
+92,rame,frame,1 letter deletion,deleted 'f' at pos 0
+93,fligh,flight,1 letter deletion,deleted 't' at pos 5
+94,bulet,bullet,1 letter deletion,deleted 'l' at pos 3
+95,rigin,origin,1 letter deletion,deleted 'o' at pos 0
+96,roky,rocky,1 letter deletion,deleted 'c' at pos 2
+97,bsketball,basketball,1 letter deletion,deleted 'a' at pos 1
+98,limitd,limited,1 letter deletion,deleted 'e' at pos 5
+99,thi,this,1 letter deletion,deleted 's' at pos 3
+100,statio,station,1 letter deletion,deleted 'n' at pos 6
+101,whoe,whose,1 letter deletion,deleted 's' at pos 3
+102,erly,early,1 letter deletion,deleted 'a' at pos 1
+103,bottm,bottom,1 letter deletion,deleted 'o' at pos 4
+104,stoe,stone,1 letter deletion,deleted 'n' at pos 3
+105,siht,sight,1 letter deletion,deleted 'g' at pos 2
+106,memor,memory,1 letter deletion,deleted 'y' at pos 5
+107,reain,retain,1 letter deletion,deleted 't' at pos 2
+108,hir,hire,1 letter deletion,deleted 'e' at pos 3
+109,painer,painter,1 letter deletion,deleted 't' at pos 4
+110,rsk,risk,1 letter deletion,deleted 'i' at pos 1
+111,chese,cheese,1 letter deletion,deleted 'e' at pos 2
+112,ital,vital,1 letter deletion,deleted 'v' at pos 0
+113,contnt,content,1 letter deletion,deleted 'e' at pos 4
+114,releae,release,1 letter deletion,deleted 's' at pos 5
+115,tiy,tiny,1 letter deletion,deleted 'n' at pos 2
+116,esson,lesson,1 letter deletion,deleted 'l' at pos 0
+117,sed,send,1 letter deletion,deleted 'n' at pos 2
+118,mins,minus,1 letter deletion,deleted 'u' at pos 3
+119,otain,obtain,1 letter deletion,deleted 'b' at pos 1
+120,trasformation,transformation,1 letter deletion,deleted 'n' at pos 3
+121,balanxe,balance,1 letter missspell(same row nearby keys),substituted 'c' with same-row nearby key 'x' at pos 5
+122,pib,pin,1 letter missspell(same row nearby keys),substituted 'n' with same-row nearby key 'b' at pos 2
+123,xattle,cattle,1 letter missspell(same row nearby keys),substituted 'c' with same-row nearby key 'x' at pos 0
+124,srake,stake,1 letter missspell(same row nearby keys),substituted 't' with same-row nearby key 'r' at pos 1
+125,pirt,port,1 letter missspell(same row nearby keys),substituted 'o' with same-row nearby key 'i' at pos 1
+126,aixty,sixty,1 letter missspell(same row nearby keys),substituted 's' with same-row nearby key 'a' at pos 0
+127,cemtury,century,1 letter missspell(same row nearby keys),substituted 'n' with same-row nearby key 'm' at pos 2
+128,chsnce,chance,1 letter missspell(same row nearby keys),substituted 'a' with same-row nearby key 's' at pos 2
+129,clrar,clear,1 letter missspell(same row nearby keys),substituted 'e' with same-row nearby key 'r' at pos 2
+130,eat,rat,1 letter missspell(same row nearby keys),substituted 'r' with same-row nearby key 'e' at pos 0
+131,oath,path,1 letter missspell(same row nearby keys),substituted 'p' with same-row nearby key 'o' at pos 0
+132,cast,vast,1 letter missspell(same row nearby keys),substituted 'v' with same-row nearby key 'c' at pos 0
+133,firn,firm,1 letter missspell(same row nearby keys),substituted 'm' with same-row nearby key 'n' at pos 3
+134,xommunication,communication,1 letter missspell(same row nearby keys),substituted 'c' with same-row nearby key 'x' at pos 0
+135,ptovision,provision,1 letter missspell(same row nearby keys),substituted 'r' with same-row nearby key 't' at pos 1
+136,ticlet,ticket,1 letter missspell(same row nearby keys),substituted 'k' with same-row nearby key 'l' at pos 3
+137,brsnd,brand,1 letter missspell(same row nearby keys),substituted 'a' with same-row nearby key 's' at pos 2
+138,reveak,reveal,1 letter missspell(same row nearby keys),substituted 'l' with same-row nearby key 'k' at pos 5
+139,auyumn,autumn,1 letter missspell(same row nearby keys),substituted 't' with same-row nearby key 'y' at pos 2
+140,excellenr,excellent,1 letter missspell(same row nearby keys),substituted 't' with same-row nearby key 'r' at pos 8
+141,sokely,solely,1 letter missspell(same row nearby keys),substituted 'l' with same-row nearby key 'k' at pos 2
+142,orher,other,1 letter missspell(same row nearby keys),substituted 't' with same-row nearby key 'r' at pos 1
+143,haedly,hardly,1 letter missspell(same row nearby keys),substituted 'r' with same-row nearby key 'e' at pos 2
+144,gome,home,1 letter missspell(same row nearby keys),substituted 'h' with same-row nearby key 'g' at pos 0
+145,adminidtration,administration,1 letter missspell(same row nearby keys),substituted 's' with same-row nearby key 'd' at pos 6
+146,ttpe,type,1 letter missspell(same row nearby keys),substituted 'y' with same-row nearby key 't' at pos 1
+147,susden,sudden,1 letter missspell(same row nearby keys),substituted 'd' with same-row nearby key 's' at pos 2
+148,reyail,retail,1 letter missspell(same row nearby keys),substituted 't' with same-row nearby key 'y' at pos 2
+149,har,hat,1 letter missspell(same row nearby keys),substituted 't' with same-row nearby key 'r' at pos 2
+150,birden,burden,1 letter missspell(same row nearby keys),substituted 'u' with same-row nearby key 'i' at pos 1
+151,fkower,flower,1 letter missspell(same row nearby keys),substituted 'l' with same-row nearby key 'k' at pos 1
+152,atill,still,1 letter missspell(same row nearby keys),substituted 's' with same-row nearby key 'a' at pos 0
+153,qorried,worried,1 letter missspell(same row nearby keys),substituted 'w' with same-row nearby key 'q' at pos 0
+154,nental,mental,1 letter missspell(same row nearby keys),substituted 'm' with same-row nearby key 'n' at pos 0
+155,lucjy,lucky,1 letter missspell(same row nearby keys),substituted 'k' with same-row nearby key 'j' at pos 3
+156,watvh,watch,1 letter missspell(same row nearby keys),substituted 'c' with same-row nearby key 'v' at pos 3
+157,maasive,massive,1 letter missspell(same row nearby keys),substituted 's' with same-row nearby key 'a' at pos 2
+158,aytend,attend,1 letter missspell(same row nearby keys),substituted 't' with same-row nearby key 'y' at pos 1
+159,dponsor,sponsor,1 letter missspell(same row nearby keys),substituted 's' with same-row nearby key 'd' at pos 0
+160,strio,strip,1 letter missspell(same row nearby keys),substituted 'p' with same-row nearby key 'o' at pos 4
+161,yiger,tiger,1 letter missspell(same row nearby keys),substituted 't' with same-row nearby key 'y' at pos 0
+162,faul,fail,1 letter missspell(same row nearby keys),substituted 'i' with same-row nearby key 'u' at pos 2
+163,cladsify,classify,1 letter missspell(same row nearby keys),substituted 's' with same-row nearby key 'd' at pos 3
+164,dind,find,1 letter missspell(same row nearby keys),substituted 'f' with same-row nearby key 'd' at pos 0
+165,charitu,charity,1 letter missspell(same row nearby keys),substituted 'y' with same-row nearby key 'u' at pos 6
+166,debste,debate,1 letter missspell(same row nearby keys),substituted 'a' with same-row nearby key 's' at pos 3
+167,wslker,walker,1 letter missspell(same row nearby keys),substituted 'a' with same-row nearby key 's' at pos 1
+168,quute,quite,1 letter missspell(same row nearby keys),substituted 'i' with same-row nearby key 'u' at pos 2
+169,openinf,opening,1 letter missspell(same row nearby keys),substituted 'g' with same-row nearby key 'f' at pos 6
+170,stusy,study,1 letter missspell(same row nearby keys),substituted 'd' with same-row nearby key 's' at pos 3
+171,dilver,silver,1 letter missspell(same row nearby keys),substituted 's' with same-row nearby key 'd' at pos 0
+172,societt,society,1 letter missspell(same row nearby keys),substituted 'y' with same-row nearby key 't' at pos 6
+173,fuber,fiber,1 letter missspell(same row nearby keys),substituted 'i' with same-row nearby key 'u' at pos 1
+174,somepne,someone,1 letter missspell(same row nearby keys),substituted 'o' with same-row nearby key 'p' at pos 4
+175,developmeny,development,1 letter missspell(same row nearby keys),substituted 't' with same-row nearby key 'y' at pos 10
+176,wuse,wise,1 letter missspell(same row nearby keys),substituted 'i' with same-row nearby key 'u' at pos 1
+177,cpmpany,company,1 letter missspell(same row nearby keys),substituted 'o' with same-row nearby key 'p' at pos 1
+178,qritten,written,1 letter missspell(same row nearby keys),substituted 'w' with same-row nearby key 'q' at pos 0
+179,contrpl,control,1 letter missspell(same row nearby keys),substituted 'o' with same-row nearby key 'p' at pos 5
+180,parient,patient,1 letter missspell(same row nearby keys),substituted 't' with same-row nearby key 'r' at pos 2
+181,tassage,passage,1 letter missspell(same row faraway keys),substituted 'p' with same-row faraway key 't' at pos 0
+182,bai,bat,1 letter missspell(same row faraway keys),substituted 't' with same-row faraway key 'i' at pos 2
+183,insije,inside,1 letter missspell(same row faraway keys),substituted 'd' with same-row faraway key 'j' at pos 4
+184,lino,line,1 letter missspell(same row faraway keys),substituted 'e' with same-row faraway key 'o' at pos 3
+185,rption,option,1 letter missspell(same row faraway keys),substituted 'o' with same-row faraway key 'r' at pos 0
+186,nepd,need,1 letter missspell(same row faraway keys),substituted 'e' with same-row faraway key 'p' at pos 2
+187,anxieoy,anxiety,1 letter missspell(same row faraway keys),substituted 't' with same-row faraway key 'o' at pos 5
+188,chfmber,chamber,1 letter missspell(same row faraway keys),substituted 'a' with same-row faraway key 'f' at pos 2
+189,wseless,useless,1 letter missspell(same row faraway keys),substituted 'u' with same-row faraway key 'w' at pos 0
+190,brwef,brief,1 letter missspell(same row faraway keys),substituted 'i' with same-row faraway key 'w' at pos 2
+191,givin,given,1 letter missspell(same row faraway keys),substituted 'e' with same-row faraway key 'i' at pos 3
+192,pagm,palm,1 letter missspell(same row faraway keys),substituted 'l' with same-row faraway key 'g' at pos 2
+193,fleew,fleet,1 letter missspell(same row faraway keys),substituted 't' with same-row faraway key 'w' at pos 4
+194,nareful,careful,1 letter missspell(same row faraway keys),substituted 'c' with same-row faraway key 'n' at pos 0
+195,unjble,unable,1 letter missspell(same row faraway keys),substituted 'a' with same-row faraway key 'j' at pos 2
+196,thacks,thanks,1 letter missspell(same row faraway keys),substituted 'n' with same-row faraway key 'c' at pos 3
+197,tive,time,1 letter missspell(same row faraway keys),substituted 'm' with same-row faraway key 'v' at pos 2
+198,confwrm,confirm,1 letter missspell(same row faraway keys),substituted 'i' with same-row faraway key 'w' at pos 4
+199,zast,vast,1 letter missspell(same row faraway keys),substituted 'v' with same-row faraway key 'z' at pos 0
+200,buswness,business,1 letter missspell(same row faraway keys),substituted 'i' with same-row faraway key 'w' at pos 3
+201,splre,spare,1 letter missspell(same row faraway keys),substituted 'a' with same-row faraway key 'l' at pos 2
+202,piepare,prepare,1 letter missspell(same row faraway keys),substituted 'r' with same-row faraway key 'i' at pos 1
+203,coefficieno,coefficient,1 letter missspell(same row faraway keys),substituted 't' with same-row faraway key 'o' at pos 10
+204,mame,came,1 letter missspell(same row faraway keys),substituted 'c' with same-row faraway key 'm' at pos 0
+205,petain,retain,1 letter missspell(same row faraway keys),substituted 'r' with same-row faraway key 'p' at pos 0
+206,jish,fish,1 letter missspell(same row faraway keys),substituted 'f' with same-row faraway key 'j' at pos 0
+207,orror,error,1 letter missspell(same row faraway keys),substituted 'e' with same-row faraway key 'o' at pos 0
+208,maq,mat,1 letter missspell(same row faraway keys),substituted 't' with same-row faraway key 'q' at pos 2
+209,pixk,pink,1 letter missspell(same row faraway keys),substituted 'n' with same-row faraway key 'x' at pos 2
+210,hadf,half,1 letter missspell(same row faraway keys),substituted 'l' with same-row faraway key 'd' at pos 2
+211,therapp,therapy,1 letter missspell(same row faraway keys),substituted 'y' with same-row faraway key 'p' at pos 6
+212,hore,hope,1 letter missspell(same row faraway keys),substituted 'p' with same-row faraway key 'r' at pos 2
+213,livink,living,1 letter missspell(same row faraway keys),substituted 'g' with same-row faraway key 'k' at pos 5
+214,listec,listen,1 letter missspell(same row faraway keys),substituted 'n' with same-row faraway key 'c' at pos 5
+215,volump,volume,1 letter missspell(same row faraway keys),substituted 'e' with same-row faraway key 'p' at pos 5
+216,soaid,solid,1 letter missspell(same row faraway keys),substituted 'l' with same-row faraway key 'a' at pos 2
+217,oast,east,1 letter missspell(same row faraway keys),substituted 'e' with same-row faraway key 'o' at pos 0
+218,rtcket,rocket,1 letter missspell(same row faraway keys),substituted 'o' with same-row faraway key 't' at pos 1
+219,mystury,mystery,1 letter missspell(same row faraway keys),substituted 'e' with same-row faraway key 'u' at pos 4
+220,lekst,least,1 letter missspell(same row faraway keys),substituted 'a' with same-row faraway key 'k' at pos 2
+221,pynd,pond,1 letter missspell(same row faraway keys),substituted 'o' with same-row faraway key 'y' at pos 1
+222,troject,project,1 letter missspell(same row faraway keys),substituted 'p' with same-row faraway key 't' at pos 0
+223,comuonent,component,1 letter missspell(same row faraway keys),substituted 'p' with same-row faraway key 'u' at pos 3
+224,acquiie,acquire,1 letter missspell(same row faraway keys),substituted 'r' with same-row faraway key 'i' at pos 5
+225,floter,flower,1 letter missspell(same row faraway keys),substituted 'w' with same-row faraway key 't' at pos 3
+226,lfte,late,1 letter missspell(same row faraway keys),substituted 'a' with same-row faraway key 'f' at pos 1
+227,jield,field,1 letter missspell(same row faraway keys),substituted 'f' with same-row faraway key 'j' at pos 0
+228,rarn,rain,1 letter missspell(same row faraway keys),substituted 'i' with same-row faraway key 'r' at pos 2
+229,tuam,team,1 letter missspell(same row faraway keys),substituted 'e' with same-row faraway key 'u' at pos 1
+230,managor,manager,1 letter missspell(same row faraway keys),substituted 'e' with same-row faraway key 'o' at pos 5
+231,awaqe,aware,1 letter missspell(same row faraway keys),substituted 'r' with same-row faraway key 'q' at pos 3
+232,fkt,fat,1 letter missspell(same row faraway keys),substituted 'a' with same-row faraway key 'k' at pos 1
+233,currezt,current,1 letter missspell(same row faraway keys),substituted 'n' with same-row faraway key 'z' at pos 5
+234,reaard,regard,1 letter missspell(same row faraway keys),substituted 'g' with same-row faraway key 'a' at pos 2
+235,alxost,almost,1 letter missspell(same row faraway keys),substituted 'm' with same-row faraway key 'x' at pos 2
+236,fqx,fox,1 letter missspell(same row faraway keys),substituted 'o' with same-row faraway key 'q' at pos 1
+237,mifk,milk,1 letter missspell(same row faraway keys),substituted 'l' with same-row faraway key 'f' at pos 2
+238,stryet,street,1 letter missspell(same row faraway keys),substituted 'e' with same-row faraway key 'y' at pos 3
+239,contrrl,control,1 letter missspell(same row faraway keys),substituted 'o' with same-row faraway key 'r' at pos 5
+240,plrty,party,1 letter missspell(same row faraway keys),substituted 'a' with same-row faraway key 'l' at pos 1
+241,cjrrent,current,1 letter missspell(diff row nearby keys),substituted 'u' with diff-row nearby key 'j' at pos 1
+242,bribht,bright,1 letter missspell(diff row nearby keys),substituted 'g' with diff-row nearby key 'b' at pos 3
+243,fash,cash,1 letter missspell(diff row nearby keys),substituted 'c' with diff-row nearby key 'f' at pos 0
+244,tidket,ticket,1 letter missspell(diff row nearby keys),substituted 'c' with diff-row nearby key 'd' at pos 2
+245,monty,month,1 letter missspell(diff row nearby keys),substituted 'h' with diff-row nearby key 'y' at pos 4
+246,phogo,photo,1 letter missspell(diff row nearby keys),substituted 't' with diff-row nearby key 'g' at pos 3
+247,tdied,tried,1 letter missspell(diff row nearby keys),substituted 'r' with diff-row nearby key 'd' at pos 1
+248,lipe,pipe,1 letter missspell(diff row nearby keys),substituted 'p' with diff-row nearby key 'l' at pos 0
+249,snine,shine,1 letter missspell(diff row nearby keys),substituted 'h' with diff-row nearby key 'n' at pos 1
+250,lloking,looking,1 letter missspell(diff row nearby keys),substituted 'o' with diff-row nearby key 'l' at pos 1
+251,attadk,attack,1 letter missspell(diff row nearby keys),substituted 'c' with diff-row nearby key 'd' at pos 4
+252,hilp,hill,1 letter missspell(diff row nearby keys),substituted 'l' with diff-row nearby key 'p' at pos 3
+253,pwt,pat,1 letter missspell(diff row nearby keys),substituted 'a' with diff-row nearby key 'w' at pos 1
+254,faxt,fast,1 letter missspell(diff row nearby keys),substituted 's' with diff-row nearby key 'x' at pos 2
+255,cirfuit,circuit,1 letter missspell(diff row nearby keys),substituted 'c' with diff-row nearby key 'f' at pos 3
+256,tejsion,tension,1 letter missspell(diff row nearby keys),substituted 'n' with diff-row nearby key 'j' at pos 2
+257,frkend,friend,1 letter missspell(diff row nearby keys),substituted 'i' with diff-row nearby key 'k' at pos 2
+258,madch,march,1 letter missspell(diff row nearby keys),substituted 'r' with diff-row nearby key 'd' at pos 2
+259,gotal,total,1 letter missspell(diff row nearby keys),substituted 't' with diff-row nearby key 'g' at pos 0
+260,hafm,harm,1 letter missspell(diff row nearby keys),substituted 'r' with diff-row nearby key 'f' at pos 2
+261,gheory,theory,1 letter missspell(diff row nearby keys),substituted 't' with diff-row nearby key 'g' at pos 0
+262,cljmb,climb,1 letter missspell(diff row nearby keys),substituted 'i' with diff-row nearby key 'j' at pos 2
+263,wlthough,although,1 letter missspell(diff row nearby keys),substituted 'a' with diff-row nearby key 'w' at pos 0
+264,felief,relief,1 letter missspell(diff row nearby keys),substituted 'r' with diff-row nearby key 'f' at pos 0
+265,tifket,ticket,1 letter missspell(diff row nearby keys),substituted 'c' with diff-row nearby key 'f' at pos 2
+266,pabel,label,1 letter missspell(diff row nearby keys),substituted 'l' with diff-row nearby key 'p' at pos 0
+267,hewd,head,1 letter missspell(diff row nearby keys),substituted 'a' with diff-row nearby key 'w' at pos 2
+268,cyarity,charity,1 letter missspell(diff row nearby keys),substituted 'h' with diff-row nearby key 'y' at pos 1
+269,wiwdom,wisdom,1 letter missspell(diff row nearby keys),substituted 's' with diff-row nearby key 'w' at pos 2
+270,bullef,bullet,1 letter missspell(diff row nearby keys),substituted 't' with diff-row nearby key 'f' at pos 5
+271,kat,mat,1 letter missspell(diff row nearby keys),substituted 'm' with diff-row nearby key 'k' at pos 0
+272,expdrt,expert,1 letter missspell(diff row nearby keys),substituted 'e' with diff-row nearby key 'd' at pos 3
+273,remotd,remote,1 letter missspell(diff row nearby keys),substituted 'e' with diff-row nearby key 'd' at pos 5
+274,bioloyy,biology,1 letter missspell(diff row nearby keys),substituted 'g' with diff-row nearby key 'y' at pos 5
+275,sere,were,1 letter missspell(diff row nearby keys),substituted 'w' with diff-row nearby key 's' at pos 0
+276,likelg,likely,1 letter missspell(diff row nearby keys),substituted 'y' with diff-row nearby key 'g' at pos 5
+277,tyeir,their,1 letter missspell(diff row nearby keys),substituted 'h' with diff-row nearby key 'y' at pos 1
+278,squarss,squares,1 letter missspell(diff row nearby keys),substituted 'e' with diff-row nearby key 's' at pos 5
+279,sjrface,surface,1 letter missspell(diff row nearby keys),substituted 'u' with diff-row nearby key 'j' at pos 1
+280,birx,bird,1 letter missspell(diff row nearby keys),substituted 'd' with diff-row nearby key 'x' at pos 3
+281,bhilder,builder,1 letter missspell(diff row nearby keys),substituted 'u' with diff-row nearby key 'h' at pos 1
+282,wqge,wage,1 letter missspell(diff row nearby keys),substituted 'a' with diff-row nearby key 'q' at pos 1
+283,weed,seed,1 letter missspell(diff row nearby keys),substituted 's' with diff-row nearby key 'w' at pos 0
+284,vjrus,virus,1 letter missspell(diff row nearby keys),substituted 'i' with diff-row nearby key 'j' at pos 1
+285,eog,dog,1 letter missspell(diff row nearby keys),substituted 'd' with diff-row nearby key 'e' at pos 0
+286,slciety,society,1 letter missspell(diff row nearby keys),substituted 'o' with diff-row nearby key 'l' at pos 1
+287,anybocy,anybody,1 letter missspell(diff row nearby keys),substituted 'd' with diff-row nearby key 'c' at pos 5
+288,onoine,online,1 letter missspell(diff row nearby keys),substituted 'l' with diff-row nearby key 'o' at pos 2
+289,szil,sail,1 letter missspell(diff row nearby keys),substituted 'a' with diff-row nearby key 'z' at pos 1
+290,shoupder,shoulder,1 letter missspell(diff row nearby keys),substituted 'l' with diff-row nearby key 'p' at pos 4
+291,effodt,effort,1 letter missspell(diff row nearby keys),substituted 'r' with diff-row nearby key 'd' at pos 4
+292,buffsr,buffer,1 letter missspell(diff row nearby keys),substituted 'e' with diff-row nearby key 's' at pos 4
+293,mjssion,mission,1 letter missspell(diff row nearby keys),substituted 'i' with diff-row nearby key 'j' at pos 1
+294,blossok,blossom,1 letter missspell(diff row nearby keys),substituted 'm' with diff-row nearby key 'k' at pos 6
+295,kned,knee,1 letter missspell(diff row nearby keys),substituted 'e' with diff-row nearby key 'd' at pos 3
+296,hlney,honey,1 letter missspell(diff row nearby keys),substituted 'o' with diff-row nearby key 'l' at pos 1
+297,brjck,brick,1 letter missspell(diff row nearby keys),substituted 'i' with diff-row nearby key 'j' at pos 2
+298,thkrd,third,1 letter missspell(diff row nearby keys),substituted 'i' with diff-row nearby key 'k' at pos 2
+299,sdarch,search,1 letter missspell(diff row nearby keys),substituted 'e' with diff-row nearby key 'd' at pos 1
+300,mqt,mat,1 letter missspell(diff row nearby keys),substituted 'a' with diff-row nearby key 'q' at pos 1
+301,concludn,conclude,1 letter missspell(diff row faraway keys),substituted 'e' with diff-row faraway key 'n' at pos 7
+302,assesm,assess,1 letter missspell(diff row faraway keys),substituted 's' with diff-row faraway key 'm' at pos 5
+303,outmut,output,1 letter missspell(diff row faraway keys),substituted 'p' with diff-row faraway key 'm' at pos 3
+304,autamn,autumn,1 letter missspell(diff row faraway keys),substituted 'u' with diff-row faraway key 'a' at pos 3
+305,rine,mine,1 letter missspell(diff row faraway keys),substituted 'm' with diff-row faraway key 'r' at pos 0
+306,hmppy,happy,1 letter missspell(diff row faraway keys),substituted 'a' with diff-row faraway key 'm' at pos 1
+307,opeak,speak,1 letter missspell(diff row faraway keys),substituted 's' with diff-row faraway key 'o' at pos 0
+308,exxend,extend,1 letter missspell(diff row faraway keys),substituted 't' with diff-row faraway key 'x' at pos 2
+309,lear,tear,1 letter missspell(diff row faraway keys),substituted 't' with diff-row faraway key 'l' at pos 0
+310,ccrrect,correct,1 letter missspell(diff row faraway keys),substituted 'o' with diff-row faraway key 'c' at pos 1
+311,rapzd,rapid,1 letter missspell(diff row faraway keys),substituted 'i' with diff-row faraway key 'z' at pos 3
+312,resolvn,resolve,1 letter missspell(diff row faraway keys),substituted 'e' with diff-row faraway key 'n' at pos 6
+313,kegetable,vegetable,1 letter missspell(diff row faraway keys),substituted 'v' with diff-row faraway key 'k' at pos 0
+314,theora,theory,1 letter missspell(diff row faraway keys),substituted 'y' with diff-row faraway key 'a' at pos 5
+315,rmturn,return,1 letter missspell(diff row faraway keys),substituted 'e' with diff-row faraway key 'm' at pos 1
+316,refeat,repeat,1 letter missspell(diff row faraway keys),substituted 'p' with diff-row faraway key 'f' at pos 2
+317,succnss,success,1 letter missspell(diff row faraway keys),substituted 'e' with diff-row faraway key 'n' at pos 4
+318,enqineering,engineering,1 letter missspell(diff row faraway keys),substituted 'g' with diff-row faraway key 'q' at pos 2
+319,qood,good,1 letter missspell(diff row faraway keys),substituted 'g' with diff-row faraway key 'q' at pos 0
+320,qap,nap,1 letter missspell(diff row faraway keys),substituted 'n' with diff-row faraway key 'q' at pos 0
+321,signbl,signal,1 letter missspell(diff row faraway keys),substituted 'a' with diff-row faraway key 'b' at pos 4
+322,aecause,because,1 letter missspell(diff row faraway keys),substituted 'b' with diff-row faraway key 'a' at pos 0
+323,syszem,system,1 letter missspell(diff row faraway keys),substituted 't' with diff-row faraway key 'z' at pos 3
+324,nemand,demand,1 letter missspell(diff row faraway keys),substituted 'd' with diff-row faraway key 'n' at pos 0
+325,azead,ahead,1 letter missspell(diff row faraway keys),substituted 'h' with diff-row faraway key 'z' at pos 1
+326,worm,norm,1 letter missspell(diff row faraway keys),substituted 'n' with diff-row faraway key 'w' at pos 0
+327,qoud,loud,1 letter missspell(diff row faraway keys),substituted 'l' with diff-row faraway key 'q' at pos 0
+328,reud,read,1 letter missspell(diff row faraway keys),substituted 'a' with diff-row faraway key 'u' at pos 2
+329,roqky,rocky,1 letter missspell(diff row faraway keys),substituted 'c' with diff-row faraway key 'q' at pos 2
+330,surpluy,surplus,1 letter missspell(diff row faraway keys),substituted 's' with diff-row faraway key 'y' at pos 6
+331,pztch,pitch,1 letter missspell(diff row faraway keys),substituted 'i' with diff-row faraway key 'z' at pos 1
+332,logiy,logic,1 letter missspell(diff row faraway keys),substituted 'c' with diff-row faraway key 'y' at pos 4
+333,mefuse,refuse,1 letter missspell(diff row faraway keys),substituted 'r' with diff-row faraway key 'm' at pos 0
+334,fnod,food,1 letter missspell(diff row faraway keys),substituted 'o' with diff-row faraway key 'n' at pos 1
+335,hvery,every,1 letter missspell(diff row faraway keys),substituted 'e' with diff-row faraway key 'h' at pos 0
+336,smara,smart,1 letter missspell(diff row faraway keys),substituted 't' with diff-row faraway key 'a' at pos 4
+337,playfng,playing,1 letter missspell(diff row faraway keys),substituted 'i' with diff-row faraway key 'f' at pos 4
+338,lertain,certain,1 letter missspell(diff row faraway keys),substituted 'c' with diff-row faraway key 'l' at pos 0
+339,masm,mass,1 letter missspell(diff row faraway keys),substituted 's' with diff-row faraway key 'm' at pos 3
+340,ybrd,yard,1 letter missspell(diff row faraway keys),substituted 'a' with diff-row faraway key 'b' at pos 1
+341,whste,white,1 letter missspell(diff row faraway keys),substituted 'i' with diff-row faraway key 's' at pos 2
+342,swis,swim,1 letter missspell(diff row faraway keys),substituted 'm' with diff-row faraway key 's' at pos 3
+343,mtring,string,1 letter missspell(diff row faraway keys),substituted 's' with diff-row faraway key 'm' at pos 0
+344,mrofit,profit,1 letter missspell(diff row faraway keys),substituted 'p' with diff-row faraway key 'm' at pos 0
+345,smalt,small,1 letter missspell(diff row faraway keys),substituted 'l' with diff-row faraway key 't' at pos 4
+346,carefuc,careful,1 letter missspell(diff row faraway keys),substituted 'l' with diff-row faraway key 'c' at pos 6
+347,nuti,nuts,1 letter missspell(diff row faraway keys),substituted 's' with diff-row faraway key 'i' at pos 3
+348,plame,flame,1 letter missspell(diff row faraway keys),substituted 'f' with diff-row faraway key 'p' at pos 0
+349,minar,minor,1 letter missspell(diff row faraway keys),substituted 'o' with diff-row faraway key 'a' at pos 3
+350,newm,news,1 letter missspell(diff row faraway keys),substituted 's' with diff-row faraway key 'm' at pos 3
+351,mastlr,master,1 letter missspell(diff row faraway keys),substituted 'e' with diff-row faraway key 'l' at pos 4
+352,rubqer,rubber,1 letter missspell(diff row faraway keys),substituted 'b' with diff-row faraway key 'q' at pos 3
+353,gendjr,gender,1 letter missspell(diff row faraway keys),substituted 'e' with diff-row faraway key 'j' at pos 4
+354,solmier,soldier,1 letter missspell(diff row faraway keys),substituted 'd' with diff-row faraway key 'm' at pos 3
+355,rjmains,remains,1 letter missspell(diff row faraway keys),substituted 'e' with diff-row faraway key 'j' at pos 1
+356,wenlth,wealth,1 letter missspell(diff row faraway keys),substituted 'a' with diff-row faraway key 'n' at pos 2
+357,famzly,family,1 letter missspell(diff row faraway keys),substituted 'i' with diff-row faraway key 'z' at pos 3
+358,mit,mat,1 letter missspell(diff row faraway keys),substituted 'a' with diff-row faraway key 'i' at pos 1
+359,carriej,carrier,1 letter missspell(diff row faraway keys),substituted 'r' with diff-row faraway key 'j' at pos 6
+360,spcrits,spirits,1 letter missspell(diff row faraway keys),substituted 'i' with diff-row faraway key 'c' at pos 2
+361,truicka,truck,2 letter insertion,inserted 'i' and 'a'
+362,dgyrow,grow,2 letter insertion,inserted 'y' and 'd'
+363,anymlorse,anymore,2 letter insertion,inserted 'l' and 's'
+364,cprivatse,private,2 letter insertion,inserted 's' and 'c'
+365,mountaaibn,mountain,2 letter insertion,inserted 'b' and 'a'
+366,rqxesult,result,2 letter insertion,inserted 'q' and 'x'
+367,chasemm,chase,2 letter insertion,inserted 'm' and 'm'
+368,internaqtionael,international,2 letter insertion,inserted 'q' and 'e'
+369,hhadnd,hand,2 letter insertion,inserted 'h' and 'd'
+370,monlkey,money,2 letter insertion,inserted 'k' and 'l'
+371,pienaltyn,penalty,2 letter insertion,inserted 'n' and 'i'
+372,cdentufry,century,2 letter insertion,inserted 'f' and 'd'
+373,spljiit,split,2 letter insertion,inserted 'i' and 'j'
+374,thfyirty,thirty,2 letter insertion,inserted 'f' and 'y'
+375,livtinog,living,2 letter insertion,inserted 'o' and 't'
+376,chdosae,chose,2 letter insertion,inserted 'd' and 'a'
+377,minicstedr,minister,2 letter insertion,inserted 'd' and 'c'
+378,unqityx,unity,2 letter insertion,inserted 'x' and 'q'
+379,ratmioo,ratio,2 letter insertion,inserted 'm' and 'o'
+380,tbebst,test,2 letter insertion,inserted 'b' and 'b'
+381,glorhd,lord,2 letter insertion,inserted 'g' and 'h'
+382,vthaem,them,2 letter insertion,inserted 'v' and 'a'
+383,wherbeasc,whereas,2 letter insertion,inserted 'b' and 'c'
+384,arounndb,around,2 letter insertion,inserted 'b' and 'n'
+385,extrspaordinary,extraordinary,2 letter insertion,inserted 'p' and 's'
+386,eaorpn,earn,2 letter insertion,inserted 'p' and 'o'
+387,exlhpect,expect,2 letter insertion,inserted 'h' and 'l'
+388,fumvnny,funny,2 letter insertion,inserted 'v' and 'm'
+389,voltagcge,voltage,2 letter insertion,inserted 'c' and 'g'
+390,shelfhi,shelf,2 letter insertion,inserted 'i' and 'h'
+391,dregreey,degree,2 letter insertion,inserted 'r' and 'y'
+392,zceure,cure,2 letter insertion,inserted 'z' and 'e'
+393,informationsr,information,2 letter insertion,inserted 's' and 'r'
+394,nlogiuc,logic,2 letter insertion,inserted 'u' and 'n'
+395,chaisef,chief,2 letter insertion,inserted 's' and 'a'
+396,releabser,release,2 letter insertion,inserted 'r' and 'b'
+397,removeapl,removal,2 letter insertion,inserted 'p' and 'e'
+398,usualig,usual,2 letter insertion,inserted 'i' and 'g'
+399,awkwaardu,awkward,2 letter insertion,inserted 'u' and 'a'
+400,beautgifuln,beautiful,2 letter insertion,inserted 'g' and 'n'
+401,sxuitex,suite,2 letter insertion,inserted 'x' and 'x'
+402,earyteh,earth,2 letter insertion,inserted 'e' and 'y'
+403,cqnollege,college,2 letter insertion,inserted 'n' and 'q'
+404,clasualc,casual,2 letter insertion,inserted 'c' and 'l'
+405,hlodld,hold,2 letter insertion,inserted 'l' and 'd'
+406,tzvalid,valid,2 letter insertion,inserted 'z' and 't'
+407,eautlumn,autumn,2 letter insertion,inserted 'l' and 'e'
+408,grecbw,grew,2 letter insertion,inserted 'c' and 'b'
+409,heiighdt,height,2 letter insertion,inserted 'i' and 'd'
+410,haitu,hit,2 letter insertion,inserted 'a' and 'u'
+411,cotnydemn,condemn,2 letter insertion,inserted 'y' and 't'
+412,omoaker,maker,2 letter insertion,inserted 'o' and 'o'
+413,bxlayme,blame,2 letter insertion,inserted 'x' and 'y'
+414,chaildl,child,2 letter insertion,inserted 'a' and 'l'
+415,gnoldenr,golden,2 letter insertion,inserted 'n' and 'r'
+416,soihle,sole,2 letter insertion,inserted 'h' and 'i'
+417,paschool,school,2 letter insertion,inserted 'p' and 'a'
+418,jshiftl,shift,2 letter insertion,inserted 'l' and 'j'
+419,ecalld,call,2 letter insertion,inserted 'e' and 'd'
+420,firoank,frank,2 letter insertion,inserted 'o' and 'i'
+421,commuicatin,communication,2 letter deletion,deleted characters 'n' and 'o'
+422,rear,regard,2 letter deletion,deleted characters 'g' and 'd'
+423,cck,click,2 letter deletion,deleted characters 'l' and 'i'
+424,aious,various,2 letter deletion,deleted characters 'v' and 'r'
+425,connt,consent,2 letter deletion,deleted characters 's' and 'e'
+426,cae,cable,2 letter deletion,deleted characters 'b' and 'l'
+427,osen,chosen,2 letter deletion,deleted characters 'c' and 'h'
+428,tol,total,2 letter deletion,deleted characters 't' and 'a'
+429,futh,fourth,2 letter deletion,deleted characters 'o' and 'r'
+430,nex,index,2 letter deletion,deleted characters 'i' and 'd'
+431,ivin,living,2 letter deletion,deleted characters 'l' and 'g'
+432,nual,annual,2 letter deletion,deleted characters 'a' and 'n'
+433,sevel,several,2 letter deletion,deleted characters 'r' and 'a'
+434,rip,strip,2 letter deletion,deleted characters 's' and 't'
+435,srt,shirt,2 letter deletion,deleted characters 'h' and 'i'
+436,jack,jacket,2 letter deletion,deleted characters 'e' and 't'
+437,ang,angle,2 letter deletion,deleted characters 'l' and 'e'
+438,ampu,campus,2 letter deletion,deleted characters 'c' and 's'
+439,cothe,clothes,2 letter deletion,deleted characters 'l' and 's'
+440,igh,light,2 letter deletion,deleted characters 'l' and 't'
+441,raner,trainer,2 letter deletion,deleted characters 't' and 'i'
+442,rae,raise,2 letter deletion,deleted characters 'i' and 's'
+443,imot,import,2 letter deletion,deleted characters 'p' and 'r'
+444,cobie,combine,2 letter deletion,deleted characters 'm' and 'n'
+445,thk,think,2 letter deletion,deleted characters 'i' and 'n'
+446,hoce,choice,2 letter deletion,deleted characters 'c' and 'i'
+447,isnd,island,2 letter deletion,deleted characters 'l' and 'a'
+448,emova,removal,2 letter deletion,deleted characters 'r' and 'l'
+449,rek,break,2 letter deletion,deleted characters 'b' and 'a'
+450,nversation,conversation,2 letter deletion,deleted characters 'c' and 'o'
+451,wadr,wander,2 letter deletion,deleted characters 'n' and 'e'
+452,genl,gentle,2 letter deletion,deleted characters 't' and 'e'
+453,ulig,ruling,2 letter deletion,deleted characters 'r' and 'n'
+454,adce,advice,2 letter deletion,deleted characters 'v' and 'i'
+455,rif,brief,2 letter deletion,deleted characters 'b' and 'e'
+456,rse,nurse,2 letter deletion,deleted characters 'n' and 'u'
+457,othe,bother,2 letter deletion,deleted characters 'b' and 'r'
+458,illin,willing,2 letter deletion,deleted characters 'w' and 'g'
+459,eadr,reader,2 letter deletion,deleted characters 'r' and 'e'
+460,unr,under,2 letter deletion,deleted characters 'd' and 'e'
+461,netwr,network,2 letter deletion,deleted characters 'o' and 'k'
+462,loc,block,2 letter deletion,deleted characters 'b' and 'k'
+463,stk,stake,2 letter deletion,deleted characters 'a' and 'e'
+464,comad,command,2 letter deletion,deleted characters 'm' and 'n'
+465,dvie,device,2 letter deletion,deleted characters 'e' and 'c'
+466,eond,beyond,2 letter deletion,deleted characters 'b' and 'y'
+467,toh,touch,2 letter deletion,deleted characters 'u' and 'c'
+468,cduct,conduct,2 letter deletion,deleted characters 'o' and 'n'
+469,hose,chosen,2 letter deletion,deleted characters 'c' and 'n'
+470,slen,silent,2 letter deletion,deleted characters 'i' and 't'
+471,shn,shown,2 letter deletion,deleted characters 'o' and 'w'
+472,orro,borrow,2 letter deletion,deleted characters 'b' and 'w'
+473,smlarity,similarity,2 letter deletion,deleted characters 'i' and 'i'
+474,igr,tiger,2 letter deletion,deleted characters 't' and 'e'
+475,tetin,testing,2 letter deletion,deleted characters 's' and 'g'
+476,complely,completely,2 letter deletion,deleted characters 'e' and 't'
+477,affe,affect,2 letter deletion,deleted characters 'c' and 't'
+478,ense,ensure,2 letter deletion,deleted characters 'u' and 'r'
+479,siultneously,simultaneously,2 letter deletion,deleted characters 'm' and 'a'
+480,abe,above,2 letter deletion,deleted characters 'o' and 'v'
+481,jbiat,joint,2 letter missspell,"substituted 2 letters: 'o'->'b' at 1, 'n'->'a' at 3"
+482,artince,article,2 letter missspell,"substituted 2 letters: 'c'->'n' at 4, 'l'->'c' at 5"
+483,plcw,plan,2 letter missspell,"substituted 2 letters: 'a'->'c' at 2, 'n'->'w' at 3"
+484,nxhber,number,2 letter missspell,"substituted 2 letters: 'u'->'x' at 1, 'm'->'h' at 2"
+485,sibry,sorry,2 letter missspell,"substituted 2 letters: 'o'->'i' at 1, 'r'->'b' at 2"
+486,ndye,nine,2 letter missspell,"substituted 2 letters: 'i'->'d' at 1, 'n'->'y' at 2"
+487,qgnning,running,2 letter missspell,"substituted 2 letters: 'r'->'q' at 0, 'u'->'g' at 1"
+488,dynt,rent,2 letter missspell,"substituted 2 letters: 'r'->'d' at 0, 'e'->'y' at 1"
+489,palajh,palace,2 letter missspell,"substituted 2 letters: 'c'->'j' at 4, 'e'->'h' at 5"
+490,comsiu,commit,2 letter missspell,"substituted 2 letters: 'm'->'s' at 3, 't'->'u' at 5"
+491,agueemenf,agreement,2 letter missspell,"substituted 2 letters: 'r'->'u' at 2, 't'->'f' at 8"
+492,yervf,serve,2 letter missspell,"substituted 2 letters: 's'->'y' at 0, 'e'->'f' at 4"
+493,licx,nice,2 letter missspell,"substituted 2 letters: 'n'->'l' at 0, 'e'->'x' at 3"
+494,cuaoity,quality,2 letter missspell,"substituted 2 letters: 'q'->'c' at 0, 'l'->'o' at 3"
+495,frhewd,friend,2 letter missspell,"substituted 2 letters: 'i'->'h' at 2, 'n'->'w' at 4"
+496,irrdw,arrow,2 letter missspell,"substituted 2 letters: 'a'->'i' at 0, 'o'->'d' at 3"
+497,frugh,fruit,2 letter missspell,"substituted 2 letters: 'i'->'g' at 3, 't'->'h' at 4"
+498,mixtsrb,mixture,2 letter missspell,"substituted 2 letters: 'u'->'s' at 4, 'e'->'b' at 6"
+499,qryinq,trying,2 letter missspell,"substituted 2 letters: 't'->'q' at 0, 'g'->'q' at 5"
+500,pmers,press,2 letter missspell,"substituted 2 letters: 'r'->'m' at 1, 's'->'r' at 3"
+501,orzanuc,organic,2 letter missspell,"substituted 2 letters: 'g'->'z' at 2, 'i'->'u' at 5"
+502,wefcomz,welcome,2 letter missspell,"substituted 2 letters: 'l'->'f' at 2, 'e'->'z' at 6"
+503,markdc,market,2 letter missspell,"substituted 2 letters: 'e'->'d' at 4, 't'->'c' at 5"
+504,camxute,compute,2 letter missspell,"substituted 2 letters: 'o'->'a' at 1, 'p'->'x' at 3"
+505,clkrity,charity,2 letter missspell,"substituted 2 letters: 'h'->'l' at 1, 'a'->'k' at 2"
+506,tairp,third,2 letter missspell,"substituted 2 letters: 'h'->'a' at 1, 'd'->'p' at 4"
+507,basketbcgl,basketball,2 letter missspell,"substituted 2 letters: 'a'->'c' at 7, 'l'->'g' at 8"
+508,caqtlt,castle,2 letter missspell,"substituted 2 letters: 's'->'q' at 2, 'e'->'t' at 5"
+509,thanlk,thanks,2 letter missspell,"substituted 2 letters: 'k'->'l' at 4, 's'->'k' at 5"
+510,wtjry,story,2 letter missspell,"substituted 2 letters: 's'->'w' at 0, 'o'->'j' at 2"
+511,weallx,really,2 letter missspell,"substituted 2 letters: 'r'->'w' at 0, 'y'->'x' at 5"
+512,cligb,click,2 letter missspell,"substituted 2 letters: 'c'->'g' at 3, 'k'->'b' at 4"
+513,daizer,danger,2 letter missspell,"substituted 2 letters: 'n'->'i' at 2, 'g'->'z' at 3"
+514,rxsxrt,resort,2 letter missspell,"substituted 2 letters: 'e'->'x' at 1, 'o'->'x' at 3"
+515,ssjw,slow,2 letter missspell,"substituted 2 letters: 'l'->'s' at 1, 'o'->'j' at 2"
+516,srowl,crowd,2 letter missspell,"substituted 2 letters: 'c'->'s' at 0, 'd'->'l' at 4"
+517,steply,simply,2 letter missspell,"substituted 2 letters: 'i'->'t' at 1, 'm'->'e' at 2"
+518,ooue,soul,2 letter missspell,"substituted 2 letters: 's'->'o' at 0, 'l'->'e' at 3"
+519,tbblj,table,2 letter missspell,"substituted 2 letters: 'a'->'b' at 1, 'e'->'j' at 4"
+520,cmbbon,carbon,2 letter missspell,"substituted 2 letters: 'a'->'m' at 1, 'r'->'b' at 2"
+521,kardzy,hardly,2 letter missspell,"substituted 2 letters: 'h'->'k' at 0, 'l'->'z' at 4"
+522,galtle,battle,2 letter missspell,"substituted 2 letters: 'b'->'g' at 0, 't'->'l' at 2"
+523,tdlf,till,2 letter missspell,"substituted 2 letters: 'i'->'d' at 1, 'l'->'f' at 3"
+524,xustbce,justice,2 letter missspell,"substituted 2 letters: 'j'->'x' at 0, 'i'->'b' at 4"
+525,atdeppt,attempt,2 letter missspell,"substituted 2 letters: 't'->'d' at 2, 'm'->'p' at 4"
+526,bycomg,become,2 letter missspell,"substituted 2 letters: 'e'->'y' at 1, 'e'->'g' at 5"
+527,domputxrs,computers,2 letter missspell,"substituted 2 letters: 'c'->'d' at 0, 'e'->'x' at 6"
+528,tozoerow,tomorrow,2 letter missspell,"substituted 2 letters: 'm'->'z' at 2, 'r'->'e' at 4"
+529,privcfy,privacy,2 letter missspell,"substituted 2 letters: 'a'->'c' at 4, 'c'->'f' at 5"
+530,mafnex,manner,2 letter missspell,"substituted 2 letters: 'n'->'f' at 2, 'r'->'x' at 5"
+531,rqvkr,river,2 letter missspell,"substituted 2 letters: 'i'->'q' at 1, 'e'->'k' at 3"
+532,uontajn,contain,2 letter missspell,"substituted 2 letters: 'c'->'u' at 0, 'i'->'j' at 5"
+533,xonition,position,2 letter missspell,"substituted 2 letters: 'p'->'x' at 0, 's'->'n' at 2"
+534,agenrt,agency,2 letter missspell,"substituted 2 letters: 'c'->'r' at 4, 'y'->'t' at 5"
+535,psyxholegy,psychology,2 letter missspell,"substituted 2 letters: 'c'->'x' at 3, 'o'->'e' at 7"
+536,auarity,charity,2 letter missspell,"substituted 2 letters: 'c'->'a' at 0, 'h'->'u' at 1"
+537,determinatiay,determination,2 letter missspell,"substituted 2 letters: 'o'->'a' at 11, 'n'->'y' at 12"
+538,baroow,borrow,2 letter missspell,"substituted 2 letters: 'o'->'a' at 1, 'r'->'o' at 3"
+539,uwrple,purple,2 letter missspell,"substituted 2 letters: 'p'->'u' at 0, 'u'->'w' at 1"
+540,tfem,tied,2 letter missspell,"substituted 2 letters: 'i'->'f' at 1, 'd'->'m' at 3"
+541,notrh,north,2 letter swap,"swapped adjacent letters 'r' and 't' at pos 2,3"
+542,entertainmetn,entertainment,2 letter swap,"swapped adjacent letters 'n' and 't' at pos 11,12"
+543,mses,mess,2 letter swap,"swapped adjacent letters 'e' and 's' at pos 1,2"
+544,lge,leg,2 letter swap,"swapped adjacent letters 'e' and 'g' at pos 1,2"
+545,erport,report,2 letter swap,"swapped adjacent letters 'r' and 'e' at pos 0,1"
+546,maong,among,2 letter swap,"swapped adjacent letters 'a' and 'm' at pos 0,1"
+547,mpa,map,2 letter swap,"swapped adjacent letters 'a' and 'p' at pos 1,2"
+548,obunce,bounce,2 letter swap,"swapped adjacent letters 'b' and 'o' at pos 0,1"
+549,siland,island,2 letter swap,"swapped adjacent letters 'i' and 's' at pos 0,1"
+550,trluy,truly,2 letter swap,"swapped adjacent letters 'u' and 'l' at pos 2,3"
+551,pirce,price,2 letter swap,"swapped adjacent letters 'r' and 'i' at pos 1,2"
+552,fodo,food,2 letter swap,"swapped adjacent letters 'o' and 'd' at pos 2,3"
+553,palnet,planet,2 letter swap,"swapped adjacent letters 'l' and 'a' at pos 1,2"
+554,enjyo,enjoy,2 letter swap,"swapped adjacent letters 'o' and 'y' at pos 3,4"
+555,etnd,tend,2 letter swap,"swapped adjacent letters 't' and 'e' at pos 0,1"
+556,hwom,whom,2 letter swap,"swapped adjacent letters 'w' and 'h' at pos 0,1"
+557,socre,score,2 letter swap,"swapped adjacent letters 'c' and 'o' at pos 1,2"
+558,crad,card,2 letter swap,"swapped adjacent letters 'a' and 'r' at pos 1,2"
+559,btatery,battery,2 letter swap,"swapped adjacent letters 'a' and 't' at pos 1,2"
+560,cihef,chief,2 letter swap,"swapped adjacent letters 'h' and 'i' at pos 1,2"
+561,cousre,course,2 letter swap,"swapped adjacent letters 'r' and 's' at pos 3,4"
+562,eraly,early,2 letter swap,"swapped adjacent letters 'a' and 'r' at pos 1,2"
+563,nkee,knee,2 letter swap,"swapped adjacent letters 'k' and 'n' at pos 0,1"
+564,ugilty,guilty,2 letter swap,"swapped adjacent letters 'g' and 'u' at pos 0,1"
+565,lentgh,length,2 letter swap,"swapped adjacent letters 'g' and 't' at pos 3,4"
+566,extar,extra,2 letter swap,"swapped adjacent letters 'r' and 'a' at pos 3,4"
+567,whsoe,whose,2 letter swap,"swapped adjacent letters 'o' and 's' at pos 2,3"
+568,swmiming,swimming,2 letter swap,"swapped adjacent letters 'i' and 'm' at pos 2,3"
+569,rtuly,truly,2 letter swap,"swapped adjacent letters 't' and 'r' at pos 0,1"
+570,wief,wife,2 letter swap,"swapped adjacent letters 'f' and 'e' at pos 2,3"
+571,foregt,forget,2 letter swap,"swapped adjacent letters 'g' and 'e' at pos 3,4"
+572,usn,sun,2 letter swap,"swapped adjacent letters 's' and 'u' at pos 0,1"
+573,breda,bread,2 letter swap,"swapped adjacent letters 'a' and 'd' at pos 3,4"
+574,bulelt,bullet,2 letter swap,"swapped adjacent letters 'l' and 'e' at pos 3,4"
+575,logn,long,2 letter swap,"swapped adjacent letters 'n' and 'g' at pos 2,3"
+576,fosetr,foster,2 letter swap,"swapped adjacent letters 't' and 'e' at pos 3,4"
+577,cmoplete,complete,2 letter swap,"swapped adjacent letters 'o' and 'm' at pos 1,2"
+578,ocntract,contract,2 letter swap,"swapped adjacent letters 'c' and 'o' at pos 0,1"
+579,risnig,rising,2 letter swap,"swapped adjacent letters 'i' and 'n' at pos 3,4"
+580,dnace,dance,2 letter swap,"swapped adjacent letters 'a' and 'n' at pos 1,2"
+581,dirver,driver,2 letter swap,"swapped adjacent letters 'r' and 'i' at pos 1,2"
+582,psosess,possess,2 letter swap,"swapped adjacent letters 'o' and 's' at pos 1,2"
+583,sutdent,student,2 letter swap,"swapped adjacent letters 't' and 'u' at pos 1,2"
+584,crysatl,crystal,2 letter swap,"swapped adjacent letters 't' and 'a' at pos 4,5"
+585,unknonw,unknown,2 letter swap,"swapped adjacent letters 'w' and 'n' at pos 5,6"
+586,corut,court,2 letter swap,"swapped adjacent letters 'u' and 'r' at pos 2,3"
+587,ditcionary,dictionary,2 letter swap,"swapped adjacent letters 'c' and 't' at pos 2,3"
+588,tempel,temple,2 letter swap,"swapped adjacent letters 'l' and 'e' at pos 4,5"
+589,cacth,catch,2 letter swap,"swapped adjacent letters 't' and 'c' at pos 2,3"
+590,bnu,bun,2 letter swap,"swapped adjacent letters 'u' and 'n' at pos 1,2"
+591,brnach,branch,2 letter swap,"swapped adjacent letters 'a' and 'n' at pos 2,3"
+592,turly,truly,2 letter swap,"swapped adjacent letters 'r' and 'u' at pos 1,2"
+593,soemhow,somehow,2 letter swap,"swapped adjacent letters 'm' and 'e' at pos 2,3"
+594,ippe,pipe,2 letter swap,"swapped adjacent letters 'p' and 'i' at pos 0,1"
+595,gtae,gate,2 letter swap,"swapped adjacent letters 'a' and 't' at pos 1,2"
+596,tuoch,touch,2 letter swap,"swapped adjacent letters 'o' and 'u' at pos 1,2"
+597,geos,goes,2 letter swap,"swapped adjacent letters 'o' and 'e' at pos 1,2"
+598,ermoval,removal,2 letter swap,"swapped adjacent letters 'r' and 'e' at pos 0,1"
+599,nothign,nothing,2 letter swap,"swapped adjacent letters 'n' and 'g' at pos 5,6"
+600,foudnation,foundation,2 letter swap,"swapped adjacent letters 'n' and 'd' at pos 3,4"

@@ -11,11 +11,13 @@ using namespace std;
 
 #define K 3
 #define MAX_WORD_LEN 25
-constexpr float upBnd   = 0.7f;
-constexpr float lowBnd  = 0.05f;
+
+constexpr float upBnd   = 0.6f;
+constexpr float lowBnd  = 0.1f;
 constexpr float damper  = 0.035f;
-constexpr float boost   = 0.11f;
+constexpr float boost   = 0.08f;
 constexpr float init    = 0.5f;
+
 
 struct XY {
     float x;

@@ -240,10 +240,10 @@ id,query,ground_truth,category,type,truth_len,notes
 238,purpoe,purple,Vertical/Diagonal Slips,HARD,6,typed o for l (row above/below)
 239,plannjng,planning,Vertical/Diagonal Slips,NORMAL,8,typed j for i (row above/below)
 240,espreso,<NONE>,Single Deletions,EDGE,0,EDGE intended 'espresso' (not in lexicon); omitted s at pos 6
-241,plat,plant,Single Deletions,HARD,5,omitted n at pos 4
+241,ladt,last,Adjacent Horizontal Slips,HARD,4,typed d for s (same row)
 242,chld,child,Single Deletions,HARD,5,omitted i at pos 3
 243,lfe,life,Single Deletions,NORMAL,4,omitted i at pos 2
-244,bttle,bottle,Single Deletions,HARD,6,omitted o at pos 2
+244,cst,cat,Adjacent Horizontal Slips,HARD,3,typed s for a (same row)
 245,county,country,Single Deletions,HARD,7,omitted r at pos 6
 246,crcuit,circuit,Single Deletions,NORMAL,7,omitted i at pos 2
 247,playr,player,Single Deletions,HARD,6,omitted e at pos 5
@@ -270,10 +270,10 @@ id,query,ground_truth,category,type,truth_len,notes
 268,sructure,structure,Single Deletions,BEST,9,omitted t at pos 2
 269,muntain,mountain,Single Deletions,NORMAL,8,omitted o at pos 2
 270,internatonal,international,Single Deletions,BEST,13,omitted i at pos 9
-271,cosing,closing,Single Deletions,HARD,7,omitted l at pos 2
+271,wopd,wood,Adjacent Horizontal Slips,HARD,4,typed p for o (same row)
 272,rvision,revision,Single Deletions,HARD,8,omitted e at pos 2
 273,gaden,garden,Single Deletions,NORMAL,6,omitted r at pos 3
-274,fot,foot,Single Deletions,HARD,4,omitted o at pos 3
+274,fosh,fish,Adjacent Horizontal Slips,HARD,4,typed o for i (same row)
 275,architeture,architecture,Single Deletions,BEST,12,omitted c at pos 8
 276,ncessary,necessary,Single Deletions,BEST,9,omitted e at pos 2
 277,pofessional,professional,Single Deletions,BEST,12,omitted r at pos 2
@@ -322,10 +322,10 @@ id,query,ground_truth,category,type,truth_len,notes
 320,networ,network,Single Deletions,NORMAL,7,omitted k at pos 7
 321,similaity,similarity,Single Deletions,BEST,10,omitted r at pos 7
 322,organizatio,organization,Single Deletions,BEST,12,omitted n at pos 12
-323,teting,testing,Single Deletions,NORMAL,7,omitted s at pos 3
-324,pak,park,Single Deletions,HARD,4,omitted r at pos 3
+323,srake,stake,Adjacent Horizontal Slips,HARD,5,typed r for t (same row)
+324,pirt,port,Adjacent Horizontal Slips,HARD,4,typed i for o (same row)
 325,restauran,restaurant,Single Deletions,BEST,10,omitted t at pos 10
-326,tar,star,Single Deletions,HARD,4,omitted s at pos 1
+326,chsnce,chance,Adjacent Horizontal Slips,HARD,6,typed s for a (same row)
 327,signifcantly,significantly,Single Deletions,BEST,13,omitted i at pos 7
 328,prduction,production,Single Deletions,BEST,10,omitted o at pos 3
 329,prson,person,Single Deletions,HARD,6,omitted e at pos 2
@@ -368,7 +368,7 @@ id,query,ground_truth,category,type,truth_len,notes
 366,communitry,community,Single Insertions,BEST,9,extra r between t and y (r is next to t)
 367,mathnematics,mathematics,Single Insertions,BEST,11,extra n between h and e (n is next to h)
 368,sphginx,<NONE>,Single Insertions,EDGE,0,EDGE intended 'sphinx' (not in lexicon); extra g between h and i (g is next to h)
-369,plen,pen,Single Insertions,HARD,3,extra l between p and e (l is next to p)
+369,hsnd,hand,Adjacent Horizontal Slips,HARD,4,typed s for a (same row)
 370,middloe,middle,Single Insertions,NORMAL,6,extra o between l and e (o is next to l)
 371,capigtal,capital,Single Insertions,NORMAL,7,extra g between i and t (g is next to t)
 372,adminisytration,administration,Single Insertions,BEST,14,extra y between s and t (y is next to t)
@@ -379,7 +379,7 @@ id,query,ground_truth,category,type,truth_len,notes
 377,neighblorhood,neighborhood,Single Insertions,BEST,12,extra l between b and o (l is next to o)
 378,breaed,bread,Single Insertions,NORMAL,5,extra e between a and d (e is next to d)
 379,documentatfion,documentation,Single Insertions,BEST,13,extra f between t and i (f is next to t)
-380,aznd,and,Single Insertions,NORMAL,3,extra z between a and n (z is next to a)
+380,brsnd,brand,Adjacent Horizontal Slips,HARD,5,typed s for a (same row)
 381,entertainmemnt,entertainment,Single Insertions,BEST,13,extra m between e and n (m is next to n)
 382,treatmenyt,treatment,Single Insertions,BEST,9,extra y between n and t (y is next to t)
 383,statiopn,station,Single Insertions,NORMAL,7,extra p between o and n (p is next to o)
@@ -401,7 +401,7 @@ id,query,ground_truth,category,type,truth_len,notes
 399,foprest,forest,Single Insertions,NORMAL,6,extra p between o and r (p is next to o)
 400,rwelationship,relationship,Single Insertions,BEST,12,extra w between r and e (w is next to e)
 401,swtreet,street,Single Insertions,NORMAL,6,extra w between s and t (w is next to s)
-402,telecokmmunication,telecommunication,Single Insertions,BEST,17,extra k between o and m (k is next to o)
+402,fsll,fall,Adjacent Horizontal Slips,HARD,4,typed s for a (same row)
 403,judgmehnt,judgment,Single Insertions,NORMAL,8,extra h between e and n (h is next to n)
 404,fijre,fire,Single Insertions,NORMAL,4,extra j between i and r (j is next to i)
 405,tazble,table,Single Insertions,NORMAL,5,extra z between a and b (z is next to a)
@@ -425,7 +425,7 @@ id,query,ground_truth,category,type,truth_len,notes
 423,cnhoose,choose,Single Insertions,NORMAL,6,extra n between c and h (n is next to h)
 424,culgture,culture,Single Insertions,NORMAL,7,extra g between l and t (g is next to t)
 425,markdet,market,Single Insertions,NORMAL,6,extra d between k and e (d is next to e)
-426,noese,nose,Single Insertions,HARD,4,extra e between o and s (e is next to s)
+426,orher,other,Adjacent Horizontal Slips,HARD,5,typed r for t (same row)
 427,collpege,college,Single Insertions,NORMAL,7,extra p between l and e (p is next to l)
 428,architectudre,architecture,Single Insertions,BEST,12,extra d between u and r (d is next to r)
 429,participaqtion,participation,Single Insertions,BEST,13,extra q between a and t (q is next to a)
@@ -443,7 +443,7 @@ id,query,ground_truth,category,type,truth_len,notes
 441,simjple,simple,Single Insertions,NORMAL,6,extra j between m and p (j is next to m)
 442,caszh,cash,Single Insertions,NORMAL,4,extra z between s and h (z is next to s)
 443,restaurawnt,restaurant,Single Insertions,BEST,10,extra w between a and n (w is next to a)
-444,laske,lake,Single Insertions,NORMAL,4,extra s between a and k (s is next to a)
+444,gome,home,Adjacent Horizontal Slips,HARD,4,typed g for h (same row)
 445,citkizen,citizen,Single Insertions,NORMAL,7,extra k between t and i (k is next to i)
 446,accfountability,accountability,Single Insertions,BEST,14,extra f between c and o (f is next to c)
 447,fakmily,family,Single Insertions,NORMAL,6,extra k between a and m (k is next to m)
@@ -484,7 +484,7 @@ id,query,ground_truth,category,type,truth_len,notes
 482,mahime,machine,Structural & Phonetic,NORMAL,7,DOUBLE typed m for n + omitted c
 483,hsot,host,Structural & Phonetic,HARD,4,swapped os
 484,commnad,command,Structural & Phonetic,NORMAL,7,swapped an
-485,sience,science,Structural & Phonetic,PHONETIC,7,PHONETIC sounds right but spelled wrong
+485,fsat,fast,Structural & Phonetic,HARD,4,swapped as
 486,charact,characteristic,Structural & Phonetic,HARD,14,LENGTH truncated 7 vs 14
 487,dotcor,doctor,Structural & Phonetic,HARD,6,swapped ct
 488,educ,education,Structural & Phonetic,HARD,9,LENGTH truncated 4 vs 9
@@ -494,7 +494,7 @@ id,query,ground_truth,category,type,truth_len,notes
 492,pronounciation,pronunciation,Structural & Phonetic,PHONETIC,13,PHONETIC sounds right but spelled wrong
 493,occured,occurred,Structural & Phonetic,PHONETIC,8,PHONETIC sounds right but spelled wrong
 494,entertainmnet,entertainment,Structural & Phonetic,BEST,13,swapped en
-495,organiz,organization,Structural & Phonetic,HARD,12,LENGTH truncated 7 vs 12
+495,cricuit,circuit,Structural & Phonetic,HARD,7,swapped ir
 496,definately,definitely,Structural & Phonetic,PHONETIC,10,PHONETIC sounds right but spelled wrong
 497,dictioanry,dictionary,Structural & Phonetic,BEST,10,swapped na
 498,cohose,choose,Structural & Phonetic,HARD,6,swapped ho
@@ -514,10 +514,10 @@ id,query,ground_truth,category,type,truth_len,notes
 512,wimen,women,Structural & Phonetic,PHONETIC,5,PHONETIC sounds right but spelled wrong
 513,expressoin,expression,Structural & Phonetic,BEST,10,swapped io
 514,cpu,cup,Structural & Phonetic,HARD,3,swapped up
-515,wich,which,Structural & Phonetic,PHONETIC,5,PHONETIC sounds right but spelled wrong
+515,chere,cheer,Structural & Phonetic,HARD,5,typed e for r (same row)
 516,chere,cheer,Structural & Phonetic,HARD,5,swapped er
 517,charcteristif,characteristic,Structural & Phonetic,BEST,14,DOUBLE typed f for c + omitted a
-518,progra,programming,Structural & Phonetic,HARD,11,LENGTH truncated 6 vs 11
+518,cljmb,climb,Vertical/Diagonal Slips,HARD,5,typed j for i (row below)
 519,acxomlishment,accomplishment,Structural & Phonetic,BEST,14,DOUBLE typed x for c + omitted p
 520,enviroment,environment,Structural & Phonetic,PHONETIC,11,PHONETIC sounds right but spelled wrong
 521,ageemenf,agreement,Structural & Phonetic,BEST,9,DOUBLE typed f for t + omitted r
@@ -531,7 +531,7 @@ id,query,ground_truth,category,type,truth_len,notes
 529,enuff,enough,Structural & Phonetic,PHONETIC,6,PHONETIC sounds right but spelled wrong
 530,devel,development,Structural & Phonetic,HARD,11,LENGTH truncated 5 vs 11
 531,accomodate,accommodate,Structural & Phonetic,PHONETIC,11,PHONETIC sounds right but spelled wrong
-532,informa,information,Structural & Phonetic,HARD,11,LENGTH truncated 7 vs 11
+532,wifh,wish,Adjacent Horizontal Slips,HARD,4,typed f for s (same row)
 533,qzxjv,<NONE>,Structural & Phonetic,EDGE,0,EDGE gibberish / keyboard mash / length limit
 534,corectioh,correction,Structural & Phonetic,BEST,10,DOUBLE typed h for n + omitted r
 535,favrite,favorite,Structural & Phonetic,PHONETIC,8,PHONETIC sounds right but spelled wrong
@@ -544,7 +544,7 @@ id,query,ground_truth,category,type,truth_len,notes
 542,nife,knife,Structural & Phonetic,PHONETIC,5,PHONETIC sounds right but spelled wrong
 543,deterimnation,determination,Structural & Phonetic,BEST,13,swapped mi
 544,admin,administration,Structural & Phonetic,HARD,14,LENGTH truncated 5 vs 14
-545,enviro,environment,Structural & Phonetic,HARD,11,LENGTH truncated 6 vs 11
+545,hsot,host,Structural & Phonetic,HARD,4,swapped so
 546,commun,communication,Structural & Phonetic,HARD,13,LENGTH truncated 6 vs 13
 547,cnosider,consider,Structural & Phonetic,NORMAL,8,swapped on
 548,apattmet,apartment,Structural & Phonetic,BEST,9,DOUBLE typed t for r + omitted n
@@ -556,7 +556,7 @@ id,query,ground_truth,category,type,truth_len,notes
 554,caterp,caterpillar,Structural & Phonetic,HARD,11,LENGTH truncated 6 vs 11
 555,grammer,grammar,Structural & Phonetic,PHONETIC,7,PHONETIC sounds right but spelled wrong
 556,participatoin,participation,Structural & Phonetic,BEST,13,swapped io
-557,doct,doctor,Structural & Phonetic,HARD,6,LENGTH truncated 4 vs 6
+557,prak,park,Structural & Phonetic,HARD,4,swapped ar
 558,lisence,license,Structural & Phonetic,PHONETIC,7,PHONETIC sounds right but spelled wrong
 559,wxqz,<NONE>,Structural & Phonetic,EDGE,0,EDGE gibberish / keyboard mash / length limit
 560,zzyx,<NONE>,Structural & Phonetic,EDGE,0,EDGE gibberish / keyboard mash / length limit
@@ -578,7 +578,7 @@ id,query,ground_truth,category,type,truth_len,notes
 576,prof,professor,Structural & Phonetic,HARD,9,LENGTH truncated 4 vs 9
 577,lcassic,classic,Structural & Phonetic,NORMAL,7,swapped cl
 578,recieve,receive,Structural & Phonetic,PHONETIC,7,PHONETIC sounds right but spelled wrong
-579,indepen,independence,Structural & Phonetic,HARD,12,LENGTH truncated 7 vs 12
+579,stusy,study,Adjacent Horizontal Slips,HARD,5,typed s for d (same row)
 580,libary,library,Structural & Phonetic,PHONETIC,7,PHONETIC sounds right but spelled wrong
 581,mathematcis,mathematics,Structural & Phonetic,BEST,11,swapped ic
 582,rite,write,Structural & Phonetic,PHONETIC,5,PHONETIC sounds right but spelled wrong
@@ -589,7 +589,7 @@ id,query,ground_truth,category,type,truth_len,notes
 587,fsat,fast,Structural & Phonetic,HARD,4,swapped as
 588,underst,understanding,Structural & Phonetic,HARD,13,LENGTH truncated 7 vs 13
 589,brigde,bridge,Structural & Phonetic,HARD,6,swapped dg
-590,chocol,chocolate,Structural & Phonetic,HARD,9,LENGTH truncated 6 vs 9
+590,brigde,bridge,Structural & Phonetic,HARD,6,swapped dg
 591,embarass,embarrass,Structural & Phonetic,PHONETIC,9,PHONETIC sounds right but spelled wrong
 592,seperate,separate,Structural & Phonetic,PHONETIC,8,PHONETIC sounds right but spelled wrong
 593,nite,night,Structural & Phonetic,PHONETIC,5,PHONETIC sounds right but spelled wrong

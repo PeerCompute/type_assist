@@ -17,15 +17,15 @@ using namespace std;
 #define MAX_WORD_LEN 32
 
 // Dynamic Adaptive Weight Hyperparameters
-constexpr float upBnd   = 0.70f;
-constexpr float lowBnd  = 0.05f;
+constexpr float upBnd   = 0.6f;
+constexpr float lowBnd  = 0.1f;
 constexpr float damper  = 0.035f;
-constexpr float boost   = 0.11f;
-constexpr float init    = 0.50f;
+constexpr float boost   = 0.08f;
+constexpr float init    = 0.5f;
 
-const string TEST_CASES_CSV = "test_cases_600.csv";
+const string TEST_CASES_CSV = "new_test_cases_600.csv";         //input test cases
 const string LEXICON_FILE    = "lexicon_600.txt";
-const string ANALYTICS_FILE  = "analytics.txt";
+const string ANALYTICS_FILE  = "hybrid_analytics.txt";             //output analytics file
 
 struct XY {
     float x;
@@ -285,7 +285,7 @@ vector<Node> recomendation(const string& incorrectWord, const vector<string>& li
     return tracker.getSortedResults();
 }
 
-// CSV Parser Helper
+// CSV Parser Helper____________________________________________________________________________________________________
 vector<string> parseCSVLine(const string& line) {
     vector<string> fields;
     string field;
@@ -309,7 +309,7 @@ vector<string> parseCSVLine(const string& line) {
     fields.push_back(field);
     return fields;
 }
-
+//_______________________________________________________________________________________________________________________
 int main() {
     cout << "========================================================================\n";
     cout << "      SPELLCHECK BENCHMARK SUITE - ANALYTICS EVALUATOR\n";
@@ -439,7 +439,7 @@ int main() {
     ana << left << setw(30) << "Category"
         << setw(9)  << "Valid N"
         << setw(12) << "Top-1 Acc"
-        << setw(12) << "Top-5 Acc"
+        << setw(12) << "Top-K Acc"
         << setw(10) << "MRR"
         << setw(10) << "Avg W_lev"
         << setw(10) << "Avg W_kbd"
@@ -506,7 +506,7 @@ int main() {
     ana << "In-Lexicon Valid Queries Run    : " << validTotal << " / 600\n";
     ana << "EDGE / Out-of-Lexicon Queries   : " << (testCases.size() - validTotal) << " (rejected as intended)\n";
     ana << "Global Top-1 Accuracy           : " << fixed << setprecision(2) << finalTop1 << "%\n";
-    ana << "Global Top-5 Accuracy           : " << fixed << setprecision(2) << finalTop5 << "%\n";
+    ana << "Global Top-K Accuracy           : " << fixed << setprecision(2) << finalTop5 << "%\n";
     ana << "Global Mean Reciprocal Rank(MRR): " << setprecision(4) << finalMrr << "\n";
     ana << "Average Pipeline Latency        : " << setprecision(2) << finalLat << " us\n";
     ana << "Average Weight Balance          : W_lev = " << setprecision(2) << (gWlev / validTotal)
@@ -528,7 +528,7 @@ int main() {
 
     for (const auto& r : results) {
         string rankStr = (!r.inLexicon) ? "OOV" : ((r.rank <= K) ? ("#" + to_string(r.rank)) : "FAIL");
-        string statStr = (!r.inLexicon) ? "REJECTED" : (r.passedTop1 ? "TOP-1" : (r.passedTop5 ? "TOP-5" : "MISS"));
+        string statStr = (!r.inLexicon) ? "REJECTED" : (r.passedTop1 ? "TOP-1" : (r.passedTop5 ? "Top-K" : "MISS"));
 
         ana << left << setw(6)  << r.tc.id
             << setw(18) << r.tc.query
@@ -543,7 +543,7 @@ int main() {
     ana.close();
 
     cout << "\nAnalytics complete!\n";
-    cout << "Global Top-1 Accuracy: " << finalTop1 << "% | Top-5 Accuracy: " << finalTop5 << "% | MRR: " << finalMrr << "\n";
+    cout << "Global Top-1 Accuracy: " << finalTop1 << "% | Top-K Accuracy: " << finalTop5 << "% | MRR: " << finalMrr << "\n";
     cout << "Results written to: " << ANALYTICS_FILE << "\n";
 
     return 0;
