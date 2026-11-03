@@ -23,7 +23,7 @@
 #include "textedit.h"
 // #include "dummyautocompleteengine.h"
 // #include "dummyspellchecker.h"
-#include "SpellChecker/SpellChecker.h"
+#include "Spell_Checker/SpellChecker.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),

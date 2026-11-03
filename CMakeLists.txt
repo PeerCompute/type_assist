@@ -43,10 +43,10 @@ qt_add_executable(type_assist
     wordTable.h
 
     # Spell checker worklet
-    SpellChecker/SpellChecker.h
-    SpellChecker/Suggestions.h
-    SpellChecker/NgramInvertedIndex.h
-    SpellChecker/levenshtein+kbrd.h
+    Spell_Checker/SpellChecker.h
+    Spell_Checker/Suggestions.h
+    Spell_Checker/NgramInvertedIndex.h
+    Spell_Checker/levenshtein+kbrd.h
 )
 
 target_link_libraries(type_assist
