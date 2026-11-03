@@ -270,7 +270,7 @@ vector<Node> recomendation(const string& incorrectWord, const vector<string>& li
     return tracker.getSortedResults();
 }
 
-int main() {
+int main() {                //300
     vector<string> list = {
     // Length 2 (10 words)
     "as", "at", "by", "do", "go", "if", "in", "is", "it", "to",
