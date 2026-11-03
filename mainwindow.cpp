@@ -453,3 +453,14 @@ void MainWindow::closeEvent(QCloseEvent *event)
     else
         event->ignore();
 }
+
+void MainWindow::changeEvent(QEvent *event)
+{
+    QMainWindow::changeEvent(event);
+    if (event->type() == QEvent::WindowStateChange) {
+        if (isMinimized()) {
+            if (ui && ui->editor)
+                ui->editor->hidePopup();
+        }
+    }
+}

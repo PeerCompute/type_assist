@@ -203,6 +203,12 @@ bool TextEdit::saveDocument(const QString &path)
     return ok;
 }
 
+void TextEdit::hidePopup()
+{
+    if (m_popup)
+        m_popup->hidePopup();
+}
+
 void TextEdit::zoomInStep()
 {
     // Hard upper limit: 500%
@@ -335,6 +341,11 @@ void TextEdit::mouseMoveEvent(QMouseEvent *e)
 
 void TextEdit::onHoverTimeout()
 {
+    if (window() && window()->isMinimized()) {
+        if (m_popup)
+            m_popup->hidePopup();
+        return;
+    }
     if (!m_hoveredWord.isEmpty())
         showSpellCheckAt(m_hoverPos);
 }
@@ -385,7 +396,9 @@ void TextEdit::showEvent(QShowEvent *e)
 bool TextEdit::eventFilter(QObject *obj, QEvent *e)
 {
     if (obj == window()) {
-        if (e->type() == QEvent::Move || e->type() == QEvent::Resize || e->type() == QEvent::WindowStateChange) {
+        if (e->type() == QEvent::Move || e->type() == QEvent::Resize ||
+            e->type() == QEvent::WindowStateChange || e->type() == QEvent::WindowDeactivate ||
+            e->type() == QEvent::Hide) {
             if (m_popup)
                 m_popup->hidePopup();
         }
@@ -466,6 +479,17 @@ void TextEdit::updateAutocomplete()
         return;
     }
 
+    if (window() && window()->isMinimized()) {
+        m_popup->hidePopup();
+        return;
+    }
+
+    QRect cr = cursorRect();
+    if (!viewport()->rect().intersects(cr)) {
+        m_popup->hidePopup();
+        return;
+    }
+
     QStringList list;
     for (const auto &s : m_autoEngine->getSuggestions())
         list << QString::fromStdString(s);
@@ -476,16 +500,27 @@ void TextEdit::updateAutocomplete()
     }
 
     m_mode = SuggestionPopup::PopupMode::Autocomplete;
-    QPoint globalPos = viewport()->mapToGlobal(cursorRect().bottomLeft() + QPoint(0, 4));
-    m_popup->showSuggestions(list, globalPos, m_mode);
+    QPoint globalPos = viewport()->mapToGlobal(cr.bottomLeft() + QPoint(0, 4));
+    m_popup->showSuggestions(list, globalPos, m_mode, QString(), cr.height());
 }
 
 bool TextEdit::showSpellCheckAt(const QPoint &pos)
 {
+    if (window() && window()->isMinimized()) {
+        m_popup->hidePopup();
+        return false;
+    }
+
     QString w;
     QTextCursor c;
     if (!findMisspelledAt(pos, w, c) || !m_highlighter)
         return false;
+
+    QRect cr = cursorRect(c);
+    if (!viewport()->rect().intersects(cr)) {
+        m_popup->hidePopup();
+        return false;
+    }
 
     int block = c.block().blockNumber();
     int start = c.selectionStart() - c.block().position();
@@ -495,8 +530,8 @@ bool TextEdit::showSpellCheckAt(const QPoint &pos)
     m_mode = SuggestionPopup::PopupMode::SpellCheck;
     m_misspelledWord = w;
     m_misspelledCursor = c;
-    QPoint globalPos = viewport()->mapToGlobal(cursorRect(c).bottomLeft() + QPoint(0, 4));
-    m_popup->showSuggestions(m_highlighter->getSuggestionsFor(w), globalPos, m_mode, w);
+    QPoint globalPos = viewport()->mapToGlobal(cr.bottomLeft() + QPoint(0, 4));
+    m_popup->showSuggestions(m_highlighter->getSuggestionsFor(w), globalPos, m_mode, w, cr.height());
     return true;
 }
 

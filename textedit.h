@@ -29,6 +29,7 @@ public:
     CheckResult checkWord(const QString &word, int k = 5);
     void insertWord(const QString &word);
     bool saveDocument(const QString &filePath);
+    void hidePopup();
 
     // Zoom Controls (30% lower bound, 500% upper bound)
     static constexpr int MIN_ZOOM_PERCENT = 30;
