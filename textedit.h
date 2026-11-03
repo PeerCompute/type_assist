@@ -32,9 +32,11 @@ public:
     void insertWord(const QString &word);
     bool saveDocument(const QString &filePath);
 
-    // Zoom Controls
-    static constexpr int MIN_ZOOM_DELTA = -7; // 30% (lower limit)
-    static constexpr int MAX_ZOOM_DELTA = 40; // 500% (upper limit)
+    // Zoom Controls (30% lower bound, 500% upper bound)
+    static constexpr int MIN_ZOOM_PERCENT = 30;
+    static constexpr int MAX_ZOOM_PERCENT = 500;
+    static constexpr int MIN_ZOOM_DELTA   = (MIN_ZOOM_PERCENT - 100) / 10; // -7
+    static constexpr int MAX_ZOOM_DELTA   = (MAX_ZOOM_PERCENT - 100) / 10; // 40
     void zoomInStep();
     void zoomOutStep();
     void resetZoomStep();

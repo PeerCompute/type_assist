@@ -198,17 +198,21 @@ bool TextEdit::saveDocument(const QString &path)
 
 void TextEdit::zoomInStep()
 {
-    zoomIn(1);
-    m_zoomDelta++;
-    emit zoomChanged(100 + m_zoomDelta * 10);
+    // Hard upper limit: 500%
+    if (zoomPercent() < MAX_ZOOM_PERCENT) {
+        zoomIn(1);
+        m_zoomDelta++;
+        emit zoomChanged(zoomPercent());
+    }
 }
 
 void TextEdit::zoomOutStep()
 {
-    if (m_zoomDelta > -7) {
+    // Hard lower limit: 30%
+    if (zoomPercent() > MIN_ZOOM_PERCENT) {
         zoomOut(1);
         m_zoomDelta--;
-        emit zoomChanged(100 + m_zoomDelta * 10);
+        emit zoomChanged(zoomPercent());
     }
 }
 

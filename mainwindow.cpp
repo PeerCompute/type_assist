@@ -192,6 +192,12 @@ void MainWindow::updateZoomLabel(int percent)
     if (m_zoomLabel) {
         m_zoomLabel->setText(QString("%1%").arg(percent));
     }
+    if (ui->actionZoomIn) {
+        ui->actionZoomIn->setEnabled(percent < TextEdit::MAX_ZOOM_PERCENT);
+    }
+    if (ui->actionZoomOut) {
+        ui->actionZoomOut->setEnabled(percent > TextEdit::MIN_ZOOM_PERCENT);
+    }
 }
 
 void MainWindow::updateCursorInfo(int line, int col, int wordCount, int charCount)
