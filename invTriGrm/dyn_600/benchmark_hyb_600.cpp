@@ -17,14 +17,14 @@ using namespace std;
 #define MAX_WORD_LEN 32
 
 // Dynamic Adaptive Weight Hyperparameters
-constexpr float upBnd   = 0.6f;
-constexpr float lowBnd  = 0.1f;
-constexpr float damper  = 0.035f;
-constexpr float boost   = 0.08f;
-constexpr float init    = 0.5f;
+constexpr float upBnd   = 0.4f;
+constexpr float lowBnd  = 0.1f; 
+constexpr float damper  = 0.05f;
+constexpr float boost   = 0.11f;
+constexpr float init    = 0.235f;
 
 const string TEST_CASES_CSV = "new_test_cases_600.csv";         //input test cases
-const string LEXICON_FILE    = "lexicon_600.txt";
+const string LEXICON_FILE    = "new-dictionary-10k-unique.txt";
 const string ANALYTICS_FILE  = "hybrid_analytics.txt";             //output analytics file
 
 struct XY {
