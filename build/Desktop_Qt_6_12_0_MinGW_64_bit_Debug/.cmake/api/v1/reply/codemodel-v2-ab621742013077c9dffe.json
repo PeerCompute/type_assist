@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-c1647e87e2ad44f70518.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "type_assist",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "type_assist::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-type_assist-Debug-0971ff41350703300c5f.json",
+					"name" : "type_assist",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "type_assist_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-type_assist_autogen-Debug-4f409a66673ba069f481.json",
+					"name" : "type_assist_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "type_assist_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-type_assist_autogen_timestamp_deps-Debug-f877dc3db67e71027eaa.json",
+					"name" : "type_assist_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/PARAS/OneDrive/Desktop/ngram_autocomplete/type_assist/build/Desktop_Qt_6_12_0_MinGW_64_bit_Debug",
+		"source" : "C:/Users/PARAS/OneDrive/Desktop/ngram_autocomplete/type_assist"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
