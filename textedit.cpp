@@ -49,43 +49,50 @@ TextEdit::TextEdit(QWidget *parent)
     document()->setDefaultFont(f);
     document()->setDocumentMargin(8);
 
-    // Disable visual word-wrap so horizontal scrollbar governs width,
-    // then set document width to exactly MAX_CHARS_PER_LINE char-widths.
-    setLineWrapMode(QTextEdit::NoWrap);
+    // Responsive word-wrap: wrap at window width like Microsoft Notepad, no horizontal scrollbar
+    setLineWrapMode(QTextEdit::WidgetWidth);
+    setWordWrapMode(QTextOption::WrapAtWordBoundaryOrAnywhere);
+    setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    // Dark scrollbar styling
+    // Thin modern scrollbar styling (matching Windows Notepad)
     setStyleSheet(
         "QScrollBar:vertical {"
-        "  background: #1a1a1a;"
-        "  width: 10px;"
+        "  background: transparent;"
+        "  width: 5px;"
         "  margin: 0px;"
         "}"
         "QScrollBar::handle:vertical {"
-        "  background: #4a4a4a;"
-        "  border-radius: 5px;"
+        "  background: rgba(255, 255, 255, 0.25);"
+        "  border-radius: 2px;"
         "  min-height: 24px;"
         "}"
         "QScrollBar::handle:vertical:hover {"
-        "  background: #6a6a6a;"
+        "  background: rgba(255, 255, 255, 0.45);"
         "}"
         "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {"
         "  height: 0px;"
         "}"
+        "QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {"
+        "  background: transparent;"
+        "}"
         "QScrollBar:horizontal {"
-        "  background: #1a1a1a;"
-        "  height: 10px;"
+        "  background: transparent;"
+        "  height: 5px;"
         "  margin: 0px;"
         "}"
         "QScrollBar::handle:horizontal {"
-        "  background: #4a4a4a;"
-        "  border-radius: 5px;"
+        "  background: rgba(255, 255, 255, 0.25);"
+        "  border-radius: 2px;"
         "  min-width: 24px;"
         "}"
         "QScrollBar::handle:horizontal:hover {"
-        "  background: #6a6a6a;"
+        "  background: rgba(255, 255, 255, 0.45);"
         "}"
         "QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {"
         "  width: 0px;"
+        "}"
+        "QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {"
+        "  background: transparent;"
         "}"
     );
 
@@ -196,6 +203,12 @@ bool TextEdit::saveDocument(const QString &path)
     return ok;
 }
 
+void TextEdit::hidePopup()
+{
+    if (m_popup)
+        m_popup->hidePopup();
+}
+
 void TextEdit::zoomInStep()
 {
     // Hard upper limit: 500%
@@ -262,36 +275,8 @@ void TextEdit::keyPressEvent(QKeyEvent *e)
     if (m_popup->isVisible() && m_popup->handleKey(e))
         return;
 
-    // ── Hard 1000-char-per-line limit ────────────────────────────────────────
-    // Check BEFORE letting QTextEdit insert the character so we can block it.
     const int key = e->key();
-    const bool isPrintable = !e->text().isEmpty() && e->text()[0].isPrint();
-    const bool isTab       = (key == Qt::Key_Tab);
 
-    if (isPrintable || isTab) {
-        QTextCursor c = textCursor();
-        QString lineText = c.block().text();
-
-        // Calculate effective length of the current line with tab expansion
-        int effectiveLen = 0;
-        for (QChar ch : lineText) {
-            if (ch == '\t')
-                effectiveLen += TAB_SIZE - (effectiveLen % TAB_SIZE);
-            else
-                ++effectiveLen;
-        }
-
-        // How many columns will the incoming key consume?
-        int incoming = isTab ? (TAB_SIZE - (effectiveLen % TAB_SIZE)) : 1;
-
-        if (effectiveLen + incoming > MAX_CHARS_PER_LINE) {
-            // Line is full – silently swallow the key
-            e->accept();
-            emit statusMessage(QString("Line limit: max %1 chars per line reached.").arg(MAX_CHARS_PER_LINE));
-            return;
-        }
-    }
-    // ─────────────────────────────────────────────────────────────────────────
 
     QTextEdit::keyPressEvent(e);
 
@@ -356,6 +341,11 @@ void TextEdit::mouseMoveEvent(QMouseEvent *e)
 
 void TextEdit::onHoverTimeout()
 {
+    if (window() && window()->isMinimized()) {
+        if (m_popup)
+            m_popup->hidePopup();
+        return;
+    }
     if (!m_hoveredWord.isEmpty())
         showSpellCheckAt(m_hoverPos);
 }
@@ -406,7 +396,9 @@ void TextEdit::showEvent(QShowEvent *e)
 bool TextEdit::eventFilter(QObject *obj, QEvent *e)
 {
     if (obj == window()) {
-        if (e->type() == QEvent::Move || e->type() == QEvent::Resize || e->type() == QEvent::WindowStateChange) {
+        if (e->type() == QEvent::Move || e->type() == QEvent::Resize ||
+            e->type() == QEvent::WindowStateChange || e->type() == QEvent::WindowDeactivate ||
+            e->type() == QEvent::Hide) {
             if (m_popup)
                 m_popup->hidePopup();
         }
@@ -487,6 +479,17 @@ void TextEdit::updateAutocomplete()
         return;
     }
 
+    if (window() && window()->isMinimized()) {
+        m_popup->hidePopup();
+        return;
+    }
+
+    QRect cr = cursorRect();
+    if (!viewport()->rect().intersects(cr)) {
+        m_popup->hidePopup();
+        return;
+    }
+
     QStringList list;
     for (const auto &s : m_autoEngine->getSuggestions())
         list << QString::fromStdString(s);
@@ -497,16 +500,27 @@ void TextEdit::updateAutocomplete()
     }
 
     m_mode = SuggestionPopup::PopupMode::Autocomplete;
-    QPoint globalPos = viewport()->mapToGlobal(cursorRect().bottomLeft() + QPoint(0, 4));
-    m_popup->showSuggestions(list, globalPos, m_mode);
+    QPoint globalPos = viewport()->mapToGlobal(cr.bottomLeft() + QPoint(0, 4));
+    m_popup->showSuggestions(list, globalPos, m_mode, QString(), cr.height());
 }
 
 bool TextEdit::showSpellCheckAt(const QPoint &pos)
 {
+    if (window() && window()->isMinimized()) {
+        m_popup->hidePopup();
+        return false;
+    }
+
     QString w;
     QTextCursor c;
     if (!findMisspelledAt(pos, w, c) || !m_highlighter)
         return false;
+
+    QRect cr = cursorRect(c);
+    if (!viewport()->rect().intersects(cr)) {
+        m_popup->hidePopup();
+        return false;
+    }
 
     int block = c.block().blockNumber();
     int start = c.selectionStart() - c.block().position();
@@ -516,8 +530,8 @@ bool TextEdit::showSpellCheckAt(const QPoint &pos)
     m_mode = SuggestionPopup::PopupMode::SpellCheck;
     m_misspelledWord = w;
     m_misspelledCursor = c;
-    QPoint globalPos = viewport()->mapToGlobal(cursorRect(c).bottomLeft() + QPoint(0, 4));
-    m_popup->showSuggestions(m_highlighter->getSuggestionsFor(w), globalPos, m_mode, w);
+    QPoint globalPos = viewport()->mapToGlobal(cr.bottomLeft() + QPoint(0, 4));
+    m_popup->showSuggestions(m_highlighter->getSuggestionsFor(w), globalPos, m_mode, w, cr.height());
     return true;
 }
 

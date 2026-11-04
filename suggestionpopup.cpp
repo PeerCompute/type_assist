@@ -1,4 +1,5 @@
 #include "suggestionpopup.h"
+#include <QTextEdit>
 #include <QListWidget>
 #include <QVBoxLayout>
 #include <QKeyEvent>
@@ -110,8 +111,16 @@ bool SuggestionPopup::isMouseOver() const
 void SuggestionPopup::showSuggestions(const QStringList& suggestions,
                                       const QPoint& globalPos,
                                       PopupMode mode,
-                                      const QString& targetWord)
+                                      const QString& targetWord,
+                                      int anchorHeight)
 {
+    // Never show if parent window is minimized or not visible
+    if (parentWidget() && parentWidget()->window()) {
+        if (parentWidget()->window()->isMinimized() || !parentWidget()->window()->isVisible()) {
+            hidePopup();
+            return;
+        }
+    }
     QStringList displayList = suggestions;
     if (displayList.size() > 3)
         displayList = displayList.mid(0, 3);
@@ -190,22 +199,59 @@ void SuggestionPopup::showSuggestions(const QStringList& suggestions,
     const int totalWidth  = contentWidth + 16;
     setFixedSize(totalWidth, totalHeight);
 
-    // Screen bounds clamping
-    QPoint pos = globalPos;
+    // Confine popup strictly within the text editor viewport bounds
+    QRect boundsRect;
+    if (parentWidget()) {
+        if (auto* edit = qobject_cast<QTextEdit*>(parentWidget())) {
+            boundsRect = QRect(edit->viewport()->mapToGlobal(QPoint(0, 0)), edit->viewport()->size());
+        } else {
+            boundsRect = QRect(parentWidget()->mapToGlobal(QPoint(0, 0)), parentWidget()->size());
+        }
+    }
+
     QScreen* screen = QGuiApplication::screenAt(globalPos);
     if (!screen)
         screen = QGuiApplication::primaryScreen();
 
     if (screen) {
         QRect screenGeo = screen->availableGeometry();
-        if (pos.x() + width() > screenGeo.right())
-            pos.setX(screenGeo.right() - width());
-        if (pos.x() < screenGeo.left())
-            pos.setX(screenGeo.left());
-
-        if (pos.y() + height() > screenGeo.bottom())
-            pos.setY(pos.y() - height() - 24);
+        boundsRect = boundsRect.isValid() ? boundsRect.intersected(screenGeo) : screenGeo;
+    } else if (!boundsRect.isValid()) {
+        boundsRect = QRect(0, 0, 1920, 1080);
     }
+
+    // If editor viewport is too small to show popup, don't display
+    if (boundsRect.width() < 60 || boundsRect.height() < 60) {
+        hidePopup();
+        return;
+    }
+
+    QPoint pos = globalPos;
+
+    // Check vertical placement: try placing below the word, else flip above the word
+    int yBelow = globalPos.y();
+    int yAbove = (globalPos.y() - 4 - anchorHeight) - totalHeight;
+
+    bool fitsBelow = (yBelow + totalHeight <= boundsRect.bottom());
+    bool fitsAbove = (yAbove >= boundsRect.top());
+
+    if (fitsBelow) {
+        pos.setY(yBelow);
+    } else if (fitsAbove) {
+        pos.setY(yAbove); // Flip upwards to stay inside the text edit screen
+    } else {
+        // Neither fits completely: clamp inside bounds
+        int clampedY = boundsRect.bottom() - totalHeight;
+        if (clampedY < boundsRect.top())
+            clampedY = boundsRect.top();
+        pos.setY(clampedY);
+    }
+
+    // Check horizontal placement: clamp within bounds
+    if (pos.x() + totalWidth > boundsRect.right())
+        pos.setX(boundsRect.right() - totalWidth);
+    if (pos.x() < boundsRect.left())
+        pos.setX(boundsRect.left());
 
     move(pos);
     show();

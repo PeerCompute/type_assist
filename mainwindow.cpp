@@ -212,7 +212,14 @@ void MainWindow::updateCursorInfo(int line, int col, int wordCount, int charCoun
 
 void MainWindow::toggleWordWrap(bool enable)
 {
-    ui->editor->setLineWrapMode(enable ? QTextEdit::WidgetWidth : QTextEdit::NoWrap);
+    if (enable) {
+        ui->editor->setLineWrapMode(QTextEdit::WidgetWidth);
+        ui->editor->setWordWrapMode(QTextOption::WrapAtWordBoundaryOrAnywhere);
+        ui->editor->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    } else {
+        ui->editor->setLineWrapMode(QTextEdit::NoWrap);
+        ui->editor->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    }
 }
 
 void MainWindow::showFindDialog()
@@ -445,4 +452,15 @@ void MainWindow::closeEvent(QCloseEvent *event)
         event->accept();
     else
         event->ignore();
+}
+
+void MainWindow::changeEvent(QEvent *event)
+{
+    QMainWindow::changeEvent(event);
+    if (event->type() == QEvent::WindowStateChange) {
+        if (isMinimized()) {
+            if (ui && ui->editor)
+                ui->editor->hidePopup();
+        }
+    }
 }

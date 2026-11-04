@@ -1,8 +1,6 @@
 #ifndef TEXTEDIT_H
 #define TEXTEDIT_H
 
-// Maximum characters allowed per logical line (hard limit)
-static constexpr int MAX_CHARS_PER_LINE = 1000;
 // Tab stop width in columns used for visual column counting
 static constexpr int TAB_SIZE = 4;
 
@@ -31,6 +29,7 @@ public:
     CheckResult checkWord(const QString &word, int k = 5);
     void insertWord(const QString &word);
     bool saveDocument(const QString &filePath);
+    void hidePopup();
 
     // Zoom Controls (30% lower bound, 500% upper bound)
     static constexpr int MIN_ZOOM_PERCENT = 30;

@@ -20,7 +20,8 @@ public:
     void showSuggestions(const QStringList& suggestions,
                          const QPoint& globalPos,
                          PopupMode mode,
-                         const QString& targetWord = QString());
+                         const QString& targetWord = QString(),
+                         int anchorHeight = 24);
     void hidePopup();
 
     bool handleKey(QKeyEvent* event);
