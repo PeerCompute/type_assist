@@ -7,6 +7,7 @@
 #include <vector>
 #include <fstream>
 #include <chrono>
+#include <cctype>
 
 #define N 3
 
@@ -56,7 +57,14 @@ int buildNgramInvertedIndex(unordered_map<string, vector<uint32_t>>* index, vect
     //check if the ngram exists in the index, if it does, add the word to the vector of words for that ngram
     //else add new entry in the index with the ngram as key and the word as value in a vector
     for(string word; dictFile >> word;){
-        words.push_back(word);
+        if(find(words.begin(), words.end(), word) == words.end()){ //O(n) search, can be improved with unordered_set
+            for (char& c : word) {
+                c = static_cast<char>(
+                    std::tolower(static_cast<unsigned char>(c))
+                );
+            }
+            words.push_back(word);
+        }
     }
 /*
     for(int i = 0; i < 160; i++){  

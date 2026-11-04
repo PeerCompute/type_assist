@@ -10,6 +10,7 @@
 #include "NgramInvertedIndex.h"
 #include "Suggestions.h"
 #include <iostream>
+#include <fstream>
 
 
 class SpellChecker : public ISpellChecker {
@@ -48,6 +49,17 @@ public:
         for (char& c : low)
             c = std::tolower(static_cast<unsigned char>(c));
         m_addedWords.push_back(low);
+
+        std::ofstream dictFile("./dictionary.txt", std::ios::app);
+        if (dictFile) {
+            dictFile << low << std::endl;
+            dictFile.close();
+        } else {
+            std::cerr << "Error: Could not open dictionary file for writing." << std::endl;
+        }
+
+        generateNgrams(invIndex, m_addedWords);
+        dictFile.close();
     }
 
     int initialize(std::string dictName) {

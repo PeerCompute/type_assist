@@ -6,10 +6,14 @@
 
 using namespace std;
 
-#define K 5
-#define MAX_WORD_LEN 20
-#define Wkbd 0.5f
-#define Wlev 0.5f
+#define K 3
+#define MAX_WORD_LEN 25
+
+constexpr float upBnd   = 0.4f;
+constexpr float lowBnd  = 0.1f;
+constexpr float damper  = 0.05f;
+constexpr float boost   = 0.11f;
+constexpr float init    = 0.235f;
 
 struct XY {
     float x;
@@ -19,6 +23,8 @@ struct XY {
 struct Node {
     float score;
     string word;
+    float wLev;
+    float wKbd;
 };
 
 static const XY KB_MAP[26] = {
@@ -59,9 +65,10 @@ static inline float Sqrt(float n) {
     return root;
 }
 
-// Single-char physical keyboard distance
 static inline float charKbDist(char a, char b) {
     if (a == b) return 0.0f;
+    a = static_cast<char>(tolower(a));
+    b = static_cast<char>(tolower(b));
     if (a < 'a' || a > 'z' || b < 'a' || b > 'z') return 1.0f;
 
     const XY& p1 = KB_MAP[a - 'a'];
@@ -71,15 +78,17 @@ static inline float charKbDist(char a, char b) {
     float dy = p2.y - p1.y;
     float dist = Sqrt(dx * dx + dy * dy);
 
-    float norm = dist / 3.5f;
+    // Distances >= 4.0 physical units receive the maximum penalty (1.0)
+    float norm = dist / 4.0f;
     return (norm > 1.0f) ? 1.0f : norm;
 }
 
+// 1D Stack-Bounded Levenshtein Distance: O(L1 * L2) time
 float levenshtein(const string& s1, const string& s2) {
-    int m = s1.length();
-    int n = s2.length();
+    int m = static_cast<int>(s1.length());
+    int n = static_cast<int>(s2.length());
 
-    if (m > MAX_WORD_LEN || n > MAX_WORD_LEN) return 100.0f;
+    if (m > MAX_WORD_LEN || n > MAX_WORD_LEN) return static_cast<float>(max(m, n));
 
     int dp[MAX_WORD_LEN + 1];
     for (int j = 0; j <= n; ++j) dp[j] = j;
@@ -90,7 +99,7 @@ float levenshtein(const string& s1, const string& s2) {
 
         for (int j = 1; j <= n; ++j) {
             int temp = dp[j];
-            int cost = (s1[i - 1] == s2[j - 1]) ? 0 : 1;
+            int cost = (tolower(s1[i - 1]) == tolower(s2[j - 1])) ? 0 : 1;
 
             int ins = dp[j - 1] + 1;
             int del = dp[j] + 1;
@@ -106,15 +115,17 @@ float levenshtein(const string& s1, const string& s2) {
     return static_cast<float>(dp[n]);
 }
 
+// Positional Keyboard Distance across aligned characters
 float keyboardDist(const string& s1, const string& s2) {
-    int l1 = s1.length();
-    int l2 = s2.length();
-    if(l1-l2 > 2 || l1-l2 < -2){
-        return 1.0f;
-    }
-    int minLen = (l1 < l2) ? l1 : l2;
-    int maxLen = (l1 > l2) ? l1 : l2;
+    int l1 = static_cast<int>(s1.length());
+    int l2 = static_cast<int>(s2.length());
 
+    if (abs(l1 - l2) > 2) {
+        return 1.0f; // Rapid length discrepancy guard
+    }
+
+    int minLen = min(l1, l2);
+    int maxLen = max(l1, l2);
     if (maxLen == 0) return 0.0f;
 
     float score = 0.0f;
@@ -122,13 +133,64 @@ float keyboardDist(const string& s1, const string& s2) {
         score += charKbDist(s1[i], s2[i]);
     }
 
-    // Unmatched trailing characters add maximum physical cost
+    // Trailing unmatched characters add full penalty (1.0 each)
     score += static_cast<float>(maxLen - minLen);
 
     return score / static_cast<float>(maxLen);
 }
 
-// Bounded Max-Heap to track K lowest scores
+////////////////////////////////////////////////////////////////////////////
+void computeDynamicWeights(const string& s1, const string& s2, float& outWlev, float& outWkbd) {
+    int l1 = static_cast<int>(s1.length());
+    int l2 = static_cast<int>(s2.length());
+    int lenDiff = abs(l1 - l2);
+    int maxLen = max(l1, l2);
+    int minLen = min(l1, l2);
+
+    if (maxLen == 0) {
+        outWlev = 0.5f;        //default case
+        outWkbd = 0.5f;
+        return;
+    }
+
+    // 1. Base keyboard weight from relative length difference
+    // If words are equal in length, kbdBase starts at 0.55. As length difference grows, it drops.
+    float lengthDiscrepancy = static_cast<float>(lenDiff) / static_cast<float>(maxLen);
+    float kbdWeight = init * (1.0f - lengthDiscrepancy);
+
+    // 2. Modulate for word scale: longer words have higher structural redundancy,
+    // so Levenshtein should dominate more for longer terms.
+    if (minLen > 5) {
+        kbdWeight *= (1.0f - damper * static_cast<float>(minLen - 5));
+    }
+
+    // 3. Ergonomic Coherence Factor: Check if mismatched characters are physical neighbors
+    int mismatches = 0;
+    int contiguousSlips = 0;
+    for (int i = 0; i < minLen; ++i) {
+        if (tolower(s1[i]) != tolower(s2[i])) {
+            mismatches++;
+            if (charKbDist(s1[i], s2[i]) <= 0.35f) { // Immediate neighbors on QWERTY
+                contiguousSlips++;
+            }
+        }
+    }
+
+    // Boost keyboard weight if character mismatches are verified adjacent key slips
+    if (mismatches > 0 && mismatches <= 2) {
+        float slipRatio = static_cast<float>(contiguousSlips) / static_cast<float>(mismatches);
+        kbdWeight += (boost * slipRatio);
+    }
+
+    // 4. Boundary Clamping: Keep W_kbd in safe [lowBnd, upBnd] range
+    kbdWeight = max(lowBnd, min(upBnd, kbdWeight));
+
+
+    outWkbd = kbdWeight;
+    outWlev = 1.0f - kbdWeight;
+}
+
+// Bounded Max-Heap to track the K lowest scores
 class TopKTracker {
 private:
     Node heap[K];
@@ -138,9 +200,7 @@ private:
         while (i > 0) {
             int p = (i - 1) / 2;
             if (heap[i].score > heap[p].score) {
-                Node tmp = heap[i];
-                heap[i] = heap[p];
-                heap[p] = tmp;
+                swap(heap[i], heap[p]);
                 i = p;
             } else {
                 break;
@@ -158,9 +218,7 @@ private:
             if (r < count && heap[r].score > heap[largest].score) largest = r;
 
             if (largest != i) {
-                Node tmp = heap[i];
-                heap[i] = heap[largest];
-                heap[largest] = tmp;
+                swap(heap[i], heap[largest]);
                 i = largest;
             } else {
                 break;
@@ -171,19 +229,15 @@ private:
 public:
     TopKTracker() : count(0) {}
 
-    void insert(float score, const string& word) {
+    void insert(float score, const string& word, float wLev, float wKbd) {
         if (count < K) {
-            heap[count] = {score, word};
+            heap[count] = {score, word, wLev, wKbd};
             heapifyUp(count);
             count++;
         } else if (score < heap[0].score) {
-            heap[0] = {score, word};
+            heap[0] = {score, word, wLev, wKbd};
             heapifyDown(0);
         }
-    }
-
-    int size(){ 
-        return count;
     }
 
     vector<Node> getSortedResults() {
@@ -201,27 +255,27 @@ public:
 
 
 vector<string> recommendation(const string& incorrectWord, const vector<string>& list) {
-
     TopKTracker tracker;
 
-    for (size_t i = 0; i < list.size(); ++i) {
-        const string& candidate = list[i];
+    int incorrectLen = static_cast<int>(incorrectWord.length());
+    for (const auto& candidate : list) {
+        // Step 1: Compute custom dynamic weights for this exact (query, candidate) pair
+        float wLev, wKbd;
+        computeDynamicWeights(incorrectWord, candidate, wLev, wKbd);
 
+        // Step 2: Compute individual normalized metrics
         float levScore = levenshtein(incorrectWord, candidate);
+
         float kbScore = keyboardDist(incorrectWord, candidate);
 
+        float maxLen = static_cast<float>(max(incorrectWord.length(), candidate.length()));
+        float normLev = (maxLen == 0.0f) ? 0.0f : (levScore / maxLen);
 
-        size_t maxLen;
-        if (incorrectWord.length() > candidate.length()) {
-            maxLen = incorrectWord.length();
-        } else {
-            maxLen = candidate.length();
-        }
-        float normLev = (maxLen == 0) ? 0.0f : (levScore / static_cast<float>(maxLen));
+        // Step 3: Compute final composite score from the dynamic weights
+        float totalScore = (wLev * normLev) + (wKbd * kbScore);
+
+        tracker.insert(totalScore, candidate, wLev, wKbd);
         
-        float totalScore = (Wlev * normLev) + (Wkbd * kbScore);
-
-        tracker.insert(totalScore, candidate);
     }
 
     vector<string> listt;
@@ -233,8 +287,45 @@ vector<string> recommendation(const string& incorrectWord, const vector<string>&
     }
 
     return listt;
-    //return tracker.getSortedResults();
-}   
+
+    // return tracker.getSortedResults();
+}
+
+// vector<string> recommendation(const string& incorrectWord, const vector<string>& list) {
+
+//     TopKTracker tracker;
+
+//     for (size_t i = 0; i < list.size(); ++i) {
+//         const string& candidate = list[i];
+
+//         float levScore = levenshtein(incorrectWord, candidate);
+//         float kbScore = keyboardDist(incorrectWord, candidate);
+
+
+//         size_t maxLen;
+//         if (incorrectWord.length() > candidate.length()) {
+//             maxLen = incorrectWord.length();
+//         } else {
+//             maxLen = candidate.length();
+//         }
+//         float normLev = (maxLen == 0) ? 0.0f : (levScore / static_cast<float>(maxLen));
+        
+//         float totalScore = (Wlev * normLev) + (Wkbd * kbScore);
+
+//         tracker.insert(totalScore, candidate);
+//     }
+
+//     vector<string> listt;
+//     vector<Node> node;
+
+//     node = tracker.getSortedResults();
+//     for(size_t i = 0; i < node.size(); i++) {
+//         listt.push_back(node[i].word);
+//     }
+
+//     return listt;
+//     //return tracker.getSortedResults();
+// }   
 /*
 int main() {
     string incWrd = "playng"; // Example incorrect word

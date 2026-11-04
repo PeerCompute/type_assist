@@ -5,14 +5,13 @@
 using namespace std;
 #include "NgramInvertedIndex.h"
 #include <algorithm>
-#include "levenshtein+kbrd.h"
+#include "levn+kbd.h"
 #include <stdlib.h>
 #include <chrono>
 
-vector<string> getSuggestions(const string& incorrectWord, const unordered_map<string, vector<uint32_t>>& index, vector<string>& words) {
-    cout<<"Just entered suggestions"<<endl;
-    cout<<"Size of words vector : "<< words.size() << endl;
-
+vector<string> getSuggestions(const string& incorrectWord, const unordered_map<string, vector<uint32_t>>& index, vector<string>& words, size_t* candidateCount = nullptr) {
+    // cout<<"Just entered suggestions"<<endl;
+    // cout<<"Size of words vector : "<< words.size() << endl;
 
     vector<string> ngrams;
     vector<string> suggestions;
@@ -20,7 +19,7 @@ vector<string> getSuggestions(const string& incorrectWord, const unordered_map<s
 
     getNgrams(incorrectWord, ngrams);
 
-    cout<<"size of ngrams: "<<ngrams.size()<<endl;
+    // cout<<"size of ngrams: "<<ngrams.size()<<endl;
 
     for (const auto& ngram : ngrams) {
         auto it = index.find(ngram);
@@ -32,8 +31,8 @@ vector<string> getSuggestions(const string& incorrectWord, const unordered_map<s
         }
     }
 
-    cout<<"Just after frequency table"<<endl;
-    cout<<candFreq.size()<<endl;
+    // cout<<"Just after frequency table"<<endl;
+    // cout<<candFreq.size()<<endl;
 
     vector<pair<uint32_t, int>> sortedCandidates(candFreq.begin(), candFreq.end());
 
@@ -42,8 +41,8 @@ vector<string> getSuggestions(const string& incorrectWord, const unordered_map<s
             return a.second > b.second;
         });
 
-    cout<<"Just after sorting"<<endl;
-    cout<<"Size of sortedCandidated : " << sortedCandidates.size()<<endl;
+    // cout<<"Just after sorting"<<endl;
+    // cout<<"Size of sortedCandidated : " << sortedCandidates.size()<<endl;
 
 
     for (size_t i = 0; i < sortedCandidates.size(); i++) {
@@ -54,19 +53,12 @@ vector<string> getSuggestions(const string& incorrectWord, const unordered_map<s
         size_t candidateLen = candidate.size();
         size_t inputLen = incorrectWord.size();
 
-        size_t diff = (candidateLen > inputLen)
-                        ? candidateLen - inputLen
-                        : inputLen - candidateLen;
-
-        if (diff <= 3) {
+        size_t diff = (candidateLen > inputLen) ? candidateLen - inputLen : inputLen - candidateLen;
             suggestions.push_back(candidate);
-        }
     }
 
-
-
-
-    cout<<"Just before recommendations!"<<endl;
+    if (candidateCount != nullptr)
+        *candidateCount = suggestions.size();
     return recommendation(incorrectWord, suggestions);
 }
 /*
