@@ -1,0 +1,1247 @@
+=========================================================================================
+                  SPELLCHECK ADAPTIVE ENGINE - DETAILED ANALYTICS
+=========================================================================================
+Total Test Samples Evaluated : 600
+Dictionary                   : new-dictionary-10k.txt (11431 terms)
+N-gram Index Build Time      : 1150.54 ms
+Pipeline                     : getSuggestions() = trigram candidates + dynamic Lev/Kbd ranking
+Dynamic W_kbd bounds         : [0.100, 0.400]
+Dynamic weight parameters    : init=0.235, damper=0.050, adjacent-slip boost=0.110
+Top-3 Evaluation Cutoff      : 3 suggestions (ranks 1-3 only)
+
+-----------------------------------------------------------------------------------------
+PART 1: CATEGORY PERFORMANCE MATRIX (EXCLUDING <NONE> AND TRUTH-NOT-IN-DICT CASES)
+-----------------------------------------------------------------------------------------
+Category                        Valid N   Top-1 Acc   Top-3 Acc       MRR Avg W_lev Avg W_kbd Avg Lat (us)
+-----------------------------------------------------------------------------------------------------------
+Adjacent Horizontal Slips            99      95.96%     100.00%    0.9764      0.73      0.27       3651.07
+Single Deletions                     81      64.20%      86.42%    0.7428      0.79      0.21       4043.10
+Single Insertions                    87      93.10%      97.70%    0.9502      0.80      0.20       4540.03
+Structural & Phonetic                91      61.54%      84.62%    0.7216      0.79      0.21       4118.97
+Vertical/Diagonal Slips              87      96.55%      98.85%    0.9751      0.74      0.26       3737.78
+
+-----------------------------------------------------------------------------------------
+PART 2: GLOBAL BENCHMARK SUMMARY
+-----------------------------------------------------------------------------------------
+Valid Queries Scored            : 445 / 600
+<NONE> / OOV Ground-Truth Cases : 40 (excluded from accuracy metrics)
+Truth missing from dictionary   : 115 (excluded from accuracy metrics)
+Queries that are real dict words: 4 (kept; a real spellchecker would not flag them)
+Global Top-1 Accuracy           : 82.70%
+Global Top-3 Accuracy           : 93.71%
+Global Mean Reciprocal Rank(MRR): 0.8764
+Average Pipeline Latency        : 4008.86 us
+Average Weight Balance          : mean W_lev = 0.768 | mean W_kbd = 0.232 (per-query mean across returned Top-3 suggestions)
+Note: Top-3 metrics use only ranks 1, 2, and 3; lower-ranked results are ignored.
+Note: <NONE> rows are identified from the dataset label; this ranker does not implement rejection.
+
+-----------------------------------------------------------------------------------------
+PART 3: INDIVIDUAL QUERY TRACE (ALL 600 SAMPLES)
+-----------------------------------------------------------------------------------------
+ID     Query             Ground Truth         Candidates    Rank      Score   W_lev   W_kbd        TypeStatus
+---------------------------------------------------------------------------------------------------------------------------
+Trace W_lev/W_kbd show the dynamic weights used for each query's #1 suggestion.
+0      justicw           justice                     324     N/A     0.2583    0.73    0.27      NORMALTRUTH-NOT-IN-DICT
+1      dior              door                       1465      #1     0.1853    0.65    0.34      NORMALTOP-1
+2      internatoonal     international              1266      #1     0.0624    0.75    0.25        BESTTOP-1
+3      capitsl           capital                    1517      #1     0.1084    0.68    0.32      NORMALTOP-1
+4      soldiee           soldier                    2751     N/A     0.2945    0.75    0.25      NORMALTRUTH-NOT-IN-DICT
+5      lufe              life                       1919      #1     0.1853    0.65    0.34      NORMALTOP-1
+6      ladt              last                       1355      #1     0.1853    0.65    0.34        HARDTOP-1
+7      deteemination     determination              1618      #1     0.0624    0.75    0.25        BESTTOP-1
+8      bundlr            bundle                     1457      #1     0.1250    0.67    0.33      NORMALTOP-1
+9      qupkka            <NONE>                      296     OOV     0.4535    0.78    0.22        EDGEOOV-CASE
+10     workimg           working                    1286      #1     0.1084    0.68    0.32      NORMALTOP-1
+11     communicatiom     communication              1616      #1     0.0624    0.75    0.25        BESTTOP-1
+12     bittee            bitter                     2140      #1     0.1250    0.67    0.33      NORMALTOP-1
+13     commumity         community                  1792      #1     0.0863    0.70    0.30        BESTTOP-1
+14     wopd              wood                       1564      #1     0.1853    0.65    0.34        HARDTOP-1
+15     artisr            artist                     1556      #1     0.1250    0.67    0.33      NORMALTOP-1
+16     stufent           student                    2286      #1     0.1084    0.68    0.32      NORMALTOP-1
+17     descruption       description                1479     N/A     0.3122    0.84    0.16        BESTTRUTH-NOT-IN-DICT
+18     profuction        production                 1664     N/A     0.2196    0.83    0.17        BESTTRUTH-NOT-IN-DICT
+19     miney             money                      1487      #1     0.1482    0.65    0.34        HARDTOP-1
+20     acconplishment    accomplishment             1879      #1     0.0586    0.76    0.24        BESTTOP-1
+21     stpne             stone                      2699      #1     0.1482    0.65    0.34      NORMALTOP-1
+22     sration           station                    2130      #1     0.1084    0.68    0.32      NORMALTOP-1
+23     satisfavtion      satisfaction               2096     N/A     0.3679    0.85    0.15        BESTTRUTH-NOT-IN-DICT
+24     canp              camp                       1234      #1     0.1853    0.65    0.34        HARDTOP-1
+25     fsmily            family                     1256      #1     0.1250    0.67    0.33      NORMALTOP-1
+26     respomsibility    responsibility             1553     N/A     0.5378    0.87    0.13        BESTTRUTH-NOT-IN-DICT
+27     kook              look                        321      #1     0.1853    0.65    0.34        HARDTOP-1
+28     pstchological     psychological              1526     N/A     0.4086    0.87    0.13        BESTTRUTH-NOT-IN-DICT
+29     patticular        particular                 1825     N/A     0.3860    0.83    0.17        BESTTRUTH-NOT-IN-DICT
+30     bied              bird                       1818      #1     0.1853    0.65    0.34        HARDTOP-1
+31     labd              land                       1705      #1     0.1853    0.65    0.34        HARDTOP-1
+32     hsnd              hand                       1585      #1     0.1853    0.65    0.34      NORMALTOP-1
+33     excelleny         excellent                  1349      #1     0.0863    0.70    0.30        BESTTOP-1
+34     natiob            nation                      595      #1     0.1250    0.67    0.33      NORMALTOP-1
+35     onomaropoeia      <NONE>                      672     OOV     0.6250    0.90    0.10        EDGEOOV-CASE
+36     extraordinaty     extraordinary              1518      #1     0.0624    0.75    0.25        BESTTOP-1
+37     considrr          consider                   1968      #1     0.0960    0.69    0.31      NORMALTOP-1
+38     scjool            school                     1760      #1     0.1250    0.67    0.33      NORMALTOP-1
+39     signifixantly     significantly              2152     N/A     0.5229    0.89    0.11        BESTTRUTH-NOT-IN-DICT
+40     indepebdence      independence               2055     N/A     0.2296    0.79    0.21        BESTTRUTH-NOT-IN-DICT
+41     choive            choice                     2490      #1     0.1250    0.67    0.33      NORMALTOP-1
+42     mao               map                         758      #1     0.2471    0.65    0.34        HARDTOP-1
+43     srory             story                      1984      #1     0.1482    0.65    0.34      NORMALTOP-1
+44     envirinment       environment                1634      #1     0.0722    0.73    0.27        BESTTOP-1
+45     cae               car                        2435      #1     0.2471    0.65    0.34        HARDTOP-1
+46     reactoon          reaction                   1469      #1     0.0960    0.69    0.31      NORMALTOP-1
+47     infornation       information                1294      #1     0.0722    0.73    0.27        BESTTOP-1
+48     imporyant         important                  1378     N/A     0.3026    0.81    0.19        BESTTRUTH-NOT-IN-DICT
+49     libtary           library                    1183      #1     0.1084    0.68    0.32      NORMALTOP-1
+50     dpcumentation     documentation              1750     N/A     0.3807    0.86    0.14        BESTTRUTH-NOT-IN-DICT
+51     syn               sun                        1945      #3     0.0000    0.76    0.23      NORMALTOP-K
+52     fosh              fish                        776      #1     0.1853    0.65    0.34      NORMALTOP-1
+53     congratulayions   congratulations            3487      #1     0.0553    0.77    0.23        BESTTOP-1
+54     cakw              cake                       1145      #1     0.1853    0.65    0.34      NORMALTOP-1
+55     chikl             chill                      1503      #1     0.1482    0.65    0.34      NORMALTOP-1
+56     relationdhip      relationship               1256     N/A     0.4221    0.87    0.13        BESTTRUTH-NOT-IN-DICT
+57     comouter          computer                   2061      #1     0.0960    0.69    0.31      NORMALTOP-1
+58     patk              park                       1068      #1     0.1853    0.65    0.34        HARDTOP-1
+59     clomate           climate                    2610      #1     0.1084    0.68    0.32      NORMALTOP-1
+60     besutiful         beautiful                  1134      #1     0.0863    0.70    0.30        BESTTOP-1
+61     admimistration    administration             1803      #1     0.0586    0.76    0.24        BESTTOP-1
+62     wruting           writing                    1384      #1     0.1084    0.68    0.32      NORMALTOP-1
+63     organizatipn      organization               1130     N/A     0.4943    0.87    0.13        BESTTRUTH-NOT-IN-DICT
+64     summwr            summer                     2091      #1     0.1250    0.67    0.33      NORMALTOP-1
+65     developmwnt       development                1632      #1     0.0722    0.73    0.27        BESTTOP-1
+66     ptovision         provision                  1616      #1     0.0863    0.70    0.30        BESTTOP-1
+67     sprinf            spring                     1544      #1     0.1250    0.67    0.33      NORMALTOP-1
+68     heaf              head                        414      #1     0.1853    0.65    0.34        HARDTOP-1
+69     yelliw            yellow                      209      #1     0.1250    0.67    0.33      NORMALTOP-1
+70     approxinately     approximately              1786      #1     0.0624    0.75    0.25        BESTTOP-1
+71     transformatiom    transformation             1388     N/A     0.4379    0.87    0.13        BESTTRUTH-NOT-IN-DICT
+72     zrbra             <NONE>                      278     OOV     0.1482    0.65    0.34        EDGEOOV-CASE
+73     constututional    constitutional             1873     N/A     0.4074    0.87    0.13        BESTTRUTH-NOT-IN-DICT
+74     helpibg           helping                    1291      #1     0.1084    0.68    0.32      NORMALTOP-1
+75     mornong           morning                    1602      #1     0.1084    0.68    0.32      NORMALTOP-1
+76     syatement         statement                  2527      #1     0.0863    0.70    0.30        BESTTOP-1
+77     positoon          position                   1577      #1     0.0960    0.69    0.31      NORMALTOP-1
+78     profesdor         professor                  1685     N/A     0.3313    0.81    0.19        BESTTRUTH-NOT-IN-DICT
+79     bssketball        basketball                 1178      #1     0.0785    0.71    0.29        BESTTOP-1
+80     kubeenetes        <NONE>                     2447     OOV     0.4694    0.82    0.18        EDGEOOV-CASE
+81     dostance          distance                   2265      #1     0.0960    0.69    0.31      NORMALTOP-1
+82     pgaraoh           <NONE>                     1132     OOV     0.4668    0.83    0.17        EDGEOOV-CASE
+83     eind              wind                       1822      #1     0.1853    0.65    0.34        HARDTOP-1
+84     lettwr            letter                     1322      #1     0.1250    0.67    0.33      NORMALTOP-1
+85     prrsident         president                  1955     N/A     0.3147    0.82    0.18        BESTTRUTH-NOT-IN-DICT
+86     netwoek           network                     466      #1     0.1084    0.68    0.32      NORMALTOP-1
+87     wird              word                       1566      #1     0.1853    0.65    0.34        HARDTOP-1
+88     lookibg           looking                    1428      #1     0.1084    0.68    0.32      NORMALTOP-1
+89     kinh              king                        406      #1     0.1853    0.65    0.34        HARDTOP-1
+90     vecror            vector                     1068      #1     0.1250    0.67    0.33      NORMALTOP-1
+91     cindition         condition                  1926     N/A     0.3662    0.82    0.18        BESTTRUTH-NOT-IN-DICT
+92     foundatuon        foundation                 1340     N/A     0.3614    0.82    0.18        BESTTRUTH-NOT-IN-DICT
+93     justificatiin     justification              1070     N/A     0.3637    0.86    0.14        BESTTRUTH-NOT-IN-DICT
+94     chima             china                      1320      #1     0.1482    0.65    0.34      NORMALTOP-1
+95     bougainbillea     <NONE>                     1103     OOV     0.5910    0.89    0.11        EDGEOOV-CASE
+96     chsir             chair                      1826      #1     0.1482    0.65    0.34      NORMALTOP-1
+97     governmeny        government                 1355      #1     0.0785    0.71    0.29        BESTTOP-1
+98     populatipn        population                 1685     N/A     0.1886    0.82    0.18        BESTTRUTH-NOT-IN-DICT
+99     dof               dog                         724      #1     0.2471    0.65    0.34      NORMALTOP-1
+100    cgat              chat                       1915      #1     0.1853    0.65    0.34        HARDTOP-1
+101    jiwi              <NONE>                      155     OOV     0.1853    0.65    0.34        EDGEOOV-CASE
+102    islans            island                     2604      #1     0.1250    0.67    0.33      NORMALTOP-1
+103    orsnge            orange                     1881      #1     0.1250    0.67    0.33      NORMALTOP-1
+104    mpuntain          mountain                   1370      #1     0.0960    0.69    0.31      NORMALTOP-1
+105    performancr       performance                1897      #1     0.0722    0.73    0.27        BESTTOP-1
+106    streer            street                     2164      #1     0.1250    0.67    0.33      NORMALTOP-1
+107    mentiob           mention                    1171      #1     0.1084    0.68    0.32      NORMALTOP-1
+108    univerdity        university                 1245      #1     0.0785    0.71    0.29        BESTTOP-1
+109    buikding          building                   1617      #1     0.0960    0.69    0.31      NORMALTOP-1
+110    dicyionary        dictionary                 1635      #1     0.0785    0.71    0.29        BESTTOP-1
+111    coeffixient       coefficient                2042      #1     0.0722    0.73    0.27        BESTTOP-1
+112    counyry           country                    1791      #1     0.1084    0.68    0.32      NORMALTOP-1
+113    xheer             cheer                       873      #1     0.1482    0.65    0.34      NORMALTOP-1
+114    sinultaneously    simultaneously             2145     N/A     0.5571    0.89    0.11        BESTTRUTH-NOT-IN-DICT
+115    fsll              fall                        980      #1     0.1853    0.65    0.34        HARDTOP-1
+116    xylophpne         <NONE>                     1553     OOV     0.4099    0.82    0.18        EDGEOOV-CASE
+117    establishmeny     establishment              1696     N/A     0.5253    0.87    0.13        BESTTRUTH-NOT-IN-DICT
+118    telecommunucatio  telecommunication          1697     N/A     0.3702    0.89    0.11        BESTTRUTH-NOT-IN-DICT
+119    discriminatiin    discrimination             1570     N/A     0.3876    0.87    0.13        BESTTRUTH-NOT-IN-DICT
+120    muwic             music                       742      #1     0.1503    0.65    0.34      NORMALTOP-1
+121    rjce              rice                       2062      #1     0.1879    0.65    0.34        HARDTOP-1
+122    technolkgy        technology                 1354     N/A     0.4398    0.84    0.16        BESTTRUTH-NOT-IN-DICT
+123    mowt              most                       1505      #1     0.1879    0.65    0.34      NORMALTOP-1
+124    psycholotical     psychological              1508     N/A     0.4729    0.87    0.13        BESTTRUTH-NOT-IN-DICT
+125    hieroglhph        <NONE>                      644     OOV     0.4907    0.83    0.17        EDGEOOV-CASE
+126    lpama             <NONE>                      674     OOV     0.1503    0.65    0.34        EDGEOOV-CASE
+127    winted            winter                     1712      #1     0.1266    0.67    0.33      NORMALTOP-1
+128    educagion         education                  1299      #1     0.0873    0.70    0.30        BESTTOP-1
+129    converxation      conversation               1978     N/A     0.2725    0.85    0.15        BESTTRUTH-NOT-IN-DICT
+130    chqir             chair                      1819      #1     0.1503    0.65    0.34      NORMALTOP-1
+131    investivation     investigation              1431     N/A     0.4016    0.86    0.14        BESTTRUTH-NOT-IN-DICT
+132    stwtion           station                    2026      #1     0.1098    0.68    0.32      NORMALTOP-1
+133    coneider          consider                   2008      #1     0.0971    0.69    0.31      NORMALTOP-1
+134    cepl              cell                       1488      #1     0.1879    0.65    0.34      NORMALTOP-1
+135    pllice            police                     2355      #1     0.1266    0.67    0.33      NORMALTOP-1
+136    copd              cold                       2236      #1     0.1879    0.65    0.34      NORMALTOP-1
+137    fird              fire                       1769      #2     0.1853    0.65    0.34        HARDTOP-K
+138    sopbisticated     sophisticated              2846     N/A     0.5316    0.87    0.13        BESTTRUTH-NOT-IN-DICT
+139    imlortant         important                  1429     N/A     0.3032    0.81    0.19        BESTTRUTH-NOT-IN-DICT
+140    developjent       development                1740      #1     0.0729    0.73    0.27        BESTTOP-1
+141    coefricient       coefficient                2065      #1     0.0729    0.73    0.27        BESTTOP-1
+142    raij              rain                        685      #1     0.1879    0.65    0.34        HARDTOP-1
+143    dangerlus         dangerous                  2924     N/A     0.3416    0.84    0.16        BESTTRUTH-NOT-IN-DICT
+144    noee              nose                       1730      #1     0.1879    0.65    0.34        HARDTOP-1
+145    transformztion    transformation             1585     N/A     0.4402    0.87    0.13        BESTTRUTH-NOT-IN-DICT
+146    wlrk              work                        517      #1     0.1879    0.65    0.34      NORMALTOP-1
+147    participatioh     participation              1527     N/A     0.5020    0.86    0.14        BESTTRUTH-NOT-IN-DICT
+148    documentqtion     documentation              1642     N/A     0.3118    0.86    0.14        BESTTRUTH-NOT-IN-DICT
+149    constitutiknal    constitutional             1753     N/A     0.4076    0.87    0.13        BESTTRUTH-NOT-IN-DICT
+150    organizatikn      organization               1118     N/A     0.4943    0.87    0.13        BESTTRUTH-NOT-IN-DICT
+151    discriminagion    discrimination             1560     N/A     0.3883    0.87    0.13        BESTTRUTH-NOT-IN-DICT
+152    workihg           working                    1286      #1     0.1098    0.68    0.32      NORMALTOP-1
+153    famkly            family                     1235      #1     0.1266    0.67    0.33      NORMALTOP-1
+154    chiev             chief                      1128      #1     0.1503    0.65    0.34      NORMALTOP-1
+155    bznd              band                       1815      #1     0.1879    0.65    0.34      NORMALTOP-1
+156    avreement         agreement                  1723      #1     0.0873    0.70    0.30        BESTTOP-1
+157    doctof            doctor                      765      #1     0.1266    0.67    0.33      NORMALTOP-1
+158    sectjon           section                    2062      #1     0.1098    0.68    0.32      NORMALTOP-1
+159    comtort           comfort                    2061      #1     0.1098    0.68    0.32      NORMALTOP-1
+160    adminietration    administration             1746      #1     0.0591    0.76    0.24        BESTTOP-1
+161    dictiknary        dictionary                 1484      #1     0.0794    0.71    0.29        BESTTOP-1
+162    bundld            bundle                     1856      #1     0.1266    0.67    0.33      NORMALTOP-1
+163    howt              host                       1248      #1     0.1879    0.65    0.34        HARDTOP-1
+164    peoppe            people                     2342      #1     0.1266    0.67    0.33      NORMALTOP-1
+165    disgance          distance                   2132      #1     0.0971    0.69    0.31      NORMALTOP-1
+166    lwke              lake                       1919      #1     0.1879    0.65    0.34      NORMALTOP-1
+167    operwtion         operation                  1163      #1     0.0873    0.70    0.30        BESTTOP-1
+168    lagoratory        laboratory                 1380      #1     0.0794    0.71    0.29        BESTTOP-1
+169    quarantjne        <NONE>                     1766     OOV     0.3169    0.83    0.17        EDGEOOV-CASE
+170    authlr            author                     1491      #1     0.1266    0.67    0.33      NORMALTOP-1
+171    pydamid           <NONE>                     2101     OOV     0.1098    0.68    0.32        EDGEOOV-CASE
+172    respohsibility    responsibility             1545     N/A     0.5381    0.87    0.13        BESTTRUTH-NOT-IN-DICT
+173    chag              chat                       1961      #1     0.1879    0.65    0.34      NORMALTOP-1
+174    conxideration     consideration              2077     N/A     0.3775    0.86    0.14        BESTTRUTH-NOT-IN-DICT
+175    chdque            cheque                     2467      #1     0.1266    0.67    0.33      NORMALTOP-1
+176    yova              <NONE>                      264     OOV     0.1879    0.65    0.34        EDGEOOV-CASE
+177    bettdr            better                     1422      #1     0.1266    0.67    0.33      NORMALTOP-1
+178    sjmilarity        similarity                 2108     N/A     0.2827    0.83    0.17        BESTTRUTH-NOT-IN-DICT
+179    joufney           journey                     803      #1     0.1098    0.68    0.32      NORMALTOP-1
+180    treatjent         treatment                  1765     N/A     0.3280    0.82    0.18        BESTTRUTH-NOT-IN-DICT
+181    universkty        university                 1381      #1     0.0794    0.71    0.29        BESTTOP-1
+182    popupation        population                 1650     N/A     0.2725    0.82    0.18        BESTTRUTH-NOT-IN-DICT
+183    readijg           reading                    1677      #1     0.1098    0.68    0.32      NORMALTOP-1
+184    fzst              fast                       1429      #1     0.1879    0.65    0.34      NORMALTOP-1
+185    sllution          solution                   2054      #1     0.0971    0.69    0.31      NORMALTOP-1
+186    letger            letter                     1321      #1     0.1266    0.67    0.33      NORMALTOP-1
+187    lanc              land                        689      #1     0.1879    0.65    0.34        HARDTOP-1
+188    diffkcult         difficult                  1570      #1     0.0873    0.70    0.30        BESTTOP-1
+189    reviwion          revision                   1385      #1     0.0971    0.69    0.31      NORMALTOP-1
+190    stafement         statement                  2350      #1     0.0873    0.70    0.30        BESTTOP-1
+191    wofd              word                       1564      #1     0.1879    0.65    0.34        HARDTOP-1
+192    satisfzction      satisfaction               2151     N/A     0.4114    0.85    0.15        BESTTRUTH-NOT-IN-DICT
+193    walkiny           walking                    1100      #1     0.1098    0.68    0.32      NORMALTOP-1
+194    chdek             cheek                      1243      #1     0.1503    0.65    0.34      NORMALTOP-1
+195    cepebration       celebration                1916      #1     0.0729    0.73    0.27        BESTTOP-1
+196    posifion          position                   1655      #1     0.0971    0.69    0.31      NORMALTOP-1
+197    wpring            spring                     1391      #1     0.1266    0.67    0.33      NORMALTOP-1
+198    holiray           holiday                    1065      #1     0.1098    0.68    0.32      NORMALTOP-1
+199    hood              hold                       1609    FAIL     0.0000    0.76    0.23        HARDMISS
+200    pfogramming       programming                2011     N/A     0.4493    0.87    0.13        BESTTRUTH-NOT-IN-DICT
+201    nzture            nature                     1785      #1     0.1266    0.67    0.33      NORMALTOP-1
+202    impoementation    implementation             1506     N/A     0.5005    0.87    0.13        BESTTRUTH-NOT-IN-DICT
+203    cuaracteristic    characteristic             1811      #1     0.0591    0.76    0.24        BESTTOP-1
+204    bridgd            bridge                     1839      #1     0.1266    0.67    0.33      NORMALTOP-1
+205    congratulatione   congratulations            2985      #1     0.0557    0.77    0.23        BESTTOP-1
+206    clkmate           climate                    2601      #1     0.1098    0.68    0.32      NORMALTOP-1
+207    accomplishmeht    accomplishment             1763      #1     0.0591    0.76    0.24        BESTTOP-1
+208    heod              held                       1592      #1     0.1879    0.65    0.34        HARDTOP-1
+209    fournament        tournament                 1661     N/A     0.2739    0.84    0.16        BESTTRUTH-NOT-IN-DICT
+210    stlry             story                      1984      #1     0.1503    0.65    0.34      NORMALTOP-1
+211    exlression        expression                 1543     N/A     0.2725    0.82    0.18        BESTTRUTH-NOT-IN-DICT
+212    mathematice       mathematics                2409      #1     0.0729    0.73    0.27        BESTTOP-1
+213    infrastrucgure    infrastructure             2050      #1     0.0591    0.76    0.24        BESTTOP-1
+214    justicication     justification              1114     N/A     0.3663    0.86    0.14        BESTTRUTH-NOT-IN-DICT
+215    artiet            artist                     1632      #1     0.1266    0.67    0.33      NORMALTOP-1
+216    cqt               cat                        1883      #1     0.2505    0.65    0.34        HARDTOP-1
+217    zeppelkn          <NONE>                      758     OOV     0.4923    0.83    0.17        EDGEOOV-CASE
+218    approximztely     approximately              1546      #1     0.0630    0.75    0.25        BESTTOP-1
+219    mlney             money                      1307      #1     0.1503    0.65    0.34      NORMALTOP-1
+220    buileing          building                   1665      #1     0.0971    0.69    0.31      NORMALTOP-1
+221    esat              east                       1420      #3     0.3134    0.82    0.18        HARDTOP-K
+222    monjtor           monitor                    1492      #1     0.1098    0.68    0.32      NORMALTOP-1
+223    prkgram           program                    1159      #1     0.1098    0.68    0.32      NORMALTOP-1
+224    environmentql     environmental              1242     N/A     0.1538    0.86    0.14        BESTTRUTH-NOT-IN-DICT
+225    arcuipelago       <NONE>                      916     OOV     0.5448    0.85    0.15        EDGEOOV-CASE
+226    snos              snow                       3297      #1     0.1879    0.65    0.34      NORMALTOP-1
+227    openiny           opening                    1180      #1     0.1098    0.68    0.32      NORMALTOP-1
+228    menfion           mention                    1407      #1     0.1098    0.68    0.32      NORMALTOP-1
+229    garddn            garden                     1040      #1     0.1266    0.67    0.33      NORMALTOP-1
+230    temperzture       temperature                2265      #1     0.0729    0.73    0.27        BESTTOP-1
+231    clawsic           classic                    1211      #1     0.1098    0.68    0.32      NORMALTOP-1
+232    officef           officer                     468      #1     0.1098    0.68    0.32        HARDTOP-1
+233    mzrk              mark                        813      #1     0.1879    0.65    0.34      NORMALTOP-1
+234    neigyborhood      neighborhood               1569     N/A     0.3959    0.85    0.15        BESTTRUTH-NOT-IN-DICT
+235    hkppopotamus      <NONE>                     2582     OOV     0.5705    0.86    0.14        EDGEOOV-CASE
+236    necezsary         necessary                   974      #1     0.0873    0.70    0.30        BESTTOP-1
+237    kdy               key                         826      #1     0.2505    0.65    0.34      NORMALTOP-1
+238    purpoe            purple                     2283      #1     0.1266    0.67    0.33        HARDTOP-1
+239    plannjng          planning                   1860      #1     0.0971    0.69    0.31      NORMALTOP-1
+240    espreso           <NONE>                      954     OOV     0.2583    0.73    0.27        EDGEOOV-CASE
+241    ladt              last                       1355      #1     0.1853    0.65    0.34        HARDTOP-1
+242    wtenty            twenty                     1307      #1     0.3147    0.78    0.22        HARDTOP-1
+243    lfe               life                       1919      #2     0.2903    0.76    0.23      NORMALTOP-K
+244    cst               cat                        1883      #1     0.2471    0.65    0.34        HARDTOP-1
+245    miuns             minus                      2735    FAIL     0.2965    0.65    0.34        HARDMISS
+246    tsood             stood                      1887     N/A     0.3582    0.71    0.29        HARDTRUTH-NOT-IN-DICT
+247    playr             player                     1684      #2     0.1742    0.76    0.23        HARDTOP-K
+248    rai               rain                        752      #3     0.2500    0.82    0.18        HARDTOP-K
+249    kichen            kitchen                     879      #1     0.2288    0.81    0.19      NORMALTOP-1
+250    yei               <NONE>                      115     OOV     0.2942    0.76    0.23        EDGEOOV-CASE
+251    expeience         experience                 2060      #1     0.1729    0.83    0.17        BESTTOP-1
+252    onrmal            normal                      802      #1     0.3115    0.78    0.22        HARDTOP-1
+253    canddate          candidate                  2673      #1     0.1685    0.82    0.18        BESTTOP-1
+254    simpl             simple                     1828      #1     0.1667    0.80    0.20        HARDTOP-1
+255    indeendence       independence               2131     N/A     0.3092    0.84    0.16        BESTTRUTH-NOT-IN-DICT
+256    ho                hot                         494    FAIL     0.3333    0.84    0.16      NORMALMISS
+257    litle             year                       1963    FAIL     0.2000    0.76    0.23        HARDMISS
+258    agrement          agreement                  1734      #1     0.1842    0.82    0.18        BESTTOP-1
+259    blokchain         <NONE>                     1373     OOV     0.4666    0.82    0.18        EDGEOOV-CASE
+260    situatin          situation                  2221      #1     0.1251    0.82    0.18        BESTTOP-1
+261    deterination      determination              1861      #1     0.1276    0.86    0.14        BESTTOP-1
+262    bal               ball                       1050      #3     0.0000    0.76    0.23        HARDTOP-K
+263    an                and                        1311    FAIL     0.0000    0.76    0.23        HARDMISS
+264    snw               snow                       1412      #1     0.2941    0.82    0.18      NORMALTOP-1
+265    opning            opening                    1355      #2     0.1667    0.78    0.22      NORMALTOP-K
+266    diffiult          difficult                  1583      #1     0.1619    0.82    0.18        BESTTOP-1
+267    erason            reason                     1274      #1     0.2500    0.67    0.33        HARDTOP-1
+268    sructure          structure                  2772     N/A     0.3466    0.80    0.20        BESTTRUTH-NOT-IN-DICT
+269    ugest             guest                      1241      #1     0.3484    0.76    0.23        HARDTOP-1
+270    internatonal      international              1270      #1     0.1090    0.86    0.14        BESTTOP-1
+271    wopd              wood                       1564      #1     0.1853    0.65    0.34        HARDTOP-1
+272    rvision           nine                       1397    FAIL     0.2306    0.81    0.19        HARDMISS
+273    gaden             garden                     1059      #2     0.2000    0.76    0.23      NORMALTOP-K
+274    fosh              fish                        776      #1     0.1853    0.65    0.34        HARDTOP-1
+275    architeture       architecture               2285      #1     0.1092    0.85    0.15        BESTTOP-1
+276    ncessary          necessary                  1207      #1     0.1668    0.82    0.18        BESTTOP-1
+277    pofessional       professional               1725     N/A     0.3593    0.84    0.16        BESTTRUTH-NOT-IN-DICT
+278    cogratulations    congratulations            3501      #1     0.1332    0.88    0.12        BESTTOP-1
+279    developent        development                1815      #1     0.1303    0.84    0.16        BESTTOP-1
+280    lbrary            library                    1187      #1     0.2320    0.81    0.19      NORMALTOP-1
+281    chrsanthemum      <NONE>                     1461     OOV     0.5663    0.85    0.15        EDGEOOV-CASE
+282    thaeter           theater                    1585      #2     0.2404    0.73    0.27        HARDTOP-K
+283    techology         technology                 1444     N/A     0.3521    0.83    0.17        BESTTRUTH-NOT-IN-DICT
+284    approxiately      approximately              1747      #1     0.1238    0.86    0.14        BESTTOP-1
+285    mthod             method                     1856      #1     0.2523    0.80    0.20      NORMALTOP-1
+286    kola              <NONE>                      330     OOV     0.2447    0.76    0.23        EDGEOOV-CASE
+287    cofficient        coefficient                2058      #1     0.1793    0.84    0.16        BESTTOP-1
+288    acountability     accountability             1601      #1     0.1390    0.87    0.13        BESTTOP-1
+289    relationsip       relationship               1307     N/A     0.1818    0.85    0.15        BESTTRUTH-NOT-IN-DICT
+290    choesn            chosen                     1681      #1     0.2533    0.67    0.33        HARDTOP-1
+291    hld               hold                       1585    FAIL     0.2505    0.65    0.34        HARDMISS
+292    engineerig        engineering                1723      #1     0.0975    0.84    0.16        BESTTOP-1
+293    purpe             purple                     2285      #1     0.1993    0.80    0.20        HARDTOP-1
+294    maret             market                     1615      #2     0.2000    0.76    0.23      NORMALTOP-K
+295    monitr            monitor                    1492      #1     0.1702    0.81    0.19      NORMALTOP-1
+296    programmng        programming                1899     N/A     0.3000    0.84    0.16        BESTTRUTH-NOT-IN-DICT
+297    fairyl            fairly                     1010      #2     0.1667    0.80    0.20        HARDTOP-K
+298    heping            helping                    1382      #2     0.1667    0.78    0.22      NORMALTOP-K
+299    cllaboration      collaboration              1925      #1     0.1580    0.86    0.14        BESTTOP-1
+300    studnt            student                    2170      #1     0.1895    0.81    0.19      NORMALTOP-1
+301    tal               talk                       1095      #3     0.2500    0.82    0.18        HARDTOP-K
+302    apartmet          apartment                  1655      #1     0.1251    0.82    0.18        BESTTOP-1
+303    citien            citizen                    1767      #2     0.1667    0.78    0.22      NORMALTOP-K
+304    enertainment      entertainment              1755     N/A     0.3954    0.85    0.15        BESTTRUTH-NOT-IN-DICT
+305    demonstraion      demonstration              1694     N/A     0.3869    0.87    0.13        BESTTRUTH-NOT-IN-DICT
+306    laegue            league                     1931     N/A     0.1667    0.78    0.22        HARDTRUTH-NOT-IN-DICT
+307    nighborhood       neighborhood               1608     N/A     0.4730    0.84    0.16        BESTTRUTH-NOT-IN-DICT
+308    transfrmation     transformation             1614     N/A     0.4427    0.86    0.14        BESTTRUTH-NOT-IN-DICT
+309    behidn            behind                     1247      #2     0.2767    0.72    0.28        HARDTOP-K
+310    charcteristic     characteristic             1736      #1     0.1313    0.87    0.13        BESTTOP-1
+311    disrimination     discrimination             1592     N/A     0.2960    0.86    0.14        BESTTRUTH-NOT-IN-DICT
+312    corection         correction                 1985     N/A     0.2808    0.82    0.18        BESTTRUTH-NOT-IN-DICT
+313    choos             choose                     3105      #1     0.1667    0.80    0.20      NORMALTOP-1
+314    wotrh             worth                       551      #1     0.2965    0.65    0.34        HARDTOP-1
+315    shp               help                       1493    FAIL     0.2505    0.65    0.34        HARDMISS
+316    differen          different                  1458     N/A     0.2000    0.84    0.16        BESTTRUTH-NOT-IN-DICT
+317    cosider           consider                   1956      #1     0.2066    0.81    0.19      NORMALTOP-1
+318    evironmental      environmental              1317     N/A     0.3251    0.85    0.15        BESTTRUTH-NOT-IN-DICT
+319    identiication     identification             1588     N/A     0.4016    0.86    0.14        BESTTRUTH-NOT-IN-DICT
+320    networ            network                    1128      #1     0.1429    0.81    0.19      NORMALTOP-1
+321    similaity         similarity                 2065     N/A     0.2222    0.81    0.19        BESTTRUTH-NOT-IN-DICT
+322    organizatio       organization                794     N/A     0.3483    0.85    0.15        BESTTRUTH-NOT-IN-DICT
+323    srake             stake                      2714     N/A     0.1482    0.65    0.34        HARDTRUTH-NOT-IN-DICT
+324    pirt              port                       1747      #2     0.1853    0.65    0.34        HARDTOP-K
+325    restauran         restaurant                 1658      #1     0.1000    0.83    0.17        BESTTOP-1
+326    chsnce            chance                     2465      #1     0.1250    0.67    0.33        HARDTOP-1
+327    signifcantly      significantly              2130     N/A     0.4886    0.88    0.12        BESTTRUTH-NOT-IN-DICT
+328    prduction         production                 1656     N/A     0.3241    0.81    0.19        BESTTRUTH-NOT-IN-DICT
+329    prson             person                     1513      #1     0.2453    0.80    0.20        HARDTOP-1
+330    operatio          operation                   955      #1     0.1111    0.82    0.18        BESTTOP-1
+331    governmen         government                 1281      #1     0.1000    0.83    0.17        BESTTOP-1
+332    swiming           swimming                   2311      #1     0.1599    0.81    0.19      NORMALTOP-1
+333    natue             nature                     1757      #1     0.1794    0.69    0.31      NORMALTOP-1
+334    excllent          excellent                  1576      #1     0.1842    0.82    0.18        BESTTOP-1
+335    beter             better                     1555      #2     0.1765    0.76    0.23      NORMALTOP-K
+336    lnd               land                       1694    FAIL     0.2903    0.76    0.23        HARDMISS
+337    tsuami            <NONE>                      737     OOV     0.4658    0.80    0.20        EDGEOOV-CASE
+338    colege            college                    2477      #1     0.2070    0.81    0.19      NORMALTOP-1
+339    paticipation      participation              1727     N/A     0.3229    0.85    0.15        BESTTRUTH-NOT-IN-DICT
+340    clset             sixth                      1908    FAIL     0.1503    0.65    0.34        HARDMISS
+341    midde             middle                     2057      #1     0.1993    0.80    0.20      NORMALTOP-1
+342    partiular         particular                 1795     N/A     0.3083    0.81    0.19        BESTTRUTH-NOT-IN-DICT
+343    bok               book                        799      #2     0.2505    0.65    0.34        HARDTOP-K
+344    painetr           painter                    1889      #1     0.2555    0.79    0.21        HARDTOP-1
+345    extaordinary      extraordinary              1426      #1     0.1494    0.86    0.14        BESTTOP-1
+346    islan             island                     1085      #1     0.1667    0.80    0.20      NORMALTOP-1
+347    rhdodendron       <NONE>                     1493     OOV     0.5834    0.84    0.16        EDGEOOV-CASE
+348    coplete           fog                        2527    FAIL     0.1941    0.81    0.19        HARDMISS
+349    prgram            program                    1159      #1     0.2258    0.81    0.19      NORMALTOP-1
+350    bd                bed                        1815      #1     0.3582    0.73    0.27      NORMALTOP-1
+351    doo               door                        814      #2     0.2471    0.65    0.34        HARDTOP-K
+352    recommendaion     recommendation             1710     N/A     0.3978    0.87    0.13        BESTTRUTH-NOT-IN-DICT
+353    walus             <NONE>                     2520     OOV     0.1742    0.76    0.23        EDGEOOV-CASE
+354    bx                box                         684      #1     0.3856    0.84    0.16      NORMALTOP-1
+355    tol               told                       1079      #3     0.2471    0.65    0.34        HARDTOP-K
+356    cme               came                       2435      #3     0.2988    0.76    0.23      NORMALTOP-K
+357    hme               home                       1825    FAIL     0.2942    0.76    0.23      NORMALMISS
+358    celebraion        celebration                1864      #1     0.1158    0.84    0.16        BESTTOP-1
+359    classi            classic                    1261      #1     0.1429    0.81    0.19        HARDTOP-1
+360    lihbrary          library                    1187      #1     0.1905    0.81    0.19      NORMALTOP-1
+361    ingfrastructure   infrastructure             2953      #1     0.1156    0.88    0.12        BESTTOP-1
+362    lsaer             laser                      1253      #1     0.2965    0.65    0.34        HARDTOP-1
+363    chinba            china                      1337      #1     0.1993    0.80    0.20      NORMALTOP-1
+364    significantoly    significantly              2222     N/A     0.5529    0.89    0.11        BESTTRUTH-NOT-IN-DICT
+365    chickren          chicken                    1781      #1     0.1625    0.76    0.24      NORMALTOP-1
+366    communitry        community                  1808      #1     0.1085    0.83    0.17        BESTTOP-1
+367    mathnematics      mathematics                2976      #1     0.1601    0.85    0.15        BESTTOP-1
+368    sphginx           <NONE>                     1460     OOV     0.2039    0.81    0.19        EDGEOOV-CASE
+369    hsnd              hand                       1585      #1     0.1853    0.65    0.34        HARDTOP-1
+370    middloe           middle                     2053      #1     0.1702    0.81    0.19      NORMALTOP-1
+371    capigtal          capital                    1510      #1     0.1756    0.81    0.19      NORMALTOP-1
+372    adminisytration   administration             1729      #1     0.0971    0.88    0.12        BESTTOP-1
+373    imoportant        important                  1416     N/A     0.3330    0.83    0.17        BESTTRUTH-NOT-IN-DICT
+374    bjutter           butter                     1563      #1     0.1847    0.81    0.19      NORMALTOP-1
+375    comprehensifve    comprehensive              2600      #1     0.0845    0.81    0.19        BESTTOP-1
+376    underdstanding    understanding              1696     N/A     0.4938    0.89    0.11        BESTTRUTH-NOT-IN-DICT
+377    neighblorhood     neighborhood               1637     N/A     0.3896    0.86    0.14        BESTTRUTH-NOT-IN-DICT
+378    breaed            bread                      1900      #1     0.1809    0.69    0.31      NORMALTOP-1
+379    documentatfion    documentation              1699     N/A     0.4402    0.87    0.13        BESTTRUTH-NOT-IN-DICT
+380    brsnd             brand                      1815      #1     0.1482    0.65    0.34        HARDTOP-1
+381    entertainmemnt    entertainment              1922     N/A     0.5005    0.87    0.13        BESTTRUTH-NOT-IN-DICT
+382    treatmenyt        treatment                  1695     N/A     0.3992    0.84    0.16        BESTTRUTH-NOT-IN-DICT
+383    statiopn          station                    2126      #1     0.1459    0.81    0.19      NORMALTOP-1
+384    briudge           bridge                     2069      #1     0.1998    0.81    0.19      NORMALTOP-1
+385    developmenmt      development                1672      #1     0.0947    0.85    0.15        BESTTOP-1
+386    excrellent        excellent                  1688      #1     0.1670    0.83    0.17        BESTTOP-1
+387    iuguana           <NONE>                      639     OOV     0.5236    0.81    0.19        EDGEOOV-CASE
+388    coefficienmt      coefficient                1948      #1     0.0947    0.85    0.15        BESTTOP-1
+389    difficuklt        difficult                  1569      #1     0.1280    0.78    0.22        BESTTOP-1
+390    talkinyg          talking                    1637      #1     0.1353    0.70    0.30      NORMALTOP-1
+391    plabnning         planning                   1899      #1     0.1470    0.82    0.18      NORMALTOP-1
+392    tsaco             <NONE>                      798     OOV     0.2723    0.81    0.19        EDGEOOV-CASE
+393    conditjion        condition                  1832     N/A     0.3771    0.82    0.18        BESTTRUTH-NOT-IN-DICT
+394    vegetabloe        vegetable                  1779      #1     0.1169    0.83    0.17        BESTTOP-1
+395    esnse             sense                      2000      #3     0.2622    0.76    0.24        HARDTOP-K
+396    dedtermination    determination              1853      #1     0.1357    0.87    0.13        BESTTOP-1
+397    bittfer           bitter                     1453      #1     0.1675    0.75    0.25      NORMALTOP-1
+398    accomlplishment   accomplishment             1854      #1     0.1163    0.88    0.12        BESTTOP-1
+399    foprest           forest                     1692      #1     0.2031    0.81    0.19      NORMALTOP-1
+400    rwelationship     relationship               1321     N/A     0.3978    0.87    0.13        BESTTRUTH-NOT-IN-DICT
+401    swtreet           street                     2221      #1     0.1907    0.81    0.19      NORMALTOP-1
+402    fsll              fall                        980      #1     0.1853    0.65    0.34        HARDTOP-1
+403    judgmehnt         judgment                   1010      #1     0.1366    0.77    0.23      NORMALTOP-1
+404    fijre             fire                       2006      #1     0.2564    0.76    0.24      NORMALTOP-1
+405    tazble            table                      2119      #1     0.2616    0.80    0.20      NORMALTOP-1
+406    timre             time                       2102      #1     0.2149    0.70    0.30      NORMALTOP-1
+407    camer             came                       1888      #3     0.1667    0.80    0.20        HARDTOP-K
+408    hyome             home                       1844      #1     0.2868    0.81    0.19      NORMALTOP-1
+409    chioll            chill                      1543      #1     0.1809    0.69    0.31      NORMALTOP-1
+410    prograwm          program                    1187      #1     0.1481    0.81    0.19      NORMALTOP-1
+411    seoldier          soldier                    2129     N/A     0.3245    0.83    0.17      NORMALTRUTH-NOT-IN-DICT
+412    decisipon         decision                   1359      #1     0.1358    0.77    0.23      NORMALTOP-1
+413    mnap              rub                         807    FAIL     0.2500    0.76    0.23        HARDMISS
+414    cawterpillar      caterpillar                2036      #1     0.1477    0.85    0.15        BESTTOP-1
+415    testjing          testing                    1808      #1     0.1548    0.81    0.19      NORMALTOP-1
+416    cobngratulations  congratulations            3501      #1     0.1212    0.89    0.11        BESTTOP-1
+417    awvalanche        <NONE>                     2327     OOV     0.4027    0.83    0.17        EDGEOOV-CASE
+418    yresterday        yesterday                  1328      #1     0.1631    0.83    0.17        BESTTOP-1
+419    ewxpression       expression                 1610     N/A     0.3245    0.84    0.16        BESTTRUTH-NOT-IN-DICT
+420    archaeoloygical   archaeological             1297      #1     0.0958    0.88    0.12        BESTTOP-1
+421    edlay             delay                      1248      #2     0.2985    0.65    0.34        HARDTOP-K
+422    shipmenyt         shipment                   2228     N/A     0.4245    0.82    0.18      NORMALTRUTH-NOT-IN-DICT
+423    cnhoose           choose                     2478      #1     0.2039    0.81    0.19      NORMALTOP-1
+424    culgture          culture                    2492      #1     0.1662    0.81    0.19      NORMALTOP-1
+425    markdet           market                     1552      #1     0.1703    0.75    0.25      NORMALTOP-1
+426    orher             other                      1189      #1     0.1482    0.65    0.34        HARDTOP-1
+427    collpege          college                    2491      #1     0.1793    0.81    0.19      NORMALTOP-1
+428    architectudre     architecture               2360      #1     0.0871    0.75    0.25        BESTTOP-1
+429    participaqtion    participation              1755     N/A     0.4808    0.87    0.13        BESTTRUTH-NOT-IN-DICT
+430    cjhat             chat                       1892      #1     0.2812    0.81    0.19      NORMALTOP-1
+431    yuellow           yellow                      225      #1     0.2325    0.81    0.19      NORMALTOP-1
+432    rivder            river                      1512      #1     0.1937    0.69    0.31        HARDTOP-1
+433    lettger           letter                     1341      #1     0.1753    0.75    0.25      NORMALTOP-1
+434    blox              moon                        687    FAIL     0.1853    0.65    0.34        HARDMISS
+435    celebdration      celebration                1949      #1     0.1282    0.85    0.15        BESTTOP-1
+436    citrcuit          circuit                    1908      #1     0.1863    0.81    0.19      NORMALTOP-1
+437    educatipon        education                  1369      #1     0.1215    0.78    0.22        BESTTOP-1
+438    presidebnt        president                  1972     N/A     0.2858    0.84    0.16        BESTTRUTH-NOT-IN-DICT
+439    bundlke           bundle                     2119      #1     0.1702    0.81    0.19      NORMALTOP-1
+440    netwolrk          network                     468      #1     0.1713    0.81    0.19      NORMALTOP-1
+441    simjple           simple                     2729      #1     0.1962    0.81    0.19      NORMALTOP-1
+442    caszh             cash                       1299      #1     0.2376    0.81    0.19      NORMALTOP-1
+443    restaurawnt       restaurant                 1792      #1     0.1158    0.84    0.16        BESTTOP-1
+444    gome              home                       1825      #2     0.1853    0.65    0.34        HARDTOP-K
+445    citkizen          citizen                    1722      #1     0.1907    0.81    0.19      NORMALTOP-1
+446    accfountability   accountability             1581      #1     0.1248    0.88    0.12        BESTTOP-1
+447    fakmily           family                     1252      #1     0.2014    0.81    0.19      NORMALTOP-1
+448    pzanda            <NONE>                     1185     OOV     0.2544    0.80    0.20        EDGEOOV-CASE
+449    hzandle           handle                     1914      #1     0.2574    0.81    0.19      NORMALTOP-1
+450    tbhermodynamics   <NONE>                     2923     OOV     0.5235    0.89    0.11        EDGEOOV-CASE
+451    mornhing          morning                    1657      #1     0.1588    0.81    0.19      NORMALTOP-1
+452    mopon             moon                       1260      #1     0.2465    0.76    0.24      NORMALTOP-1
+453    paqst             past                       1730      #1     0.2423    0.81    0.19      NORMALTOP-1
+454    greren            green                      1111      #1     0.2189    0.75    0.25      NORMALTOP-1
+455    indepejndence     independence               2055     N/A     0.2541    0.86    0.14        BESTTRUTH-NOT-IN-DICT
+456    tiournament       tournament                 1952     N/A     0.3784    0.85    0.15        BESTTRUTH-NOT-IN-DICT
+457    sughgestion       suggestion                 2216     N/A     0.3032    0.84    0.16        BESTTRUTH-NOT-IN-DICT
+458    summesr           summer                     2134      #1     0.1552    0.81    0.19      NORMALTOP-1
+459    lpook             look                        680      #1     0.2316    0.70    0.30      NORMALTOP-1
+460    woord             wood                       1595      #1     0.2167    0.70    0.30        HARDTOP-1
+461    internaztional    international              1431      #1     0.1145    0.87    0.13        BESTTOP-1
+462    ofvficer          officer                    1221      #1     0.1944    0.81    0.19      NORMALTOP-1
+463    doopr             door                       1461      #1     0.2376    0.81    0.19      NORMALTOP-1
+464    recommendatiokn   recommendation             1780     N/A     0.4386    0.88    0.12        BESTTRUTH-NOT-IN-DICT
+465    constityutional   constitutional             1963     N/A     0.4733    0.88    0.12        BESTTRUTH-NOT-IN-DICT
+466    fracrtion         fraction                   1380      #1     0.1497    0.82    0.18      NORMALTOP-1
+467    mnountain         mountain                   1400      #1     0.2074    0.82    0.18      NORMALTOP-1
+468    statgement        statement                  2377      #1     0.1741    0.83    0.17        BESTTOP-1
+469    satisfacftion     satisfaction               2125     N/A     0.4144    0.86    0.14        BESTTRUTH-NOT-IN-DICT
+470    swimmking         swimming                   2259      #1     0.1365    0.82    0.18      NORMALTOP-1
+471    advehnture        adventure                  2166      #1     0.1421    0.83    0.17        BESTTOP-1
+472    tazlk             talk                        833      #1     0.2607    0.76    0.24      NORMALTOP-1
+473    perforkmance      performance                2549      #1     0.1284    0.85    0.15        BESTTOP-1
+474    wokrk             work                        517      #1     0.2752    0.81    0.19      NORMALTOP-1
+475    sithuation        situation                  2137      #1     0.1659    0.83    0.17        BESTTOP-1
+476    foolt             foot                       1448      #2     0.2000    0.81    0.19      NORMALTOP-K
+477    extraterrestrdia  <NONE>                     1942     OOV     0.6294    0.90    0.10        EDGEOOV-CASE
+478    jsellyfish        <NONE>                      490     OOV     0.5464    0.84    0.16        EDGEOOV-CASE
+479    rowad             road                       1884      #1     0.2379    0.76    0.24      NORMALTOP-1
+480    expeirence        experience                 2108      #1     0.2000    0.82    0.18        BESTTOP-1
+481    veegable          vegetable                  1753      #2     0.2478    0.80    0.20        BESTTOP-K
+482    mahime            machine                    2067      #2     0.3095    0.78    0.22      NORMALTOP-K
+483    pertty            pretty                     1654      #1     0.2500    0.67    0.33        HARDTOP-1
+484    commnad           command                    2254      #1     0.2857    0.79    0.21      NORMALTOP-1
+485    fsat              fast                       1437    FAIL     0.1879    0.65    0.34        HARDMISS
+486    etnsion           tension                    1276      #2     0.2460    0.73    0.27        HARDTOP-K
+487    dotcor            doctor                     1493      #1     0.3005    0.78    0.22        HARDTOP-1
+488    pyament           payment                    1897      #1     0.2857    0.79    0.21        HARDTOP-1
+489    prak              duty                       1068    FAIL     0.1853    0.65    0.34        HARDMISS
+490    calender          calendar                   2070      #1     0.1113    0.80    0.20    PHONETICTOP-1
+491    cemetary          cemetery                   1847      #1     0.1113    0.80    0.20    PHONETICTOP-1
+492    pronounciation    pronunciation              1838      #1     0.1310    0.87    0.13    PHONETICTOP-1
+493    occured           occurred                   1697      #1     0.1445    0.70    0.30    PHONETICTOP-1
+494    entertainmnet     entertainment              1930     N/A     0.5170    0.86    0.14        BESTTRUTH-NOT-IN-DICT
+495    cricuit           circuit                    1935      #2     0.2691    0.79    0.21        HARDTOP-K
+496    definately        definitely                 1647      #1     0.1000    0.82    0.18    PHONETICTOP-1
+497    dictioanry        dictionary                 1620      #1     0.2000    0.82    0.18        BESTTOP-1
+498    cohose            choose                     2463      #3     0.2524    0.80    0.20        HARDTOP-K
+499    efet              feet                       1430    FAIL     0.3582    0.84    0.16        HARDMISS
+500    sliver            silver                     2300    FAIL     0.1250    0.67    0.33        HARDMISS
+501    cricuit           circuit                    1935      #2     0.2691    0.79    0.21      NORMALTOP-K
+502    febuary           february                   1267      #1     0.1926    0.81    0.19    PHONETICTOP-1
+503    traetment         treatment                  1690     N/A     0.3158    0.81    0.19        BESTTRUTH-NOT-IN-DICT
+504    strecth           stretch                    1756      #1     0.2591    0.79    0.21        HARDTOP-1
+505    comittee          committee                  2569      #1     0.1456    0.82    0.18    PHONETICTOP-1
+506    enrty             entry                      1230      #1     0.2965    0.65    0.34        HARDTOP-1
+507    unforrunaely      unfortunately              1072     N/A     0.5227    0.85    0.15        BESTTRUTH-NOT-IN-DICT
+508    purpel            purple                     1314      #2     0.3131    0.81    0.19        HARDTOP-K
+509    charcateristic    characteristic             1924      #1     0.1368    0.87    0.13        BESTTOP-1
+510    itssue            tissue                     1872      #2     0.2539    0.80    0.20        HARDTOP-K
+511    ewek              week                        755      #2     0.2500    0.82    0.18        HARDTOP-K
+512    wimen             women                      1087      #1     0.1482    0.65    0.34    PHONETICTOP-1
+513    expressoin        expression                 1554     N/A     0.1870    0.82    0.18        BESTTRUTH-NOT-IN-DICT
+514    cpu               fur                        1086    FAIL     0.3333    0.76    0.23        HARDMISS
+515    chere             cheer                      2612    FAIL     0.1793    0.76    0.23        HARDMISS
+516    chere             cheer                      2612    FAIL     0.1793    0.76    0.23        HARDMISS
+517    charcteristif     characteristic             1679      #1     0.1926    0.87    0.13        BESTTOP-1
+518    cljmb             climb                      1136      #1     0.1503    0.65    0.34        HARDTOP-1
+519    acxomlishment     accomplishment             1710      #1     0.1909    0.87    0.13        BESTTOP-1
+520    enviroment        environment                1590      #1     0.1340    0.84    0.16    PHONETICTOP-1
+521    ageemenf          agreement                   929      #1     0.2799    0.82    0.18        BESTTOP-1
+522    satkon            mat                        1945    FAIL     0.2744    0.72    0.28        HARDMISS
+523    sycology          psychology                 2061      #1     0.2978    0.84    0.16    PHONETICTOP-1
+524    profewsiona       professional               1355     N/A     0.3040    0.85    0.15        BESTTRUTH-NOT-IN-DICT
+525    comprrhensiv      comprehensive              1199      #1     0.1394    0.75    0.25        BESTTOP-1
+526    intresting        interesting                1815     N/A     0.2846    0.82    0.18    PHONETICTRUTH-NOT-IN-DICT
+527    exagerate         exaggerate                 2258     N/A     0.4455    0.83    0.17    PHONETICTRUTH-NOT-IN-DICT
+528    vsat              vast                       1118      #3     0.3171    0.77    0.23        HARDTOP-K
+529    hcoice            choice                     1854      #1     0.3090    0.78    0.22        HARDTOP-1
+530    eprson            person                     1197      #1     0.3333    0.78    0.22        HARDTOP-1
+531    accomodate        accommodate                2377      #1     0.1414    0.84    0.16    PHONETICTOP-1
+532    wifh              wish                        551      #3     0.1879    0.65    0.34        HARDTOP-K
+533    qzxjv             <NONE>                      104     OOV     0.6340    0.86    0.14        EDGEOOV-CASE
+534    corectioh         correction                 1720     N/A     0.3110    0.83    0.17        BESTTRUTH-NOT-IN-DICT
+535    favrite           favorite                   2095      #1     0.2002    0.81    0.19    PHONETICTOP-1
+536    plkjhgf           <NONE>                      937     OOV     0.5702    0.83    0.17        EDGEOOV-CASE
+537    joureny           journey                     951      #1     0.2857    0.79    0.21      NORMALTOP-1
+538    ocastal           coastal                     985      #1     0.2857    0.79    0.21        HARDTOP-1
+539    necesary          necessary                  1037      #1     0.1392    0.82    0.18    PHONETICTOP-1
+540    transportatino    transportation             1415     N/A     0.5005    0.87    0.13        BESTTRUTH-NOT-IN-DICT
+541    tounge            tongue                     2196    FAIL     0.2870    0.72    0.28    PHONETICMISS
+542    fnu               fun                         574    FAIL     0.2471    0.65    0.34        HARDMISS
+543    deterimnation     determination              1775      #1     0.1430    0.86    0.14        BESTTOP-1
+544    bettre            better                     2107      #1     0.2500    0.67    0.33        HARDTOP-1
+545    tatach            attach                      977      #2     0.2925    0.78    0.22        HARDTOP-K
+546    lsat              last                       1360      #3     0.3171    0.77    0.23        HARDTOP-K
+547    cnosider          consider                   1960      #1     0.2354    0.80    0.20      NORMALTOP-1
+548    apattmet          apartment                  1591      #1     0.2211    0.77    0.23        BESTTOP-1
+549    advntire          adventure                  2193      #1     0.2707    0.82    0.18        BESTTOP-1
+550    wensday           wednesday                  1092      #1     0.2791    0.84    0.16    PHONETICTOP-1
+551    samlpe            sample                     2703      #1     0.2533    0.67    0.33        HARDTOP-1
+552    impkementtion     implementation             1396     N/A     0.5229    0.89    0.11        BESTTRUTH-NOT-IN-DICT
+553    nede              need                       1810    FAIL     0.2442    0.76    0.23        HARDMISS
+554    caterp            fair                       1678    FAIL     0.3224    0.78    0.22        HARDMISS
+555    grammer           grammar                    1255      #2     0.1263    0.79    0.21    PHONETICTOP-K
+556    participatoin     participation              1741     N/A     0.5345    0.86    0.14        BESTTRUTH-NOT-IN-DICT
+557    refues            refuse                     2810      #1     0.2533    0.67    0.33        HARDTOP-1
+558    lisence           license                    2056      #1     0.2525    0.79    0.21    PHONETICTOP-1
+559    wxqz              <NONE>                      332     OOV     0.6590    0.76    0.23        EDGEOOV-CASE
+560    zzyx              <NONE>                      104     OOV     0.5650    0.76    0.24        EDGEOOV-CASE
+561    vocbaulary        vocabulary                  995     N/A     0.5360    0.84    0.16        BESTTRUTH-NOT-IN-DICT
+562    buisness          business                   2790      #1     0.2500    0.80    0.20    PHONETICTOP-1
+563    waake             awake                      1818      #2     0.2752    0.81    0.19        HARDTOP-K
+564    thequickbrownfox  <NONE>                     1874     OOV     1.0000    0.90    0.10        EDGEOOV-CASE
+565    fifyt             fifty                      1461      #1     0.2965    0.65    0.34        HARDTOP-1
+566    sissors           scissors                   3356      #1     0.2280    0.81    0.19    PHONETICTOP-1
+567    rythm             rhythm                      869      #1     0.2134    0.80    0.20    PHONETICTOP-1
+568    neihgborhood      neighborhood               1555     N/A     0.4694    0.85    0.15        BESTTRUTH-NOT-IN-DICT
+569    kwality           quality                     913      #3     0.2572    0.73    0.27    PHONETICTOP-K
+570    neumonia          pneumonia                   526     N/A     0.3731    0.80    0.20    PHONETICTRUTH-NOT-IN-DICT
+571    hadn              rush                        995     N/A     0.2500    0.82    0.18        HARDTRUTH-NOT-IN-DICT
+572    intenrational     international              1404      #1     0.1517    0.86    0.14        BESTTOP-1
+573    asdfghjkl         <NONE>                     1113     OOV     0.5566    0.84    0.16        EDGEOOV-CASE
+574    uprple            purple                     1762      #1     0.3147    0.78    0.22        HARDTOP-1
+575    negwor            network                    1109      #1     0.2547    0.70    0.30      NORMALTOP-1
+576    riedr             rider                      1533     N/A     0.3412    0.71    0.29        HARDTRUTH-NOT-IN-DICT
+577    lcassic           classic                     745      #1     0.2857    0.79    0.21      NORMALTOP-1
+578    recieve           receive                    2162      #3     0.2500    0.81    0.19    PHONETICTOP-K
+579    stusy             study                      1983      #1     0.1482    0.65    0.34        HARDTOP-1
+580    libary            library                    1174      #1     0.1933    0.81    0.19    PHONETICTOP-1
+581    mathematcis       mathematics                2878      #1     0.1818    0.84    0.16        BESTTOP-1
+582    soleyl            solely                     1795      #1     0.3266    0.78    0.22        HARDTOP-1
+583    tomorow           tomorrow                    801      #1     0.1713    0.81    0.19    PHONETICTOP-1
+584    mmmmm             <NONE>                      818     OOV     0.5000    0.80    0.20        EDGEOOV-CASE
+585    ppayng            playing                    1779      #1     0.2936    0.81    0.19      NORMALTOP-1
+586    erly              rely                       1243      #2     0.2971    0.81    0.19        HARDTOP-K
+587    fsat              fast                       1437    FAIL     0.1879    0.65    0.34        HARDMISS
+588    underst           dust                       1504    FAIL     0.1366    0.81    0.19        HARDMISS
+589    brigde            bridge                     2078      #2     0.1993    0.75    0.25        HARDTOP-K
+590    brigde            bridge                     2078      #2     0.1993    0.75    0.25        HARDTOP-K
+591    embarass          embarrass                  2767      #1     0.1350    0.77    0.23    PHONETICTOP-1
+592    seperate          separate                   2985      #1     0.1113    0.80    0.20    PHONETICTOP-1
+593    perss             press                      2988      #2     0.2000    0.76    0.23        HARDTOP-K
+594    diffrent          different                  1709     N/A     0.3193    0.84    0.16    PHONETICTRUTH-NOT-IN-DICT
+595    reactino          reaction                   1181      #2     0.2340    0.80    0.20      NORMALTOP-K
+596    q                 <NONE>                       86     OOV     0.6667    0.90    0.10        EDGEOOV-CASE
+597    ocllege           college                    1868      #1     0.2857    0.79    0.21      NORMALTOP-1
+598    curosr            cursor                     1855      #1     0.3333    0.78    0.22        HARDTOP-1
+599    particualr        particular                 1843     N/A     0.3020    0.84    0.16        BESTTRUTH-NOT-IN-DICT
+
+-----------------------------------------------------------------------------------------
+PART 4: TOP-3 SUGGESTIONS (PROJECT PIPELINE OUTPUT)
+-----------------------------------------------------------------------------------------
+ID 0 | query='justicw' | truth='justice' | suggestions: 1.justify, 2.justified, 3.joystick
+ID 1 | query='dior' | truth='door' | suggestions: 1.door, 2.dir, 3.dor
+ID 2 | query='internatoonal' | truth='international' | suggestions: 1.international, 2.information, 3.interacting
+ID 3 | query='capitsl' | truth='capital' | suggestions: 1.capital, 2.capitals, 3.copies
+ID 4 | query='soldiee' | truth='soldier' | suggestions: 1.solder, 2.goodies, 3.saltire
+ID 5 | query='lufe' | truth='life' | suggestions: 1.life, 2.live, 3.lite
+ID 6 | query='ladt' | truth='last' | suggestions: 1.last, 2.lad, 3.lat
+ID 7 | query='deteemination' | truth='determination' | suggestions: 1.determination, 2.examination, 3.deviation
+ID 8 | query='bundlr' | truth='bundle' | suggestions: 1.bundle, 2.bundled, 3.bundles
+ID 9 | query='qupkka' | truth='<NONE>' | suggestions: 1.quirks, 2.quanta, 3.quirk
+ID 10 | query='workimg' | truth='working' | suggestions: 1.working, 2.forking, 3.wording
+ID 11 | query='communicatiom' | truth='communication' | suggestions: 1.communication, 2.complication, 3.conjunction
+ID 12 | query='bittee' | truth='bitter' | suggestions: 1.bitter, 2.butter, 3.jitter
+ID 13 | query='commumity' | truth='community' | suggestions: 1.community, 2.commuting, 3.commute
+ID 14 | query='wopd' | truth='wood' | suggestions: 1.wood, 2.word, 3.wop
+ID 15 | query='artisr' | truth='artist' | suggestions: 1.artist, 2.artists, 3.artistic
+ID 16 | query='stufent' | truth='student' | suggestions: 1.student, 2.students, 3.segment
+ID 17 | query='descruption' | truth='description' | suggestions: 1.discretion, 2.destructive, 3.decoration
+ID 18 | query='profuction' | truth='production' | suggestions: 1.profusion, 2.proportion, 3.promotion
+ID 19 | query='miney' | truth='money' | suggestions: 1.money, 2.mine, 3.ninety
+ID 20 | query='acconplishment' | truth='accomplishment' | suggestions: 1.accomplishment, 2.containment, 3.disappointment
+ID 21 | query='stpne' | truth='stone' | suggestions: 1.stone, 2.stove, 3.store
+ID 22 | query='sration' | truth='station' | suggestions: 1.station, 2.stations, 3.section
+ID 23 | query='satisfavtion' | truth='satisfaction' | suggestions: 1.saturation, 2.satisfying, 3.estimation
+ID 24 | query='canp' | truth='camp' | suggestions: 1.camp, 2.carp, 3.cant
+ID 25 | query='fsmily' | truth='family' | suggestions: 1.family, 2.smiley, 3.smile
+ID 26 | query='respomsibility' | truth='responsibility' | suggestions: 1.accountability, 2.reposit, 3.mobility
+ID 27 | query='kook' | truth='look' | suggestions: 1.look, 2.nook, 3.hook
+ID 28 | query='pstchological' | truth='psychological' | suggestions: 1.archaeological, 2.psychology, 3.logical
+ID 29 | query='patticular' | truth='particular' | suggestions: 1.particles, 2.particle, 3.partially
+ID 30 | query='bied' | truth='bird' | suggestions: 1.bird, 2.tied, 3.died
+ID 31 | query='labd' | truth='land' | suggestions: 1.land, 2.labs, 3.laid
+ID 32 | query='hsnd' | truth='hand' | suggestions: 1.hand, 2.handy, 3.hands
+ID 33 | query='excelleny' | truth='excellent' | suggestions: 1.excellent, 2.exceeding, 3.exceeded
+ID 34 | query='natiob' | truth='nation' | suggestions: 1.nation, 2.nations, 3.ration
+ID 35 | query='onomaropoeia' | truth='<NONE>' | suggestions: 1.maria, 2.maroon, 3.paranoia
+ID 36 | query='extraordinaty' | truth='extraordinary' | suggestions: 1.extraordinary, 2.ordinary, 3.ordinate
+ID 37 | query='considrr' | truth='consider' | suggestions: 1.consider, 2.considers, 3.considered
+ID 38 | query='scjool' | truth='school' | suggestions: 1.school, 2.schools, 3.scroll
+ID 39 | query='signifixantly' | truth='significantly' | suggestions: 1.signify, 2.instantly, 3.initially
+ID 40 | query='indepebdence' | truth='independence' | suggestions: 1.independent, 2.intelligence, 3.experience
+ID 41 | query='choive' | truth='choice' | suggestions: 1.choice, 2.choices, 3.choose
+ID 42 | query='mao' | truth='map' | suggestions: 1.map, 2.mako, 3.mayo
+ID 43 | query='srory' | truth='story' | suggestions: 1.story, 2.short, 3.storm
+ID 44 | query='envirinment' | truth='environment' | suggestions: 1.environment, 2.enforcement, 3.endorsement
+ID 45 | query='cae' | truth='car' | suggestions: 1.car, 2.caw, 3.cad
+ID 46 | query='reactoon' | truth='reaction' | suggestions: 1.reaction, 2.reactor, 3.raccoon
+ID 47 | query='infornation' | truth='information' | suggestions: 1.information, 2.international, 3.invocation
+ID 48 | query='imporyant' | truth='important' | suggestions: 1.importing, 2.importable, 3.imprint
+ID 49 | query='libtary' | truth='library' | suggestions: 1.library, 2.linearly, 3.liberty
+ID 50 | query='dpcumentation' | truth='documentation' | suggestions: 1.documenting, 2.determination, 3.declaration
+ID 51 | query='syn' | truth='sun' | suggestions: 1.syn, 2.sym, 3.sun
+ID 52 | query='fosh' | truth='fish' | suggestions: 1.fish, 2.cosh, 3.josh
+ID 53 | query='congratulayions' | truth='congratulations' | suggestions: 1.congratulations, 2.contains, 3.operations
+ID 54 | query='cakw' | truth='cake' | suggestions: 1.cake, 2.caw, 3.came
+ID 55 | query='chikl' | truth='chill' | suggestions: 1.chill, 2.child, 3.chick
+ID 56 | query='relationdhip' | truth='relationship' | suggestions: 1.relation, 2.relatively, 3.relating
+ID 57 | query='comouter' | truth='computer' | suggestions: 1.computer, 2.computed, 3.computers
+ID 58 | query='patk' | truth='park' | suggestions: 1.park, 2.path, 3.pack
+ID 59 | query='clomate' | truth='climate' | suggestions: 1.climate, 2.collate, 3.violate
+ID 60 | query='besutiful' | truth='beautiful' | suggestions: 1.beautiful, 2.beautify, 3.restful
+ID 61 | query='admimistration' | truth='administration' | suggestions: 1.administration, 2.migration, 3.animation
+ID 62 | query='wruting' | truth='writing' | suggestions: 1.writing, 2.writings, 3.waiting
+ID 63 | query='organizatipn' | truth='organization' | suggestions: 1.organize, 2.organized, 3.animation
+ID 64 | query='summwr' | truth='summer' | suggestions: 1.summer, 2.summed, 3.summary
+ID 65 | query='developmwnt' | truth='development' | suggestions: 1.development, 2.developmental, 3.developing
+ID 66 | query='ptovision' | truth='provision' | suggestions: 1.provision, 2.provisional, 3.profusion
+ID 67 | query='sprinf' | truth='spring' | suggestions: 1.spring, 2.sprint, 3.springe
+ID 68 | query='heaf' | truth='head' | suggestions: 1.head, 2.heat, 3.hear
+ID 69 | query='yelliw' | truth='yellow' | suggestions: 1.yellow, 2.telling, 3.hello
+ID 70 | query='approxinately' | truth='approximately' | suggestions: 1.approximately, 2.approval, 3.application
+ID 71 | query='transformatiom' | truth='transformation' | suggestions: 1.transferable, 2.information, 3.transfer
+ID 72 | query='zrbra' | truth='<NONE>' | suggestions: 1.zebra, 2.cobra, 3.libra
+ID 73 | query='constututional' | truth='constitutional' | suggestions: 1.contribution, 2.consumption, 3.congratulations
+ID 74 | query='helpibg' | truth='helping' | suggestions: 1.helping, 2.telling, 3.selling
+ID 75 | query='mornong' | truth='morning' | suggestions: 1.morning, 2.mocking, 3.forming
+ID 76 | query='syatement' | truth='statement' | suggestions: 1.statement, 2.placement, 3.agreement
+ID 77 | query='positoon' | truth='position' | suggestions: 1.position, 2.positions, 3.opposition
+ID 78 | query='profesdor' | truth='professor' | suggestions: 1.profusion, 2.processed, 3.process
+ID 79 | query='bssketball' | truth='basketball' | suggestions: 1.basketball, 2.baseball, 3.sidewall
+ID 80 | query='kubeenetes' | truth='<NONE>' | suggestions: 1.currencies, 2.currents, 3.subentry
+ID 81 | query='dostance' | truth='distance' | suggestions: 1.distance, 2.distances, 3.instance
+ID 82 | query='pgaraoh' | truth='<NONE>' | suggestions: 1.paras, 2.parish, 3.parrot
+ID 83 | query='eind' | truth='wind' | suggestions: 1.wind, 2.find, 3.bind
+ID 84 | query='lettwr' | truth='letter' | suggestions: 1.letter, 2.petter, 3.letters
+ID 85 | query='prrsident' | truth='president' | suggestions: 1.resident, 2.present, 3.trident
+ID 86 | query='netwoek' | truth='network' | suggestions: 1.network, 2.networks, 3.artwork
+ID 87 | query='wird' | truth='word' | suggestions: 1.word, 2.wire, 3.wired
+ID 88 | query='lookibg' | truth='looking' | suggestions: 1.looking, 2.looping, 3.hooking
+ID 89 | query='kinh' | truth='king' | suggestions: 1.king, 2.kink, 3.kind
+ID 90 | query='vecror' | truth='vector' | suggestions: 1.vector, 2.vectors, 3.sector
+ID 91 | query='cindition' | truth='condition' | suggestions: 1.citation, 2.indication, 3.edition
+ID 92 | query='foundatuon' | truth='foundation' | suggestions: 1.truncation, 2.fountain, 3.emendations
+ID 93 | query='justificatiin' | truth='justification' | suggestions: 1.notification, 2.modification, 3.verification
+ID 94 | query='chima' | truth='china' | suggestions: 1.china, 2.chimera, 3.anima
+ID 95 | query='bougainbillea' | truth='<NONE>' | suggestions: 1.braille, 2.vanilla, 3.unfilled
+ID 96 | query='chsir' | truth='chair' | suggestions: 1.chair, 2.their, 3.chain
+ID 97 | query='governmeny' | truth='government' | suggestions: 1.government, 2.governing, 3.governed
+ID 98 | query='populatipn' | truth='population' | suggestions: 1.populating, 2.modulation, 3.populated
+ID 99 | query='dof' | truth='dog' | suggestions: 1.dog, 2.doff, 3.doc
+ID 100 | query='cgat' | truth='chat' | suggestions: 1.chat, 2.coat, 3.cat
+ID 101 | query='jiwi' | truth='<NONE>' | suggestions: 1.kiwi, 2.nisi, 3.midi
+ID 102 | query='islans' | truth='island' | suggestions: 1.island, 2.islands, 3.sans
+ID 103 | query='orsnge' | truth='orange' | suggestions: 1.orange, 2.oranges, 3.orang
+ID 104 | query='mpuntain' | truth='mountain' | suggestions: 1.mountain, 2.mountains, 3.fountain
+ID 105 | query='performancr' | truth='performance' | suggestions: 1.performance, 2.performing, 3.performer
+ID 106 | query='streer' | truth='street' | suggestions: 1.street, 2.steer, 3.streets
+ID 107 | query='mentiob' | truth='mention' | suggestions: 1.mention, 2.mentions, 3.mentioned
+ID 108 | query='univerdity' | truth='university' | suggestions: 1.university, 2.universe, 3.severity
+ID 109 | query='buikding' | truth='building' | suggestions: 1.building, 2.blinding, 3.biking
+ID 110 | query='dicyionary' | truth='dictionary' | suggestions: 1.dictionary, 2.diagonally, 3.diagonals
+ID 111 | query='coeffixient' | truth='coefficient' | suggestions: 1.coefficient, 2.containment, 3.confluent
+ID 112 | query='counyry' | truth='country' | suggestions: 1.country, 2.foundry, 3.county
+ID 113 | query='xheer' | truth='cheer' | suggestions: 1.cheer, 2.sheet, 3.steer
+ID 114 | query='sinultaneously' | truth='simultaneously' | suggestions: 1.minutely, 2.instantly, 3.simulates
+ID 115 | query='fsll' | truth='fall' | suggestions: 1.fall, 2.fell, 3.full
+ID 116 | query='xylophpne' | truth='<NONE>' | suggestions: 1.colophon, 2.cyclone, 3.sloping
+ID 117 | query='establishmeny' | truth='establishment' | suggestions: 1.accomplishment, 2.entanglement, 3.stable
+ID 118 | query='telecommunucation' | truth='telecommunication' | suggestions: 1.communication, 2.truncation, 3.conjunction
+ID 119 | query='discriminatiin' | truth='discrimination' | suggestions: 1.determination, 2.discretion, 3.verification
+ID 120 | query='muwic' | truth='music' | suggestions: 1.music, 2.mimic, 3.medic
+ID 121 | query='rjce' | truth='rice' | suggestions: 1.rice, 2.race, 3.ride
+ID 122 | query='technolkgy' | truth='technology' | suggestions: 1.theology, 2.psychology, 3.recently
+ID 123 | query='mowt' | truth='most' | suggestions: 1.most, 2.mort, 3.mot
+ID 124 | query='psycholotical' | truth='psychological' | suggestions: 1.archaeological, 2.psychology, 3.school
+ID 125 | query='hieroglhph' | truth='<NONE>' | suggestions: 1.hierarchy, 2.hydrogen, 3.hiragana
+ID 126 | query='lpama' | truth='<NONE>' | suggestions: 1.llama, 2.spam, 3.lemma
+ID 127 | query='winted' | truth='winter' | suggestions: 1.winter, 2.wilted, 3.hinted
+ID 128 | query='educagion' | truth='education' | suggestions: 1.education, 2.emulation, 3.dedication
+ID 129 | query='converxation' | truth='conversation' | suggestions: 1.conversion, 2.converting, 3.contraction
+ID 130 | query='chqir' | truth='chair' | suggestions: 1.chair, 2.chain, 3.their
+ID 131 | query='investivation' | truth='investigation' | suggestions: 1.initiation, 2.invitation, 3.estimation
+ID 132 | query='stwtion' | truth='station' | suggestions: 1.station, 2.stations, 3.section
+ID 133 | query='coneider' | truth='consider' | suggestions: 1.consider, 2.considers, 3.collider
+ID 134 | query='cepl' | truth='cell' | suggestions: 1.cell, 2.ceil, 3.cells
+ID 135 | query='pllice' | truth='police' | suggestions: 1.police, 2.polices, 3.polite
+ID 136 | query='copd' | truth='cold' | suggestions: 1.cold, 2.cope, 3.copy
+ID 137 | query='fird' | truth='fire' | suggestions: 1.ford, 2.fire, 3.fired
+ID 138 | query='sopbisticated' | truth='sophisticated' | suggestions: 1.indicated, 2.solicited, 3.estimated
+ID 139 | query='imlortant' | truth='important' | suggestions: 1.importing, 2.immortal, 3.importable
+ID 140 | query='developjent' | truth='development' | suggestions: 1.development, 2.developmental, 3.developing
+ID 141 | query='coefricient' | truth='coefficient' | suggestions: 1.coefficient, 2.containment, 3.conflicting
+ID 142 | query='raij' | truth='rain' | suggestions: 1.rain, 2.rail, 3.raid
+ID 143 | query='dangerlus' | truth='dangerous' | suggestions: 1.dancers, 2.danger, 3.banners
+ID 144 | query='noee' | truth='nose' | suggestions: 1.nose, 2.node, 3.note
+ID 145 | query='transformztion' | truth='transformation' | suggestions: 1.information, 2.transferable, 3.transfer
+ID 146 | query='wlrk' | truth='work' | suggestions: 1.work, 2.works, 3.worm
+ID 147 | query='participatioh' | truth='participation' | suggestions: 1.verification, 2.notification, 3.pronunciation
+ID 148 | query='documentqtion' | truth='documentation' | suggestions: 1.documenting, 2.document, 3.documents
+ID 149 | query='constitutiknal' | truth='constitutional' | suggestions: 1.contribution, 2.consisting, 3.continuing
+ID 150 | query='organizatikn' | truth='organization' | suggestions: 1.organize, 2.organized, 3.animation
+ID 151 | query='discriminagion' | truth='discrimination' | suggestions: 1.determination, 2.discretion, 3.verification
+ID 152 | query='workihg' | truth='working' | suggestions: 1.working, 2.forking, 3.wording
+ID 153 | query='famkly' | truth='family' | suggestions: 1.family, 2.fairly, 3.namely
+ID 154 | query='chiev' | truth='chief' | suggestions: 1.chief, 2.chirp, 3.ching
+ID 155 | query='bznd' | truth='band' | suggestions: 1.band, 2.bend, 3.bond
+ID 156 | query='avreement' | truth='agreement' | suggestions: 1.agreement, 2.arrangement, 3.statement
+ID 157 | query='doctof' | truth='doctor' | suggestions: 1.doctor, 2.doctoral, 3.victor
+ID 158 | query='sectjon' | truth='section' | suggestions: 1.section, 2.sections, 3.sector
+ID 159 | query='comtort' | truth='comfort' | suggestions: 1.comfort, 2.contour, 3.conform
+ID 160 | query='adminietration' | truth='administration' | suggestions: 1.administration, 2.initiation, 3.migration
+ID 161 | query='dictiknary' | truth='dictionary' | suggestions: 1.dictionary, 2.distiller, 3.distinct
+ID 162 | query='bundld' | truth='bundle' | suggestions: 1.bundle, 2.bundled, 3.bundles
+ID 163 | query='howt' | truth='host' | suggestions: 1.host, 2.howl, 3.holt
+ID 164 | query='peoppe' | truth='people' | suggestions: 1.people, 2.pepper, 3.popper
+ID 165 | query='disgance' | truth='distance' | suggestions: 1.distance, 2.distances, 3.distant
+ID 166 | query='lwke' | truth='lake' | suggestions: 1.lake, 2.like, 3.lame
+ID 167 | query='operwtion' | truth='operation' | suggestions: 1.operation, 2.operations, 3.operating
+ID 168 | query='lagoratory' | truth='laboratory' | suggestions: 1.laboratory, 2.derogatory, 3.locators
+ID 169 | query='quarantjne' | truth='<NONE>' | suggestions: 1.guarantee, 2.quadrant, 3.quadrants
+ID 170 | query='authlr' | truth='author' | suggestions: 1.author, 2.authors, 3.auteur
+ID 171 | query='pydamid' | truth='<NONE>' | suggestions: 1.pyramid, 2.dynamic, 3.dynamics
+ID 172 | query='respohsibility' | truth='responsibility' | suggestions: 1.accountability, 2.reposit, 3.mobility
+ID 173 | query='chag' | truth='chat' | suggestions: 1.chat, 2.char, 3.chad
+ID 174 | query='conxideration' | truth='consideration' | suggestions: 1.collaboration, 2.considering, 3.moderation
+ID 175 | query='chdque' | truth='cheque' | suggestions: 1.cheque, 2.clique, 3.conquer
+ID 176 | query='yova' | truth='<NONE>' | suggestions: 1.yoga, 2.nova, 3.ova
+ID 177 | query='bettdr' | truth='better' | suggestions: 1.better, 2.getter, 3.setter
+ID 178 | query='sjmilarity' | truth='similarity' | suggestions: 1.similarly, 2.simulating, 3.simulation
+ID 179 | query='joufney' | truth='journey' | suggestions: 1.journey, 2.journal, 3.joiner
+ID 180 | query='treatjent' | truth='treatment' | suggestions: 1.treating, 2.greatest, 3.treated
+ID 181 | query='universkty' | truth='university' | suggestions: 1.university, 2.universe, 3.inversely
+ID 182 | query='popupation' | truth='population' | suggestions: 1.populating, 2.modulation, 3.operation
+ID 183 | query='readijg' | truth='reading' | suggestions: 1.reading, 2.readings, 3.readily
+ID 184 | query='fzst' | truth='fast' | suggestions: 1.fast, 2.fest, 3.fist
+ID 185 | query='sllution' | truth='solution' | suggestions: 1.solution, 2.solutions, 3.pollution
+ID 186 | query='letger' | truth='letter' | suggestions: 1.letter, 2.ledger, 3.petter
+ID 187 | query='lanc' | truth='land' | suggestions: 1.land, 2.lance, 3.lang
+ID 188 | query='diffkcult' | truth='difficult' | suggestions: 1.difficult, 2.diffuse, 3.default
+ID 189 | query='reviwion' | truth='revision' | suggestions: 1.revision, 2.revisions, 3.religion
+ID 190 | query='stafement' | truth='statement' | suggestions: 1.statement, 2.placement, 3.agreement
+ID 191 | query='wofd' | truth='word' | suggestions: 1.word, 2.wood, 3.words
+ID 192 | query='satisfzction' | truth='satisfaction' | suggestions: 1.notification, 2.satisfying, 3.saturation
+ID 193 | query='walkiny' | truth='walking' | suggestions: 1.walking, 2.talking, 3.waking
+ID 194 | query='chdek' | truth='cheek' | suggestions: 1.cheek, 2.cheeks, 3.check
+ID 195 | query='cepebration' | truth='celebration' | suggestions: 1.celebration, 2.separation, 3.federation
+ID 196 | query='posifion' | truth='position' | suggestions: 1.position, 2.positions, 3.opposition
+ID 197 | query='wpring' | truth='spring' | suggestions: 1.spring, 2.sprint, 3.springs
+ID 198 | query='holiray' | truth='holiday' | suggestions: 1.holiday, 2.holidays, 3.hallway
+ID 199 | query='hood' | truth='hold' | suggestions: 1.hood, 2.hoof, 3.good
+ID 200 | query='pfogramming' | truth='programming' | suggestions: 1.forming, 2.framing, 3.performing
+ID 201 | query='nzture' | truth='nature' | suggestions: 1.nature, 2.mature, 3.future
+ID 202 | query='impoementation' | truth='implementation' | suggestions: 1.nomination, 2.moderation, 3.information
+ID 203 | query='cuaracteristic' | truth='characteristic' | suggestions: 1.characteristic, 2.artistic, 3.quarters
+ID 204 | query='bridgd' | truth='bridge' | suggestions: 1.bridge, 2.bridged, 3.bridges
+ID 205 | query='congratulatione' | truth='congratulations' | suggestions: 1.congratulations, 2.graduation, 3.contraction
+ID 206 | query='clkmate' | truth='climate' | suggestions: 1.climate, 2.collate, 3.commute
+ID 207 | query='accomplishmeht' | truth='accomplishment' | suggestions: 1.accomplishment, 2.complies, 3.comprise
+ID 208 | query='heod' | truth='held' | suggestions: 1.held, 2.head, 3.hood
+ID 209 | query='fournament' | truth='tournament' | suggestions: 1.ornament, 2.ornaments, 3.government
+ID 210 | query='stlry' | truth='story' | suggestions: 1.story, 2.study, 3.storm
+ID 211 | query='exlression' | truth='expression' | suggestions: 1.expressing, 2.expressly, 3.expressed
+ID 212 | query='mathematice' | truth='mathematics' | suggestions: 1.mathematics, 2.thematic, 3.pathetic
+ID 213 | query='infrastrucgure' | truth='infrastructure' | suggestions: 1.infrastructure, 2.insecure, 3.instruct
+ID 214 | query='justicication' | truth='justification' | suggestions: 1.notification, 2.modification, 3.verification
+ID 215 | query='artiet' | truth='artist' | suggestions: 1.artist, 2.artists, 3.artistic
+ID 216 | query='cqt' | truth='cat' | suggestions: 1.cat, 2.cit, 3.cut
+ID 217 | query='zeppelkn' | truth='<NONE>' | suggestions: 1.reopen, 2.zipper, 3.zipped
+ID 218 | query='approximztely' | truth='approximately' | suggestions: 1.approximately, 2.promptly, 3.approx
+ID 219 | query='mlney' | truth='money' | suggestions: 1.money, 2.honey, 3.monkey
+ID 220 | query='buileing' | truth='building' | suggestions: 1.building, 2.builtin, 3.billing
+ID 221 | query='esat' | truth='east' | suggestions: 1.sat, 2.eat, 3.east
+ID 222 | query='monjtor' | truth='monitor' | suggestions: 1.monitor, 2.monitors, 3.monster
+ID 223 | query='prkgram' | truth='program' | suggestions: 1.program, 2.programs, 3.trigram
+ID 224 | query='environmentql' | truth='environmental' | suggestions: 1.environment, 2.developmental, 3.enforcement
+ID 225 | query='arcuipelago' | truth='<NONE>' | suggestions: 1.archiving, 2.architecture, 3.archival
+ID 226 | query='snos' | truth='snow' | suggestions: 1.snow, 2.snowy, 3.nos
+ID 227 | query='openiny' | truth='opening' | suggestions: 1.opening, 2.penny, 3.opinions
+ID 228 | query='menfion' | truth='mention' | suggestions: 1.mention, 2.mentions, 3.tension
+ID 229 | query='garddn' | truth='garden' | suggestions: 1.garden, 2.harden, 3.garland
+ID 230 | query='temperzture' | truth='temperature' | suggestions: 1.temperature, 2.aperture, 3.texture
+ID 231 | query='clawsic' | truth='classic' | suggestions: 1.classic, 2.classics, 3.classify
+ID 232 | query='officef' | truth='officer' | suggestions: 1.officer, 2.office, 3.official
+ID 233 | query='mzrk' | truth='mark' | suggestions: 1.mark, 2.marks, 3.marl
+ID 234 | query='neigyborhood' | truth='neighborhood' | suggestions: 1.neighboring, 2.neighbors, 3.neighbor
+ID 235 | query='hkppopotamus' | truth='<NONE>' | suggestions: 1.proposals, 2.kappas, 3.supports
+ID 236 | query='necezsary' | truth='necessary' | suggestions: 1.necessary, 2.ancestry, 3.receivers
+ID 237 | query='kdy' | truth='key' | suggestions: 1.key, 2.keys, 3.ley
+ID 238 | query='purpoe' | truth='purple' | suggestions: 1.purple, 2.purpose, 3.purples
+ID 239 | query='plannjng' | truth='planning' | suggestions: 1.planning, 2.panning, 3.spanning
+ID 240 | query='espreso' | truth='<NONE>' | suggestions: 1.express, 2.cypress, 3.expires
+ID 241 | query='ladt' | truth='last' | suggestions: 1.last, 2.lad, 3.lat
+ID 242 | query='wtenty' | truth='twenty' | suggestions: 1.twenty, 2.plenty, 3.went
+ID 243 | query='lfe' | truth='life' | suggestions: 1.lee, 2.life, 3.lie
+ID 244 | query='cst' | truth='cat' | suggestions: 1.cat, 2.cast, 3.cost
+ID 245 | query='miuns' | truth='minus' | suggestions: 1.mound, 2.moons, 3.mounts
+ID 246 | query='tsood' | truth='stood' | suggestions: 1.flood, 2.blood, 3.took
+ID 247 | query='playr' | truth='player' | suggestions: 1.plays, 2.player, 3.play
+ID 248 | query='rai' | truth='rain' | suggestions: 1.rail, 2.raid, 3.rain
+ID 249 | query='kichen' | truth='kitchen' | suggestions: 1.kitchen, 2.fiche, 3.listen
+ID 250 | query='yei' | truth='<NONE>' | suggestions: 1.yep, 2.yen, 3.yet
+ID 251 | query='expeience' | truth='experience' | suggestions: 1.experience, 2.expense, 3.expensive
+ID 252 | query='onrmal' | truth='normal' | suggestions: 1.normal, 2.formal, 3.animal
+ID 253 | query='canddate' | truth='candidate' | suggestions: 1.candidate, 2.mandate, 3.validate
+ID 254 | query='simpl' | truth='simple' | suggestions: 1.simple, 2.simply, 3.simp
+ID 255 | query='indeendence' | truth='independence' | suggestions: 1.independent, 2.intelligence, 3.influence
+ID 256 | query='ho' | truth='hot' | suggestions: 1.hoo, 2.hor, 3.hop
+ID 257 | query='litle' | truth='year' | suggestions: 1.title, 2.little, 3.lite
+ID 258 | query='agrement' | truth='agreement' | suggestions: 1.agreement, 2.argument, 3.movement
+ID 259 | query='blokchain' | truth='<NONE>' | suggestions: 1.blocking, 2.bookman, 3.chain
+ID 260 | query='situatin' | truth='situation' | suggestions: 1.situation, 2.situations, 3.saturation
+ID 261 | query='deterination' | truth='determination' | suggestions: 1.determination, 2.federation, 3.generation
+ID 262 | query='bal' | truth='ball' | suggestions: 1.bal, 2.val, 3.ball
+ID 263 | query='an' | truth='and' | suggestions: 1.an, 2.ann, 3.ans
+ID 264 | query='snw' | truth='snow' | suggestions: 1.snow, 2.saw, 3.sew
+ID 265 | query='opning' | truth='opening' | suggestions: 1.owning, 2.opening, 3.lining
+ID 266 | query='diffiult' | truth='difficult' | suggestions: 1.difficult, 2.diffuse, 3.default
+ID 267 | query='erason' | truth='reason' | suggestions: 1.reason, 2.season, 3.erasing
+ID 268 | query='sructure' | truth='structure' | suggestions: 1.brochure, 2.culture, 3.secure
+ID 269 | query='ugest' | truth='guest' | suggestions: 1.guest, 2.chest, 3.suggest
+ID 270 | query='internatonal' | truth='international' | suggestions: 1.international, 2.internally, 3.interacting
+ID 271 | query='wopd' | truth='wood' | suggestions: 1.wood, 2.word, 3.wop
+ID 272 | query='rvision' | truth='nine' | suggestions: 1.revision, 2.elision, 3.vision
+ID 273 | query='gaden' | truth='garden' | suggestions: 1.laden, 2.garden, 3.haven
+ID 274 | query='fosh' | truth='fish' | suggestions: 1.fish, 2.cosh, 3.josh
+ID 275 | query='architeture' | truth='architecture' | suggestions: 1.architecture, 2.archiving, 3.archive
+ID 276 | query='ncessary' | truth='necessary' | suggestions: 1.necessary, 2.glossary, 3.ancestry
+ID 277 | query='pofessional' | truth='professional' | suggestions: 1.provisional, 2.personal, 3.profusion
+ID 278 | query='cogratulations' | truth='congratulations' | suggestions: 1.congratulations, 2.collaboration, 3.graduation
+ID 279 | query='developent' | truth='development' | suggestions: 1.development, 2.developing, 3.developed
+ID 280 | query='lbrary' | truth='library' | suggestions: 1.library, 2.lorry, 3.literary
+ID 281 | query='chrsanthemum' | truth='<NONE>' | suggestions: 1.warranties, 2.change, 3.chance
+ID 282 | query='thaeter' | truth='theater' | suggestions: 1.charter, 2.theater, 3.chapter
+ID 283 | query='techology' | truth='technology' | suggestions: 1.psychology, 2.theology, 3.topology
+ID 284 | query='approxiately' | truth='approximately' | suggestions: 1.approximately, 2.approaches, 3.approached
+ID 285 | query='mthod' | truth='method' | suggestions: 1.method, 2.methods, 3.mho
+ID 286 | query='kola' | truth='<NONE>' | suggestions: 1.tola, 2.cola, 3.koala
+ID 287 | query='cofficient' | truth='coefficient' | suggestions: 1.coefficient, 2.convenient, 3.commitment
+ID 288 | query='acountability' | truth='accountability' | suggestions: 1.accountability, 2.inability, 3.ability
+ID 289 | query='relationsip' | truth='relationship' | suggestions: 1.relations, 2.deletions, 3.creations
+ID 290 | query='choesn' | truth='chosen' | suggestions: 1.chosen, 2.chose, 3.shoes
+ID 291 | query='hld' | truth='hold' | suggestions: 1.hod, 2.hid, 3.old
+ID 292 | query='engineerig' | truth='engineering' | suggestions: 1.engineering, 2.engineers, 3.engineer
+ID 293 | query='purpe' | truth='purple' | suggestions: 1.purple, 2.purge, 3.pure
+ID 294 | query='maret' | truth='market' | suggestions: 1.caret, 2.market, 3.mart
+ID 295 | query='monitr' | truth='monitor' | suggestions: 1.monitor, 2.monitors, 3.monster
+ID 296 | query='programmng' | truth='programming' | suggestions: 1.programs, 2.program, 3.processing
+ID 297 | query='fairyl' | truth='fairly' | suggestions: 1.fairy, 2.fairly, 3.fair
+ID 298 | query='heping' | truth='helping' | suggestions: 1.hoping, 2.helping, 3.typing
+ID 299 | query='cllaboration' | truth='collaboration' | suggestions: 1.collaboration, 2.celebration, 3.allocation
+ID 300 | query='studnt' | truth='student' | suggestions: 1.student, 2.students, 3.studio
+ID 301 | query='tal' | truth='talk' | suggestions: 1.tall, 2.tale, 3.talk
+ID 302 | query='apartmet' | truth='apartment' | suggestions: 1.apartment, 2.department, 3.partner
+ID 303 | query='citien' | truth='citizen' | suggestions: 1.cities, 2.citizen, 3.citing
+ID 304 | query='enertainment' | truth='entertainment' | suggestions: 1.containment, 2.enrollment, 3.environment
+ID 305 | query='demonstraion' | truth='demonstration' | suggestions: 1.administration, 2.constrain, 3.decoration
+ID 306 | query='laegue' | truth='league' | suggestions: 1.langue, 2.large, 3.language
+ID 307 | query='nighborhood' | truth='neighborhood' | suggestions: 1.neighboring, 2.neighbors, 3.neighbor
+ID 308 | query='transfrmation' | truth='transformation' | suggestions: 1.transferable, 2.information, 3.pronunciation
+ID 309 | query='behidn' | truth='behind' | suggestions: 1.benign, 2.behind, 3.beside
+ID 310 | query='charcteristic' | truth='characteristic' | suggestions: 1.characteristic, 2.artistic, 3.charter
+ID 311 | query='disrimination' | truth='discrimination' | suggestions: 1.determination, 2.disposition, 3.examination
+ID 312 | query='corection' | truth='correction' | suggestions: 1.creation, 2.correcting, 3.collation
+ID 313 | query='choos' | truth='choose' | suggestions: 1.choose, 2.chaos, 3.chooser
+ID 314 | query='wotrh' | truth='worth' | suggestions: 1.worth, 2.worry, 3.witch
+ID 315 | query='shp' | truth='help' | suggestions: 1.sup, 2.shop, 3.ship
+ID 316 | query='differen' | truth='different' | suggestions: 1.difference, 2.differing, 3.differs
+ID 317 | query='cosider' | truth='consider' | suggestions: 1.consider, 2.cosine, 3.considers
+ID 318 | query='evironmental' | truth='environmental' | suggestions: 1.environment, 2.developmental, 3.employment
+ID 319 | query='identiication' | truth='identification' | suggestions: 1.indication, 2.dedication, 3.verification
+ID 320 | query='networ' | truth='network' | suggestions: 1.network, 2.networks, 3.meteor
+ID 321 | query='similaity' | truth='similarity' | suggestions: 1.similarly, 2.simulate, 3.similar
+ID 322 | query='organizatio' | truth='organization' | suggestions: 1.organized, 2.organize, 3.communication
+ID 323 | query='srake' | truth='stake' | suggestions: 1.drake, 2.shake, 3.snake
+ID 324 | query='pirt' | truth='port' | suggestions: 1.piet, 2.port, 3.pint
+ID 325 | query='restauran' | truth='restaurant' | suggestions: 1.restaurant, 2.restaurants, 3.restart
+ID 326 | query='chsnce' | truth='chance' | suggestions: 1.chance, 2.chances, 3.change
+ID 327 | query='signifcantly' | truth='significantly' | suggestions: 1.signify, 2.instantly, 3.statically
+ID 328 | query='prduction' | truth='production' | suggestions: 1.promotion, 2.education, 3.graduation
+ID 329 | query='prson' | truth='person' | suggestions: 1.person, 2.meson, 3.persona
+ID 330 | query='operatio' | truth='operation' | suggestions: 1.operation, 2.operations, 3.operating
+ID 331 | query='governmen' | truth='government' | suggestions: 1.government, 2.governed, 3.governing
+ID 332 | query='swiming' | truth='swimming' | suggestions: 1.swimming, 2.smiling, 3.priming
+ID 333 | query='natue' | truth='nature' | suggestions: 1.nature, 2.mature, 3.matte
+ID 334 | query='excllent' | truth='excellent' | suggestions: 1.excellent, 2.exponent, 3.existent
+ID 335 | query='beter' | truth='better' | suggestions: 1.meter, 2.better, 3.biter
+ID 336 | query='lnd' | truth='land' | suggestions: 1.ind, 2.lid, 3.end
+ID 337 | query='tsuami' | truth='<NONE>' | suggestions: 1.usual, 2.trump, 3.tame
+ID 338 | query='colege' | truth='college' | suggestions: 1.college, 2.colone, 3.cole
+ID 339 | query='paticipation' | truth='participation' | suggestions: 1.notification, 2.pagination, 3.verification
+ID 340 | query='clset' | truth='sixth' | suggestions: 1.coset, 2.cleft, 3.closest
+ID 341 | query='midde' | truth='middle' | suggestions: 1.middle, 2.hidden, 3.minded
+ID 342 | query='partiular' | truth='particular' | suggestions: 1.particles, 2.partials, 3.particle
+ID 343 | query='bok' | truth='book' | suggestions: 1.boo, 2.book, 3.bop
+ID 344 | query='painetr' | truth='painter' | suggestions: 1.painter, 2.paints, 3.paint
+ID 345 | query='extaordinary' | truth='extraordinary' | suggestions: 1.extraordinary, 2.ordinary, 3.externally
+ID 346 | query='islan' | truth='island' | suggestions: 1.island, 2.islands, 3.isle
+ID 347 | query='rhdodendron' | truth='<NONE>' | suggestions: 1.phenomenon, 2.ridden, 3.tendon
+ID 348 | query='coplete' | truth='fog' | suggestions: 1.complete, 2.college, 3.collate
+ID 349 | query='prgram' | truth='program' | suggestions: 1.program, 2.programs, 3.trigram
+ID 350 | query='bd' | truth='bed' | suggestions: 1.bed, 2.bad, 3.be
+ID 351 | query='doo' | truth='door' | suggestions: 1.foo, 2.door, 3.doom
+ID 352 | query='recommendaion' | truth='recommendation' | suggestions: 1.recommend, 2.communication, 3.emendations
+ID 353 | query='walus' | truth='<NONE>' | suggestions: 1.walks, 2.wales, 3.values
+ID 354 | query='bx' | truth='box' | suggestions: 1.box, 2.be, 3.by
+ID 355 | query='tol' | truth='told' | suggestions: 1.til, 2.tola, 3.told
+ID 356 | query='cme' | truth='came' | suggestions: 1.cue, 2.come, 3.came
+ID 357 | query='hme' | truth='home' | suggestions: 1.hie, 2.hoe, 3.hue
+ID 358 | query='celebraion' | truth='celebration' | suggestions: 1.celebration, 2.television, 3.generation
+ID 359 | query='classi' | truth='classic' | suggestions: 1.classic, 2.class, 3.classics
+ID 360 | query='lihbrary' | truth='library' | suggestions: 1.library, 2.literary, 3.literacy
+ID 361 | query='ingfrastructure' | truth='infrastructure' | suggestions: 1.infrastructure, 2.instruct, 3.instructs
+ID 362 | query='lsaer' | truth='laser' | suggestions: 1.laser, 2.lexer, 3.leader
+ID 363 | query='chinba' | truth='china' | suggestions: 1.china, 2.ching, 3.chin
+ID 364 | query='significantoly' | truth='significantly' | suggestions: 1.signify, 2.instantly, 3.initially
+ID 365 | query='chickren' | truth='chicken' | suggestions: 1.chicken, 2.children, 3.thicker
+ID 366 | query='communitry' | truth='community' | suggestions: 1.community, 2.commuting, 3.commonly
+ID 367 | query='mathnematics' | truth='mathematics' | suggestions: 1.mathematics, 2.thematic, 3.magnetic
+ID 368 | query='sphginx' | truth='<NONE>' | suggestions: 1.sphinx, 2.singing, 3.spacing
+ID 369 | query='hsnd' | truth='hand' | suggestions: 1.hand, 2.handy, 3.hands
+ID 370 | query='middloe' | truth='middle' | suggestions: 1.middle, 2.modulo, 3.midline
+ID 371 | query='capigtal' | truth='capital' | suggestions: 1.capital, 2.capitals, 3.rational
+ID 372 | query='adminisytration' | truth='administration' | suggestions: 1.administration, 2.initiation, 3.animation
+ID 373 | query='imoportant' | truth='important' | suggestions: 1.importing, 2.imported, 3.importable
+ID 374 | query='bjutter' | truth='butter' | suggestions: 1.butter, 2.shutter, 3.stutter
+ID 375 | query='comprehensifve' | truth='comprehensive' | suggestions: 1.comprehensive, 2.completeness, 3.compressing
+ID 376 | query='underdstanding' | truth='understanding' | suggestions: 1.standing, 2.uncertain, 3.instancing
+ID 377 | query='neighblorhood' | truth='neighborhood' | suggestions: 1.neighboring, 2.neighbors, 3.neighbor
+ID 378 | query='breaed' | truth='bread' | suggestions: 1.bread, 2.brewer, 3.breast
+ID 379 | query='documentatfion' | truth='documentation' | suggestions: 1.documenting, 2.document, 3.donation
+ID 380 | query='brsnd' | truth='brand' | suggestions: 1.brand, 2.brands, 3.grand
+ID 381 | query='entertainmemnt' | truth='entertainment' | suggestions: 1.experiment, 2.environment, 3.containment
+ID 382 | query='treatmenyt' | truth='treatment' | suggestions: 1.treating, 2.greatest, 3.fragment
+ID 383 | query='statiopn' | truth='station' | suggestions: 1.station, 2.stations, 3.stating
+ID 384 | query='briudge' | truth='bridge' | suggestions: 1.bridge, 2.bridges, 3.bridged
+ID 385 | query='developmenmt' | truth='development' | suggestions: 1.development, 2.developmental, 3.developing
+ID 386 | query='excrellent' | truth='excellent' | suggestions: 1.excellent, 2.enrollment, 3.crescent
+ID 387 | query='iuguana' | truth='<NONE>' | suggestions: 1.indian, 2.instant, 3.august
+ID 388 | query='coefficienmt' | truth='coefficient' | suggestions: 1.coefficient, 2.efficiency, 3.containment
+ID 389 | query='difficuklt' | truth='difficult' | suggestions: 1.difficult, 2.diffusion, 3.official
+ID 390 | query='talkinyg' | truth='talking' | suggestions: 1.talking, 2.walking, 3.taking
+ID 391 | query='plabnning' | truth='planning' | suggestions: 1.planning, 2.panning, 3.placing
+ID 392 | query='tsaco' | truth='<NONE>' | suggestions: 1.taco, 2.track, 3.trace
+ID 393 | query='conditjion' | truth='condition' | suggestions: 1.conversion, 2.confusion, 3.collation
+ID 394 | query='vegetabloe' | truth='vegetable' | suggestions: 1.vegetable, 2.vegetables, 3.repeatable
+ID 395 | query='esnse' | truth='sense' | suggestions: 1.esse, 2.dense, 3.sense
+ID 396 | query='dedtermination' | truth='determination' | suggestions: 1.determination, 2.dedication, 3.federation
+ID 397 | query='bittfer' | truth='bitter' | suggestions: 1.bitter, 2.butter, 3.jitter
+ID 398 | query='accomlplishment' | truth='accomplishment' | suggestions: 1.accomplishment, 2.commitment, 3.comment
+ID 399 | query='foprest' | truth='forest' | suggestions: 1.forest, 2.forests, 3.contest
+ID 400 | query='rwelationship' | truth='relationship' | suggestions: 1.relations, 2.relation, 3.relating
+ID 401 | query='swtreet' | truth='street' | suggestions: 1.street, 2.streets, 3.sweet
+ID 402 | query='fsll' | truth='fall' | suggestions: 1.fall, 2.fell, 3.full
+ID 403 | query='judgmehnt' | truth='judgment' | suggestions: 1.judgment, 2.augment, 3.judging
+ID 404 | query='fijre' | truth='fire' | suggestions: 1.fire, 2.figure, 3.fine
+ID 405 | query='tazble' | truth='table' | suggestions: 1.table, 2.treble, 3.marble
+ID 406 | query='timre' | truth='time' | suggestions: 1.time, 2.timer, 3.times
+ID 407 | query='camer' | truth='came' | suggestions: 1.camera, 2.namer, 3.came
+ID 408 | query='hyome' | truth='home' | suggestions: 1.home, 2.gnome, 3.chrome
+ID 409 | query='chioll' | truth='chill' | suggestions: 1.chill, 2.child, 3.coll
+ID 410 | query='prograwm' | truth='program' | suggestions: 1.program, 2.programs, 3.progress
+ID 411 | query='seoldier' | truth='soldier' | suggestions: 1.solder, 2.seller, 3.shoulder
+ID 412 | query='decisipon' | truth='decision' | suggestions: 1.decision, 2.revision, 3.division
+ID 413 | query='mnap' | truth='rub' | suggestions: 1.snap, 2.map, 3.nap
+ID 414 | query='cawterpillar' | truth='caterpillar' | suggestions: 1.caterpillar, 2.pillar, 3.cedilla
+ID 415 | query='testjing' | truth='testing' | suggestions: 1.testing, 2.restring, 3.nesting
+ID 416 | query='cobngratulations' | truth='congratulations' | suggestions: 1.congratulations, 2.graduation, 3.contraction
+ID 417 | query='awvalanche' | truth='<NONE>' | suggestions: 1.unbalance, 2.ambulance, 3.balance
+ID 418 | query='yresterday' | truth='yesterday' | suggestions: 1.yesterday, 2.wrestlers, 3.preserves
+ID 419 | query='ewxpression' | truth='expression' | suggestions: 1.expressing, 2.expresses, 3.expressed
+ID 420 | query='archaeoloygical' | truth='archaeological' | suggestions: 1.archaeological, 2.archaic, 3.logical
+ID 421 | query='edlay' | truth='delay' | suggestions: 1.relay, 2.delay, 3.essay
+ID 422 | query='shipmenyt' | truth='shipment' | suggestions: 1.shipping, 2.chipmunk, 3.shipped
+ID 423 | query='cnhoose' | truth='choose' | suggestions: 1.choose, 2.chooser, 3.chooses
+ID 424 | query='culgture' | truth='culture' | suggestions: 1.culture, 2.cubature, 3.cultural
+ID 425 | query='markdet' | truth='market' | suggestions: 1.market, 2.marker, 3.marked
+ID 426 | query='orher' | truth='other' | suggestions: 1.other, 2.order, 3.others
+ID 427 | query='collpege' | truth='college' | suggestions: 1.college, 2.colleague, 3.collide
+ID 428 | query='architectudre' | truth='architecture' | suggestions: 1.architecture, 2.archived, 3.archive
+ID 429 | query='participaqtion' | truth='participation' | suggestions: 1.verification, 2.notification, 3.variation
+ID 430 | query='cjhat' | truth='chat' | suggestions: 1.chat, 2.cheat, 3.chart
+ID 431 | query='yuellow' | truth='yellow' | suggestions: 1.yellow, 2.shallow, 3.swallow
+ID 432 | query='rivder' | truth='river' | suggestions: 1.river, 2.finder, 3.rivers
+ID 433 | query='lettger' | truth='letter' | suggestions: 1.letter, 2.leather, 3.letters
+ID 434 | query='blox' | truth='moon' | suggestions: 1.bloc, 2.blow, 3.blog
+ID 435 | query='celebdration' | truth='celebration' | suggestions: 1.celebration, 2.collaboration, 3.generation
+ID 436 | query='citrcuit' | truth='circuit' | suggestions: 1.circuit, 2.circuits, 3.circus
+ID 437 | query='educatipon' | truth='education' | suggestions: 1.education, 2.emulation, 3.dedication
+ID 438 | query='presidebnt' | truth='president' | suggestions: 1.resident, 2.present, 3.presents
+ID 439 | query='bundlke' | truth='bundle' | suggestions: 1.bundle, 2.bundles, 3.bundled
+ID 440 | query='netwolrk' | truth='network' | suggestions: 1.network, 2.networks, 3.artwork
+ID 441 | query='simjple' | truth='simple' | suggestions: 1.simple, 2.simpler, 3.simplex
+ID 442 | query='caszh' | truth='cash' | suggestions: 1.cash, 2.casa, 3.catch
+ID 443 | query='restaurawnt' | truth='restaurant' | suggestions: 1.restaurant, 2.restaurants, 3.restartable
+ID 444 | query='gome' | truth='home' | suggestions: 1.gone, 2.home, 3.tome
+ID 445 | query='citkizen' | truth='citizen' | suggestions: 1.citizen, 2.cities, 3.cookies
+ID 446 | query='accfountability' | truth='accountability' | suggestions: 1.accountability, 2.inability, 3.accounting
+ID 447 | query='fakmily' | truth='family' | suggestions: 1.family, 2.happily, 3.daily
+ID 448 | query='pzanda' | truth='<NONE>' | suggestions: 1.panda, 2.pandas, 3.planes
+ID 449 | query='hzandle' | truth='handle' | suggestions: 1.handle, 2.handler, 3.handles
+ID 450 | query='tbhermodynamics' | truth='<NONE>' | suggestions: 1.dynamics, 2.harmonics, 3.dynamic
+ID 451 | query='mornhing' | truth='morning' | suggestions: 1.morning, 2.mounting, 3.marching
+ID 452 | query='mopon' | truth='moon' | suggestions: 1.moon, 2.melon, 3.colon
+ID 453 | query='paqst' | truth='past' | suggestions: 1.past, 2.passe, 3.parse
+ID 454 | query='greren' | truth='green' | suggestions: 1.green, 2.greet, 3.greens
+ID 455 | query='indepejndence' | truth='independence' | suggestions: 1.independent, 2.intelligence, 3.depend
+ID 456 | query='tiournament' | truth='tournament' | suggestions: 1.ornament, 2.ornaments, 3.government
+ID 457 | query='sughgestion' | truth='suggestion' | suggestions: 1.suggesting, 2.suggested, 3.suggest
+ID 458 | query='summesr' | truth='summer' | suggestions: 1.summer, 2.summed, 3.symmetry
+ID 459 | query='lpook' | truth='look' | suggestions: 1.look, 2.spool, 3.loop
+ID 460 | query='woord' | truth='wood' | suggestions: 1.wood, 2.word, 3.woods
+ID 461 | query='internaztional' | truth='international' | suggestions: 1.international, 2.iteration, 3.iterations
+ID 462 | query='ofvficer' | truth='officer' | suggestions: 1.officer, 2.office, 3.offender
+ID 463 | query='doopr' | truth='door' | suggestions: 1.door, 2.dolor, 3.cooper
+ID 464 | query='recommendatiokn' | truth='recommendation' | suggestions: 1.communication, 2.recommend, 3.recreation
+ID 465 | query='constityutional' | truth='constitutional' | suggestions: 1.contribution, 2.international, 3.consisting
+ID 466 | query='fracrtion' | truth='fraction' | suggestions: 1.fraction, 2.fractions, 3.friction
+ID 467 | query='mnountain' | truth='mountain' | suggestions: 1.mountain, 2.mountains, 3.fountain
+ID 468 | query='statgement' | truth='statement' | suggestions: 1.statement, 2.entanglement, 3.staggered
+ID 469 | query='satisfacftion' | truth='satisfaction' | suggestions: 1.notification, 2.saturation, 3.verification
+ID 470 | query='swimmking' | truth='swimming' | suggestions: 1.swimming, 2.switching, 3.trimming
+ID 471 | query='advehnture' | truth='adventure' | suggestions: 1.adventure, 2.venture, 3.aperture
+ID 472 | query='tazlk' | truth='talk' | suggestions: 1.talk, 2.task, 3.tally
+ID 473 | query='perforkmance' | truth='performance' | suggestions: 1.performance, 2.performing, 3.perseverance
+ID 474 | query='wokrk' | truth='work' | suggestions: 1.work, 2.woken, 3.woke
+ID 475 | query='sithuation' | truth='situation' | suggestions: 1.situation, 2.situations, 3.simulation
+ID 476 | query='foolt' | truth='foot' | suggestions: 1.fool, 2.foot, 3.foils
+ID 477 | query='extraterrestrdial' | truth='<NONE>' | suggestions: 1.external, 2.extracted, 3.material
+ID 478 | query='jsellyfish' | truth='<NONE>' | suggestions: 1.blowfish, 2.selfie, 3.selling
+ID 479 | query='rowad' | truth='road' | suggestions: 1.road, 2.toward, 3.roads
+ID 480 | query='expeirence' | truth='experience' | suggestions: 1.experience, 2.experiment, 3.expiring
+ID 481 | query='veegable' | truth='vegetable' | suggestions: 1.viewable, 2.vegetable, 3.testable
+ID 482 | query='mahime' | truth='machine' | suggestions: 1.maxima, 2.machine, 3.maxim
+ID 483 | query='pertty' | truth='pretty' | suggestions: 1.pretty, 2.parity, 3.perry
+ID 484 | query='commnad' | truth='command' | suggestions: 1.command, 2.commas, 3.comma
+ID 485 | query='fsat' | truth='fast' | suggestions: 1.feat, 2.flat, 3.fat
+ID 486 | query='etnsion' | truth='tension' | suggestions: 1.erosion, 2.tension, 3.elision
+ID 487 | query='dotcor' | truth='doctor' | suggestions: 1.doctor, 2.door, 3.donor
+ID 488 | query='pyament' | truth='payment' | suggestions: 1.payment, 2.placement, 3.payments
+ID 489 | query='prak' | truth='duty' | suggestions: 1.peak, 2.pram, 3.pray
+ID 490 | query='calender' | truth='calendar' | suggestions: 1.calendar, 2.calendars, 3.cylinder
+ID 491 | query='cemetary' | truth='cemetery' | suggestions: 1.cemetery, 2.monetary, 3.century
+ID 492 | query='pronounciation' | truth='pronunciation' | suggestions: 1.pronunciation, 2.truncation, 3.proposition
+ID 493 | query='occured' | truth='occurred' | suggestions: 1.occurred, 2.occurs, 3.occupied
+ID 494 | query='entertainmnet' | truth='entertainment' | suggestions: 1.international, 2.internet, 3.entering
+ID 495 | query='cricuit' | truth='circuit' | suggestions: 1.cricket, 2.circuit, 3.circuits
+ID 496 | query='definately' | truth='definitely' | suggestions: 1.definitely, 2.definite, 3.decimate
+ID 497 | query='dictioanry' | truth='dictionary' | suggestions: 1.dictionary, 2.distiller, 3.victory
+ID 498 | query='cohose' | truth='choose' | suggestions: 1.chose, 2.course, 3.choose
+ID 499 | query='efet' | truth='feet' | suggestions: 1.effect, 2.ever, 3.erst
+ID 500 | query='sliver' | truth='silver' | suggestions: 1.slicer, 2.slider, 3.sliced
+ID 501 | query='cricuit' | truth='circuit' | suggestions: 1.cricket, 2.circuit, 3.circuits
+ID 502 | query='febuary' | truth='february' | suggestions: 1.february, 2.january, 3.ternary
+ID 503 | query='traetment' | truth='treatment' | suggestions: 1.apartment, 2.fragment, 3.statement
+ID 504 | query='strecth' | truth='stretch' | suggestions: 1.stretch, 2.strength, 3.stretto
+ID 505 | query='comittee' | truth='committee' | suggestions: 1.committee, 2.omitted, 3.computer
+ID 506 | query='enrty' | truth='entry' | suggestions: 1.entry, 2.energy, 3.dirty
+ID 507 | query='unforrunaely' | truth='unfortunately' | suggestions: 1.internally, 2.uncombined, 3.fortune
+ID 508 | query='purpel' | truth='purple' | suggestions: 1.purples, 2.purple, 3.purge
+ID 509 | query='charcateristic' | truth='characteristic' | suggestions: 1.characteristic, 2.artistic, 3.charter
+ID 510 | query='itssue' | truth='tissue' | suggestions: 1.issue, 2.tissue, 3.issuer
+ID 511 | query='ewek' | truth='week' | suggestions: 1.ewe, 2.week, 3.seek
+ID 512 | query='wimen' | truth='women' | suggestions: 1.women, 2.widen, 3.woken
+ID 513 | query='expressoin' | truth='expression' | suggestions: 1.expressing, 2.expressly, 3.expressed
+ID 514 | query='cpu' | truth='fur' | suggestions: 1.cru, 2.coup, 3.club
+ID 515 | query='chere' | truth='cheer' | suggestions: 1.there, 2.where, 3.here
+ID 516 | query='chere' | truth='cheer' | suggestions: 1.there, 2.where, 3.here
+ID 517 | query='charcteristif' | truth='characteristic' | suggestions: 1.characteristic, 2.charter, 3.chapters
+ID 518 | query='cljmb' | truth='climb' | suggestions: 1.climb, 2.crumb, 3.clump
+ID 519 | query='acxomlishment' | truth='accomplishment' | suggestions: 1.accomplishment, 2.commitment, 3.comment
+ID 520 | query='enviroment' | truth='environment' | suggestions: 1.environment, 2.enrollment, 3.government
+ID 521 | query='ageemenf' | truth='agreement' | suggestions: 1.agreement, 2.argument, 3.freeman
+ID 522 | query='satkon' | truth='mat' | suggestions: 1.ration, 2.nation, 3.salmon
+ID 523 | query='sycology' | truth='psychology' | suggestions: 1.psychology, 2.theology, 3.ontology
+ID 524 | query='profewsiona' | truth='professional' | suggestions: 1.profusion, 2.processing, 3.provision
+ID 525 | query='comprrhensiv' | truth='comprehensive' | suggestions: 1.comprehensive, 2.compresses, 3.compressing
+ID 526 | query='intresting' | truth='interesting' | suggestions: 1.inspecting, 2.interacting, 3.interning
+ID 527 | query='exagerate' | truth='exaggerate' | suggestions: 1.deliberate, 2.regenerate, 3.degenerate
+ID 528 | query='vsat' | truth='vast' | suggestions: 1.vat, 2.sat, 3.vast
+ID 529 | query='hcoice' | truth='choice' | suggestions: 1.choice, 2.voice, 3.choices
+ID 530 | query='eprson' | truth='person' | suggestions: 1.person, 2.torsion, 3.persona
+ID 531 | query='accomodate' | truth='accommodate' | suggestions: 1.accommodate, 2.automate, 3.accurate
+ID 532 | query='wifh' | truth='wish' | suggestions: 1.with, 2.wifi, 3.wish
+ID 533 | query='qzxjv' | truth='<NONE>' | suggestions: 1.xiv, 2.deriv, 3.quant
+ID 534 | query='corectioh' | truth='correction' | suggestions: 1.correcting, 2.creation, 3.directing
+ID 535 | query='favrite' | truth='favorite' | suggestions: 1.favorite, 2.favourite, 3.favorites
+ID 536 | query='plkjhgf' | truth='<NONE>' | suggestions: 1.plugs, 2.plage, 3.plugged
+ID 537 | query='joureny' | truth='journey' | suggestions: 1.journey, 2.courtesy, 3.hourly
+ID 538 | query='ocastal' | truth='coastal' | suggestions: 1.coastal, 2.octal, 3.casual
+ID 539 | query='necesary' | truth='necessary' | suggestions: 1.necessary, 2.ancestry, 3.february
+ID 540 | query='transportatino' | truth='transportation' | suggestions: 1.annotating, 2.transferable, 3.rotating
+ID 541 | query='tounge' | truth='tongue' | suggestions: 1.touche, 2.young, 3.bounce
+ID 542 | query='fnu' | truth='fun' | suggestions: 1.gnu, 2.fou, 3.feu
+ID 543 | query='deterimnation' | truth='determination' | suggestions: 1.determination, 2.examination, 3.deviation
+ID 544 | query='bettre' | truth='better' | suggestions: 1.better, 2.nettle, 3.before
+ID 545 | query='tatach' | truth='attach' | suggestions: 1.detach, 2.attach, 3.hatch
+ID 546 | query='lsat' | truth='last' | suggestions: 1.lat, 2.sat, 3.last
+ID 547 | query='cnosider' | truth='consider' | suggestions: 1.consider, 2.considers, 3.collider
+ID 548 | query='apattmet' | truth='apartment' | suggestions: 1.apartment, 2.statement, 3.department
+ID 549 | query='advntire' | truth='adventure' | suggestions: 1.adventure, 2.additive, 3.adaptive
+ID 550 | query='wensday' | truth='wednesday' | suggestions: 1.wednesday, 2.weekday, 3.weekdays
+ID 551 | query='samlpe' | truth='sample' | suggestions: 1.sample, 2.same, 3.sampler
+ID 552 | query='impkementtion' | truth='implementation' | suggestions: 1.mention, 2.determination, 3.improvement
+ID 553 | query='nede' | truth='need' | suggestions: 1.rede, 2.node, 3.nee
+ID 554 | query='caterp' | truth='fair' | suggestions: 1.waters, 2.water, 3.camera
+ID 555 | query='grammer' | truth='grammar' | suggestions: 1.crammer, 2.grammar, 3.grammars
+ID 556 | query='participatoin' | truth='participation' | suggestions: 1.partitions, 2.verification, 3.notification
+ID 557 | query='refues' | truth='refuse' | suggestions: 1.refuse, 2.refresh, 3.request
+ID 558 | query='lisence' | truth='license' | suggestions: 1.license, 2.absence, 3.essence
+ID 559 | query='wxqz' | truth='<NONE>' | suggestions: 1.weed, 2.wars, 3.wear
+ID 560 | query='zzyx' | truth='<NONE>' | suggestions: 1.zayin, 2.pyx, 3.dizzy
+ID 561 | query='vocbaulary' | truth='vocabulary' | suggestions: 1.locality, 2.dictionary, 3.february
+ID 562 | query='buisness' | truth='business' | suggestions: 1.business, 2.builders, 3.fitness
+ID 563 | query='waake' | truth='awake' | suggestions: 1.wake, 2.awake, 3.weaker
+ID 564 | query='thequickbrownfoxjumpsoverthelazydogagain' | truth='<NONE>' | suggestions: 1.then, 2.thrown, 3.therein
+ID 565 | query='fifyt' | truth='fifty' | suggestions: 1.fifty, 2.fight, 3.fifth
+ID 566 | query='sissors' | truth='scissors' | suggestions: 1.scissors, 2.sensors, 3.cursors
+ID 567 | query='rythm' | truth='rhythm' | suggestions: 1.rhythm, 2.rhythmic, 3.python
+ID 568 | query='neihgborhood' | truth='neighborhood' | suggestions: 1.neighboring, 2.neighbors, 3.neighbor
+ID 569 | query='kwality' | truth='quality' | suggestions: 1.reality, 2.duality, 3.quality
+ID 570 | query='neumonia' | truth='pneumonia' | suggestions: 1.mnemonic, 2.neuron, 3.noumena
+ID 571 | query='hadn' | truth='rush' | suggestions: 1.had, 2.harm, 3.hash
+ID 572 | query='intenrational' | truth='international' | suggestions: 1.international, 2.interacting, 3.iteration
+ID 573 | query='asdfghjkl' | truth='<NONE>' | suggestions: 1.afghani, 2.assigning, 3.asterisks
+ID 574 | query='uprple' | truth='purple' | suggestions: 1.purple, 2.apple, 3.purples
+ID 575 | query='negwor' | truth='network' | suggestions: 1.network, 2.negro, 3.networks
+ID 576 | query='riedr' | truth='rider' | suggestions: 1.river, 2.tied, 3.died
+ID 577 | query='lcassic' | truth='classic' | suggestions: 1.classic, 2.classics, 3.chassis
+ID 578 | query='recieve' | truth='receive' | suggestions: 1.relieved, 2.believe, 3.receive
+ID 579 | query='stusy' | truth='study' | suggestions: 1.study, 2.stray, 3.story
+ID 580 | query='libary' | truth='library' | suggestions: 1.library, 2.liberty, 3.binary
+ID 581 | query='mathematcis' | truth='mathematics' | suggestions: 1.mathematics, 2.thematic, 3.materials
+ID 582 | query='soleyl' | truth='solely' | suggestions: 1.solely, 2.sole, 3.solvent
+ID 583 | query='tomorow' | truth='tomorrow' | suggestions: 1.tomorrow, 2.tomato, 3.somehow
+ID 584 | query='mmmmm' | truth='<NONE>' | suggestions: 1.mammal, 2.minim, 3.mimic
+ID 585 | query='ppayng' | truth='playing' | suggestions: 1.playing, 2.placing, 3.applying
+ID 586 | query='erly' | truth='rely' | suggestions: 1.early, 2.rely, 3.yearly
+ID 587 | query='fsat' | truth='fast' | suggestions: 1.feat, 2.flat, 3.fat
+ID 588 | query='underst' | truth='dust' | suggestions: 1.underset, 2.under, 3.infers
+ID 589 | query='brigde' | truth='bridge' | suggestions: 1.bride, 2.bridge, 3.bright
+ID 590 | query='brigde' | truth='bridge' | suggestions: 1.bride, 2.bridge, 3.bright
+ID 591 | query='embarass' | truth='embarrass' | suggestions: 1.embarrass, 2.embrace, 3.emboss
+ID 592 | query='seperate' | truth='separate' | suggestions: 1.separate, 2.separated, 3.separates
+ID 593 | query='perss' | truth='press' | suggestions: 1.perms, 2.press, 3.persist
+ID 594 | query='diffrent' | truth='different' | suggestions: 1.difference, 2.differing, 3.referent
+ID 595 | query='reactino' | truth='reaction' | suggestions: 1.reaching, 2.reaction, 3.reactive
+ID 596 | query='q' | truth='<NONE>' | suggestions: 1.qua, 2.qty, 3.quo
+ID 597 | query='ocllege' | truth='college' | suggestions: 1.college, 2.village, 3.colleague
+ID 598 | query='curosr' | truth='cursor' | suggestions: 1.cursor, 2.curs, 3.cross
+ID 599 | query='particualr' | truth='particular' | suggestions: 1.particle, 2.partials, 3.particles

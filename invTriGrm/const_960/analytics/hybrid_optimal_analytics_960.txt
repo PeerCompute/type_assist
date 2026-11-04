@@ -1,0 +1,1006 @@
+========================================================================================================================
+                          OPTIMAL HYBRID BENCHMARK LOG (DAMERAU-LEVENSHTEIN + QWERTY)
+========================================================================================================================
+Candidate Lexicon Size : 1939 terms
+Top-K Evaluated        : 3
+Architecture           : Damerau-Levenshtein DP + Spatial QWERTY Tie-Breaker (Alpha = 0.03)
+
+------------------------------------------------------------------------------------------------------------------------
+PART 1: INDIVIDUAL QUERY TRACE RECORDS
+Format: id, wrongWrd, CorrectWrd, composite_score, rank among top 3, time in milisec, category, pass/fail
+------------------------------------------------------------------------------------------------------------------------
+id   wrongWrd          CorrectWrd        composite_score   rank_top3   time_ms       category                                  pass/fail
+------------------------------------------------------------------------------------------------------------------------
+1    lawyetr           lawyer            0.1482            #1          5.567         1 letter insertion                        pass
+2    ilot              lot               0.2700            #3          2.357         1 letter insertion                        pass
+3    ebreeze           breeze            0.1597            #1          2.943         1 letter insertion                        pass
+4    heightp           height            0.1471            #1          2.832         1 letter insertion                        pass
+5    giyft             gift              0.2108            #1          2.051         1 letter insertion                        pass
+6    easilys           easily            0.1471            #1          2.882         1 letter insertion                        pass
+7    places            place             0.1717            #1          2.523         1 letter insertion                        pass
+8    commiettee        committee         0.1060            #1          5.256         1 letter insertion                        pass
+9    rinig             ring              0.2103            #1          3.608         1 letter insertion                        pass
+10   chasze            chase             0.1746            #1          3.112         1 letter insertion                        pass
+11   rembel            rebel             0.1834            #1          2.540         1 letter insertion                        pass
+12   naeed             need              0.2105            #1          2.117         1 letter insertion                        pass
+13   syhift            shift             0.1818            #1          2.432         1 letter insertion                        pass
+14   converts          convert           0.1287            #1          3.192         1 letter insertion                        pass
+15   kecy              key               0.2632            #1          1.593         1 letter insertion                        pass
+16   ipmplementation   implementation    0.0890            #1          5.626         1 letter insertion                        pass
+17   faqmous           famous            0.1604            #1          2.860         1 letter insertion                        pass
+18   comfjort          comfort           0.1353            #1          5.826         1 letter insertion                        pass
+19   phobne            phone             0.1779            #1          4.046         1 letter insertion                        pass
+20   shoaw             show              0.2078            #1          2.661         1 letter insertion                        pass
+21   wride             ride              1.0000            NONE        2.148         1 letter insertion                        fail
+22   sbegin            begin             0.1900            #1          2.442         1 letter insertion                        pass
+23   modeern           modern            0.1518            #1          2.848         1 letter insertion                        pass
+24   nowl              owl               0.2782            #1          1.634         1 letter insertion                        pass
+25   sootn             soon              0.2099            #1          2.138         1 letter insertion                        pass
+26   eengineering      engineering       0.1009            #1          4.676         1 letter insertion                        pass
+27   utale             tale              0.2267            #1          2.182         1 letter insertion                        pass
+28   reaady            ready             0.1778            #1          2.584         1 letter insertion                        pass
+29   bsuyer            buyer             0.1829            #1          2.640         1 letter insertion                        pass
+30   vharious          various           0.1455            #1          3.439         1 letter insertion                        pass
+31   aljong            along             0.1801            #1          2.663         1 letter insertion                        pass
+32   yarrange          arrange           0.1456            #1          3.373         1 letter insertion                        pass
+33   qsomeone          someone           0.1504            #1          3.446         1 letter insertion                        pass
+34   unfortunatoely    unfortunately     0.0797            #1          5.897         1 letter insertion                        pass
+35   mboving           moving            0.1641            #1          6.385         1 letter insertion                        pass
+36   finaln            final             0.1717            #1          5.223         1 letter insertion                        pass
+37   pursuizt          pursuit           0.1324            #1          4.915         1 letter insertion                        pass
+38   expevrt           expert            0.1505            #1          2.999         1 letter insertion                        pass
+39   arrouw            arrow             0.1767            #1          2.513         1 letter insertion                        pass
+40   itevm             item              0.2105            #1          2.128         1 letter insertion                        pass
+41   pyalm             palm              0.2208            #1          2.075         1 letter insertion                        pass
+42   raicnbow          rainbow           0.1399            #1          3.138         1 letter insertion                        pass
+43   matn              mat               0.2575            #2          1.599         1 letter insertion                        pass
+44   asmide            aside             0.1805            #1          2.478         1 letter insertion                        pass
+45   serbve            serve             0.1762            #1          2.451         1 letter insertion                        pass
+46   guaryd            guard             0.1753            #1          2.440         1 letter insertion                        pass
+47   fopld             fold              0.2138            #1          2.042         1 letter insertion                        pass
+48   farf              far               0.2575            #2          1.644         1 letter insertion                        pass
+49   mavrket           market            0.1601            #1          2.858         1 letter insertion                        pass
+50   mescsage          message           0.1374            #1          3.200         1 letter insertion                        pass
+51   hsome             some              0.2276            #2          2.090         1 letter insertion                        pass
+52   sthrough          through           0.1437            #1          3.211         1 letter insertion                        pass
+53   skyt              sky               0.2575            #1          1.613         1 letter insertion                        pass
+54   replacoe          replace           0.1325            #1          3.307         1 letter insertion                        pass
+55   peqrfect          perfect           0.1383            #1          3.196         1 letter insertion                        pass
+56   pelt              pet               0.2650            #1          1.663         1 letter insertion                        pass
+57   sacredf           sacred            0.1471            #1          2.875         1 letter insertion                        pass
+58   famoucs           famous            0.1490            #1          2.876         1 letter insertion                        pass
+59   jjunior           junior            0.1583            #1          2.879         1 letter insertion                        pass
+60   ecash             cash              0.2206            #1          2.148         1 letter insertion                        pass
+61   rom               room              0.2620            #1          1.211         1 letter deletion                         pass
+62   crridor           corridor          0.1475            #1          2.941         1 letter deletion                         pass
+63   setion            section           0.1573            #1          2.626         1 letter deletion                         pass
+64   fel               feel              0.2650            #2          1.211         1 letter deletion                         pass
+65   cmmittee          committee         0.1223            #1          3.259         1 letter deletion                         pass
+66   chace             chance            0.1781            #1          2.145         1 letter deletion                         pass
+67   brek              break             0.2120            #1          1.679         1 letter deletion                         pass
+68   congratulatons    congratulations   0.0727            #1          5.491         1 letter deletion                         pass
+69   eable             enable            0.1913            #1          2.143         1 letter deletion                         pass
+70   threa             thread            0.1717            #2          2.201         1 letter deletion                         pass
+71   mentio            mention           0.1471            #1          2.657         1 letter deletion                         pass
+72   onvert            convert           0.1618            #1          2.593         1 letter deletion                         pass
+73   ust               must              0.2744            #1          1.230         1 letter deletion                         pass
+74   physic            physics           0.1471            #1          2.542         1 letter deletion                         pass
+75   edium             medium            0.1869            #1          2.147         1 letter deletion                         pass
+76   ranch             branch            0.1908            #1          2.104         1 letter deletion                         pass
+77   noe               none              0.2650            #3          1.239         1 letter deletion                         pass
+78   ear               wear              0.2685            #2          1.254         1 letter deletion                         pass
+79   paticipation      participation     0.0959            #1          4.739         1 letter deletion                         pass
+80   priner            printer           0.1504            #1          2.626         1 letter deletion                         pass
+81   fot               foot              0.2650            #1          1.250         1 letter deletion                         pass
+82   pai               pain              0.2575            #1          1.241         1 letter deletion                         pass
+83   ruber             rubber            0.1771            #1          2.183         1 letter deletion                         pass
+84   sophiticated      sophisticated     0.0904            #1          4.728         1 letter deletion                         pass
+85   shin              shine             0.2060            #1          1.676         1 letter deletion                         pass
+86   roal              royal             0.2180            #1          1.679         1 letter deletion                         pass
+87   grss              grass             0.2075            #1          1.694         1 letter deletion                         pass
+88   gass              grass             0.2118            #1          1.711         1 letter deletion                         pass
+89   wse               wise              0.2673            #1          1.233         1 letter deletion                         pass
+90   exprience         experience        0.1166            #1          3.694         1 letter deletion                         pass
+91   cauht             caught            0.1750            #1          2.168         1 letter deletion                         pass
+92   rame              frame             0.2239            #1          1.735         1 letter deletion                         pass
+93   fligh             flight            0.1717            #1          2.142         1 letter deletion                         pass
+94   bulet             bullet            0.1792            #1          2.143         1 letter deletion                         pass
+95   rigin             origin            0.1918            #1          2.158         1 letter deletion                         pass
+96   roky              rocky             0.2158            #1          1.706         1 letter deletion                         pass
+97   bsketball         basketball        0.1188            #1          3.686         1 letter deletion                         pass
+98   limitd            limited           0.1483            #1          2.577         1 letter deletion                         pass
+99   thi               this              0.2575            #1          1.224         1 letter deletion                         pass
+100  statio            station           0.1471            #1          2.575         1 letter deletion                         pass
+101  whoe              whose             0.2078            #1          1.699         1 letter deletion                         pass
+102  erly              early             0.2215            #1          1.690         1 letter deletion                         pass
+103  bottm             bottom            0.1746            #1          2.172         1 letter deletion                         pass
+104  stoe              stone             0.2120            #2          1.698         1 letter deletion                         pass
+105  siht              sight             0.2100            #1          1.752         1 letter deletion                         pass
+106  memor             memory            0.1717            #1          2.161         1 letter deletion                         pass
+107  reain             retain            0.1844            #1          2.228         1 letter deletion                         pass
+108  hir               hire              0.2575            #1          1.236         1 letter deletion                         pass
+109  painer            painter           0.1504            #1          2.614         1 letter deletion                         pass
+110  rsk               risk              0.2725            #1          1.242         1 letter deletion                         pass
+111  chese             cheese            0.1747            #1          2.180         1 letter deletion                         pass
+112  ital              vital             0.2280            #1          1.707         1 letter deletion                         pass
+113  contnt            content           0.1542            #1          2.573         1 letter deletion                         pass
+114  releae            release           0.1485            #1          2.660         1 letter deletion                         pass
+115  tiy               tiny              0.2615            #1          1.259         1 letter deletion                         pass
+116  esson             lesson            0.1870            #1          2.223         1 letter deletion                         pass
+117  sed               send              0.2641            #2          1.232         1 letter deletion                         pass
+118  mins              minus             0.2120            #1          1.751         1 letter deletion                         pass
+119  otain             obtain            0.1871            #1          2.194         1 letter deletion                         pass
+120  trasformation     transformation    0.0912            #1          5.154         1 letter deletion                         pass
+121  balanxe           balance           0.1439            #1          2.961         1 letter missspell(same row nearby keys)  pass
+122  pib               pin               0.3358            #2          1.248         1 letter missspell(same row nearby keys)  pass
+123  xattle            cattle            0.1679            #1          2.598         1 letter missspell(same row nearby keys)  pass
+124  srake             stake             0.2015            #1          2.200         1 letter missspell(same row nearby keys)  pass
+125  pirt              port              0.2519            #1          1.690         1 letter missspell(same row nearby keys)  pass
+126  aixty             sixty             0.2015            #1          2.165         1 letter missspell(same row nearby keys)  pass
+127  cemtury           century           0.1439            #1          2.964         1 letter missspell(same row nearby keys)  pass
+128  chsnce            chance            0.1679            #1          2.591         1 letter missspell(same row nearby keys)  pass
+129  clrar             clear             0.2015            #1          3.011         1 letter missspell(same row nearby keys)  pass
+130  eat               rat               1.0000            NONE        1.224         1 letter missspell(same row nearby keys)  fail
+131  oath              path              0.2519            #1          1.630         1 letter missspell(same row nearby keys)  pass
+132  cast              vast              0.2519            #2          1.707         1 letter missspell(same row nearby keys)  pass
+133  firn              firm              0.2519            #1          1.686         1 letter missspell(same row nearby keys)  pass
+134  xommunication     communication     0.0775            #1          5.108         1 letter missspell(same row nearby keys)  pass
+135  ptovision         provision         0.1119            #1          3.645         1 letter missspell(same row nearby keys)  pass
+136  ticlet            ticket            0.1679            #1          2.610         1 letter missspell(same row nearby keys)  pass
+137  brsnd             brand             0.2015            #1          2.138         1 letter missspell(same row nearby keys)  pass
+138  reveak            reveal            0.1679            #1          2.664         1 letter missspell(same row nearby keys)  pass
+139  auyumn            autumn            0.1679            #1          2.536         1 letter missspell(same row nearby keys)  pass
+140  excellenr         excellent         0.1119            #1          3.672         1 letter missspell(same row nearby keys)  pass
+141  sokely            solely            0.1679            #1          2.557         1 letter missspell(same row nearby keys)  pass
+142  orher             other             0.2015            #1          2.173         1 letter missspell(same row nearby keys)  pass
+143  haedly            hardly            0.1679            #1          2.599         1 letter missspell(same row nearby keys)  pass
+144  gome              home              0.2519            #1          1.723         1 letter missspell(same row nearby keys)  pass
+145  adminidtration    administration    0.0720            #1          5.520         1 letter missspell(same row nearby keys)  pass
+146  ttpe              type              0.2519            #1          1.750         1 letter missspell(same row nearby keys)  pass
+147  susden            sudden            0.1679            #1          2.934         1 letter missspell(same row nearby keys)  pass
+148  reyail            retail            0.1679            #1          2.558         1 letter missspell(same row nearby keys)  pass
+149  har               hat               1.0000            NONE        1.238         1 letter missspell(same row nearby keys)  fail
+150  birden            burden            0.1679            #1          2.608         1 letter missspell(same row nearby keys)  pass
+151  fkower            flower            0.1679            #1          2.593         1 letter missspell(same row nearby keys)  pass
+152  atill             still             0.2015            #1          2.213         1 letter missspell(same row nearby keys)  pass
+153  qorried           worried           0.1439            #1          2.972         1 letter missspell(same row nearby keys)  pass
+154  nental            mental            0.1679            #1          2.704         1 letter missspell(same row nearby keys)  pass
+155  lucjy             lucky             0.2015            #1          2.131         1 letter missspell(same row nearby keys)  pass
+156  watvh             watch             0.2015            #1          2.128         1 letter missspell(same row nearby keys)  pass
+157  maasive           massive           0.1439            #1          2.973         1 letter missspell(same row nearby keys)  pass
+158  aytend            attend            0.1679            #1          2.599         1 letter missspell(same row nearby keys)  pass
+159  dponsor           sponsor           0.1439            #1          3.018         1 letter missspell(same row nearby keys)  pass
+160  strio             strip             0.2015            #1          2.195         1 letter missspell(same row nearby keys)  pass
+161  yiger             tiger             0.2015            #1          2.164         1 letter missspell(same row nearby keys)  pass
+162  faul              fail              0.2519            #2          1.684         1 letter missspell(same row nearby keys)  pass
+163  cladsify          classify          0.1259            #1          3.273         1 letter missspell(same row nearby keys)  pass
+164  dind              find              0.2519            #1          1.686         1 letter missspell(same row nearby keys)  pass
+165  charitu           charity           0.1439            #1          3.016         1 letter missspell(same row nearby keys)  pass
+166  debste            debate            0.1679            #1          2.705         1 letter missspell(same row nearby keys)  pass
+167  wslker            walker            0.1679            #1          2.716         1 letter missspell(same row nearby keys)  pass
+168  quute             quite             0.2015            #1          2.210         1 letter missspell(same row nearby keys)  pass
+169  openinf           opening           0.1439            #1          3.002         1 letter missspell(same row nearby keys)  pass
+170  stusy             study             0.2015            #1          2.168         1 letter missspell(same row nearby keys)  pass
+171  dilver            silver            0.1679            #1          2.639         1 letter missspell(same row nearby keys)  pass
+172  societt           society           0.1439            #1          3.024         1 letter missspell(same row nearby keys)  pass
+173  fuber             fiber             0.2015            #1          2.169         1 letter missspell(same row nearby keys)  pass
+174  somepne           someone           0.1439            #1          3.019         1 letter missspell(same row nearby keys)  pass
+175  developmeny       development       0.0916            #1          4.362         1 letter missspell(same row nearby keys)  pass
+176  wuse              wise              0.2519            #1          1.694         1 letter missspell(same row nearby keys)  pass
+177  cpmpany           company           0.1439            #1          2.946         1 letter missspell(same row nearby keys)  pass
+178  qritten           written           0.1439            #1          2.986         1 letter missspell(same row nearby keys)  pass
+179  contrpl           control           0.1439            #1          3.018         1 letter missspell(same row nearby keys)  pass
+180  parient           patient           0.1439            #1          2.994         1 letter missspell(same row nearby keys)  pass
+181  tassage           passage           0.1471            #1          3.040         1 letter missspell(same row faraway keys) pass
+182  bai               bat               0.3408            #2          1.243         1 letter missspell(same row faraway keys) pass
+183  insije            inside            0.1717            #1          2.620         1 letter missspell(same row faraway keys) pass
+184  lino              line              0.2575            #2          1.725         1 letter missspell(same row faraway keys) pass
+185  rption            option            0.1717            #1          2.608         1 letter missspell(same row faraway keys) pass
+186  nepd              need              0.2575            #1          1.732         1 letter missspell(same row faraway keys) pass
+187  anxieoy           anxiety           0.1471            #1          3.026         1 letter missspell(same row faraway keys) pass
+188  chfmber           chamber           0.1461            #1          2.954         1 letter missspell(same row faraway keys) pass
+189  wseless           useless           0.1471            #1          2.987         1 letter missspell(same row faraway keys) pass
+190  brwef             brief             0.2060            #1          2.198         1 letter missspell(same row faraway keys) pass
+191  givin             given             0.2060            #1          2.149         1 letter missspell(same row faraway keys) pass
+192  pagm              palm              0.2575            #1          1.669         1 letter missspell(same row faraway keys) pass
+193  fleew             fleet             0.2045            #1          2.205         1 letter missspell(same row faraway keys) pass
+194  nareful           careful           0.1461            #1          3.037         1 letter missspell(same row faraway keys) pass
+195  unjble            unable            0.1717            #1          2.597         1 letter missspell(same row faraway keys) pass
+196  thacks            thanks            0.1704            #1          2.606         1 letter missspell(same row faraway keys) pass
+197  tive              time              1.0000            NONE        1.685         1 letter missspell(same row faraway keys) fail
+198  confwrm           confirm           0.1471            #1          2.953         1 letter missspell(same row faraway keys) pass
+199  zast              vast              0.2556            #3          1.748         1 letter missspell(same row faraway keys) pass
+200  buswness          business          0.1287            #1          3.298         1 letter missspell(same row faraway keys) pass
+201  splre             spare             0.2060            #1          2.180         1 letter missspell(same row faraway keys) pass
+202  piepare           prepare           0.1471            #1          3.091         1 letter missspell(same row faraway keys) pass
+203  coefficieno       coefficient       0.0936            #1          4.385         1 letter missspell(same row faraway keys) pass
+204  mame              came              1.0000            NONE        1.736         1 letter missspell(same row faraway keys) fail
+205  petain            retain            0.1717            #1          2.631         1 letter missspell(same row faraway keys) pass
+206  jish              fish              0.2556            #1          1.708         1 letter missspell(same row faraway keys) pass
+207  orror             error             0.2060            #1          2.176         1 letter missspell(same row faraway keys) pass
+208  maq               mat               0.3433            #2          1.212         1 letter missspell(same row faraway keys) pass
+209  pixk              pink              0.2575            #2          1.690         1 letter missspell(same row faraway keys) pass
+210  hadf              half              0.2575            #1          1.676         1 letter missspell(same row faraway keys) pass
+211  therapp           therapy           0.1471            #1          3.064         1 letter missspell(same row faraway keys) pass
+212  hore              hope              1.0000            NONE        1.734         1 letter missspell(same row faraway keys) fail
+213  livink            living            0.1704            #1          2.642         1 letter missspell(same row faraway keys) pass
+214  listec            listen            0.1704            #1          2.624         1 letter missspell(same row faraway keys) pass
+215  volump            volume            0.1717            #1          2.558         1 letter missspell(same row faraway keys) pass
+216  soaid             solid             0.2060            #1          2.177         1 letter missspell(same row faraway keys) pass
+217  oast              east              1.0000            NONE        1.696         1 letter missspell(same row faraway keys) fail
+218  rtcket            rocket            0.1717            #1          2.646         1 letter missspell(same row faraway keys) pass
+219  mystury           mystery           0.1471            #1          2.981         1 letter missspell(same row faraway keys) pass
+220  lekst             least             0.2060            #1          2.207         1 letter missspell(same row faraway keys) pass
+221  pynd              pond              0.2556            #1          1.678         1 letter missspell(same row faraway keys) pass
+222  troject           project           0.1471            #1          2.992         1 letter missspell(same row faraway keys) pass
+223  comuonent         component         0.1136            #1          7.676         1 letter missspell(same row faraway keys) pass
+224  acquiie           acquire           0.1471            #1          6.093         1 letter missspell(same row faraway keys) pass
+225  floter            flower            0.1704            #1          4.966         1 letter missspell(same row faraway keys) pass
+226  lfte              late              0.2556            #1          2.404         1 letter missspell(same row faraway keys) pass
+227  jield             field             0.2045            #1          2.383         1 letter missspell(same row faraway keys) pass
+228  rarn              rain              0.2575            #2          1.625         1 letter missspell(same row faraway keys) pass
+229  tuam              team              0.2575            #1          1.629         1 letter missspell(same row faraway keys) pass
+230  managor           manager           0.1471            #1          2.857         1 letter missspell(same row faraway keys) pass
+231  awaqe             aware             0.2045            #1          2.137         1 letter missspell(same row faraway keys) pass
+232  fkt               fat               0.3433            #1          1.172         1 letter missspell(same row faraway keys) pass
+233  currezt           current           0.1471            #1          2.926         1 letter missspell(same row faraway keys) pass
+234  reaard            regard            0.1717            #2          2.621         1 letter missspell(same row faraway keys) pass
+235  alxost            almost            0.1717            #1          2.638         1 letter missspell(same row faraway keys) pass
+236  fqx               fox               0.3433            #1          1.196         1 letter missspell(same row faraway keys) pass
+237  mifk              milk              0.2575            #1          1.748         1 letter missspell(same row faraway keys) pass
+238  stryet            street            0.1704            #1          2.660         1 letter missspell(same row faraway keys) pass
+239  contrrl           control           0.1471            #1          3.024         1 letter missspell(same row faraway keys) pass
+240  plrty             party             0.2060            #1          2.159         1 letter missspell(same row faraway keys) pass
+241  cjrrent           current           0.1440            #1          2.985         1 letter missspell(diff row nearby keys)  pass
+242  bribht            bright            0.1680            #1          2.508         1 letter missspell(diff row nearby keys)  pass
+243  fash              cash              0.2522            #2          1.713         1 letter missspell(diff row nearby keys)  pass
+244  tidket            ticket            0.1680            #1          2.649         1 letter missspell(diff row nearby keys)  pass
+245  monty             month             0.2016            #1          2.204         1 letter missspell(diff row nearby keys)  pass
+246  phogo             photo             0.2016            #1          2.249         1 letter missspell(diff row nearby keys)  pass
+247  tdied             tried             0.2018            #1          2.325         1 letter missspell(diff row nearby keys)  pass
+248  lipe              pipe              0.2523            #1          1.800         1 letter missspell(diff row nearby keys)  pass
+249  snine             shine             0.2016            #1          2.268         1 letter missspell(diff row nearby keys)  pass
+250  lloking           looking           0.1440            #1          3.059         1 letter missspell(diff row nearby keys)  pass
+251  attadk            attack            0.1680            #1          2.777         1 letter missspell(diff row nearby keys)  pass
+252  hilp              hill              0.2523            #1          1.816         1 letter missspell(diff row nearby keys)  pass
+253  pwt               pat               0.3364            #2          1.278         1 letter missspell(diff row nearby keys)  pass
+254  faxt              fast              0.2520            #2          2.069         1 letter missspell(diff row nearby keys)  pass
+255  cirfuit           circuit           0.1441            #1          3.047         1 letter missspell(diff row nearby keys)  pass
+256  tejsion           tension           0.1441            #1          3.072         1 letter missspell(diff row nearby keys)  pass
+257  frkend            friend            0.1680            #1          2.710         1 letter missspell(diff row nearby keys)  pass
+258  madch             march             0.2018            #1          2.255         1 letter missspell(diff row nearby keys)  pass
+259  gotal             total             0.2016            #1          2.354         1 letter missspell(diff row nearby keys)  pass
+260  hafm              harm              0.2520            #1          1.783         1 letter missspell(diff row nearby keys)  pass
+261  gheory            theory            0.1680            #1          2.717         1 letter missspell(diff row nearby keys)  pass
+262  cljmb             climb             0.2018            #1          2.209         1 letter missspell(diff row nearby keys)  pass
+263  wlthough          although          0.1261            #1          3.428         1 letter missspell(diff row nearby keys)  pass
+264  felief            relief            0.1680            #1          2.964         1 letter missspell(diff row nearby keys)  pass
+265  tifket            ticket            0.1681            #1          2.706         1 letter missspell(diff row nearby keys)  pass
+266  pabel             label             0.2018            #2          2.174         1 letter missspell(diff row nearby keys)  pass
+267  hewd              head              0.2523            #1          1.655         1 letter missspell(diff row nearby keys)  pass
+268  cyarity           charity           0.1440            #1          2.991         1 letter missspell(diff row nearby keys)  pass
+269  wiwdom            wisdom            0.1680            #1          2.670         1 letter missspell(diff row nearby keys)  pass
+270  bullef            bullet            0.1682            #1          2.677         1 letter missspell(diff row nearby keys)  pass
+271  kat               mat               0.3362            #1          1.257         1 letter missspell(diff row nearby keys)  pass
+272  expdrt            expert            0.1680            #1          2.698         1 letter missspell(diff row nearby keys)  pass
+273  remotd            remote            0.1680            #1          2.726         1 letter missspell(diff row nearby keys)  pass
+274  bioloyy           biology           0.1442            #1          3.054         1 letter missspell(diff row nearby keys)  pass
+275  sere              were              0.2520            #2          1.848         1 letter missspell(diff row nearby keys)  pass
+276  likelg            likely            0.1682            #1          2.751         1 letter missspell(diff row nearby keys)  pass
+277  tyeir             their             0.2016            #1          2.452         1 letter missspell(diff row nearby keys)  pass
+278  squarss           squares           0.1442            #1          3.125         1 letter missspell(diff row nearby keys)  pass
+279  sjrface           surface           0.1440            #1          3.217         1 letter missspell(diff row nearby keys)  pass
+280  birx              bird              0.2522            #1          1.771         1 letter missspell(diff row nearby keys)  pass
+281  bhilder           builder           0.1442            #1          3.116         1 letter missspell(diff row nearby keys)  pass
+282  wqge              wage              0.2520            #1          1.762         1 letter missspell(diff row nearby keys)  pass
+283  weed              seed              0.2520            #1          1.813         1 letter missspell(diff row nearby keys)  pass
+284  vjrus             virus             0.2018            #1          2.272         1 letter missspell(diff row nearby keys)  pass
+285  eog               dog               0.3359            #1          1.294         1 letter missspell(diff row nearby keys)  pass
+286  slciety           society           0.1440            #1          3.085         1 letter missspell(diff row nearby keys)  pass
+287  anybocy           anybody           0.1440            #1          3.045         1 letter missspell(diff row nearby keys)  pass
+288  onoine            online            0.1680            #1          2.772         1 letter missspell(diff row nearby keys)  pass
+289  szil              sail              0.2520            #1          1.766         1 letter missspell(diff row nearby keys)  pass
+290  shoupder          shoulder          0.1261            #1          3.490         1 letter missspell(diff row nearby keys)  pass
+291  effodt            effort            0.1682            #1          2.790         1 letter missspell(diff row nearby keys)  pass
+292  buffsr            buffer            0.1682            #1          2.705         1 letter missspell(diff row nearby keys)  pass
+293  mjssion           mission           0.1442            #1          3.176         1 letter missspell(diff row nearby keys)  pass
+294  blossok           blossom           0.1441            #1          3.075         1 letter missspell(diff row nearby keys)  pass
+295  kned              knee              0.2520            #1          1.813         1 letter missspell(diff row nearby keys)  pass
+296  hlney             honey             0.2016            #1          2.286         1 letter missspell(diff row nearby keys)  pass
+297  brjck             brick             0.2018            #1          2.234         1 letter missspell(diff row nearby keys)  pass
+298  thkrd             third             0.2016            #1          3.637         1 letter missspell(diff row nearby keys)  pass
+299  sdarch            search            0.1680            #1          5.308         1 letter missspell(diff row nearby keys)  pass
+300  mqt               mat               0.3359            #1          2.574         1 letter missspell(diff row nearby keys)  pass
+301  concludn          conclude          0.1287            #1          6.553         1 letter missspell(diff row faraway keys) pass
+302  assesm            assess            0.1717            #1          3.825         1 letter missspell(diff row faraway keys) pass
+303  outmut            output            0.1705            #1          2.633         1 letter missspell(diff row faraway keys) pass
+304  autamn            autumn            0.1717            #1          2.488         1 letter missspell(diff row faraway keys) pass
+305  rine              mine              1.0000            NONE        1.736         1 letter missspell(diff row faraway keys) fail
+306  hmppy             happy             0.2060            #1          2.057         1 letter missspell(diff row faraway keys) pass
+307  opeak             speak             0.2060            #1          2.090         1 letter missspell(diff row faraway keys) pass
+308  exxend            extend            0.1705            #1          2.510         1 letter missspell(diff row faraway keys) pass
+309  lear              tear              1.0000            NONE        1.650         1 letter missspell(diff row faraway keys) fail
+310  ccrrect           correct           0.1471            #1          2.849         1 letter missspell(diff row faraway keys) pass
+311  rapzd             rapid             0.2060            #1          2.323         1 letter missspell(diff row faraway keys) pass
+312  resolvn           resolve           0.1471            #1          4.271         1 letter missspell(diff row faraway keys) pass
+313  kegetable         vegetable         0.1142            #1          4.035         1 letter missspell(diff row faraway keys) pass
+314  theora            theory            0.1717            #1          2.772         1 letter missspell(diff row faraway keys) pass
+315  rmturn            return            0.1717            #1          2.631         1 letter missspell(diff row faraway keys) pass
+316  refeat            repeat            0.1717            #1          2.560         1 letter missspell(diff row faraway keys) pass
+317  succnss           success           0.1471            #1          2.805         1 letter missspell(diff row faraway keys) pass
+318  enqineering       engineering       0.0936            #1          4.316         1 letter missspell(diff row faraway keys) pass
+319  qood              good              0.2575            #3          1.652         1 letter missspell(diff row faraway keys) pass
+320  qap               nap               1.0000            NONE        1.186         1 letter missspell(diff row faraway keys) fail
+321  signbl            signal            0.1717            #1          2.482         1 letter missspell(diff row faraway keys) pass
+322  aecause           because           0.1471            #1          2.964         1 letter missspell(diff row faraway keys) pass
+323  syszem            system            0.1715            #1          2.609         1 letter missspell(diff row faraway keys) pass
+324  nemand            demand            0.1711            #1          2.656         1 letter missspell(diff row faraway keys) pass
+325  azead             ahead             0.2060            #1          2.373         1 letter missspell(diff row faraway keys) pass
+326  worm              norm              1.0000            NONE        1.640         1 letter missspell(diff row faraway keys) fail
+327  qoud              loud              0.2575            #1          1.673         1 letter missspell(diff row faraway keys) pass
+328  reud              read              0.2575            #1          1.731         1 letter missspell(diff row faraway keys) pass
+329  roqky             rocky             0.2050            #1          2.126         1 letter missspell(diff row faraway keys) pass
+330  surpluy           surplus           0.1470            #1          2.958         1 letter missspell(diff row faraway keys) pass
+331  pztch             pitch             0.2060            #1          2.180         1 letter missspell(diff row faraway keys) pass
+332  logiy             logic             0.2046            #1          2.154         1 letter missspell(diff row faraway keys) pass
+333  mefuse            refuse            0.1717            #1          2.670         1 letter missspell(diff row faraway keys) pass
+334  fnod              food              0.2557            #1          1.698         1 letter missspell(diff row faraway keys) pass
+335  hvery             every             0.2052            #1          2.159         1 letter missspell(diff row faraway keys) pass
+336  smara             smart             0.2057            #1          2.195         1 letter missspell(diff row faraway keys) pass
+337  playfng           playing           0.1470            #1          2.923         1 letter missspell(diff row faraway keys) pass
+338  lertain           certain           0.1471            #1          3.136         1 letter missspell(diff row faraway keys) pass
+339  masm              mass              0.2575            #1          1.711         1 letter missspell(diff row faraway keys) pass
+340  ybrd              yard              0.2575            #1          1.653         1 letter missspell(diff row faraway keys) pass
+341  whste             white             0.2060            #2          2.160         1 letter missspell(diff row faraway keys) pass
+342  swis              swim              0.2575            #1          1.687         1 letter missspell(diff row faraway keys) pass
+343  mtring            string            0.1717            #1          2.614         1 letter missspell(diff row faraway keys) pass
+344  mrofit            profit            0.1705            #1          2.609         1 letter missspell(diff row faraway keys) pass
+345  smalt             small             0.2060            #2          2.155         1 letter missspell(diff row faraway keys) pass
+346  carefuc           careful           0.1471            #1          2.976         1 letter missspell(diff row faraway keys) pass
+347  nuti              nuts              0.2575            #1          1.725         1 letter missspell(diff row faraway keys) pass
+348  plame             flame             0.2060            #3          2.184         1 letter missspell(diff row faraway keys) pass
+349  minar             minor             0.2060            #1          2.207         1 letter missspell(diff row faraway keys) pass
+350  newm              news              0.2575            #1          1.705         1 letter missspell(diff row faraway keys) pass
+351  mastlr            master            0.1717            #1          2.619         1 letter missspell(diff row faraway keys) pass
+352  rubqer            rubber            0.1717            #1          2.641         1 letter missspell(diff row faraway keys) pass
+353  gendjr            gender            0.1717            #1          2.594         1 letter missspell(diff row faraway keys) pass
+354  solmier           soldier           0.1471            #1          3.004         1 letter missspell(diff row faraway keys) pass
+355  rjmains           remains           0.1471            #1          3.017         1 letter missspell(diff row faraway keys) pass
+356  wenlth            wealth            0.1717            #1          2.578         1 letter missspell(diff row faraway keys) pass
+357  famzly            family            0.1717            #1          2.630         1 letter missspell(diff row faraway keys) pass
+358  mit               mat               1.0000            NONE        1.233         1 letter missspell(diff row faraway keys) fail
+359  carriej           carrier           0.1466            #1          3.031         1 letter missspell(diff row faraway keys) pass
+360  spcrits           spirits           0.1471            #1          3.011         1 letter missspell(diff row faraway keys) pass
+361  truicka           truck             0.3029            #1          3.016         2 letter insertion                        pass
+362  dgyrow            grow              0.3541            #1          2.567         2 letter insertion                        pass
+363  anymlorse         anymore           0.2339            #1          3.634         2 letter insertion                        pass
+364  cprivatse         private           0.2499            #1          3.726         2 letter insertion                        pass
+365  mountaaibn        mountain          0.2108            #1          4.035         2 letter insertion                        pass
+366  rqxesult          result            0.2698            #1          3.333         2 letter insertion                        pass
+367  chasemm           chase             0.2943            #1          2.964         2 letter insertion                        pass
+368  internaqtionael   international     0.1469            #1          6.016         2 letter insertion                        pass
+369  hhadnd            hand              0.3533            #1          2.616         2 letter insertion                        pass
+370  monlkey           money             0.3013            #1          2.997         2 letter insertion                        pass
+371  pienaltyn         penalty           0.2464            #1          3.662         2 letter insertion                        pass
+372  cdentufry         century           0.2411            #1          3.640         2 letter insertion                        pass
+373  spljiit           split             0.2988            #1          2.981         2 letter insertion                        pass
+374  thfyirty          thirty            0.2677            #1          3.319         2 letter insertion                        pass
+375  livtinog          living            0.2642            #1          3.363         2 letter insertion                        pass
+376  chdosae           chose             0.3042            #2          3.081         2 letter insertion                        pass
+377  minicstedr        minister          0.2117            #1          4.091         2 letter insertion                        pass
+378  unqityx           unity             0.3029            #1          2.972         2 letter insertion                        pass
+379  ratmioo           ratio             0.2975            #1          3.073         2 letter insertion                        pass
+380  tbebst            test              0.3517            #1          2.563         2 letter insertion                        pass
+381  glorhd            lord              0.3562            #1          2.668         2 letter insertion                        pass
+382  vthaem            them              0.3572            #1          2.640         2 letter insertion                        pass
+383  wherbeasc         whereas           0.2342            #1          3.737         2 letter insertion                        pass
+384  arounndb          around            0.2608            #1          3.327         2 letter insertion                        pass
+385  extrspaordinary   extraordinary     0.1512            #1          6.454         2 letter insertion                        pass
+386  eaorpn            earn              0.3525            #1          6.049         2 letter insertion                        pass
+387  exlhpect          expect            0.2675            #1          6.019         2 letter insertion                        pass
+388  fumvnny           funny             0.2998            #1          3.458         2 letter insertion                        pass
+389  voltagcge         voltage           0.2307            #1          3.462         2 letter insertion                        pass
+390  shelfhi           shelf             0.2943            #1          2.853         2 letter insertion                        pass
+391  dregreey          degree            0.2633            #1          3.245         2 letter insertion                        pass
+392  zceure            cure              0.3569            #2          2.560         2 letter insertion                        pass
+393  informationsr     information       0.1585            #1          5.226         2 letter insertion                        pass
+394  nlogiuc           logic             0.3099            #1          3.074         2 letter insertion                        pass
+395  chaisef           chief             0.3050            #2          3.045         2 letter insertion                        pass
+396  releabser         release           0.2329            #1          3.771         2 letter insertion                        pass
+397  removeapl         removal           0.2339            #1          3.788         2 letter insertion                        pass
+398  usualig           usual             0.2943            #1          3.102         2 letter insertion                        pass
+399  awkwaardu         awkward           0.2323            #1          3.731         2 letter insertion                        pass
+400  beautgifuln       beautiful         0.1955            #1          4.536         2 letter insertion                        pass
+401  sxuitex           suite             0.3050            #1          3.224         2 letter insertion                        pass
+402  earyteh           earth             0.2971            #1          3.115         2 letter insertion                        pass
+403  cqnollege         college           0.2421            #1          3.849         2 letter insertion                        pass
+404  clasualc          casual            0.2734            #1          3.494         2 letter insertion                        pass
+405  hlodld            hold              0.3459            #1          2.688         2 letter insertion                        pass
+406  tzvalid           valid             0.3105            #1          3.098         2 letter insertion                        pass
+407  eautlumn          autumn            0.2705            #1          3.483         2 letter insertion                        pass
+408  grecbw            grew              0.3466            #1          2.716         2 letter insertion                        pass
+409  heiighdt          height            0.2627            #1          3.530         2 letter insertion                        pass
+410  haitu             hit               1.0000            NONE        2.274         2 letter insertion                        fail
+411  cotnydemn         condemn           0.2432            #1          6.111         2 letter insertion                        pass
+412  omoaker           maker             0.3088            #1          6.503         2 letter insertion                        pass
+413  bxlayme           blame             0.3104            #1          5.991         2 letter insertion                        pass
+414  chaildl           child             0.3046            #2          3.402         2 letter insertion                        pass
+415  gnoldenr          golden            0.2698            #1          3.303         2 letter insertion                        pass
+416  soihle            sole              0.3497            #2          2.579         2 letter insertion                        pass
+417  paschool          school            0.2749            #1          3.286         2 letter insertion                        pass
+418  jshiftl           shift             0.3104            #1          2.973         2 letter insertion                        pass
+419  ecalld            call              0.3542            #2          2.610         2 letter insertion                        pass
+420  firoank           frank             0.3092            #1          3.063         2 letter insertion                        pass
+421  commuicatin       communication     0.1690            #1          4.586         2 letter deletion                         pass
+422  rear              regard            1.0000            NONE        1.803         2 letter deletion                         fail
+423  cck               click             0.4196            #1          1.266         2 letter deletion                         pass
+424  aious             various           0.3120            #1          2.318         2 letter deletion                         pass
+425  connt             consent           1.0000            NONE        2.288         2 letter deletion                         fail
+426  cae               cable             1.0000            NONE        1.301         2 letter deletion                         fail
+427  osen              chosen            0.3633            #2          1.844         2 letter deletion                         pass
+428  tol               total             1.0000            NONE        1.297         2 letter deletion                         fail
+429  futh              fourth            0.3515            #1          1.753         2 letter deletion                         pass
+430  nex               index             0.4233            #3          1.295         2 letter deletion                         pass
+431  ivin              living            0.3580            #1          1.818         2 letter deletion                         pass
+432  nual              annual            0.3590            #1          1.817         2 letter deletion                         pass
+433  sevel             several           0.2986            #3          2.355         2 letter deletion                         pass
+434  rip               strip             1.0000            NONE        1.312         2 letter deletion                         fail
+435  srt               shirt             1.0000            NONE        1.341         2 letter deletion                         fail
+436  jack              jacket            0.3433            #3          1.798         2 letter deletion                         pass
+437  ang               angle             0.4120            #3          1.297         2 letter deletion                         pass
+438  ampu              campus            0.3591            #1          1.800         2 letter deletion                         pass
+439  cothe             clothes           0.3051            #1          2.155         2 letter deletion                         pass
+440  igh               light             0.4203            #1          1.213         2 letter deletion                         pass
+441  raner             trainer           0.3106            #1          2.249         2 letter deletion                         pass
+442  rae               raise             1.0000            NONE        1.439         2 letter deletion                         fail
+443  imot              import            0.3496            #1          3.948         2 letter deletion                         pass
+444  cobie             combine           0.3040            #1          4.403         2 letter deletion                         pass
+445  thk               think             0.4136            #3          2.493         2 letter deletion                         pass
+446  hoce              choice            1.0000            NONE        3.398         2 letter deletion                         fail
+447  isnd              island            0.3493            #1          2.701         2 letter deletion                         pass
+448  emova             removal           0.3103            #1          2.596         2 letter deletion                         pass
+449  rek               break             0.4234            #1          1.236         2 letter deletion                         pass
+450  nversation        conversation      0.1907            #1          3.974         2 letter deletion                         pass
+451  wadr              wander            0.3493            #1          1.654         2 letter deletion                         pass
+452  genl              gentle            0.3483            #1          1.613         2 letter deletion                         pass
+453  ulig              ruling            0.3559            #1          1.586         2 letter deletion                         pass
+454  adce              advice            0.3496            #1          1.616         2 letter deletion                         pass
+455  rif               brief             0.4277            #1          1.183         2 letter deletion                         pass
+456  rse               nurse             1.0000            NONE        1.188         2 letter deletion                         fail
+457  othe              bother            1.0000            NONE        1.631         2 letter deletion                         fail
+458  illin             willing           0.3046            #3          2.077         2 letter deletion                         pass
+459  eadr              reader            0.3511            #1          1.746         2 letter deletion                         pass
+460  unr               under             0.4138            #1          1.177         2 letter deletion                         pass
+461  netwr             network           0.2986            #1          2.308         2 letter deletion                         pass
+462  loc               block             1.0000            NONE        1.189         2 letter deletion                         fail
+463  stk               stake             1.0000            NONE        1.200         2 letter deletion                         fail
+464  comad             command           0.3007            #1          2.126         2 letter deletion                         pass
+465  dvie              device            0.3564            #2          1.644         2 letter deletion                         pass
+466  eond              beyond            0.3602            #3          1.671         2 letter deletion                         pass
+467  toh               touch             1.0000            NONE        1.206         2 letter deletion                         fail
+468  cduct             conduct           0.3040            #1          2.111         2 letter deletion                         pass
+469  hose              chosen            1.0000            NONE        1.711         2 letter deletion                         fail
+470  slen              silent            0.3554            #2          1.693         2 letter deletion                         pass
+471  shn               shown             0.4166            #3          1.197         2 letter deletion                         pass
+472  orro              borrow            0.3582            #1          1.696         2 letter deletion                         pass
+473  smlarity          similarity        0.2202            #1          3.350         2 letter deletion                         pass
+474  igr               tiger             0.4233            #1          1.222         2 letter deletion                         pass
+475  tetin             testing           0.3031            #1          2.192         2 letter deletion                         pass
+476  complely          completely        0.2113            #1          3.288         2 letter deletion                         pass
+477  affe              affect            0.3433            #1          1.666         2 letter deletion                         pass
+478  ense              ensure            1.0000            NONE        1.730         2 letter deletion                         fail
+479  siultneously      simultaneously    0.1635            #1          4.743         2 letter deletion                         pass
+480  abe               above             0.4180            #1          1.260         2 letter deletion                         pass
+481  jbiat             joint             0.4118            #1          2.137         2 letter missspell                        pass
+482  artince           article           0.2932            #1          2.994         2 letter missspell                        pass
+483  plcw              plan              1.0000            NONE        1.666         2 letter missspell                        fail
+484  nxhber            number            0.3405            #1          2.628         2 letter missspell                        pass
+485  sibry             sorry             0.4054            #1          2.167         2 letter missspell                        pass
+486  ndye              nine              1.0000            NONE        1.693         2 letter missspell                        fail
+487  qgnning           running           0.2910            #2          2.916         2 letter missspell                        pass
+488  dynt              rent              1.0000            NONE        1.658         2 letter missspell                        fail
+489  palajh            palace            0.3423            #1          2.584         2 letter missspell                        pass
+490  comsiu            commit            0.3408            #2          2.581         2 letter missspell                        pass
+491  agueemenf         agreement         0.2257            #1          3.657         2 letter missspell                        pass
+492  yervf             serve             0.4082            #1          2.138         2 letter missspell                        pass
+493  licx              nice              1.0000            NONE        1.698         2 letter missspell                        fail
+494  cuaoity           quality           0.2904            #1          2.979         2 letter missspell                        pass
+495  frhewd            friend            0.3408            #1          2.597         2 letter missspell                        pass
+496  irrdw             arrow             0.4120            #1          2.216         2 letter missspell                        pass
+497  frugh             fruit             0.4068            #2          2.151         2 letter missspell                        pass
+498  mixtsrb           mixture           0.2936            #1          4.378         2 letter missspell                        pass
+499  qryinq            trying            0.3433            #1          5.468         2 letter missspell                        pass
+500  pmers             press             0.4090            #1          4.438         2 letter missspell                        pass
+501  orzanuc           organic           0.2908            #1          5.759         2 letter missspell                        pass
+502  wefcomz           welcome           0.2926            #1          3.958         2 letter missspell                        pass
+503  markdc            market            0.3376            #1          2.579         2 letter missspell                        pass
+504  camxute           compute           0.2943            #1          2.809         2 letter missspell                        pass
+505  clkrity           charity           0.2932            #1          3.019         2 letter missspell                        pass
+506  tairp             third             1.0000            NONE        3.554         2 letter missspell                        fail
+507  basketbcgl        basketball        0.2050            #1          4.532         2 letter missspell                        pass
+508  caqtlt            castle            0.3379            #1          2.461         2 letter missspell                        pass
+509  thanlk            thanks            0.3396            #2          2.448         2 letter missspell                        pass
+510  wtjry             story             0.4045            #1          2.013         2 letter missspell                        pass
+511  weallx            really            0.3407            #1          2.497         2 letter missspell                        pass
+512  cligb             click             0.4070            #2          2.023         2 letter missspell                        pass
+513  daizer            danger            0.3410            #2          2.523         2 letter missspell                        pass
+514  rxsxrt            resort            0.3409            #1          2.484         2 letter missspell                        pass
+515  ssjw              slow              0.5112            #2          1.624         2 letter missspell                        pass
+516  srowl             crowd             1.0000            NONE        2.149         2 letter missspell                        fail
+517  steply            simply            0.3421            #2          2.580         2 letter missspell                        pass
+518  ooue              soul              1.0000            NONE        1.713         2 letter missspell                        fail
+519  tbblj             table             0.4120            #1          2.125         2 letter missspell                        pass
+520  cmbbon            carbon            0.3416            #1          2.583         2 letter missspell                        pass
+521  kardzy            hardly            0.3408            #1          2.576         2 letter missspell                        pass
+522  galtle            battle            0.3397            #2          2.620         2 letter missspell                        pass
+523  tdlf              till              1.0000            NONE        1.717         2 letter missspell                        fail
+524  xustbce           justice           0.2933            #1          2.938         2 letter missspell                        pass
+525  atdeppt           attempt           0.2911            #1          2.948         2 letter missspell                        pass
+526  bycomg            become            0.3402            #1          2.606         2 letter missspell                        pass
+527  domputxrs         computers         0.2248            #1          3.633         2 letter missspell                        pass
+528  tozoerow          tomorrow          0.2547            #1          3.393         2 letter missspell                        pass
+529  privcfy           privacy           0.2897            #1          2.908         2 letter missspell                        pass
+530  mafnex            manner            0.3396            #1          2.600         2 letter missspell                        pass
+531  rqvkr             river             0.4120            #1          2.129         2 letter missspell                        pass
+532  uontajn           contain           0.2912            #1          3.034         2 letter missspell                        pass
+533  xonition          position          0.2575            #2          3.370         2 letter missspell                        pass
+534  agenrt            agency            0.3371            #1          2.647         2 letter missspell                        pass
+535  psyxholegy        psychology        0.2037            #1          3.990         2 letter missspell                        pass
+536  auarity           charity           0.2898            #1          3.019         2 letter missspell                        pass
+537  determinatiay     determination     0.1574            #1          5.205         2 letter missspell                        pass
+538  baroow            borrow            0.3433            #2          2.647         2 letter missspell                        pass
+539  uwrple            purple            0.3421            #1          2.675         2 letter missspell                        pass
+540  tfem              tied              1.0000            NONE        1.716         2 letter missspell                        fail
+541  notrh             north             0.2030            #1          2.221         2 letter swap                             pass
+542  entertainmetn     entertainment     0.0800            #1          5.273         2 letter swap                             pass
+543  mses              mess              0.2546            #1          1.721         2 letter swap                             pass
+544  lge               leg               0.3459            #1          1.242         2 letter swap                             pass
+545  erport            report            0.1692            #1          2.634         2 letter swap                             pass
+546  maong             among             0.2120            #1          4.101         2 letter swap                             pass
+547  mpa               map               0.3533            #1          2.526         2 letter swap                             pass
+548  obunce            bounce            0.1763            #1          5.372         2 letter swap                             pass
+549  siland            island            0.1767            #1          5.099         2 letter swap                             pass
+550  trluy             truly             0.2075            #1          3.054         2 letter swap                             pass
+551  pirce             price             0.2120            #2          2.363         2 letter swap                             pass
+552  fodo              food              0.2650            #1          1.621         2 letter swap                             pass
+553  palnet            planet            0.1767            #1          2.513         2 letter swap                             pass
+554  enjyo             enjoy             0.2090            #1          2.816         2 letter swap                             pass
+555  etnd              tend              0.2575            #1          2.492         2 letter swap                             pass
+556  hwom              whom              0.2650            #1          2.043         2 letter swap                             pass
+557  socre             score             0.2120            #1          2.316         2 letter swap                             pass
+558  crad              card              0.2608            #1          1.602         2 letter swap                             pass
+559  btatery           battery           0.1511            #1          2.859         2 letter swap                             pass
+560  cihef             chief             0.2059            #1          2.074         2 letter swap                             pass
+561  cousre            course            0.1716            #1          2.453         2 letter swap                             pass
+562  eraly             early             0.2086            #1          2.058         2 letter swap                             pass
+563  nkee              knee              0.2571            #1          1.649         2 letter swap                             pass
+564  ugilty            guilty            0.1716            #1          2.497         2 letter swap                             pass
+565  lentgh            length            0.1693            #1          2.517         2 letter swap                             pass
+566  extar             extra             0.2086            #1          2.173         2 letter swap                             pass
+567  whsoe             whose             0.2120            #1          2.195         2 letter swap                             pass
+568  swmiming          swimming          0.1288            #1          3.325         2 letter swap                             pass
+569  rtuly             truly             0.2030            #1          2.160         2 letter swap                             pass
+570  wief              wife              0.2562            #1          1.700         2 letter swap                             pass
+571  foregt            forget            0.1729            #2          2.584         2 letter swap                             pass
+572  usn               sun               0.3533            #1          1.225         2 letter swap                             pass
+573  breda             bread             0.2060            #1          2.201         2 letter swap                             pass
+574  bulelt            bullet            0.1767            #1          2.611         2 letter swap                             pass
+575  logn              long              0.2565            #1          1.721         2 letter swap                             pass
+576  fosetr            foster            0.1717            #1          2.709         2 letter swap                             pass
+577  cmoplete          complete          0.1295            #1          3.370         2 letter swap                             pass
+578  ocntract          contract          0.1325            #1          3.343         2 letter swap                             pass
+579  risnig            rising            0.1726            #1          2.617         2 letter swap                             pass
+580  dnace             dance             0.2120            #1          2.174         2 letter swap                             pass
+581  dirver            driver            0.1767            #1          2.604         2 letter swap                             pass
+582  psosess           possess           0.1514            #1          3.004         2 letter swap                             pass
+583  sutdent           student           0.1471            #1          2.995         2 letter swap                             pass
+584  crysatl           crystal           0.1511            #1          3.040         2 letter swap                             pass
+585  unknonw           unknown           0.1514            #1          2.962         2 letter swap                             pass
+586  corut             court             0.2090            #1          2.187         2 letter swap                             pass
+587  ditcionary        dictionary        0.1036            #1          4.130         2 letter swap                             pass
+588  tempel            temple            0.1767            #1          2.682         2 letter swap                             pass
+589  cacth             catch             0.2072            #1          2.179         2 letter swap                             pass
+590  bnu               bun               0.3434            #1          1.226         2 letter swap                             pass
+591  brnach            branch            0.1767            #1          2.616         2 letter swap                             pass
+592  turly             truly             0.2090            #1          2.197         2 letter swap                             pass
+593  soemhow           somehow           0.1514            #1          3.010         2 letter swap                             pass
+594  ippe              pipe              0.2575            #1          1.740         2 letter swap                             pass
+595  gtae              gate              0.2644            #1          1.787         2 letter swap                             pass
+596  tuoch             touch             0.2060            #1          2.258         2 letter swap                             pass
+597  geos              goes              0.2650            #1          1.812         2 letter swap                             pass
+598  ermoval           removal           0.1450            #1          3.665         2 letter swap                             pass
+599  nothign           nothing           0.1465            #1          2.870         2 letter swap                             pass
+600  foudnation        foundation        0.1053            #1          4.032         2 letter swap                             pass
+601  ghivaehn          given             0.4050            #1          3.393         3 letter insertion                        pass
+602  anytrhzingz       anything          0.3027            #1          4.393         3 letter insertion                        pass
+603  barrrebsl         barrel            0.3633            #1          3.675         3 letter insertion                        pass
+604  ipgitx            pit               0.5300            #2          2.682         3 letter insertion                        pass
+605  piopuolcation     population        0.2608            #1          7.811         3 letter insertion                        pass
+606  vlicctoryk        victory           0.3300            #1          8.190         3 letter insertion                        pass
+607  pickkuhpa         pickup            0.3633            #1          6.342         3 letter insertion                        pass
+608  kprhovisgion      provision         0.2800            #1          5.036         3 letter insertion                        pass
+609  krnevenueh        revenue           0.3300            #1          3.791         3 letter insertion                        pass
+610  lhlcess           less              1.0000            NONE        4.499         3 letter insertion                        fail
+611  wiilbndow         window            0.3633            #1          4.424         3 letter insertion                        pass
+612  pciocnket         pocket            0.3633            #1          3.491         3 letter insertion                        pass
+613  wxhitqeu          white             0.4050            #1          3.132         3 letter insertion                        pass
+614  ratgfo            rat               1.0000            NONE        2.504         3 letter insertion                        fail
+615  raizdgye          ridge             0.4050            #1          3.203         3 letter insertion                        pass
+616  fmgargihn         margin            0.3633            #1          6.742         3 letter insertion                        pass
+617  syucohg           such              0.4586            #1          3.837         3 letter insertion                        pass
+618  rgesurflt         result            0.3633            #1          4.195         3 letter insertion                        pass
+619  efrieundb         friend            0.3633            #1          3.557         3 letter insertion                        pass
+620  riremader         reader            0.3633            #1          3.502         3 letter insertion                        pass
+621  evhevninug        evening           0.3300            #1          3.781         3 letter insertion                        pass
+622  fsfekries         series            0.3633            #1          3.579         3 letter insertion                        pass
+623  figwutdre         figure            0.3633            #1          3.606         3 letter insertion                        pass
+624  jwpyritten        written           0.3300            #1          3.978         3 letter insertion                        pass
+625  bbclootd          blood             0.4050            #1          3.307         3 letter insertion                        pass
+626  cbusvtoam         custom            0.3633            #1          3.763         3 letter insertion                        pass
+627  pfheewl           feel              0.4586            #3          2.976         3 letter insertion                        pass
+628  psmilerw          smile             0.4050            #1          3.335         3 letter insertion                        pass
+629  helpdkingd        helping           0.3300            #1          3.979         3 letter insertion                        pass
+630  comlmhittree      committee         0.2800            #1          4.869         3 letter insertion                        pass
+631  plahbcet          place             0.4050            #2          3.374         3 letter insertion                        pass
+632  epunrxple         purple            0.3633            #1          3.668         3 letter insertion                        pass
+633  staapem           tape              1.0000            NONE        3.033         3 letter insertion                        fail
+634  hoeihghta         height            0.3633            #1          3.656         3 letter insertion                        pass
+635  plzhanbet         planet            0.3633            #1          8.551         3 letter insertion                        pass
+636  sphjahrp          sharp             0.4050            #1          6.669         3 letter insertion                        pass
+637  cineomcas         cinema            0.3633            #1          4.994         3 letter insertion                        pass
+638  poloslb           pool              0.4586            #1          3.139         3 letter insertion                        pass
+639  covubmrse         course            0.3633            #1          3.456         3 letter insertion                        pass
+640  carxexpet         carpet            0.3633            #1          6.125         3 letter insertion                        pass
+641  collhuaboratigon  collaboration     0.2175            #1          7.581         3 letter insertion                        pass
+642  sefnegn           seen              0.4586            #2          2.865         3 letter insertion                        pass
+643  wcandzerk         wander            0.3633            #1          3.500         3 letter insertion                        pass
+644  slftowwly         slowly            0.3633            #1          3.509         3 letter insertion                        pass
+645  sevmergwal        several           0.3300            #1          4.016         3 letter insertion                        pass
+646  theoarlry         theory            0.3633            #1          3.729         3 letter insertion                        pass
+647  nqmethodh         method            0.3633            #1          3.708         3 letter insertion                        pass
+648  pruotecntw        protect           0.3300            #1          4.113         3 letter insertion                        pass
+649  sqtoujrm          storm             0.4050            #1          3.525         3 letter insertion                        pass
+650  seuebkf           seek              0.4586            #1          2.911         3 letter insertion                        pass
+651  sjhcadodw         shadow            0.3633            #1          3.659         3 letter insertion                        pass
+652  cojgmvponent      component         0.2800            #1          4.854         3 letter insertion                        pass
+653  scweuert          sweet             0.4050            #1          3.513         3 letter insertion                        pass
+654  marchitpecuture   architecture      0.2300            #1          6.117         3 letter insertion                        pass
+655  ppaycle           pale              1.0000            NONE        3.097         3 letter insertion                        fail
+656  iaindpex          index             0.4050            #1          3.650         3 letter insertion                        pass
+657  oudaward          award             0.4050            #1          3.477         3 letter insertion                        pass
+658  gvoglrd           gold              0.4586            #1          3.139         3 letter insertion                        pass
+659  rhencsae          hence             0.4050            #1          3.542         3 letter insertion                        pass
+660  brpriokr          prior             0.4050            #1          3.513         3 letter insertion                        pass
+661  iure              mixture           1.0000            NONE        1.875         3 letter deletion                         fail
+662  aeae              average           1.0000            NONE        1.866         3 letter deletion                         fail
+663  ttr               matter            1.0000            NONE        1.302         3 letter deletion                         fail
+664  maginati          imagination       0.3027            #1          5.333         3 letter deletion                         pass
+665  cldhod            childhood         0.3633            #1          5.311         3 letter deletion                         pass
+666  aros              various           1.0000            NONE        2.339         3 letter deletion                         fail
+667  turment           tournament        0.3300            #2          2.830         3 letter deletion                         pass
+668  thht              thought           0.4586            #3          1.613         3 letter deletion                         pass
+669  comunicain        communication     0.2608            #1          3.918         3 letter deletion                         pass
+670  dus               adjust            1.0000            NONE        1.208         3 letter deletion                         fail
+671  iing              willing           1.0000            NONE        1.752         3 letter deletion                         fail
+672  clse              closest           1.0000            NONE        1.759         3 letter deletion                         fail
+673  ybard             keyboard          0.4050            #2          2.230         3 letter deletion                         pass
+674  coplt             complete          0.4050            #2          2.286         3 letter deletion                         pass
+675  oeho              somehow           0.4586            #1          1.838         3 letter deletion                         pass
+676  sid               inside            1.0000            NONE        1.284         3 letter deletion                         fail
+677  ededay            wednesday         0.3633            #2          2.756         3 letter deletion                         pass
+678  aue               mature            1.0000            NONE        1.329         3 letter deletion                         fail
+679  hie               hidden            1.0000            NONE        1.330         3 letter deletion                         fail
+680  ano               cannot            1.0000            NONE        1.290         3 letter deletion                         fail
+681  nry               injury            1.0000            NONE        1.299         3 letter deletion                         fail
+682  vcr               vector            0.5300            #3          1.287         3 letter deletion                         pass
+683  coputg            computing         0.3633            #2          2.777         3 letter deletion                         pass
+684  caeda             calendar          0.4050            #2          2.268         3 letter deletion                         pass
+685  cong              cooling           1.0000            NONE        1.822         3 letter deletion                         fail
+686  min               motion            1.0000            NONE        1.339         3 letter deletion                         fail
+687  eau               beauty            1.0000            NONE        1.324         3 letter deletion                         fail
+688  plnnn             planning          0.4050            #1          2.323         3 letter deletion                         pass
+689  scnc              science           0.4586            #2          1.769         3 letter deletion                         pass
+690  fao               famous            1.0000            NONE        1.284         3 letter deletion                         fail
+691  sbl               symbol            1.0000            NONE        1.271         3 letter deletion                         fail
+692  prsu              pursuit           1.0000            NONE        1.833         3 letter deletion                         fail
+693  opess             compress          0.4050            #1          2.316         3 letter deletion                         pass
+694  swr               shower            1.0000            NONE        1.338         3 letter deletion                         fail
+695  bxg               boxing            1.0000            NONE        1.571         3 letter deletion                         fail
+696  stor              restore           1.0000            NONE        1.826         3 letter deletion                         fail
+697  pro               profit            1.0000            NONE        1.311         3 letter deletion                         fail
+698  nnd               intend            1.0000            NONE        1.289         3 letter deletion                         fail
+699  oae               orange            1.0000            NONE        1.390         3 letter deletion                         fail
+700  ymb               symbol            0.5300            #1          1.214         3 letter deletion                         pass
+701  ondiio            condition         0.3633            #1          2.623         3 letter deletion                         pass
+702  cho               choose            1.0000            NONE        1.294         3 letter deletion                         fail
+703  tte               matter            1.0000            NONE        1.316         3 letter deletion                         fail
+704  nage              manager           1.0000            NONE        1.821         3 letter deletion                         fail
+705  dea               detail            1.0000            NONE        1.354         3 letter deletion                         fail
+706  plnr              planner           0.4586            #3          1.849         3 letter deletion                         pass
+707  aerpilar          caterpillar       0.3027            #1          3.637         3 letter deletion                         pass
+708  ompe              compute           1.0000            NONE        1.876         3 letter deletion                         fail
+709  ouce              produce           1.0000            NONE        1.858         3 letter deletion                         fail
+710  rnin              running           1.0000            NONE        1.831         3 letter deletion                         fail
+711  achitture         architecture      0.2800            #1          3.976         3 letter deletion                         pass
+712  rles              release           0.4586            #2          1.843         3 letter deletion                         pass
+713  lasi              classic           1.0000            NONE        1.840         3 letter deletion                         fail
+714  basktal           basketball        0.3300            #1          3.182         3 letter deletion                         pass
+715  rner              printer           1.0000            NONE        1.816         3 letter deletion                         fail
+716  eor               senior            1.0000            NONE        1.339         3 letter deletion                         fail
+717  cnrl              control           0.4586            #2          1.815         3 letter deletion                         pass
+718  atmt              attempt           0.4586            #2          1.873         3 letter deletion                         pass
+719  clsg              closing           0.4586            #3          1.843         3 letter deletion                         pass
+720  wnr               winner            1.0000            NONE        1.311         3 letter deletion                         fail
+721  chknqv            chance            0.5125            #2          2.746         3 letter missspell                        pass
+722  tiolqh            though            0.5106            #1          2.757         3 letter missspell                        pass
+723  vuppjx            supply            0.5106            #1          2.695         3 letter missspell                        pass
+724  ompgon            oxygen            1.0000            NONE        2.818         3 letter missspell                        fail
+725  necevaare         necessary         0.3388            #1          3.968         3 letter missspell                        pass
+726  egevf             elect             1.0000            NONE        2.304         3 letter missspell                        fail
+727  dompsiss          compress          0.3816            #2          3.506         3 letter missspell                        pass
+728  lfforz            before            0.5097            #3          2.822         3 letter missspell                        pass
+729  faobrits          favorite          0.3835            #1          3.616         3 letter missspell                        pass
+730  ficxg             fight             1.0000            NONE        2.315         3 letter missspell                        fail
+731  wvzsq             worst             1.0000            NONE        2.340         3 letter missspell                        fail
+732  zccodnp           account           0.4381            #1          3.223         3 letter missspell                        pass
+733  wgsinu            losing            1.0000            NONE        2.790         3 letter missspell                        fail
+734  bguzve            bounce            0.5110            #2          2.769         3 letter missspell                        pass
+735  mjrwm             moral             0.6076            #1          2.289         3 letter missspell                        pass
+736  enbpt             event             1.0000            NONE        2.343         3 letter missspell                        fail
+737  wreper            wander            1.0000            NONE        2.826         3 letter missspell                        fail
+738  dcmtt             draft             0.6109            #3          2.278         3 letter missspell                        pass
+739  rqpzrp            report            0.5125            #1          2.718         3 letter missspell                        pass
+740  rynesf            honest            0.5084            #1          2.822         3 letter missspell                        pass
+741  muqcyq            muscle            0.5089            #1          2.734         3 letter missspell                        pass
+742  stqcw             steep             1.0000            NONE        2.381         3 letter missspell                        fail
+743  vqtorar           veteran           0.4386            #1          3.216         3 letter missspell                        pass
+744  wfudd             bound             1.0000            NONE        2.242         3 letter missspell                        fail
+745  umtteri           battery           0.4376            #1          3.201         3 letter missspell                        pass
+746  cepikr            repair            0.5088            #2          2.802         3 letter missspell                        pass
+747  sjlxzt            select            0.5100            #2          2.757         3 letter missspell                        pass
+748  worrwdm           worried           0.4383            #1          3.179         3 letter missspell                        pass
+749  wrjcq             grace             1.0000            NONE        2.280         3 letter missspell                        fail
+750  ltnuld            should            0.5109            #1          2.763         3 letter missspell                        pass
+751  bsnvess           useless           0.4397            #2          3.122         3 letter missspell                        pass
+752  qqybng            trying            0.5126            #1          2.710         3 letter missspell                        pass
+753  nhokwe            choose            0.5066            #1          2.735         3 letter missspell                        pass
+754  flxid             valid             1.0000            NONE        2.286         3 letter missspell                        fail
+755  csrkidoj          corridor          0.3857            #1          3.531         3 letter missspell                        pass
+756  sythbl            symbol            0.5105            #1          2.747         3 letter missspell                        pass
+757  vysuw             issue             1.0000            NONE        2.323         3 letter missspell                        fail
+758  fpudtt            fourth            0.5048            #1          2.767         3 letter missspell                        pass
+759  wptsle            settle            0.5099            #2          2.793         3 letter missspell                        pass
+760  fiwirl            figure            0.5106            #1          2.768         3 letter missspell                        pass
+761  cocmgnx           comment           0.4388            #2          3.123         3 letter missspell                        pass
+762  baswetbile        basketball        0.3090            #1          4.286         3 letter missspell                        pass
+763  lilpme            simple            0.5097            #1          2.805         3 letter missspell                        pass
+764  adpeouch          approach          0.3834            #1          3.538         3 letter missspell                        pass
+765  bisnzu            bishop            0.5101            #1          2.744         3 letter missspell                        pass
+766  dnnzy             crazy             1.0000            NONE        2.320         3 letter missspell                        fail
+767  ourkinf           parking           0.4350            #1          3.223         3 letter missspell                        pass
+768  jiffdkent         different         0.3409            #1          3.877         3 letter missspell                        pass
+769  wkrsqng           warning           0.4414            #3          3.139         3 letter missspell                        pass
+770  nrqsd             trend             1.0000            NONE        2.318         3 letter missspell                        fail
+771  pwonuncivtlon     pronunciation     0.2349            #1          5.492         3 letter missspell                        pass
+772  onqxle            online            1.0000            NONE        2.797         3 letter missspell                        fail
+773  qvaoe             shake             1.0000            NONE        2.317         3 letter missspell                        fail
+774  ggcder            border            1.0000            NONE        2.766         3 letter missspell                        fail
+775  coleejt           correct           1.0000            NONE        3.209         3 letter missspell                        fail
+776  xxtqrt            export            0.5125            #2          2.733         3 letter missspell                        pass
+777  peetver           partner           0.4339            #1          3.176         3 letter missspell                        pass
+778  ldtnehs           witness           0.4414            #1          3.175         3 letter missspell                        pass
+779  remjojd           respond           0.4372            #1          3.155         3 letter missspell                        pass
+780  achpmplislment    accomplishment    0.2179            #1          5.903         3 letter missspell                        pass
+781  leabatherur       leather           0.3936            #1          4.702         4 letter insertion                        pass
+782  comnmunpityzk     community         0.3377            #1          5.490         4 letter insertion                        pass
+783  aitlxhank         thank             0.4744            #1          3.978         4 letter insertion                        pass
+784  zpasentg          sent              1.0000            NONE        3.546         4 letter insertion                        fail
+785  anzywmagyt        anyway            0.4300            #1          4.261         4 letter insertion                        pass
+786  abvaovaeg         above             0.4744            #1          3.942         4 letter insertion                        pass
+787  tihpwem           tie               1.0000            NONE        3.253         4 letter insertion                        fail
+788  jmebmoryxx        memory            0.4300            #1          4.228         4 letter insertion                        pass
+789  thrzoztvw         throw             0.4744            #2          3.904         4 letter insertion                        pass
+790  othfpqerq         other             0.4744            #1          3.884         4 letter insertion                        pass
+791  deamvfenpd        defend            0.4300            #1          4.231         4 letter insertion                        pass
+792  winkldohwr        window            0.4300            #1          4.306         4 letter insertion                        pass
+793  gveanjw           van               1.0000            NONE        5.042         4 letter insertion                        fail
+794  tjtbhroow         throw             0.4744            #1          7.534         4 letter insertion                        pass
+795  tvehjoan          than              0.5300            #3          5.975         4 letter insertion                        pass
+796  csqeuarfles       squares           0.3936            #1          4.848         4 letter insertion                        pass
+797  wshildjg          wild              1.0000            NONE        3.157         4 letter insertion                        fail
+798  hchqooirse        choose            0.4300            #1          3.780         4 letter insertion                        pass
+799  lpsuzreldy        surely            0.4300            #1          3.789         4 letter insertion                        pass
+800  xmentptarl        mental            0.4300            #1          3.834         4 letter insertion                        pass
+801  rbpqrlize         prize             0.4744            #1          3.931         4 letter insertion                        pass
+802  awhouhcle         whole             0.4744            #1          7.348         4 letter insertion                        pass
+803  prezpjahren       prepare           0.3936            #1          6.133         4 letter insertion                        pass
+804  bpguejblic        public            0.4300            #1          3.801         4 letter insertion                        pass
+805  moznhiteorj       monitor           0.3936            #1          4.233         4 letter insertion                        pass
+806  fimfmqthu         fifth             0.4744            #1          3.570         4 letter insertion                        pass
+807  zcraftfsa         craft             0.4744            #1          3.713         4 letter insertion                        pass
+808  fnortvceld        forced            0.4300            #1          4.165         4 letter insertion                        pass
+809  swoilsund         sound             0.4744            #1          3.762         4 letter insertion                        pass
+810  izshuirqt         shirt             0.4744            #1          3.833         4 letter insertion                        pass
+811  hcgfgentle        gentle            0.4300            #1          4.243         4 letter insertion                        pass
+812  peremcigkt        permit            0.4300            #1          4.268         4 letter insertion                        pass
+813  bhnxuildving      building          0.3633            #1          4.984         4 letter insertion                        pass
+814  fdpapcyk          pack              0.5300            #1          3.494         4 letter insertion                        pass
+815  coxmpnguete       compete           0.3936            #1          4.613         4 letter insertion                        pass
+816  operawtearc       operate           0.3936            #1          4.730         4 letter insertion                        pass
+817  shskooavt         shoot             0.4744            #1          3.883         4 letter insertion                        pass
+818  hmassrnu          mass              0.5300            #2          3.615         4 letter insertion                        pass
+819  lihviadngl        living            0.4300            #1          4.217         4 letter insertion                        pass
+820  dmatbnil          mail              0.5300            #2          3.588         4 letter insertion                        pass
+821  dwainczye         dance             0.4744            #1          3.884         4 letter insertion                        pass
+822  uynldqger         under             0.4744            #1          3.880         4 letter insertion                        pass
+823  sautyhorfrs       authors           0.3936            #1          4.704         4 letter insertion                        pass
+824  tongduneev        tongue            0.4300            #1          4.307         4 letter insertion                        pass
+825  ceomputejmrsv     computers         0.3377            #1          5.472         4 letter insertion                        pass
+826  rrepblajcie       replace           0.3936            #1          4.723         4 letter insertion                        pass
+827  cqombhinepn       combine           0.3936            #1          4.759         4 letter insertion                        pass
+828  mphxyrsjics       physics           0.3936            #1          4.710         4 letter insertion                        pass
+829  cicrrcnukit       circuit           0.3936            #1          4.667         4 letter insertion                        pass
+830  sxsnmoil          soil              0.5300            #1          3.684         4 letter insertion                        pass
+831  wthearny          when              1.0000            NONE        3.612         4 letter insertion                        fail
+832  rkojelfy          rely              1.0000            NONE        3.562         4 letter insertion                        fail
+833  sollditkerj       soldier           0.3936            #1          4.657         4 letter insertion                        pass
+834  odrfusth          rush              1.0000            NONE        3.564         4 letter insertion                        fail
+835  alglorjithmzn     algorithm         0.3377            #1          5.477         4 letter insertion                        pass
+836  oeagoefnr         eager             0.4744            #1          3.904         4 letter insertion                        pass
+837  sbiretvhc         birth             0.4744            #2          3.961         4 letter insertion                        pass
+838  pxalxkei          pale              0.5300            #3          3.598         4 letter insertion                        pass
+839  klqqqend          lend              0.5300            #1          3.588         4 letter insertion                        pass
+840  borgamsnnic       organic           0.3936            #1          4.648         4 letter insertion                        pass
+841  cunicaton         communication     0.3377            #1          3.991         4 letter deletion                         pass
+842  ons               console           1.0000            NONE        1.354         4 letter deletion                         fail
+843  cnra              contract          1.0000            NONE        1.846         4 letter deletion                         fail
+844  ity               reality           1.0000            NONE        1.331         4 letter deletion                         fail
+845  sre               supreme           1.0000            NONE        1.401         4 letter deletion                         fail
+846  aru               various           1.0000            NONE        1.381         4 letter deletion                         fail
+847  iby               library           0.6014            #3          1.342         4 letter deletion                         pass
+848  mpy               company           1.0000            NONE        1.292         4 letter deletion                         fail
+849  sso               passion           1.0000            NONE        1.335         4 letter deletion                         fail
+850  utort             authority         1.0000            NONE        2.428         4 letter deletion                         fail
+851  vente             adventure         1.0000            NONE        2.391         4 letter deletion                         fail
+852  lass              classify          1.0000            NONE        1.810         4 letter deletion                         fail
+853  torw              tomorrow          1.0000            NONE        1.842         4 letter deletion                         fail
+854  govenm            government        0.4300            #2          2.800         4 letter deletion                         pass
+855  btifl             beautiful         0.4744            #3          2.341         4 letter deletion                         pass
+856  comut             community         1.0000            NONE        2.371         4 letter deletion                         fail
+857  rean              relation          1.0000            NONE        1.910         4 letter deletion                         fail
+858  sutin             situation         1.0000            NONE        2.360         4 letter deletion                         fail
+859  weh               whether           1.0000            NONE        1.329         4 letter deletion                         fail
+860  tut               tourist           1.0000            NONE        1.320         4 letter deletion                         fail
+861  emeatur           temperature       0.3936            #1          3.275         4 letter deletion                         pass
+862  patiption         participation     0.3377            #1          3.892         4 letter deletion                         pass
+863  eqe               request           1.0000            NONE        1.313         4 letter deletion                         fail
+864  siton             situation         1.0000            NONE        2.355         4 letter deletion                         fail
+865  trc               attract           1.0000            NONE        1.331         4 letter deletion                         fail
+866  eatin             operation         1.0000            NONE        2.367         4 letter deletion                         fail
+867  utiicatin         justification     0.3377            #1          3.990         4 letter deletion                         pass
+868  ntertinet         entertainment     0.3377            #1          4.020         4 letter deletion                         pass
+869  sng               testing           1.0000            NONE        1.341         4 letter deletion                         fail
+870  pem               premium           1.0000            NONE        1.358         4 letter deletion                         fail
+871  cer               convert           1.0000            NONE        1.393         4 letter deletion                         fail
+872  uie               require           1.0000            NONE        1.341         4 letter deletion                         fail
+873  ihl               lightly           1.0000            NONE        1.324         4 letter deletion                         fail
+874  colat             chocolate         1.0000            NONE        2.384         4 letter deletion                         fail
+875  rug               through           1.0000            NONE        1.313         4 letter deletion                         fail
+876  cta               certain           1.0000            NONE        1.337         4 letter deletion                         fail
+877  ntu               venture           1.0000            NONE        1.332         4 letter deletion                         fail
+878  loe               clothes           1.0000            NONE        1.364         4 letter deletion                         fail
+879  sen               present           1.0000            NONE        1.362         4 letter deletion                         fail
+880  chdoo             childhood         0.4744            #1          2.350         4 letter deletion                         pass
+881  evirnenal         environmental     0.3377            #1          3.917         4 letter deletion                         pass
+882  chraeritic        characteristic    0.3157            #1          4.274         4 letter deletion                         pass
+883  mtan              mountain          1.0000            NONE        1.849         4 letter deletion                         fail
+884  nfm               uniform           1.0000            NONE        1.321         4 letter deletion                         fail
+885  apoxmatly         approximately     0.3377            #1          3.879         4 letter deletion                         pass
+886  npt               concept           1.0000            NONE        1.342         4 letter deletion                         fail
+887  douentaio         documentation     0.3377            #1          3.994         4 letter deletion                         pass
+888  liy               library           1.0000            NONE        1.314         4 letter deletion                         fail
+889  aae               arrange           1.0000            NONE        1.356         4 letter deletion                         fail
+890  soti              solution          1.0000            NONE        1.846         4 letter deletion                         fail
+891  iws               windows           1.0000            NONE        1.341         4 letter deletion                         fail
+892  uldr              shoulder          1.0000            NONE        1.830         4 letter deletion                         fail
+893  odu               produce           1.0000            NONE        1.317         4 letter deletion                         fail
+894  ccee              concrete          1.0000            NONE        1.861         4 letter deletion                         fail
+895  ssp               suspect           1.0000            NONE        1.326         4 letter deletion                         fail
+896  csl               console           1.0000            NONE        1.316         4 letter deletion                         fail
+897  hhood             childhood         1.0000            NONE        2.377         4 letter deletion                         fail
+898  eebrain           celebration       0.3936            #2          3.255         4 letter deletion                         pass
+899  plu               surplus           1.0000            NONE        1.320         4 letter deletion                         fail
+900  silrit            similarity        0.4300            #3          2.845         4 letter deletion                         pass
+901  weatpdu           leather           1.0000            NONE        3.195         4 letter missspell                        fail
+902  giehsjd           yielded           0.5813            #1          3.245         4 letter missspell                        pass
+903  puwrbct           perfect           0.5826            #3          3.203         4 letter missspell                        pass
+904  jacnjy            backup            1.0000            NONE        2.763         4 letter missspell                        fail
+905  hmrxnw            parent            1.0000            NONE        2.790         4 letter missspell                        fail
+906  tinsmlb           minimum           1.0000            NONE        3.192         4 letter missspell                        fail
+907  cqfsyl            cancel            1.0000            NONE        2.740         4 letter missspell                        fail
+908  fqdbln            double            1.0000            NONE        2.750         4 letter missspell                        fail
+909  agtydct           against           1.0000            NONE        3.214         4 letter missspell                        fail
+910  kulwra            hungry            1.0000            NONE        2.834         4 letter missspell                        fail
+911  aoyortgw          tomorrow          0.5106            #1          3.617         4 letter missspell                        pass
+912  bcroiec           married           1.0000            NONE        3.279         4 letter missspell                        fail
+913  pmsqiec           passion           0.5850            #2          3.223         4 letter missspell                        pass
+914  majury            minute            1.0000            NONE        2.789         4 letter missspell                        fail
+915  oeguuvi           regular           0.5865            #1          3.227         4 letter missspell                        pass
+916  xatmpp            nature            1.0000            NONE        2.709         4 letter missspell                        fail
+917  arerve            agenda            1.0000            NONE        2.803         4 letter missspell                        fail
+918  rtwqivz           receive           0.5811            #1          3.185         4 letter missspell                        pass
+919  extraofviypry     extraordinary     0.3128            #1          5.508         4 letter missspell                        pass
+920  peivonsibilizy    responsibility    0.2942            #1          5.913         4 letter missspell                        pass
+921  iraanizajivn      organization      0.3405            #1          5.023         4 letter missspell                        pass
+922  mathpzatiyh       mathematics       0.3739            #1          4.695         4 letter missspell                        pass
+923  benfie            retire            1.0000            NONE        2.893         4 letter missspell                        fail
+924  yhxhth            fourth            1.0000            NONE        2.781         4 letter missspell                        fail
+925  eiziol            rising            1.0000            NONE        2.804         4 letter missspell                        fail
+926  lrccyar           nuclear           0.5851            #1          3.231         4 letter missspell                        pass
+927  kivfihg           sitting           0.5803            #2          3.190         4 letter missspell                        pass
+928  wobmeufuu         wonderful         0.4532            #1          4.278         4 letter missspell                        pass
+929  smrfnwd           surface           0.5819            #1          3.298         4 letter missspell                        pass
+930  whgnekq           witness           0.5807            #1          3.121         4 letter missspell                        pass
+931  tzftacf           contact           0.5824            #1          3.193         4 letter missspell                        pass
+932  oihzidz           outside           0.5781            #1          3.138         4 letter missspell                        pass
+933  solsidxratiof     consideration     0.3130            #1          5.585         4 letter missspell                        pass
+934  kutkoob           outcome           0.5832            #1          3.260         4 letter missspell                        pass
+935  rrgqnvzdtion      organization      0.3401            #1          5.145         4 letter missspell                        pass
+936  rjonsog           blossom           0.5835            #3          3.344         4 letter missspell                        pass
+937  pbwgrqmmmng       programming       0.3702            #1          4.616         4 letter missspell                        pass
+938  hjheky            rarely            1.0000            NONE        2.818         4 letter missspell                        fail
+939  pshkao            portal            1.0000            NONE        2.828         4 letter missspell                        fail
+940  deswfb            decade            1.0000            NONE        2.832         4 letter missspell                        fail
+941  jroipam           problem           0.5812            #2          3.238         4 letter missspell                        pass
+942  twcckd            ticket            1.0000            NONE        2.780         4 letter missspell                        fail
+943  sdbifor           sponsor           1.0000            NONE        3.217         4 letter missspell                        fail
+944  uniedstanxjng     understanding     0.3121            #1          5.502         4 letter missspell                        pass
+945  wbqrop            weapon            1.0000            NONE        2.776         4 letter missspell                        fail
+946  bisrerz           western           1.0000            NONE        3.201         4 letter missspell                        fail
+947  vhaghk            caught            1.0000            NONE        2.792         4 letter missspell                        fail
+948  juspifkkatiox     justification     0.3152            #1          5.488         4 letter missspell                        pass
+949  donzchu           tonight           0.5820            #1          3.259         4 letter missspell                        pass
+950  glstoiw           sustain           1.0000            NONE        3.311         4 letter missspell                        fail
+951  lbrppw            purple            0.6740            #2          2.831         4 letter missspell                        pass
+952  topidsz           tonight           1.0000            NONE        3.338         4 letter missspell                        fail
+953  rdrgrt            rarely            1.0000            NONE        2.848         4 letter missspell                        fail
+954  tagieni           segment           1.0000            NONE        3.345         4 letter missspell                        fail
+955  nptmyb            option            0.6780            #2          2.800         4 letter missspell                        pass
+956  sqtgva            slight            1.0000            NONE        2.808         4 letter missspell                        fail
+957  qarqhuu           various           0.5874            #3          3.186         4 letter missspell                        pass
+958  fkniitjr          minister          0.5118            #1          3.539         4 letter missspell                        pass
+959  puqwesj           request           1.0000            NONE        3.195         4 letter missspell                        fail
+960  jomnvh            fourth            1.0000            NONE        2.824         4 letter missspell                        fail
+
+========================================================================================================================
+PART 2: CATEGORY-WISE STATISTICAL PERFORMANCE BREAKDOWN
+========================================================================================================================
+Category                                    Samples  Top-1      Top-3      Top-3 Acc   MRR       Avg Time(ms)
+-----------------------------------------------------------------------------------------------
+1 letter deletion                           60       54         60         100%        0.9472    2.211
+1 letter insertion                          60       55         59         98%         0.9472    3.035
+1 letter missspell(diff row faraway keys)   60       51         55         91%         0.8778    2.517
+1 letter missspell(diff row nearby keys)    60       55         60         100%        0.9583    2.534
+1 letter missspell(same row faraway keys)   60       49         56         93%         0.8722    2.525
+1 letter missspell(same row nearby keys)    60       55         58         96%         0.9417    2.578
+2 letter deletion                           60       34         45         75%         0.6361    1.996
+2 letter insertion                          60       53         59         98%         0.9333    3.595
+2 letter missspell                          60       40         51         85%         0.7583    2.809
+2 letter swap                               60       58         60         100%        0.9833    2.604
+3 letter deletion                           60       11         25         41%         0.2889    1.977
+3 letter insertion                          60       52         56         93%         0.8972    4.171
+3 letter missspell                          60       30         42         70%         0.5917    2.956
+4 letter deletion                           60       10         15         25%         0.2000    2.047
+4 letter insertion                          60       47         53         88%         0.8278    4.320
+4 letter missspell                          60       22         30         50%         0.4250    3.409
+
+========================================================================================================================
+PART 3: GLOBAL OVERALL BENCHMARK ANALYTICS
+========================================================================================================================
+Total Test Cases Evaluated     : 960 records
+Global Top-1 Matches (Rank #1) : 676 / 960 (70.42%)
+Global Top-3 Passes (Rank <=3) : 784 / 960 (81.67%)
+Global Fails (Rank > 3)        : 176 / 960 (18.33%)
+Global Mean Reciprocal Rank MRR: 0.7554
+Average Query Latency          : 2.830 ms per query
+========================================================================================================================

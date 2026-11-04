@@ -1,0 +1,285 @@
+================================================================================
+               DYNAMIC WEIGHT SPELLCHECK EVALUATION REPORT
+================================================================================
+Total Test Samples Evaluated : 250
+Candidate Lexicon Size       : 214
+Top-K Evaluated              : 3
+================================================================================
+
+--------------------------------------------------------------------------------
+PART 1: INDIVIDUAL QUERY TRACE LOG (250 SAMPLES)
+--------------------------------------------------------------------------------
+ID   Query           Ground Truth    Rank    Score       W_lev   W_kbd   Latency (us)  Status
+------------------------------------------------------------------------------------------
+1    cst             cat             #1      0.1808      0.39    0.61    144.4         TOP-1
+2    vome            come            #1      0.1356      0.39    0.61    149.8         TOP-1
+3    gome            home            #1      0.1356      0.39    0.61    137.5         TOP-1
+4    pwn             pen             #1      0.1808      0.39    0.61    105.4         TOP-1
+5    doh             dog             #1      0.1808      0.39    0.61    102.5         TOP-1
+6    bex             bed             #1      0.1893      0.39    0.61    100.6         TOP-1
+7    woek            work            #1      0.1356      0.39    0.61    136.7         TOP-1
+8    dakk            dark            #1      0.2500      0.50    0.50    134.9         TOP-1
+9    wsll            wall            #1      0.1356      0.39    0.61    135.3         TOP-1
+10   gsst            fast            #1      0.2713      0.39    0.61    133.1         TOP-1
+11   mowt            most            #1      0.1373      0.39    0.61    135.1         TOP-1
+12   hols            hold            #1      0.1356      0.39    0.61    134.6         TOP-1
+13   cild            cold            #1      0.1356      0.39    0.61    135.7         TOP-1
+14   griend          friend          #1      0.0926      0.41    0.59    196.4         TOP-1
+15   syetem          system          #1      0.0981      0.41    0.59    192.6         TOP-1
+16   methof          method          #1      0.0926      0.41    0.59    194.8         TOP-1
+17   vecyor          vector          #1      0.0926      0.41    0.59    193.3         TOP-1
+18   semple          sample          #1      0.1259      0.52    0.48    194.9         TOP-1
+19   bitzer          bitter          #1      0.1638      0.52    0.48    190.9         TOP-1
+20   spfing          spring          #1      0.0937      0.41    0.59    191.1         TOP-1
+21   natute          nature          #1      0.0926      0.41    0.59    187.0         TOP-1
+22   marl            mark            FAIL    0.3266      0.39    0.61    133.8         MISS
+23   caln            calm            #1      0.1356      0.39    0.61    128.0         TOP-1
+24   caze            care            #3      0.2202      0.50    0.50    129.5         TOP-K
+25   cask            cash            #1      0.1875      0.50    0.50    129.9         TOP-1
+26   vave            cave            #1      0.1356      0.39    0.61    129.2         TOP-1
+27   xell            cell            #1      0.1356      0.39    0.61    137.0         TOP-1
+28   vrnt            cent            #1      0.2712      0.39    0.61    133.8         TOP-1
+29   vhat            chat            #1      0.1356      0.39    0.61    130.5         TOP-1
+30   chrf            chef            #1      0.1356      0.39    0.61    129.7         TOP-1
+31   chewk           cheek           #1      0.1085      0.39    0.61    164.6         TOP-1
+32   chrrr           cheer           #1      0.2170      0.39    0.61    162.9         TOP-1
+33   chrs            chess           #1      0.3235      0.49    0.51    133.9         TOP-1
+34   chist           chest           #1      0.2000      0.50    0.50    164.4         TOP-1
+35   chird           child           #1      0.2000      0.50    0.50    179.6         TOP-1
+36   chilll          chill           #1      0.1667      0.58    0.42    194.6         TOP-1
+37   chona           china           #1      0.1085      0.39    0.61    164.1         TOP-1
+38   choise          choice          #2      0.1208      0.52    0.48    200.0         TOP-K
+39   vhurch          church          #1      0.0926      0.41    0.59    196.9         TOP-1
+40   citizrn         citizen         #1      0.0813      0.43    0.57    219.1         TOP-1
+41   cloxk           clock           #1      0.1085      0.39    0.61    173.9         TOP-1
+42   closte          closet          #1      0.2529      0.52    0.48    204.5         TOP-1
+43   coffe           coffee          #1      0.1667      0.58    0.42    168.8         TOP-1
+44   collst          collar          #1      0.1852      0.41    0.59    196.8         TOP-1
+45   colleqe         college         #1      0.1429      0.53    0.47    217.1         TOP-1
+46   comfirt         comfort         #1      0.0813      0.43    0.57    212.0         TOP-1
+47   commamd         command         #1      0.0813      0.43    0.57    216.7         TOP-1
+48   computrr        computer        #1      0.0727      0.44    0.56    232.6         TOP-1
+49   considrr        consider        #1      0.0727      0.44    0.56    468.5         TOP-1
+50   hellp           help            #1      0.2311      0.49    0.51    422.7         TOP-1
+51   xat             cat             #1      0.1808      0.39    0.61    272.3         TOP-1
+52   wnd             and             #1      0.1920      0.39    0.61    261.0         TOP-1
+53   eun             run             #1      0.1808      0.39    0.61    217.4         TOP-1
+54   dof             dog             #1      0.1808      0.39    0.61    218.6         TOP-1
+55   csm             cam             FAIL    0.3617      0.39    0.61    208.7         MISS
+56   sare            care            #1      0.1788      0.50    0.50    300.8         TOP-1
+57   kife            life            #1      0.1356      0.39    0.61    315.0         TOP-1
+58   fook            took            #1      0.1440      0.39    0.61    315.8         TOP-1
+59   hsnd            hand            #1      0.1356      0.39    0.61    302.0         TOP-1
+60   gond            good            #2      0.2202      0.50    0.50    298.4         TOP-K
+61   peopke          people          #1      0.0926      0.41    0.59    417.9         TOP-1
+62   botrle          bottle          #1      0.0926      0.41    0.59    414.6         TOP-1
+63   winrer          winter          #1      0.0926      0.41    0.59    411.6         TOP-1
+64   docror          doctor          #1      0.0926      0.41    0.59    430.1         TOP-1
+65   lawywr          lawyer          #1      0.0926      0.41    0.59    415.4         TOP-1
+66   arrist          artist          #1      0.0926      0.41    0.59    421.6         TOP-1
+67   solder          soldier         FAIL    0.4134      0.53    0.47    430.0         MISS
+68   auyhor          author          FAIL    0.5197      0.41    0.59    529.4         MISS
+69   reacyion        reaction        #1      0.0727      0.44    0.56    877.4         TOP-1
+70   xake            cake            #1      0.1356      0.39    0.61    328.8         TOP-1
+71   vsrd            card            #1      0.2712      0.39    0.61    342.0         TOP-1
+72   csse            case            #1      0.1356      0.39    0.61    306.1         TOP-1
+73   dave            cave            #1      0.1386      0.39    0.61    305.5         TOP-1
+74   drll            cell            #1      0.2742      0.39    0.61    312.7         TOP-1
+75   xent            cent            #1      0.1356      0.39    0.61    304.8         TOP-1
+76   xhat            chat            #1      0.1356      0.39    0.61    313.8         TOP-1
+77   dhef            chef            #1      0.1386      0.39    0.61    303.4         TOP-1
+78   chrrk           cheek           #1      0.2170      0.39    0.61    360.9         TOP-1
+79   chrrr           cheer           #1      0.2170      0.39    0.61    380.8         TOP-1
+80   vheque          cheque          #1      0.0926      0.41    0.59    409.3         TOP-1
+81   chrss           chess           #1      0.1085      0.39    0.61    347.9         TOP-1
+82   chyst           chest           #1      0.1750      0.50    0.50    345.8         TOP-1
+83   chuef           chief           #1      0.1085      0.39    0.61    338.7         TOP-1
+84   chuld           child           #1      0.1085      0.39    0.61    344.7         TOP-1
+85   chull           chill           #1      0.1085      0.39    0.61    339.4         TOP-1
+86   chuna           china           #1      0.1085      0.39    0.61    338.7         TOP-1
+87   chooce          choice          #1      0.0926      0.41    0.59    456.5         TOP-1
+88   vhoose          choose          #1      0.0926      0.41    0.59    413.0         TOP-1
+89   chutch          church          #1      0.0926      0.41    0.59    393.6         TOP-1
+90   cirvle          circle          #1      0.0926      0.41    0.59    520.9         TOP-1
+91   cirsuit         circuit         #1      0.1050      0.53    0.47    480.4         TOP-1
+92   clsssic         classic         #1      0.0813      0.43    0.57    467.2         TOP-1
+93   vlimste         climate         #1      0.1625      0.43    0.57    489.4         TOP-1
+94   vlok            clock           FAIL    0.2729      0.54    0.46    304.0         MISS
+95   closrt          closet          #1      0.0926      0.41    0.59    430.9         TOP-1
+96   collsr          collar          #1      0.0926      0.41    0.59    415.1         TOP-1
+97   xollege         college         #1      0.0813      0.43    0.57    461.6         TOP-1
+98   colout          colour          #1      0.0926      0.41    0.59    416.5         TOP-1
+99   comfot          comfort         #1      0.1616      0.48    0.52    402.3         TOP-1
+100  conmand         command         #1      0.0813      0.43    0.57    434.6         TOP-1
+101  playng          playing         #1      0.2035      0.59    0.41    379.7         TOP-1
+102  readng          reading         #1      0.2035      0.59    0.41    377.6         TOP-1
+103  walkng          walking         #1      0.2035      0.59    0.41    347.2         TOP-1
+104  talkng          talking         #1      0.2035      0.59    0.41    343.2         TOP-1
+105  feelng          feeling         #1      0.2035      0.59    0.41    349.6         TOP-1
+106  openng          opening         #1      0.2035      0.59    0.41    339.8         TOP-1
+107  famly           family          #1      0.2550      0.58    0.42    268.5         TOP-1
+108  gardn           garden          #1      0.2361      0.58    0.42    264.0         TOP-1
+109  systm           system          #1      0.2361      0.58    0.42    267.3         TOP-1
+110  persn           person          #1      0.2196      0.58    0.42    265.1         TOP-1
+111  simpl           simple          #1      0.1667      0.58    0.42    251.0         TOP-1
+112  settl           settle          #1      0.1667      0.58    0.42    246.3         TOP-1
+113  buttr           butter          #1      0.1886      0.47    0.53    239.5         TOP-1
+114  forst           forest          #1      0.2472      0.53    0.47    232.8         TOP-1
+115  rivr            river           #1      0.2255      0.49    0.51    187.8         TOP-1
+116  bridg           bridge          #1      0.1667      0.58    0.42    220.0         TOP-1
+117  doctr           doctor          #1      0.2361      0.58    0.42    224.8         TOP-1
+118  swimmng         swimming        FAIL    0.4457      0.59    0.41    272.0         MISS
+119  planng          planning        FAIL    0.3186      0.64    0.36    238.7         MISS
+120  movment         movement        #1      0.3110      0.59    0.41    258.3         TOP-1
+121  judgmet         judgment        #1      0.1584      0.59    0.41    253.6         TOP-1
+122  staton          station         #1      0.2106      0.53    0.47    226.0         TOP-1
+123  secton          section         #1      0.2106      0.53    0.47    210.1         TOP-1
+124  positon         position        #1      0.1834      0.54    0.46    241.0         TOP-1
+125  acton           action          #1      0.2462      0.53    0.47    189.7         TOP-1
+126  naton           nation          #1      0.2462      0.53    0.47    183.4         TOP-1
+127  soluton         solution        #1      0.1834      0.54    0.46    242.3         TOP-1
+128  decison         decision        #1      0.1834      0.54    0.46    229.7         TOP-1
+129  menton          mention         #1      0.2106      0.53    0.47    196.4         TOP-1
+130  fracton         fraction        #1      0.1834      0.54    0.46    219.9         TOP-1
+131  reacton         reaction        #1      0.1834      0.54    0.46    220.8         TOP-1
+132  conditon        condition       #1      0.1620      0.55    0.45    233.2         TOP-1
+133  relaton         relation        #1      0.1834      0.54    0.46    221.4         TOP-1
+134  provisn         provision       #1      0.2462      0.64    0.36    213.2         TOP-1
+135  revisn          revision        #1      0.2770      0.64    0.36    201.4         TOP-1
+136  closng          closing         #1      0.2035      0.59    0.41    192.2         TOP-1
+137  holdng          holding         #1      0.2035      0.59    0.41    188.5         TOP-1
+138  helpng          helping         #1      0.2035      0.59    0.41    187.9         TOP-1
+139  lookng          looking         #1      0.2035      0.59    0.41    192.5         TOP-1
+140  workng          working         #1      0.2035      0.59    0.41    189.6         TOP-1
+141  runnng          running         #1      0.2035      0.59    0.41    187.0         TOP-1
+142  writng          writing         #1      0.2035      0.59    0.41    190.6         TOP-1
+143  paymnt          payment         #1      0.2407      0.59    0.41    188.1         TOP-1
+144  shipmnt         shipment        #1      0.2092      0.59    0.41    214.0         TOP-1
+145  agreemnt        agreement       #1      0.1843      0.60    0.40    239.9         TOP-1
+146  treatmnt        treatment       #1      0.1843      0.60    0.40    240.1         TOP-1
+147  presidnt        president       #1      0.1843      0.60    0.40    235.1         TOP-1
+148  govermnt        government      #1      0.2358      0.64    0.36    235.3         TOP-1
+149  developpnt      development     #1      0.2302      0.62    0.37    265.8         TOP-1
+150  environmnt      environment     #1      0.1474      0.62    0.37    267.2         TOP-1
+151  commputer       computer        #1      0.2332      0.60    0.40    246.5         TOP-1
+152  proggamming     programming     #1      0.0697      0.61    0.39    277.9         TOP-1
+153  differrent      different       #1      0.1738      0.61    0.39    270.9         TOP-1
+154  difficcult      difficult       #1      0.2003      0.61    0.39    256.5         TOP-1
+155  goverrnment     government      #1      0.2186      0.62    0.37    276.5         TOP-1
+156  developpment    development     #1      0.1865      0.64    0.36    296.4         TOP-1
+157  neccessary      necessary       #1      0.1892      0.61    0.39    267.1         TOP-1
+158  enviroonment    environment     #1      0.1940      0.64    0.36    291.6         TOP-1
+159  informmation    information     #1      0.1956      0.64    0.36    304.8         TOP-1
+160  orgaanization   organization    #1      0.2266      0.65    0.35    311.1         TOP-1
+161  communiccation  communication   #1      0.1519      0.67    0.33    321.8         TOP-1
+162  perfomance      performance     #1      0.2368      0.62    0.37    262.2         TOP-1
+163  canddidate      candidate       #1      0.2532      0.61    0.39    258.8         TOP-1
+164  begginning      beginning       FAIL    0.6360      0.61    0.39    254.7         MISS
+165  buillding       building        FAIL    0.5336      0.60    0.40    246.4         MISS
+166  churcch         church          #1      0.1840      0.59    0.41    204.7         TOP-1
+167  ciircle         circle          #1      0.3500      0.59    0.41    216.9         TOP-1
+168  coffeer         coffee          #1      0.1429      0.59    0.41    208.1         TOP-1
+169  colllege        college         #1      0.2396      0.59    0.41    228.7         TOP-1
+170  markket         market          #1      0.2315      0.59    0.41    210.7         TOP-1
+171  caake           cake            #1      0.3600      0.60    0.40    163.0         TOP-1
+172  caalm           calm            #1      0.3177      0.60    0.40    165.2         TOP-1
+173  caame           came            #1      0.3600      0.60    0.40    161.2         TOP-1
+174  cammp           camp            #1      0.2610      0.60    0.40    155.0         TOP-1
+175  caard           card            #1      0.2933      0.54    0.46    159.6         TOP-1
+176  caare           care            #1      0.2883      0.54    0.46    157.2         TOP-1
+177  caase           case            #1      0.2566      0.49    0.51    160.2         TOP-1
+178  caash           cash            #1      0.3137      0.54    0.46    166.9         TOP-1
+179  caave           cave            #1      0.3234      0.60    0.40    167.1         TOP-1
+180  ceell           cell            #1      0.2800      0.60    0.40    175.7         TOP-1
+181  ceent           cent            #1      0.3325      0.60    0.40    167.5         TOP-1
+182  chaat           chat            #2      0.2767      0.60    0.40    167.8         TOP-K
+183  cheef           chef            FAIL    0.1098      0.60    0.40    176.7         MISS
+184  cheeek          cheek           #1      0.2361      0.58    0.42    192.1         TOP-1
+185  cheeer          cheer           #1      0.1886      0.47    0.53    193.3         TOP-1
+186  cheeese         cheese          #1      0.1885      0.48    0.52    209.2         TOP-1
+187  chesss          chess           #1      0.1667      0.58    0.42    194.2         TOP-1
+188  chesst          chest           #2      0.2167      0.58    0.42    200.1         TOP-K
+189  chiief          chief           #1      0.2646      0.58    0.42    196.7         TOP-1
+190  chiild          child           #1      0.2646      0.58    0.42    192.2         TOP-1
+191  chiill          chill           #1      0.1951      0.58    0.42    190.9         TOP-1
+192  chiina          china           #1      0.2775      0.58    0.42    191.9         TOP-1
+193  chooice         choice          #1      0.2480      0.59    0.41    213.5         TOP-1
+194  chooose         choose          #1      0.2302      0.53    0.47    212.1         TOP-1
+195  churrch         church          #1      0.2139      0.59    0.41    206.9         TOP-1
+196  cirrcle         circle          #1      0.2909      0.59    0.41    217.3         TOP-1
+197  circuiit        circuit         #1      0.1631      0.59    0.41    249.7         TOP-1
+198  citizenn        citizen         #1      0.1250      0.59    0.41    231.9         TOP-1
+199  classsic        classic         #1      0.2267      0.59    0.41    236.4         TOP-1
+200  climaate        climate         #1      0.1992      0.59    0.41    265.6         TOP-1
+201  teh             the             #3      0.6207      0.50    0.50    107.2         TOP-K
+202  adn             and             FAIL    0.5202      0.50    0.50    107.0         MISS
+203  cta             cat             FAIL    0.4447      0.50    0.50    103.1         MISS
+204  bta             bat             FAIL    0.5000      0.50    0.50    102.8         MISS
+205  rta             rat             #3      0.6527      0.50    0.50    104.9         TOP-K
+206  hta             hat             #1      0.6527      0.50    0.50    102.1         TOP-1
+207  fta             fat             #3      0.6527      0.50    0.50    105.0         TOP-K
+208  mta             mat             #1      0.6527      0.50    0.50    104.0         TOP-1
+209  ctu             cut             #1      0.5000      0.50    0.50    97.9          TOP-1
+210  dgo             dog             #1      0.6527      0.50    0.50    101.8         TOP-1
+211  fgo             fog             #3      0.6527      0.50    0.50    98.4          TOP-K
+212  lgo             log             #3      0.6527      0.50    0.50    108.1         TOP-K
+213  snu             sun             #1      0.5019      0.50    0.50    102.6         TOP-1
+214  fnu             fun             #1      0.5019      0.50    0.50    100.8         TOP-1
+215  rnu             run             #1      0.5019      0.50    0.50    101.9         TOP-1
+216  bnu             bun             #1      0.5019      0.50    0.50    100.0         TOP-1
+217  cna             can             FAIL    0.4114      0.50    0.50    102.5         MISS
+218  cpa             cap             FAIL    0.4961      0.50    0.50    101.0         MISS
+219  cba             cab             FAIL    0.4141      0.50    0.50    99.3          MISS
+220  bde             bed             #1      0.3661      0.39    0.61    102.9         TOP-1
+221  pne             pen             FAIL    0.5300      0.50    0.50    105.6         MISS
+222  pni             pin             #1      0.5321      0.50    0.50    104.1         TOP-1
+223  pta             pat             #3      0.6527      0.50    0.50    106.2         TOP-K
+224  boko            book            #1      0.2881      0.39    0.61    141.3         TOP-1
+225  bcka            back            #3      0.5813      0.50    0.50    140.7         TOP-K
+226  bakr            bark            FAIL    0.3266      0.50    0.50    137.1         MISS
+227  dakr            dark            #3      0.5000      0.50    0.50    138.5         TOP-K
+228  pakr            park            FAIL    0.3959      0.50    0.50    139.5         MISS
+229  wodr            word            #1      0.2881      0.39    0.61    150.8         TOP-1
+230  wokr            work            FAIL    0.2881      0.50    0.50    142.4         MISS
+231  wakl            walk            #2      0.2713      0.39    0.61    137.7         TOP-K
+232  wlal            wall            #1      0.5000      0.50    0.50    143.2         TOP-1
+233  blal            ball            #1      0.5000      0.50    0.50    135.1         TOP-1
+234  clal            call            #3      0.5000      0.50    0.50    138.1         TOP-K
+235  flal            fall            #1      0.5000      0.50    0.50    141.3         TOP-1
+236  tlal            tall            #1      0.5000      0.50    0.50    142.5         TOP-1
+237  hnad            hand            #2      0.5000      0.50    0.50    140.2         TOP-K
+238  bnad            band            #1      0.5000      0.50    0.50    138.0         TOP-1
+239  lnad            land            #1      0.5000      0.50    0.50    144.0         TOP-1
+240  snad            sand            #2      0.5000      0.50    0.50    140.7         TOP-K
+241  caterpilar      caterpillar     #1      0.1495      0.62    0.37    280.1         TOP-1
+242  caterpilr       caterpillar     #1      0.2138      0.65    0.35    258.8         TOP-1
+243  cat             caterpillar     FAIL    0.0000      0.86    0.14    102.6         MISS
+244  administrtion   administration  #1      0.1364      0.67    0.33    320.0         TOP-1
+245  admin           administration  FAIL    0.4911      0.82    0.18    176.3         MISS
+246  profesor        professor       #1      0.1995      0.60    0.40    246.8         TOP-1
+247  professir       professor       #1      0.0661      0.46    0.54    262.5         TOP-1
+248  doc             doctor          FAIL    0.2453      0.75    0.25    108.0         MISS
+249  scholl          school          #1      0.0937      0.41    0.59    202.8         TOP-1
+250  algoritm        algorithm       #1      0.1301      0.60    0.40    250.7         TOP-1
+
+--------------------------------------------------------------------------------
+PART 2: CATEGORY-WISE STATISTICAL BREAKDOWN
+--------------------------------------------------------------------------------
+Category                              Samples  Top-1 Acc   Top-K Acc   MRR       Avg W_lev Avg W_kbd Avg Lat (us)
+--------------------------------------------------------------------------------------------------------------
+Adjacent Horizontal Slips             50       94%         98%         0.957     0.43      0.57      174.0
+Adjacent Vertical/Diagonal Slips      50       90%         92%         0.910     0.42      0.58      377.3
+Single Deletions                      50       96%         96%         0.960     0.58      0.42      241.4
+Single Insertions                     50       90%         94%         0.920     0.59      0.41      219.0
+Structural & Scale                    50       50%         74%         0.590     0.52      0.48      139.4
+
+--------------------------------------------------------------------------------
+PART 3: GLOBAL PERFORMANCE SUMMARY
+--------------------------------------------------------------------------------
+Total Test Samples Run          : 250
+Top-1 Accuracy                 : 84.00%
+Top-3 Accuracy                 : 90.80%
+Mean Reciprocal Rank (MRR)      : 0.8673
+Average Pipeline Latency        : 230.23 microseconds
+Average Weight Balance          : W_lev = 0.51 | W_kbd = 0.49
+================================================================================

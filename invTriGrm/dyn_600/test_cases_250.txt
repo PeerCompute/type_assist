@@ -1,0 +1,255 @@
+================================================================================
+              SPELLCHECK BENCHMARK TEST SUITE (250 SAMPLES)
+================================================================================
+ID    Query             Ground Truth      Category                           Scenario
+-----------------------------------------------------------------------------------------------
+1     cst               cat               Adjacent Horizontal Slips          s -> a
+2     vome              come              Adjacent Horizontal Slips          v -> c
+3     gome              home              Adjacent Horizontal Slips          g -> h
+4     pwn               pen               Adjacent Horizontal Slips          w -> e
+5     doh               dog               Adjacent Horizontal Slips          h -> g
+6     bex               bed               Adjacent Horizontal Slips          x -> d
+7     woek              work              Adjacent Horizontal Slips          e -> r
+8     dakk              dark              Adjacent Horizontal Slips          k -> r
+9     wsll              wall              Adjacent Horizontal Slips          s -> a
+10    gsst              fast              Adjacent Horizontal Slips          g -> f
+11    mowt              most              Adjacent Horizontal Slips          w -> s
+12    hols              hold              Adjacent Horizontal Slips          s -> d
+13    cild              cold              Adjacent Horizontal Slips          i -> o
+14    griend            friend            Adjacent Horizontal Slips          g -> f
+15    syetem            system            Adjacent Horizontal Slips          e -> s
+16    methof            method            Adjacent Horizontal Slips          f -> d
+17    vecyor            vector            Adjacent Horizontal Slips          y -> t
+18    semple            sample            Adjacent Horizontal Slips          e -> a
+19    bitzer            bitter            Adjacent Horizontal Slips          z -> t
+20    spfing            spring            Adjacent Horizontal Slips          f -> r
+21    natute            nature            Adjacent Horizontal Slips          t -> r
+22    marl              mark              Adjacent Horizontal Slips          l -> k
+23    caln              calm              Adjacent Horizontal Slips          n -> m
+24    caze              care              Adjacent Horizontal Slips          z -> a
+25    cask              cash              Adjacent Horizontal Slips          k -> h
+26    vave              cave              Adjacent Horizontal Slips          v -> c
+27    xell              cell              Adjacent Horizontal Slips          x -> c
+28    vrnt              cent              Adjacent Horizontal Slips          r -> e
+29    vhat              chat              Adjacent Horizontal Slips          v -> c
+30    chrf              chef              Adjacent Horizontal Slips          r -> e
+31    chewk             cheek             Adjacent Horizontal Slips          w -> e
+32    chrrr             cheer             Adjacent Horizontal Slips          r -> e
+33    chrs              chess             Adjacent Horizontal Slips          r -> e
+34    chist             chest             Adjacent Horizontal Slips          i -> e
+35    chird             child             Adjacent Horizontal Slips          r -> l
+36    chilll            chill             Adjacent Horizontal Slips          redundant l
+37    chona             china             Adjacent Horizontal Slips          o -> i
+38    choise            choice            Adjacent Horizontal Slips          s -> c
+39    vhurch            church            Adjacent Horizontal Slips          v -> c
+40    citizrn           citizen           Adjacent Horizontal Slips          r -> e
+41    cloxk             clock             Adjacent Horizontal Slips          x -> c
+42    closte            closet            Adjacent Horizontal Slips          t -> e
+43    coffe             coffee            Adjacent Horizontal Slips          missing e
+44    collst            collar            Adjacent Horizontal Slips          s -> a
+45    colleqe           college           Adjacent Horizontal Slips          q -> g
+46    comfirt           comfort           Adjacent Horizontal Slips          i -> o
+47    commamd           command           Adjacent Horizontal Slips          m -> n
+48    computrr          computer          Adjacent Horizontal Slips          r -> e
+49    considrr          consider          Adjacent Horizontal Slips          r -> e
+50    hellp             help              Adjacent Horizontal Slips          p -> o proximity
+51    xat               cat               Adjacent Vertical/Diagonal Slips   x -> c
+52    wnd               and               Adjacent Vertical/Diagonal Slips   w -> a
+53    eun               run               Adjacent Vertical/Diagonal Slips   e -> r
+54    dof               dog               Adjacent Vertical/Diagonal Slips   f -> g
+55    csm               cam               Adjacent Vertical/Diagonal Slips   s -> a
+56    sare              care              Adjacent Vertical/Diagonal Slips   s -> c
+57    kife              life              Adjacent Vertical/Diagonal Slips   k -> l
+58    fook              took              Adjacent Vertical/Diagonal Slips   f -> t
+59    hsnd              hand              Adjacent Vertical/Diagonal Slips   s -> a
+60    gond              good              Adjacent Vertical/Diagonal Slips   n -> o
+61    peopke            people            Adjacent Vertical/Diagonal Slips   k -> l
+62    botrle            bottle            Adjacent Vertical/Diagonal Slips   r -> t
+63    winrer            winter            Adjacent Vertical/Diagonal Slips   r -> t
+64    docror            doctor            Adjacent Vertical/Diagonal Slips   r -> t
+65    lawywr            lawyer            Adjacent Vertical/Diagonal Slips   w -> e
+66    arrist            artist            Adjacent Vertical/Diagonal Slips   r -> t
+67    solder            soldier           Adjacent Vertical/Diagonal Slips   i omission
+68    auyhor            author            Adjacent Vertical/Diagonal Slips   y -> t
+69    reacyion          reaction          Adjacent Vertical/Diagonal Slips   y -> t
+70    xake              cake              Adjacent Vertical/Diagonal Slips   x -> c
+71    vsrd              card              Adjacent Vertical/Diagonal Slips   s -> a
+72    csse              case              Adjacent Vertical/Diagonal Slips   s -> a
+73    dave              cave              Adjacent Vertical/Diagonal Slips   d -> c
+74    drll              cell              Adjacent Vertical/Diagonal Slips   r -> e
+75    xent              cent              Adjacent Vertical/Diagonal Slips   x -> c
+76    xhat              chat              Adjacent Vertical/Diagonal Slips   x -> c
+77    dhef              chef              Adjacent Vertical/Diagonal Slips   d -> c
+78    chrrk             cheek             Adjacent Vertical/Diagonal Slips   r -> e
+79    chrrr             cheer             Adjacent Vertical/Diagonal Slips   r -> e
+80    vheque            cheque            Adjacent Vertical/Diagonal Slips   v -> c
+81    chrss             chess             Adjacent Vertical/Diagonal Slips   r -> e
+82    chyst             chest             Adjacent Vertical/Diagonal Slips   y -> e
+83    chuef             chief             Adjacent Vertical/Diagonal Slips   u -> i
+84    chuld             child             Adjacent Vertical/Diagonal Slips   u -> i
+85    chull             chill             Adjacent Vertical/Diagonal Slips   u -> i
+86    chuna             china             Adjacent Vertical/Diagonal Slips   u -> i
+87    chooce            choice            Adjacent Vertical/Diagonal Slips   o -> i
+88    vhoose            choose            Adjacent Vertical/Diagonal Slips   v -> c
+89    chutch            church            Adjacent Vertical/Diagonal Slips   t -> r
+90    cirvle            circle            Adjacent Vertical/Diagonal Slips   v -> c
+91    cirsuit           circuit           Adjacent Vertical/Diagonal Slips   s -> c
+92    clsssic           classic           Adjacent Vertical/Diagonal Slips   s -> a
+93    vlimste           climate           Adjacent Vertical/Diagonal Slips   v -> c
+94    vlok              clock             Adjacent Vertical/Diagonal Slips   v -> c
+95    closrt            closet            Adjacent Vertical/Diagonal Slips   r -> e
+96    collsr            collar            Adjacent Vertical/Diagonal Slips   s -> a
+97    xollege           college           Adjacent Vertical/Diagonal Slips   x -> c
+98    colout            colour            Adjacent Vertical/Diagonal Slips   t -> r
+99    comfot            comfort           Adjacent Vertical/Diagonal Slips   omission r
+100   conmand           command           Adjacent Vertical/Diagonal Slips   n -> m
+101   playng            playing           Single Deletions                   omitted i
+102   readng            reading           Single Deletions                   omitted i
+103   walkng            walking           Single Deletions                   omitted i
+104   talkng            talking           Single Deletions                   omitted i
+105   feelng            feeling           Single Deletions                   omitted i
+106   openng            opening           Single Deletions                   omitted i
+107   famly             family            Single Deletions                   omitted i
+108   gardn             garden            Single Deletions                   omitted e
+109   systm             system            Single Deletions                   omitted e
+110   persn             person            Single Deletions                   omitted o
+111   simpl             simple            Single Deletions                   omitted e
+112   settl             settle            Single Deletions                   omitted e
+113   buttr             butter            Single Deletions                   omitted e
+114   forst             forest            Single Deletions                   omitted e
+115   rivr              river             Single Deletions                   omitted e
+116   bridg             bridge            Single Deletions                   omitted e
+117   doctr             doctor            Single Deletions                   omitted o
+118   swimmng           swimming          Single Deletions                   omitted i
+119   planng            planning          Single Deletions                   omitted i
+120   movment           movement          Single Deletions                   omitted e
+121   judgmet           judgment          Single Deletions                   omitted n
+122   staton            station           Single Deletions                   omitted i
+123   secton            section           Single Deletions                   omitted i
+124   positon           position          Single Deletions                   omitted i
+125   acton             action            Single Deletions                   omitted i
+126   naton             nation            Single Deletions                   omitted i
+127   soluton           solution          Single Deletions                   omitted i
+128   decison           decision          Single Deletions                   omitted i
+129   menton            mention           Single Deletions                   omitted i
+130   fracton           fraction          Single Deletions                   omitted i
+131   reacton           reaction          Single Deletions                   omitted i
+132   conditon          condition         Single Deletions                   omitted i
+133   relaton           relation          Single Deletions                   omitted i
+134   provisn           provision         Single Deletions                   omitted io
+135   revisn            revision          Single Deletions                   omitted io
+136   closng            closing           Single Deletions                   omitted i
+137   holdng            holding           Single Deletions                   omitted i
+138   helpng            helping           Single Deletions                   omitted i
+139   lookng            looking           Single Deletions                   omitted i
+140   workng            working           Single Deletions                   omitted i
+141   runnng            running           Single Deletions                   omitted i
+142   writng            writing           Single Deletions                   omitted i
+143   paymnt            payment           Single Deletions                   omitted e
+144   shipmnt           shipment          Single Deletions                   omitted e
+145   agreemnt          agreement         Single Deletions                   omitted e
+146   treatmnt          treatment         Single Deletions                   omitted e
+147   presidnt          president         Single Deletions                   omitted e
+148   govermnt          government        Single Deletions                   omitted ne
+149   developpnt        development       Single Deletions                   omitted me
+150   environmnt        environment       Single Deletions                   omitted e
+151   commputer         computer          Single Insertions                  redundant m
+152   proggamming       programming       Single Insertions                  redundant g
+153   differrent        different         Single Insertions                  redundant r
+154   difficcult        difficult         Single Insertions                  redundant c
+155   goverrnment       government        Single Insertions                  redundant r
+156   developpment      development       Single Insertions                  redundant p
+157   neccessary        necessary         Single Insertions                  redundant c
+158   enviroonment      environment       Single Insertions                  redundant o
+159   informmation      information       Single Insertions                  redundant m
+160   orgaanization     organization      Single Insertions                  redundant a
+161   communiccation    communication     Single Insertions                  redundant c
+162   perfomance        performance       Single Insertions                  redundant key
+163   canddidate        candidate         Single Insertions                  redundant d
+164   begginning        beginning         Single Insertions                  redundant g
+165   buillding         building          Single Insertions                  redundant l
+166   churcch           church            Single Insertions                  redundant c
+167   ciircle           circle            Single Insertions                  redundant i
+168   coffeer           coffee            Single Insertions                  redundant r
+169   colllege          college           Single Insertions                  redundant l
+170   markket           market            Single Insertions                  redundant k
+171   caake             cake              Single Insertions                  redundant a
+172   caalm             calm              Single Insertions                  redundant a
+173   caame             came              Single Insertions                  redundant a
+174   cammp             camp              Single Insertions                  redundant m
+175   caard             card              Single Insertions                  redundant a
+176   caare             care              Single Insertions                  redundant a
+177   caase             case              Single Insertions                  redundant a
+178   caash             cash              Single Insertions                  redundant a
+179   caave             cave              Single Insertions                  redundant a
+180   ceell             cell              Single Insertions                  redundant e
+181   ceent             cent              Single Insertions                  redundant e
+182   chaat             chat              Single Insertions                  redundant a
+183   cheef             chef              Single Insertions                  redundant e
+184   cheeek            cheek             Single Insertions                  redundant e
+185   cheeer            cheer             Single Insertions                  redundant e
+186   cheeese           cheese            Single Insertions                  redundant e
+187   chesss            chess             Single Insertions                  redundant s
+188   chesst            chest             Single Insertions                  redundant s
+189   chiief            chief             Single Insertions                  redundant i
+190   chiild            child             Single Insertions                  redundant i
+191   chiill            chill             Single Insertions                  redundant i
+192   chiina            china             Single Insertions                  redundant i
+193   chooice           choice            Single Insertions                  redundant o
+194   chooose           choose            Single Insertions                  redundant o
+195   churrch           church            Single Insertions                  redundant r
+196   cirrcle           circle            Single Insertions                  redundant r
+197   circuiit          circuit           Single Insertions                  redundant i
+198   citizenn          citizen           Single Insertions                  redundant n
+199   classsic          classic           Single Insertions                  redundant s
+200   climaate          climate           Single Insertions                  redundant a
+201   teh               the               Structural & Scale                 transposition e-h
+202   adn               and               Structural & Scale                 transposition d-n
+203   cta               cat               Structural & Scale                 transposition t-a
+204   bta               bat               Structural & Scale                 transposition t-a
+205   rta               rat               Structural & Scale                 transposition t-a
+206   hta               hat               Structural & Scale                 transposition t-a
+207   fta               fat               Structural & Scale                 transposition t-a
+208   mta               mat               Structural & Scale                 transposition t-a
+209   ctu               cut               Structural & Scale                 transposition t-u
+210   dgo               dog               Structural & Scale                 transposition g-o
+211   fgo               fog               Structural & Scale                 transposition g-o
+212   lgo               log               Structural & Scale                 transposition g-o
+213   snu               sun               Structural & Scale                 transposition n-u
+214   fnu               fun               Structural & Scale                 transposition n-u
+215   rnu               run               Structural & Scale                 transposition n-u
+216   bnu               bun               Structural & Scale                 transposition n-u
+217   cna               can               Structural & Scale                 transposition n-a
+218   cpa               cap               Structural & Scale                 transposition p-a
+219   cba               cab               Structural & Scale                 transposition b-a
+220   bde               bed               Structural & Scale                 transposition d-e
+221   pne               pen               Structural & Scale                 transposition n-e
+222   pni               pin               Structural & Scale                 transposition n-i
+223   pta               pat               Structural & Scale                 transposition t-a
+224   boko              book              Structural & Scale                 transposition k-o
+225   bcka              back              Structural & Scale                 transposition k-a
+226   bakr              bark              Structural & Scale                 transposition r-k
+227   dakr              dark              Structural & Scale                 transposition r-k
+228   pakr              park              Structural & Scale                 transposition r-k
+229   wodr              word              Structural & Scale                 transposition d-r
+230   wokr              work              Structural & Scale                 transposition k-r
+231   wakl              walk              Structural & Scale                 transposition k-l
+232   wlal              wall              Structural & Scale                 transposition l-a
+233   blal              ball              Structural & Scale                 transposition l-a
+234   clal              call              Structural & Scale                 transposition l-a
+235   flal              fall              Structural & Scale                 transposition l-a
+236   tlal              tall              Structural & Scale                 transposition l-a
+237   hnad              hand              Structural & Scale                 transposition n-a
+238   bnad              band              Structural & Scale                 transposition n-a
+239   lnad              land              Structural & Scale                 transposition n-a
+240   snad              sand              Structural & Scale                 transposition n-a
+241   caterpilar        caterpillar       Structural & Scale                 single l deletion
+242   caterpilr         caterpillar       Structural & Scale                 multi deletion
+243   cat               caterpillar       Structural & Scale                 extreme length (3 vs 11)
+244   administrtion     administration    Structural & Scale                 omitted a
+245   admin             administration    Structural & Scale                 extreme length (5 vs 14)
+246   profesor          professor         Structural & Scale                 single s
+247   professir         professor         Structural & Scale                 i -> o slip
+248   doc               doctor            Structural & Scale                 truncation (3 vs 6)
+249   scholl            school            Structural & Scale                 transposition & extra l
+250   algoritm          algorithm         Structural & Scale                 omitted h
