@@ -46,7 +46,7 @@ qt_add_executable(type_assist
     Spell_Checker/SpellChecker.h
     Spell_Checker/Suggestions.h
     Spell_Checker/NgramInvertedIndex.h
-    Spell_Checker/levenshtein+kbrd.h
+    Spell_Checker/levn+kbd.h
 )
 
 target_link_libraries(type_assist
